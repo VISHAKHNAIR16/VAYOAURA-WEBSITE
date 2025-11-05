@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VayoAura</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
+    <link rel="stylesheet" href="news2.css">
+    <style>
+        /* ===== INTERACTIVE HERO SHOWCASE ===== */
+        .interactive-hero {
+            height: 100vh;
+            background: linear-gradient(135deg, #0d7377 0%, #14ffec 100%);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .floating-bg {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    /* Remove background-image here */
+}
+.bg-image {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 2s cubic-bezier(0.4,0,0.2,1);
+    will-change: opacity;
+}
+.bg-image.active { opacity: 0.5; }  /* Or your desired opacity */
+
+
+
+        .hero-content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            max-width: 1200px;
+            width: 100%;
+            padding: 0 50px;
+            z-index: 10;
+        }
+
+        .hero-text-section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 700;
+            color: white;
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateX(-50px);
+            animation: slideInLeft 1s ease-out 0.5s forwards;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 3vw, 1.4rem);
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateX(-50px);
+            animation: slideInLeft 1s ease-out 0.7s forwards;
+        }
+
+        @keyframes slideInLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .interactive-cards-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            opacity: 0;
+            transform: translateX(50px);
+            animation: slideInRight 1s ease-out 0.9s forwards;
+        }
+
+        @keyframes slideInRight {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .hero-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 25px;
+            border: 1px solid rgba(255,255,255,0.2);
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .hero-card:hover::before {
+            left: 100%;
+        }
+
+        .hero-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            background: rgba(255,255,255,0.15);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            color: #FFD700;
+            margin-bottom: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .hero-card:hover .card-icon {
+            transform: rotate(10deg) scale(1.1);
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .card-description {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.8);
+            line-height: 1.5;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .cta-primary, .cta-secondary {
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-primary {
+            background: #FFD700;
+            color: #0d7377;
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(255, 215, 0, 0.4);
+        }
+
+        .cta-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .cta-secondary:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: white;
+            transform: translateY(-3px);
+        }
+
+        /* ===== FLOATING PARTICLES EFFECT ===== */
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 50%;
+            animation: particleFloat 15s infinite linear;
+        }
+
+        .particle:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .particle:nth-child(2) { left: 20%; animation-delay: 2s; }
+        .particle:nth-child(3) { left: 30%; animation-delay: 4s; }
+        .particle:nth-child(4) { left: 40%; animation-delay: 6s; }
+        .particle:nth-child(5) { left: 50%; animation-delay: 8s; }
+        .particle:nth-child(6) { left: 60%; animation-delay: 10s; }
+        .particle:nth-child(7) { left: 70%; animation-delay: 12s; }
+        .particle:nth-child(8) { left: 80%; animation-delay: 14s; }
+
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) scale(1);
+                opacity: 0;
+            }
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 768px) {
+            .hero-content-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                padding: 0 20px;
+                text-align: center;
+            }
+
+            .interactive-cards-container {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero-text-section {
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-card {
+                padding: 20px;
+            }
+
+            .card-icon {
+                font-size: 2rem;
+            }
+        }
+
+        /* ===== ENHANCED SECTION STYLES ===== */
+        .section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 80px 50px;
+            gap: 50px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+        }
+
+        .text-container {
+            flex: 1;
+        }
+
+        .text-container h1 {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            color: #0d7377;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .text-container h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #0d7377, #14ffec);
+            border-radius: 2px;
+        }
+
+        .image-container {
+            flex: 1;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            height: 400px;
+            cursor: pointer;
+        }
+
+        .image-container:hover {
+            transform: scale(1.05);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .image-container:hover img {
+            transform: scale(1.1);
+        }
+
+        .view-button {
+            display: inline-block;
+            padding: 15px 35px;
+            background: linear-gradient(135deg, #0d7377, #14ffec);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: 0 8px 25px rgba(13, 115, 119, 0.3);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .view-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(13, 115, 119, 0.4);
+        }
+
+        /* ===== ENHANCED GALLERY STYLES ===== */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .gallery a {
+            display: block;
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .gallery a:hover {
+            transform: translateY(-10px) rotate3d(1, 1, 0, 5deg);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            z-index: 2;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+
+        .gallery a:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery a::after {
+            content: '\f00e';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 2rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 3;
+        }
+
+        .gallery a:hover::after {
+            opacity: 1;
+        }
+
+        .gallery a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 2;
+        }
+
+        .gallery a:hover::before {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+<header id="navbar-container"></header>
+
+<!-- Interactive Hero Showcase -->
+<section class="interactive-hero">
+    <div class="floating-bg">
+    <div class="bg-image bg1"></div>
+    <div class="bg-image bg2"></div>
+    </div>
+    
+    <!-- Floating Particles -->
+    <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+    
+    <div class="hero-content-grid">
+        <div class="hero-text-section">
+            <h1 class="hero-title">Discover VayoAura</h1>
+            <p class="hero-subtitle">Experience Southeast Asia through unforgettable journeys and create lasting memories with our curated travel experiences.</p>
+            
+            <div class="cta-buttons">
+                <a href="#archive" class="cta-primary">Explore Gallery</a>
+                <a href="#news" class="cta-secondary">Latest Updates</a>
+            </div>
+        </div>
+        
+        <div class="interactive-cards-container">
+            <div class="hero-card" onclick="scrollToArchive()">
+                <div class="card-icon">
+                    <i class="fas fa-camera-retro"></i>
+                </div>
+                <h3 class="card-title">Event Gallery</h3>
+                <p class="card-description">Browse through our collection of memorable moments from across Southeast Asia</p>
+            </div>
+            
+            <div class="hero-card" onclick="scrollToNews()">
+                <div class="card-icon">
+                    <i class="fas fa-newspaper"></i>
+                </div>
+                <h3 class="card-title">Travel News</h3>
+                <p class="card-description">Stay updated with the latest travel tips and destination insights</p>
+            </div>
+            
+            <div class="hero-card" onclick="scrollToArchive()">
+                <div class="card-icon">
+                    <i class="fas fa-map-marked-alt"></i>
+                </div>
+                <h3 class="card-title">Destinations</h3>
+                <p class="card-description">Discover hidden gems and popular attractions throughout the region</p>
+            </div>
+            
+            <div class="hero-card" onclick="scrollToNews()">
+                <div class="card-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3 class="card-title">Community</h3>
+                <p class="card-description">Connect with fellow travelers and share amazing experiences</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Main Introduction Section -->
+<div class="section">
+    <div class="text-container">
+        <h1>VayoAura Through the Lens</h1>
+        <p>
+            Step into the vibrant journey of VayoAura with our event archive – a visual collection of the unforgettable moments we've created across South East Asia.
+            <br><br>Browse through and relive the magic of our past events.
+        </p>
+        <button class="view-button" onclick="scrollToArchive()">The Vault of VayoAura</button>
+    </div>
+    <div class="image-container" onclick="scrollToArchive()">
+        <img src="images/news_image/4.jpg" alt="Event Preview Image">
+    </div>
+</div>
+
+<div id="news">
+    <h1 style="text-align: center; margin: 50px 0 20px;">Stay Updated with VayoAura</h1>
+    <p style="text-align: center; color: black; max-width: 800px; margin: 0 auto;">Welcome to the VayoAura News section, where you can find the latest updates, travel tips, and exciting announcements.</p>
+    <p style="text-align: center; color: black; max-width: 800px; margin: 20px auto 50px;">Stay informed about new offerings, special promotions, and insider insights into Thailand's vibrant destinations.</p>
+</div>
+
+<main>
+    <section class="news-grid">
+        <div class="news-card">
+            <h2>Special Promotions</h2>
+            <p>Experience more for less! Check out our latest limited-time travel deals and exclusive partner offers. Whether you're planning a weekend escape or a group adventure, we've got exciting discounts waiting for you. <br><br>Don't miss out — these promotions are updated regularly to bring you the best value on unforgettable experiences!</p>
+        </div>
+        <div class="news-card">
+            <h2>Travel Tips and Insights</h2>
+            <p>Uncover the heart of Southeast Asia with our expert travel tips and local insights. From cultural etiquette to hidden treasures across Thailand, Vietnam, Indonesia, and beyond — we bring you the know-how to explore like a local. <br><br>Whether you're chasing island sunsets, ancient temples, or street food adventures, our tips will help you travel smarter and experience more.</p>
+        </div>
+        <div class="news-card">
+            <h2>Traveler Stories and Testimonials</h2>
+            <p>Real journeys. Real experiences. Hear from fellow travelers who've explored Southeast Asia with us — their unforgettable moments, favorite discoveries, and the connections they made along the way. <br><br>From heartwarming stories to helpful reviews, let their words inspire your next great adventure.</p>
+        </div>
+        <div class="news-card">
+            <h2>Events and Partnerships</h2>
+            <p>Be part of something bigger! Stay updated on exciting events, cultural festivals, industry collaborations, and strategic partnerships across Southeast Asia. <br><br>From travel expos to local celebrations and meaningful brand alliances, we're always creating new ways to connect, grow, and celebrate the spirit of travel together.</p>
+        </div>
+    </section>
+  
+  
+   <!-- Archive Gallery Section -->
+  <div class="archive-section" id="archive">
+    <h2>Event Archive Gallery</h2>
+    <div class="gallery">
+    <a href="images/archive_image/1.jpg" class="popup-link"><img src="images/archive_image/1.jpg" alt="Event 1"></a>
+    <a href="images/archive_image/2.jpg" class="popup-link"><img src="images/archive_image/2.jpg" alt="Event 2"></a>
+    <a href="images/archive_image/3.jpg" class="popup-link"><img src="images/archive_image/3.jpg" alt="Event 3"></a>
+    <a href="images/archive_image/4.jpg" class="popup-link"><img src="images/archive_image/4.jpg" alt="Event 4"></a>
+    <a href="images/archive_image/5.jpg" class="popup-link"><img src="images/archive_image/5.jpg" alt="Event 5"></a>
+    <a href="images/archive_image/6.jpg" class="popup-link"><img src="images/archive_image/6.jpg" alt="Event 6"></a>
+    <a href="images/archive_image/7.jpg" class="popup-link"><img src="images/archive_image/7.jpg" alt="Event 7"></a>
+    <a href="images/archive_image/8.jpg" class="popup-link"><img src="images/archive_image/8.jpg" alt="Event 8"></a>
+    <a href="images/archive_image/9.jpg" class="popup-link"><img src="images/archive_image/9.jpg" alt="Event 9"></a>
+    <a href="images/archive_image/10.jpg" class="popup-link"><img src="images/archive_image/10.jpg" alt="Event 10"></a>
+    <a href="images/archive_image/11.jpg" class="popup-link"><img src="images/archive_image/11.jpg" alt="Event 11"></a>
+    <a href="images/archive_image/12.jpg" class="popup-link"><img src="images/archive_image/12.jpg" alt="Event 12"></a>
+    <a href="images/archive_image/13.jpg" class="popup-link"><img src="images/archive_image/13.jpg" alt="Event 13"></a>
+    <a href="images/archive_image/14.jpg" class="popup-link"><img src="images/archive_image/14.jpg" alt="Event 14"></a>
+    <a href="images/archive_image/15.jpg" class="popup-link"><img src="images/archive_image/15.jpg" alt="Event 15"></a>
+    <a href="images/archive_image/16.jpg" class="popup-link"><img src="images/archive_image/16.jpg" alt="Event 16"></a>
+    <a href="images/archive_image/17.jpg" class="popup-link"><img src="images/archive_image/17.jpg" alt="Event 17"></a>
+    <a href="images/archive_image/18.jpg" class="popup-link"><img src="images/archive_image/18.jpg" alt="Event 18"></a>
+    <a href="images/archive_image/19.jpg" class="popup-link"><img src="images/archive_image/19.jpg" alt="Event 19"></a>
+    <a href="images/archive_image/20.jpg" class="popup-link"><img src="images/archive_image/20.jpg" alt="Event 20"></a>
+    <a href="images/archive_image/21.jpg" class="popup-link"><img src="images/archive_image/21.jpg" alt="Event 21"></a>
+    <a href="images/archive_image/22.jpg" class="popup-link"><img src="images/archive_image/22.jpg" alt="Event 22"></a>
+    <a href="images/archive_image/23.jpg" class="popup-link"><img src="images/archive_image/23.jpg" alt="Event 23"></a>
+    <a href="images/archive_image/24.jpg" class="popup-link"><img src="images/archive_image/24.jpg" alt="Event 24"></a>
+    <a href="images/archive_image/25.jpg" class="popup-link"><img src="images/archive_image/25.jpg" alt="Event 25"></a>
+    <a href="images/archive_image/26.jpg" class="popup-link"><img src="images/archive_image/26.jpg" alt="Event 26"></a>
+    <a href="images/archive_image/27.jpg" class="popup-link"><img src="images/archive_image/27.jpg" alt="Event 27"></a>
+    <a href="images/archive_image/28.jpg" class="popup-link"><img src="images/archive_image/28.jpg" alt="Event 28"></a>
+    <a href="images/archive_image/29.jpg" class="popup-link"><img src="images/archive_image/29.jpg" alt="Event 29"></a>
+    <a href="images/archive_image/30.jpg" class="popup-link"><img src="images/archive_image/30.jpg" alt="Event 30"></a>
+    <a href="images/archive_image/31.jpg" class="popup-link"><img src="images/archive_image/31.jpg" alt="Event 31"></a>
+    <a href="images/archive_image/32.jpg" class="popup-link"><img src="images/archive_image/32.jpg" alt="Event 32"></a>
+    <a href="images/archive_image/33.jpg" class="popup-link"><img src="images/archive_image/33.jpg" alt="Event 33"></a>
+    <a href="images/archive_image/34.jpg" class="popup-link"><img src="images/archive_image/34.jpg" alt="Event 34"></a>
+    <a href="images/archive_image/35.jpg" class="popup-link"><img src="images/archive_image/35.jpg" alt="Event 35"></a>
+    <a href="images/archive_image/36.jpg" class="popup-link"><img src="images/archive_image/36.jpg" alt="Event 36"></a>
+    <a href="images/archive_image/37.jpg" class="popup-link"><img src="images/archive_image/37.jpg" alt="Event 37"></a>
+    <a href="images/archive_image/38.jpg" class="popup-link"><img src="images/archive_image/38.jpg" alt="Event 38"></a>
+    <a href="images/archive_image/39.jpg" class="popup-link"><img src="images/archive_image/39.jpg" alt="Event 39"></a>
+    <a href="images/archive_image/40.jpg" class="popup-link"><img src="images/archive_image/40.jpg" alt="Event 40"></a>
+    <a href="images/archive_image/41.jpg" class="popup-link"><img src="images/archive_image/41.jpg" alt="Event 41"></a>
+    <a href="images/archive_image/42.jpg" class="popup-link"><img src="images/archive_image/42.jpg" alt="Event 42"></a>
+    <a href="images/archive_image/43.jpg" class="popup-link"><img src="images/archive_image/43.jpg" alt="Event 43"></a>
+    <a href="images/archive_image/44.jpg" class="popup-link"><img src="images/archive_image/44.jpg" alt="Event 44"></a>
+    <a href="images/archive_image/45.jpg" class="popup-link"><img src="images/archive_image/45.jpg" alt="Event 45"></a>
+    <a href="images/archive_image/46.jpg" class="popup-link"><img src="images/archive_image/46.jpg" alt="Event 46"></a>
+    <a href="images/archive_image/47.jpg" class="popup-link"><img src="images/archive_image/47.jpg" alt="Event 47"></a>
+    <a href="images/archive_image/48.jpg" class="popup-link"><img src="images/archive_image/48.jpg" alt="Event 48"></a>
+    <a href="images/archive_image/49.jpg" class="popup-link"><img src="images/archive_image/49.jpg" alt="Event 49"></a>
+    <a href="images/archive_image/50.jpg" class="popup-link"><img src="images/archive_image/50.jpg" alt="Event 50"></a>
+    <a href="images/archive_image/51.jpg" class="popup-link"><img src="images/archive_image/51.jpg" alt="Event 51"></a>
+    <a href="images/archive_image/52.jpg" class="popup-link"><img src="images/archive_image/52.jpg" alt="Event 52"></a>
+    <a href="images/archive_image/53.jpg" class="popup-link"><img src="images/archive_image/53.jpg" alt="Event 53"></a>
+    <a href="images/archive_image/54.jpg" class="popup-link"><img src="images/archive_image/54.jpg" alt="Event 54"></a>
+    <a href="images/archive_image/55.jpg" class="popup-link"><img src="images/archive_image/55.jpg" alt="Event 55"></a>
+    <a href="images/archive_image/EVENT1.mp4" class="popup-video"><div class="video-thumbnail"><img src="images/archive_image/EVE1.webp" alt="Video Thumbnail"><div class="play-button"></div></div></a>
+    <a href="images/archive_image/EVENT2.mp4" class="popup-video"><div class="video-thumbnail"><img src="images/archive_image/EVE2.webp" alt="Video Thumbnail"><div class="play-button"></div></div></a>
+    <a href="images/archive_image/56.jpg" class="popup-link"><img src="images/archive_image/56.jpg" alt="Event 56"></a>
+    <a href="images/archive_image/57.jpg" class="popup-link"><img src="images/archive_image/57.jpg" alt="Event 57"></a>
+    <a href="images/archive_image/58.jpg" class="popup-link"><img src="images/archive_image/58.jpg" alt="Event 58"></a>
+    <a href="images/archive_image/59.jpg" class="popup-link"><img src="images/archive_image/59.jpg" alt="Event 59"></a>
+    <a href="images/archive_image/60.jpg" class="popup-link"><img src="images/archive_image/60.jpg" alt="Event 60"></a>
+    <a href="images/archive_image/61.jpg" class="popup-link"><img src="images/archive_image/61.jpg" alt="Event 61"></a>
+    <a href="images/archive_image/62.jpg" class="popup-link"><img src="images/archive_image/62.jpg" alt="Event 62"></a>
+    <a href="images/archive_image/63.jpg" class="popup-link"><img src="images/archive_image/63.jpg" alt="Event 63"></a>
+    <a href="images/archive_image/64.jpg" class="popup-link"><img src="images/archive_image/64.jpg" alt="Event 64"></a>
+    <a href="images/archive_image/65.jpg" class="popup-link"><img src="images/archive_image/65.jpg" alt="Event 65"></a>
+    <a href="images/archive_image/66.jpg" class="popup-link"><img src="images/archive_image/66.jpg" alt="Event 66"></a>
+    <a href="images/archive_image/67.jpg" class="popup-link"><img src="images/archive_image/67.jpg" alt="Event 67"></a>
+    <a href="images/archive_image/68.jpg" class="popup-link"><img src="images/archive_image/68.jpg" alt="Event 68"></a>
+    <a href="images/archive_image/EVENT3.mp4" class="popup-video"><div class="video-thumbnail"><img src="images/archive_image/60.jpg" alt="Video Thumbnail"><div class="play-button"></div></div></a>
+    <a href="images/archive_image/EVENT4.mp4" class="popup-video"><div class="video-thumbnail"><img src="images/archive_image/61.jpg" alt="Video Thumbnail"><div class="play-button"></div></div></a>
+    <a href="images/archive_image/EVENT5.mp4" class="popup-video"><div class="video-thumbnail"><img src="images/archive_image/66.jpg" alt="Video Thumbnail"><div class="play-button"></div></div></a>
+    <a href="images/archive_image/69.jpg" class="popup-link"><img src="images/archive_image/69.jpg" alt="Event 69"></a>
+    <a href="images/archive_image/70.jpg" class="popup-link"><img src="images/archive_image/70.jpg" alt="Event 70"></a>
+    <a href="images/archive_image/71.jpg" class="popup-link"><img src="images/archive_image/71.jpg" alt="Event 71"></a>
+    <a href="images/archive_image/72.jpg" class="popup-link"><img src="images/archive_image/72.jpg" alt="Event 72"></a>
+    <a href="images/archive_image/73.jpg" class="popup-link"><img src="images/archive_image/73.jpg" alt="Event 73"></a>
+    <a href="images/archive_image/74.jpg" class="popup-link"><img src="images/archive_image/74.jpg" alt="Event 74"></a>
+    <a href="images/archive_image/75.jpg" class="popup-link"><img src="images/archive_image/75.jpg" alt="Event 75"></a>
+    <a href="images/archive_image/76.jpg" class="popup-link"><img src="images/archive_image/76.jpg" alt="Event 76"></a>
+    <a href="images/archive_image/77.jpg" class="popup-link"><img src="images/archive_image/77.jpg" alt="Event 77"></a>
+    <a href="images/archive_image/78.jpg" class="popup-link"><img src="images/archive_image/78.jpg" alt="Event 78"></a>
+    <a href="images/archive_image/79.jpg" class="popup-link"><img src="images/archive_image/79.jpg" alt="Event 79"></a>
+    <a href="images/archive_image/80.jpg" class="popup-link"><img src="images/archive_image/80.jpg" alt="Event 80"></a>
+    <a href="images/archive_image/81.jpg" class="popup-link"><img src="images/archive_image/81.jpg" alt="Event 81"></a>
+    <a href="images/archive_image/82.jpg" class="popup-link"><img src="images/archive_image/82.jpg" alt="Event 82"></a>
+    <a href="images/archive_image/83.jpg" class="popup-link"><img src="images/archive_image/83.jpg" alt="Event 83"></a>
+    <a href="images/archive_image/84.jpg" class="popup-link"><img src="images/archive_image/84.jpg" alt="Event 84"></a>
+    <a href="images/archive_image/85.jpg" class="popup-link"><img src="images/archive_image/85.jpg" alt="Event 85"></a>
+    <a href="images/archive_image/86.jpg" class="popup-link"><img src="images/archive_image/86.jpg" alt="Event 86"></a>
+    <a href="images/archive_image/87.jpg" class="popup-link"><img src="images/archive_image/87.jpg" alt="Event 87"></a>
+    <a href="images/archive_image/88.jpg" class="popup-link"><img src="images/archive_image/88.jpg" alt="Event 88"></a>
+    <a href="images/archive_image/89.jpg" class="popup-link"><img src="images/archive_image/89.jpg" alt="Event 89"></a>
+    <a href="images/archive_image/90.jpg" class="popup-link"><img src="images/archive_image/90.jpg" alt="Event 90"></a>
+    <a href="images/archive_image/91.jpg" class="popup-link"><img src="images/archive_image/91.jpg" alt="Event 91"></a>
+    <a href="images/archive_image/92.jpg" class="popup-link"><img src="images/archive_image/92.jpg" alt="Event 92"></a>
+    <a href="images/archive_image/93.jpg" class="popup-link"><img src="images/archive_image/93.jpg" alt="Event 93"></a>
+    <a href="images/archive_image/94.jpg" class="popup-link"><img src="images/archive_image/94.jpg" alt="Event 94"></a>
+    <a href="images/archive_image/95.jpg" class="popup-link"><img src="images/archive_image/95.jpg" alt="Event 95"></a>
+    <a href="images/archive_image/96.jpg" class="popup-link"><img src="images/archive_image/96.jpg" alt="Event 96"></a>
+    <a href="images/archive_image/97.jpg" class="popup-link"><img src="images/archive_image/97.jpg" alt="Event 97"></a>
+    <a href="images/archive_image/98.jpg" class="popup-link"><img src="images/archive_image/98.jpg" alt="Event 98"></a>
+    <a href="images/archive_image/99.jpg" class="popup-link"><img src="images/archive_image/99.jpg" alt="Event 99"></a>
+    <a href="images/archive_image/100.jpg" class="popup-link"><img src="images/archive_image/100.jpg" alt="Event 100"></a>
+    <a href="images/archive_image/101.jpg" class="popup-link"><img src="images/archive_image/101.jpg" alt="Event 101"></a>
+    <a href="images/archive_image/102.jpg" class="popup-link"><img src="images/archive_image/102.jpg" alt="Event 102"></a>
+    <a href="images/archive_image/103.jpg" class="popup-link"><img src="images/archive_image/103.jpg" alt="Event 103"></a>
+    <a href="images/archive_image/104.jpg" class="popup-link"><img src="images/archive_image/104.jpg" alt="Event 104"></a>
+    <a href="images/archive_image/105.jpg" class="popup-link"><img src="images/archive_image/105.jpg" alt="Event 105"></a>
+    <a href="images/archive_image/106.jpg" class="popup-link"><img src="images/archive_image/106.jpg" alt="Event 106"></a>
+    <a href="images/archive_image/107.jpg" class="popup-link"><img src="images/archive_image/107.jpg" alt="Event 107"></a>
+    <a href="images/archive_image/108.jpg" class="popup-link"><img src="images/archive_image/108.jpg" alt="Event 108"></a>
+    <a href="images/archive_image/109.jpg" class="popup-link"><img src="images/archive_image/109.jpg" alt="Event 109"></a>
+    <a href="images/archive_image/110.jpg" class="popup-link"><img src="images/archive_image/110.jpg" alt="Event 110"></a>
+    <a href="images/archive_image/111.jpg" class="popup-link"><img src="images/archive_image/111.jpg" alt="Event 111"></a>
+    <a href="images/archive_image/112.jpg" class="popup-link"><img src="images/archive_image/112.jpg" alt="Event 112"></a>
+    <a href="images/archive_image/113.jpg" class="popup-link"><img src="images/archive_image/113.jpg" alt="Event 113"></a>
+    <a href="images/archive_image/114.jpg" class="popup-link"><img src="images/archive_image/114.jpg" alt="Event 114"></a>
+    <a href="images/archive_image/115.jpg" class="popup-link"><img src="images/archive_image/115.jpg" alt="Event 115"></a>
+    <a href="images/archive_image/116.jpg" class="popup-link"><img src="images/archive_image/116.jpg" alt="Event 116"></a>
+    <a href="images/archive_image/117.jpg" class="popup-link"><img src="images/archive_image/117.jpg" alt="Event 117"></a>
+    <a href="images/archive_image/118.jpg" class="popup-link"><img src="images/archive_image/118.jpg" alt="Event 118"></a>
+    <a href="images/archive_image/119.jpg" class="popup-link"><img src="images/archive_image/119.jpg" alt="Event 119"></a>
+    <a href="images/archive_image/120.jpg" class="popup-link"><img src="images/archive_image/120.jpg" alt="Event 120"></a>
+    <a href="images/archive_image/121.jpg" class="popup-link"><img src="images/archive_image/121.jpg" alt="Event 121"></a>
+    <a href="images/archive_image/122.jpg" class="popup-link"><img src="images/archive_image/122.jpg" alt="Event 122"></a>
+    <a href="images/archive_image/123.jpg" class="popup-link"><img src="images/archive_image/123.jpg" alt="Event 123"></a>
+    <a href="images/archive_image/124.jpg" class="popup-link"><img src="images/archive_image/124.jpg" alt="Event 124"></a>
+    <a href="images/archive_image/125.jpg" class="popup-link"><img src="images/archive_image/125.jpg" alt="Event 125"></a>
+    <a href="images/archive_image/126.jpg" class="popup-link"><img src="images/archive_image/126.jpg" alt="Event 126"></a>
+    <a href="images/archive_image/127.jpg" class="popup-link"><img src="images/archive_image/127.jpg" alt="Event 127"></a>
+    <a href="images/archive_image/128.jpg" class="popup-link"><img src="images/archive_image/128.jpg" alt="Event 128"></a>
+    <a href="images/archive_image/129.jpg" class="popup-link"><img src="images/archive_image/129.jpg" alt="Event 129"></a>
+    <a href="images/archive_image/130.jpg" class="popup-link"><img src="images/archive_image/130.jpg" alt="Event 130"></a>
+    <a href="images/archive_image/131.jpg" class="popup-link"><img src="images/archive_image/131.jpg" alt="Event 131"></a>
+    <a href="images/archive_image/132.jpg" class="popup-link"><img src="images/archive_image/132.jpg" alt="Event 132"></a>
+    <a href="images/archive_image/133.jpg" class="popup-link"><img src="images/archive_image/133.jpg" alt="Event 133"></a>
+    <a href="images/archive_image/134.jpg" class="popup-link"><img src="images/archive_image/134.jpg" alt="Event 134"></a>
+    <a href="images/archive_image/135.jpg" class="popup-link"><img src="images/archive_image/135.jpg" alt="Event 135"></a>
+    <a href="images/archive_image/136.jpg" class="popup-link"><img src="images/archive_image/136.jpg" alt="Event 136"></a>
+    <a href="images/archive_image/137.jpg" class="popup-link"><img src="images/archive_image/137.jpg" alt="Event 137"></a>
+    <a href="images/archive_image/138.jpg" class="popup-link"><img src="images/archive_image/138.jpg" alt="Event 138"></a>
+    <a href="images/archive_image/139.jpg" class="popup-link"><img src="images/archive_image/139.jpg" alt="Event 139"></a>
+    <a href="images/archive_image/140.jpg" class="popup-link"><img src="images/archive_image/140.jpg" alt="Event 140"></a>
+    <a href="images/archive_image/141.jpg" class="popup-link"><img src="images/archive_image/141.jpg" alt="Event 141"></a>
+    <a href="images/archive_image/142.jpg" class="popup-link"><img src="images/archive_image/142.jpg" alt="Event 142"></a>
+    <a href="images/archive_image/143.jpg" class="popup-link"><img src="images/archive_image/143.jpg" alt="Event 143"></a>
+    <a href="images/archive_image/144.jpg" class="popup-link"><img src="images/archive_image/144.jpg" alt="Event 144"></a>
+    <a href="images/archive_image/145.jpg" class="popup-link"><img src="images/archive_image/145.jpg" alt="Event 145"></a>
+    <a href="images/archive_image/146.jpg" class="popup-link"><img src="images/archive_image/146.jpg" alt="Event 146"></a>
+    <a href="images/archive_image/147.jpg" class="popup-link"><img src="images/archive_image/147.jpg" alt="Event 147"></a>
+    <a href="images/archive_image/148.jpg" class="popup-link"><img src="images/archive_image/148.jpg" alt="Event 148"></a>
+    <a href="images/archive_image/149.jpg" class="popup-link"><img src="images/archive_image/149.jpg" alt="Event 149"></a>
+    <a href="images/archive_image/150.jpg" class="popup-link"><img src="images/archive_image/150.jpg" alt="Event 150"></a>
+    <a href="images/archive_image/151.jpg" class="popup-link"><img src="images/archive_image/151.jpg" alt="Event 151"></a>
+    <a href="images/archive_image/152.jpg" class="popup-link"><img src="images/archive_image/152.jpg" alt="Event 152"></a>
+    <a href="images/archive_image/153.jpg" class="popup-link"><img src="images/archive_image/153.jpg" alt="Event 153"></a>
+    <a href="images/archive_image/154.jpg" class="popup-link"><img src="images/archive_image/154.jpg" alt="Event 154"></a>
+    <a href="images/archive_image/155.jpg" class="popup-link"><img src="images/archive_image/155.jpg" alt="Event 155"></a>
+    <a href="images/archive_image/156.jpg" class="popup-link"><img src="images/archive_image/156.jpg" alt="Event 156"></a>
+    <a href="images/archive_image/157.jpg" class="popup-link"><img src="images/archive_image/157.jpg" alt="Event 157"></a>
+    <a href="images/archive_image/158.jpg" class="popup-link"><img src="images/archive_image/158.jpg" alt="Event 158"></a>
+    <a href="images/archive_image/159.jpg" class="popup-link"><img src="images/archive_image/159.jpg" alt="Event 159"></a>
+    <a href="images/archive_image/160.jpg" class="popup-link"><img src="images/archive_image/160.jpg" alt="Event 160"></a>
+    <a href="images/archive_image/EVENT6.mp4" class="popup-video"><div class="video-thumbnail"><img src="images/archive_image/160.jpg" alt="Video Thumbnail"><div class="play-button"></div></div></a>
+    <a href="images/archive_image/EVENT7.mp4" class="popup-video"><div class="video-thumbnail"><img src="images/archive_image/117.jpg" alt="Video Thumbnail"><div class="play-button"></div></div></a>
+    <a href="images/archive_image/EVENT8.mp4" class="popup-video"><div class="video-thumbnail"><img src="images/archive_image/159.jpg" alt="Video Thumbnail"><div class="play-button"></div></div></a>
+    
+    
+    
+    
+    <!-- Add more images as needed -->
+    </div>
+  </div>
+</main>
+
+<div id="footer-container"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+<script>
+    // Enhanced functionality
+    function scrollToArchive() {
+        document.getElementById("archive").scrollIntoView({ behavior: "smooth" });
+    }
+    
+    function scrollToNews() {
+        document.getElementById("news").scrollIntoView({ behavior: "smooth" });
+    }
+
+    // Initialize everything when DOM loads
+    document.addEventListener("DOMContentLoaded", function() {
+        // Load navbar and footer
+              $('#navbar-container').load('navbar.html', function() {
+  const menuIcon = document.getElementById('menu-icon');
+  const navLinks = document.getElementById('nav-links');
+  const dropdowns = document.querySelectorAll('.dropdown');
+
+  if (menuIcon && navLinks) {
+    menuIcon.addEventListener('click', function(e) {
+      e.stopPropagation();
+      navLinks.classList.toggle('active');
+      document.body.classList.toggle('no-scroll');
+    });
+    
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('#nav-links') && !e.target.closest('#menu-icon')) {
+        navLinks.classList.remove('active');
+        document.body.classList.remove('no-scroll');
+      }
+    });
+  }
+
+  if (window.innerWidth <= 768) {
+    dropdowns.forEach(dropdown => {
+      const dropbtn = dropdown.querySelector('.dropbtn');
+      dropbtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        const content = this.nextElementSibling;
+        content.classList.toggle('active');
+        this.querySelector('.mobile-caret').classList.toggle('rotate');
+      });
+    });
+  }
+
+  window.addEventListener('scroll', function() {
+    const header = document.querySelector('header');
+    if (window.scrollY > 50) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  });
+});
+
+        // Initialize Magnific Popup
+        $('.popup-link').magnificPopup({
+            type: 'image',
+            gallery: {
+                enabled: true
+            }
+        });
+
+        $('.popup-video').magnificPopup({
+            type: 'iframe'
+        });
+
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe news cards
+        document.querySelectorAll('.news-card').forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.1}s`;
+            observer.observe(card);
+        });
+    });
+    
+document.addEventListener('DOMContentLoaded', () => {
+  const images = [
+    'images/news_image/1.jpg',
+    'images/news_image/2.jpg',
+    'images/news_image/3.jpg',
+    'images/news_image/4.jpg',
+    'images/news_image/5.jpg',
+    'images/news_image/6.jpg',
+    'images/news_image/7.jpg',
+    'images/news_image/8.jpg',
+    'images/news_image/9.jpg',
+    'images/news_image/10.jpg',
+    'images/news_image/12.jpg',
+    'images/news_image/13.jpg',
+    'images/news_image/11.jpg',
+    'images/news_image/14.jpg',
+    'images/news_image/15.jpg',
+    'images/news_image/16.jpg',
+    'images/news_image/17.jpg',
+    'images/news_image/18.jpg',
+    
+  ];
+  
+let idx = 0;
+  let isBg1 = true;
+  const bg1 = document.querySelector('.bg1');
+  const bg2 = document.querySelector('.bg2');
+
+  // Set initial images
+  bg1.style.backgroundImage = `url('${images[idx]}')`;
+  bg1.classList.add('active');
+  bg2.style.backgroundImage = `url('${images[(idx+1)%images.length]}')`;
+
+  setInterval(() => {
+    const nextIdx = (idx+1)%images.length;
+    if (isBg1) {
+      bg2.style.backgroundImage = `url('${images[nextIdx]}')`;
+      bg2.classList.add('active');
+      bg1.classList.remove('active');
+    } else {
+      bg1.style.backgroundImage = `url('${images[nextIdx]}')`;
+      bg1.classList.add('active');
+      bg2.classList.remove('active');
+    }
+    idx = nextIdx;
+    isBg1 = !isBg1;
+  }, 8000); // Change every 8 seconds
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+            fetch('footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer-container').innerHTML = data;
+                });
+        });
+
+</script>
+
+</body>
+</html>

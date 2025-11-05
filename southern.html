@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vayo Aura</title>
+    <link rel="stylesheet" href="destination1.css"> 
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&amp;family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+       <style>
+        /* New CSS for background image */
+        .intro-section {
+            background: url('images/south-vietnam-1-week-itinerary-5.webp') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            color: white;
+        }
+    </style>
+    
+</head>
+<body>
+    <header>
+    </header>
+    <div class="intro-section">
+        <div class="content">
+            <h1>Southern Vietnam</h1> 
+            
+        </div>
+    </div>
+
+    
+    <div class="scroll-section">
+        <h2>"Soul of Vietnam" : Southern Vietnam</h2> 
+        <p>"Southern Vietnam is a vibrant mix of bustling cities, lush landscapes, and cultural treasures. Explore Ho Chi Minh City’s dynamic energy, cruise the serene Mekong Delta, or relax on the pristine beaches of Phú Quốc. From floating markets to historic landmarks like the Cu Chi Tunnels, Southern Vietnam offers a unique blend of modern life and timeless traditions."</p>
+    </div>
+
+    
+    <div class="attractions-section">
+        <h2>Top Attractions</h2>
+        <div class="attractions-container">
+            <div class="attraction">
+                <img src="images/Ho Chi Minh City .webp" alt="Attraction 1"> 
+                <div class="overlay">
+                    <div class="text"> Ho Chi Minh City (Saigon)</div> 
+                    <p>Ho Chi Minh City, formerly known as Saigon, is the bustling heart of southern Vietnam. A dynamic blend of modern skyscrapers, historic landmarks like the Notre Dame Cathedral and War Remnants Museum, vibrant markets, and a buzzing nightlife scene make it a captivating destination. It's a city of energy, culture, and endless discoveries.</p>
+                </div>
+            </div>
+            <div class="attraction">
+                <img src="images/Mekong Delta.webp" alt="Attraction 2"> 
+                <div class="overlay">
+                    <div class="text"> Mekong Delta</div> 
+                    <p>The Mekong Delta, known as Vietnam’s "Rice Bowl," is a lush and vibrant region in central Vietnam. Famous for its winding waterways, floating markets, and picturesque rice paddies, it offers a glimpse into rural Vietnamese life. Visitors can explore by boat, savor fresh tropical fruits, and experience the charm of riverside villages.</p>
+                </div>
+            </div>
+            <div class="attraction">
+                <img src="images/Phu Quoc Island.webp" alt="Attraction 3"> 
+                <div class="overlay">
+                    <div class="text">Phu Quoc Island</div> 
+                    <p>Phu Quoc Island, a tropical paradise in central Vietnam, is celebrated for its pristine beaches, crystal-clear waters, and lush forests. Perfect for relaxation and adventure, visitors can enjoy snorkeling, exploring national parks, and savoring fresh seafood. It's an idyllic getaway for nature and beach lovers.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer ></footer>
+
+  <script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Load navbar
+    fetch('navbar.html')
+      .then(response => response.text())
+      .then(data => {
+          document.querySelector('header').innerHTML = data;
+
+          // Now navbar is rendered; set up menu icon logic.
+          const menuIcon = document.getElementById('menu-icon');
+          const navLinks = document.getElementById('nav-links');
+
+          if (menuIcon && navLinks) {
+              // Toggle nav links on menu icon click (mobile)
+              menuIcon.addEventListener('click', function(e) {
+                  e.stopPropagation();
+                  navLinks.classList.toggle('show');
+              });
+
+              // Close nav when clicking outside or on a nav link
+              document.addEventListener('click', function(event) {
+                  if (!navLinks.contains(event.target) && !menuIcon.contains(event.target)) {
+                      navLinks.classList.remove('show');
+                  }
+              });
+
+              // Optional: close menu if a nav link is clicked (for better UX)
+              navLinks.querySelectorAll('a').forEach(function(link) {
+                  link.addEventListener('click', function() {
+                      navLinks.classList.remove('show');
+                  });
+              });
+          }
+      });
+
+    // Load footer (can use footer.html or footer2.html as your need)
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(data => {
+          document.querySelector('footer').innerHTML = data;
+      });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vayo Aura</title>
+    <link rel="stylesheet" href="destination1.css"> 
+</head>
+<body>
+    <header></header>
+    <video class="video-background" autoplay loop muted>
+        <source src="videoplayback.mp4" type="video/mp4"> 
+        Your browser does not support the video tag.
+    </video>
+
+    
+    <div class="intro-section">
+        <div class="content">
+            <h1>Raja Ampat</h1> 
+            
+        </div>
+    </div>
+
+    
+    <div class="scroll-section">
+        <h2>Raja Ampat – A Diver’s Paradise</h2> 
+        <p>Raja Ampat, located in West Papua, is a tropical paradise renowned for its crystal-clear waters, stunning coral reefs, and diverse marine life. This archipelago, with over 1,500 small islands, offers some of the best diving and snorkeling experiences in the world. Its untouched beaches, vibrant underwater ecosystems, and rich biodiversity make it a must-visit destination for nature lovers and adventure seekers. Raja Ampat is a haven for eco-tourism and underwater exploration.
+        </p>
+    </div>
+
+    
+    <div class="attractions-section">
+        <h2>Top Attractions</h2>
+        <div class="attractions-container">
+            <div class="attraction">
+                <img src="images\Diving & Snorkeling.webp" alt="Attraction 1"> 
+                <div class="overlay">
+                    <div class="text">Diving & Snorkeling</div> 
+                    <p>Indonesia is a premier destination for diving and snorkeling, boasting some of the world’s most diverse and vibrant marine ecosystems. Locations like Raja Ampat, Komodo National Park, and the Gili Islands offer crystal-clear waters, colorful coral reefs, and abundant marine life. Whether you're a seasoned diver or a beginner, Indonesia’s underwater world provides unforgettable experiences, from swimming with manta rays to exploring coral gardens and shipwrecks. It's a must for water sports enthusiasts.
+                    </p>
+                </div>
+            </div>
+            <div class="attraction">
+                <img src="images\Wayag Island - raja ampat.jpg.webp" alt="Attraction 2"> 
+                <div class="overlay">
+                    <div class="text">Wayag Islands</div> 
+                    <p>Wayag Islands, located in Raja Ampat, are famous for their dramatic limestone karsts, crystal-clear lagoons, and stunning seascapes. The islands are part of a remote and pristine area, offering breathtaking views and exceptional opportunities for diving and snorkeling. Visitors can hike to panoramic viewpoints, enjoy secluded beaches, and explore vibrant coral reefs. Wayag is a paradise for nature lovers and adventurers seeking untouched beauty.
+                    </p>
+                </div>
+            </div>
+            <div class="attraction">
+                <img src="images\Pianemo Islands - raja ampat.webp" alt="Attraction 3"> 
+                <div class="overlay">
+                    <div class="text">Pianemo Islands</div>
+                    <p>Pianemo Islands, nestled in the heart of Raja Ampat, are celebrated for their iconic karst formations, turquoise lagoons, and serene beauty. This enchanting destination offers panoramic viewpoints that showcase a mesmerizing cluster of emerald islets surrounded by crystal-clear waters. Visitors can explore vibrant coral reefs teeming with marine life, enjoy leisurely boat rides, and relax on secluded white-sand beaches. Pianemo is a haven for adventurers and nature enthusiasts, providing unforgettable experiences in a pristine and tranquil setting.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+<footer ></footer>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Load navbar
+    fetch('navbar.html')
+      .then(response => response.text())
+      .then(data => {
+          document.querySelector('header').innerHTML = data;
+
+          // Now navbar is rendered; set up menu icon logic.
+          const menuIcon = document.getElementById('menu-icon');
+          const navLinks = document.getElementById('nav-links');
+
+          if (menuIcon && navLinks) {
+              // Toggle nav links on menu icon click (mobile)
+              menuIcon.addEventListener('click', function(e) {
+                  e.stopPropagation();
+                  navLinks.classList.toggle('show');
+              });
+
+              // Close nav when clicking outside or on a nav link
+              document.addEventListener('click', function(event) {
+                  if (!navLinks.contains(event.target) && !menuIcon.contains(event.target)) {
+                      navLinks.classList.remove('show');
+                  }
+              });
+
+              // Optional: close menu if a nav link is clicked (for better UX)
+              navLinks.querySelectorAll('a').forEach(function(link) {
+                  link.addEventListener('click', function() {
+                      navLinks.classList.remove('show');
+                  });
+              });
+          }
+      });
+
+    // Load footer (can use footer.html or footer2.html as your need)
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(data => {
+          document.querySelector('footer').innerHTML = data;
+      });
+});
+</script>
+</body>
+</html>

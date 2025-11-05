@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vayo Aura</title>
+    <link rel="stylesheet" href="destination1.css"> 
+    <style>
+        /* New CSS for background image */
+        .intro-section {
+            background: url('images/jakarta.webp') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    
+<header></header>
+    
+<div class="intro-section">
+        <div class="content">
+            <h1>Jakarta</h1> <!-- Destination name -->
+        </div>
+    </div>
+
+    
+    <div class="scroll-section">
+        <h2>Jakarta – The Dynamic Capital</h2> 
+        <p>Jakarta, the capital of Indonesia, is a bustling metropolis known for its vibrant mix of cultures, modern skyline, and rich history. The city offers a blend of colonial architecture in Kota Tua, shopping in luxury malls, and street markets full of local goods. Visitors can explore cultural landmarks like the National Monument (Monas) and the Istiqlal Mosque, or indulge in a diverse culinary scene. With its dynamic atmosphere, Jakarta is a city of contrasts, offering both traditional charm and urban excitement.</p>
+    </div>
+
+    
+    <div class="attractions-section">
+        <h2>Top Attractions</h2>
+        <div class="attractions-container">
+            <div class="attraction">
+                <img src="images\National Monument (Monas) - jakarta.webp" alt="Attraction 1"> 
+                <div class="overlay">
+                    <div class="text">National Monument (Monas)</div> 
+                    <p>The National Monument (Monas) in Jakarta is a towering symbol of Indonesia’s independence and pride. Standing 132 meters tall, it is topped with a gold flame representing the nation’s struggle for freedom. Visitors can explore the history museum at its base and enjoy panoramic views of the city from the observation deck. Monas is a must-visit landmark blending history, culture, and breathtaking architecture.
+                    </p>
+                </div>
+            </div>
+            <div class="attraction">
+                <img src="images\Kota Tua (Old Town) Jakarta.webp" alt="Attraction 2"> 
+                <div class="overlay">
+                    <div class="text">Kota Tua (Old Town)</div> 
+                    <p>Kota Tua, Jakarta's Old Town, is a historic area showcasing Dutch colonial architecture and rich cultural heritage. Highlights include Fatahillah Square, Jakarta History Museum, and quaint cafes. Visitors can explore its cobblestone streets and admire vintage buildings. It's a perfect spot for history buffs and photography enthusiasts.
+                    </p>
+                </div>
+            </div>
+            <div class="attraction">
+                <img src="images\Shopping & Dining.webp" alt="Attraction 3"> 
+                <div class="overlay">
+                    <div class="text">Shopping & Dining</div>
+                    <p>Jakarta offers a vibrant shopping and dining scene, blending modern luxury with local charm. High-end malls like Plaza Indonesia and Grand Indonesia feature global brands and fine dining options. Traditional markets like Tanah Abang and Pasar Baru are great for affordable local goods. From street food to gourmet restaurants, Jakarta caters to every taste and budget.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer ></footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Load navbar
+    fetch('navbar.html')
+      .then(response => response.text())
+      .then(data => {
+          document.querySelector('header').innerHTML = data;
+
+          // Now navbar is rendered; set up menu icon logic.
+          const menuIcon = document.getElementById('menu-icon');
+          const navLinks = document.getElementById('nav-links');
+
+          if (menuIcon && navLinks) {
+              // Toggle nav links on menu icon click (mobile)
+              menuIcon.addEventListener('click', function(e) {
+                  e.stopPropagation();
+                  navLinks.classList.toggle('show');
+              });
+
+              // Close nav when clicking outside or on a nav link
+              document.addEventListener('click', function(event) {
+                  if (!navLinks.contains(event.target) && !menuIcon.contains(event.target)) {
+                      navLinks.classList.remove('show');
+                  }
+              });
+
+              // Optional: close menu if a nav link is clicked (for better UX)
+              navLinks.querySelectorAll('a').forEach(function(link) {
+                  link.addEventListener('click', function() {
+                      navLinks.classList.remove('show');
+                  });
+              });
+          }
+      });
+
+    // Load footer (can use footer.html or footer2.html as your need)
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(data => {
+          document.querySelector('footer').innerHTML = data;
+      });
+});
+</script>
+</body>
+</html>

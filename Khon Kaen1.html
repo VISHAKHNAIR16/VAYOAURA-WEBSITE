@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VayoAura</title>
+    <link rel="stylesheet" href="destination1.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&amp;family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header> 
+    </header>
+    <video class="video-background" autoplay loop muted>
+        <source src="Videos/Khon kaen - Made with Clipchamp.mp4" type="video/mp4" preload="none" poster="images/khonkaen-loading.webp" id = "myVideo"> 
+        Your browser does not support the video tag.
+    </video>
+
+
+    <div class="intro-section">
+        <div class="content">
+            <h1>Khon kaen</h1> 
+
+        </div>
+    </div>
+
+
+    <div class="scroll-section">
+        <h2>Khon Kaen Gems</h2> 
+        <p>Khon Kaen, a hub of Isaan heritage, offers a blend of ancient Khmer temples, striking architecture, vibrant festivals, and serene landscapes, making it a captivating destination for cultural exploration in Thailand's North-East.</p>
+
+
+
+        <div class="attractions-section">
+            <h2>Top Attractions</h2>
+            <div class="attractions-container">
+                <div class="attraction destination-1"> <img src="images/Prasat.webp" alt="Attraction 1">
+                    <div class="overlay">
+                        <div class="text">
+                            <h3>Prasat Pueai Noi or Phrathat Ku Thong</h3>
+                            <p>Prasat Pueai Noi, also known as Phrathat Ku Thong, is a well-preserved 11th–12th century Khmer ruin in Khon Kaen. Built in Baphuon and Angkor Wat styles, it features sandstone and laterite structures. The site hosts an annual Angkor Celebration in May with religious ceremonies and cultural performances.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="attraction destination-2"> <img src="images/Wat Nong Waeng.webp" alt="Attraction 2">
+                    <div class="overlay">
+                        <div class="text">
+                            <h3>Wat Nong Waeng</h3>
+                            <p>Wat Nong Waeng is a prominent temple in Khon Kaen, known for its striking nine-tiered stupa and serene atmosphere. This spiritual site provides visitors with panoramic views of the surrounding area, making it a popular destination for both worshippers and tourists alike.
+
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="attraction destination-3"> <img src="images/Khon Kaen muuseum.webp" alt="Attraction 3">
+                    <div class="overlay">
+                        <div class="text">
+                            <h3>Khon Kaen National Museum</h3>
+                            <p>Khon Kaen National Museum showcases the rich history and culture of the Isan region through its diverse exhibits, including artifacts from ancient civilizations, local art, and ethnographic displays. The museum offers an insightful experience for those looking to learn more about the area's heritage.
+                            </p> 
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer></footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Load navbar
+    fetch('navbar.html')
+      .then(response => response.text())
+      .then(data => {
+          document.querySelector('header').innerHTML = data;
+
+          // Now navbar is rendered; set up menu icon logic.
+          const menuIcon = document.getElementById('menu-icon');
+          const navLinks = document.getElementById('nav-links');
+
+          if (menuIcon && navLinks) {
+              // Toggle nav links on menu icon click (mobile)
+              menuIcon.addEventListener('click', function(e) {
+                  e.stopPropagation();
+                  navLinks.classList.toggle('show');
+              });
+
+              // Close nav when clicking outside or on a nav link
+              document.addEventListener('click', function(event) {
+                  if (!navLinks.contains(event.target) && !menuIcon.contains(event.target)) {
+                      navLinks.classList.remove('show');
+                  }
+              });
+
+              // Optional: close menu if a nav link is clicked (for better UX)
+              navLinks.querySelectorAll('a').forEach(function(link) {
+                  link.addEventListener('click', function() {
+                      navLinks.classList.remove('show');
+                  });
+              });
+          }
+      });
+
+    // Load footer (can use footer.html or footer2.html as your need)
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(data => {
+          document.querySelector('footer').innerHTML = data;
+      });
+});
+</script>
+
+</body>
+
+</html>

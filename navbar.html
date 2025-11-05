@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Bar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+         /*Base Styles */
+        :root {
+            --header-bg: rgba(0, 0, 0, 0.2);
+            --header-bg-scrolled: rgba(0, 0, 0, 0.8);
+            --text-color: white;
+            --dropdown-bg: rgba(0, 0, 0, 0.8);
+            --mobile-menu-bg: rgba(0, 0, 0, 0.95);
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 15px 36px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+            z-index: 1000;
+            background-color: var(--header-bg);
+            transition: all 0.3s ease-in-out;
+        }
+        
+        .logo-container {
+    display: flex;
+    align-items: center;
+    gap: 12px; /* space between logo and text */
+}
+
+.logo-text {
+    font-family: 'Brandon Grotesque', 'League Spartan', sans-serif;
+    font-weight: 300;
+    font-size: 1rem;
+    color: white; /* matches your navbar text color */
+    white-space: nowrap; /* prevent wrapping on desktop */
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* Hide line break for desktop */
+.logo-text-va,
+.logo-text-rest {
+    display: inline;
+}
+
+@media (max-width: 768px) {
+    .logo-text {
+        font-size: 1rem;
+        white-space: normal;
+        max-width: 120px;
+        overflow-wrap: normal; /* Prevent breaking inside text */
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .logo-text-va {
+        display: block;
+        font-weight: 600;
+    }
+    .logo-text-rest {
+        display: block;
+        white-space: nowrap; /* Keep entire phrase on one line */
+        font-weight: 300;
+    }
+}
+
+
+
+/* You can adjust font-size and max-width as needed */
+
+
+        .scrolled {
+            background-color: var(--header-bg-scrolled) !important;
+        }
+
+        .logo {
+            z-index: 1001;
+        }
+
+        .logo img {
+            height: 50px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .logo img:hover {
+            transform: scale(1.05);
+        }
+
+         /*Navigation */
+        .navbar {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            font-weight: 300;
+            font-family: "Lato", Helvetica, sans-serif;
+        }
+
+        .nav-links ul li {
+            margin: 0 10px;
+            position: relative;
+        }
+
+        .nav-links ul li a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-size: 18px;
+            padding: 8px 12px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links ul li a:hover {
+            border-bottom: 2px solid var(--text-color);
+        }
+
+        .mobile-caret {
+            display: none;
+        }
+
+         /*Dropdown Menu */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: var(--dropdown-bg);
+            min-width: 180px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            top: 100%;
+            left: 0;
+            border-radius: 5px;
+            padding: 10px 0;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            color: #f1f1f1;
+            padding: 10px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s;
+        }
+
+        .dropdown-content a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .country-column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .country-column ul li {
+            padding: 5px 0;
+        }
+
+         /*Mobile Menu */
+        .menu-icon {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--text-color);
+            z-index: 1001;
+            padding: 10px;
+        }
+
+         /*Responsive Styles */
+        @media (max-width: 1024px) {
+            .nav-links ul li {
+                margin: 0 8px;
+            }
+            
+            .nav-links ul li a {
+                font-size: 16px;
+                padding: 6px 10px;
+            }
+        }
+
+       @media (max-width: 768px) {
+    header {
+        padding: 15px 20px;
+        height: 70px;
+    }
+
+    .logo img {
+        height: 40px;
+    }
+
+    .menu-icon {
+        display: block;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        max-width: 300px;
+        height: 100vh;
+        background-color: var(--mobile-menu-bg);
+        backdrop-filter: blur(10px);
+        transition: right 0.3s ease-in-out;
+        padding-top: 80px;
+        overflow-y: auto;
+        z-index: 2000;
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+
+    .nav-links ul {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .nav-links ul li {
+        margin: 10px 0;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .nav-links ul li a {
+        font-size: 18px;
+        padding: 12px 0;
+        justify-content: space-between;
+        cursor: pointer;
+    }
+
+    .mobile-caret {
+        display: inline-block;
+        margin-left: 8px;
+        transition: transform 0.3s ease;
+    }
+
+    .mobile-caret.rotate {
+        transform: rotate(180deg);
+    }
+
+    /* Updated Dropdown Style for Mobile: */
+    .dropdown-content {
+        position: static;
+        display: none;
+        background-color: transparent;
+        box-shadow: none;
+        padding: 0;
+        margin-top: 10px;
+        margin-left: 20px;
+    }
+    .dropdown-content.active {
+        display: block;
+    }
+    /* Remove hover rule in mobile! */
+
+    
+    .dropdown-content a {
+        padding: 10px 0;
+        color: rgba(255, 255, 255, 0.8);
+    }
+    /* Prevent accidental hover from overriding click */
+   
+    /* Make the dropbtn have pointer cursor for clarity */
+    .dropbtn {
+        cursor: pointer;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 10px 15px;
+        height: 60px;
+    }
+
+    .logo img {
+        height: 35px;
+    }
+
+    .nav-links {
+        width: 85%;
+    }
+
+    .nav-links ul li a {
+        font-size: 16px;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+        <a href="index.html" class="logo">
+            <img src="images/logo.webp" alt="Company Logo">
+        </a>
+        <div class="logo-text">
+            <span class="logo-text-va">VA</span>
+            <span class="logo-text-rest"> - Explore Unseen Wonders</span>
+        </div>
+    </div>
+        <nav class="navbar" id="navbar">
+            <div class="menu-icon" id="menu-icon">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div class="nav-links" id="nav-links">
+                <ul>
+                    <li><a href="index.html">HOME</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropbtn">DESTINATIONS <i class="fas fa-caret-down mobile-caret"></i></a>
+                        <div class="dropdown-content">
+                            <div class="country-column">
+                                <ul>
+                                    <li><a href="thailand.html">Thailand</a></li>
+                                    <li><a href="vietnam.html">Vietnam</a></li>
+                                    <li><a href="indonesia.html">Indonesia</a></li>
+                                    <li><a href="japan.html">Japan</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="attractions.html">ATTRACTIONS</a></li>
+                    <li><a href="packages.html">PACKAGES</a></li>
+                    <li><a href="Service.html">SERVICES</a></li>
+                    <li><a href="news2.html">NEWS</a></li>
+                    <li class="dropdown">
+                        <a href="aboutus2.html">ABOUT US <i class="fas fa-caret-down mobile-caret"></i></a>
+                        <div class="dropdown-content">
+                            <a href="aboutus2.html#team-container">Core Team</a>
+                            <a href="aboutus2.html#meet-team-container">Tech Team</a>
+                        </div>
+                    </li>
+                    <li><a href="contact.html">CONTACT US</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuIcon = document.getElementById('menu-icon');
+            const navLinks = document.getElementById('nav-links');
+            const dropdowns = document.querySelectorAll('.dropdown');
+            
+            // Mobile menu toggle
+            if (menuIcon && navLinks) {
+                menuIcon.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    navLinks.classList.toggle('active');
+                    document.body.classList.toggle('no-scroll');
+                });
+                
+                // Close menu when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (!e.target.closest('#nav-links') && !e.target.closest('#menu-icon')) {
+                        navLinks.classList.remove('active');
+                        document.body.classList.remove('no-scroll');
+                    }
+                });
+            }
+            
+            // Handle dropdowns on mobile
+            if (window.innerWidth <= 768) {
+                dropdowns.forEach(dropdown => {
+                    const dropbtn = dropdown.querySelector('.dropbtn');
+                    dropbtn.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        const content = this.nextElementSibling;
+                        content.classList.toggle('active');
+                        this.querySelector('.mobile-caret').classList.toggle('rotate');
+                    });
+                });
+            }
+            
+            // Make header opaque on scroll
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('header');
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vayo Aura</title>
+    <link rel="stylesheet" href="destination1.css"> 
+</head>
+<body>
+    <header>
+    </header>
+    <video class="video-background" autoplay loop muted>
+        <source src="videoplayback.mp4" type="video/mp4"> 
+        Your browser does not support the video tag.
+    </video>
+
+    
+    <div class="intro-section">
+        <div class="content">
+            <h1>Flores</h1> 
+            
+        </div>
+    </div>
+
+    
+    <div class="scroll-section">
+        <h2>Flores – A Hidden Gem</h2> 
+        <p>Flores is a quiet, beautiful island known for its picturesque landscapes and traditional villages. The island boasts stunning natural wonders, including the iconic Kelimutu Lakes, where vibrant colors shift with the changing light, creating a mesmerizing sight. Visitors can explore charming villages that showcase the rich cultural heritage of the local people, with traditional weaving and unique architectural styles. With its lush hills, pristine beaches, and warm hospitality, Flores offers a serene escape for travelers seeking both adventure and tranquility in an unspoiled paradise.<p>
+    </div>
+
+
+    
+    <div class="attractions-section">
+        <h2>Top Attractions</h2>
+        <div class="attractions-container">
+            <div class="attraction">
+                <img src="images/Kelimutu Lakes - flores.webp" alt="Attraction 1"> 
+                <div class="overlay">
+                    <div class="text">•	Kelimutu Lakes</div> 
+                    <p>The famous tri-colored crater lakes of Kelimutu are a breathtaking natural wonder that captivates visitors with their ever-changing hues. Each lake, representing different colors, is steeped in local legend and is believed to hold the spirits of the deceased. A trek to the summit at sunrise offers a magical experience, as the morning light dances on the water's surface, creating a stunning visual spectacle that is truly unforgettable.</p>
+                </div>
+            </div>
+            <div class="attraction">
+                <img src="images/Komodo national park - komodo island.webp" alt="Attraction 2">
+                <div class="overlay">
+                    <div class="text">•	Komodo Island</div> 
+                    <p>Nearby Komodo Island is renowned for its iconic inhabitants, the Komodo dragons, which are the largest lizards in the world. Visitors can embark on guided treks to observe these fascinating creatures in their natural habitat, learning about their behavior and conservation efforts. The island's rugged landscapes, pristine beaches, and vibrant marine life also make it a perfect destination for snorkeling and diving enthusiasts looking to explore the underwater wonders of the surrounding waters.</p>
+                </div>
+            </div>
+            <div class="attraction">
+                <img src="images/Maumere - flores.webp" alt="Attraction 3">
+                <div class="overlay">
+                    <div class="text">•	Maumere</div>
+                    <p>A charming coastal town, Maumere is known for its stunning views and laid-back atmosphere, making it an ideal spot for relaxation. The town is surrounded by beautiful beaches and lush hills, offering opportunities for swimming, snorkeling, and exploring traditional villages nearby. With its warm hospitality and rich cultural heritage, Maumere provides a perfect blend of natural beauty and local charm, inviting visitors to unwind and immerse themselves in the island's tranquil lifestyle.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer ></footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Load navbar
+    fetch('navbar.html')
+      .then(response => response.text())
+      .then(data => {
+          document.querySelector('header').innerHTML = data;
+
+          // Now navbar is rendered; set up menu icon logic.
+          const menuIcon = document.getElementById('menu-icon');
+          const navLinks = document.getElementById('nav-links');
+
+          if (menuIcon && navLinks) {
+              // Toggle nav links on menu icon click (mobile)
+              menuIcon.addEventListener('click', function(e) {
+                  e.stopPropagation();
+                  navLinks.classList.toggle('show');
+              });
+
+              // Close nav when clicking outside or on a nav link
+              document.addEventListener('click', function(event) {
+                  if (!navLinks.contains(event.target) && !menuIcon.contains(event.target)) {
+                      navLinks.classList.remove('show');
+                  }
+              });
+
+              // Optional: close menu if a nav link is clicked (for better UX)
+              navLinks.querySelectorAll('a').forEach(function(link) {
+                  link.addEventListener('click', function() {
+                      navLinks.classList.remove('show');
+                  });
+              });
+          }
+      });
+
+    // Load footer (can use footer.html or footer2.html as your need)
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(data => {
+          document.querySelector('footer').innerHTML = data;
+      });
+});
+</script>
+</body>
+</html>

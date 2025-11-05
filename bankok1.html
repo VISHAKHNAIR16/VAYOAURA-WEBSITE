@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VayoAura</title>
+    <link rel="stylesheet" href="destination1.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&amp;family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+
+<body>
+    <header> 
+    </header>
+
+    <video class="video-background" autoplay loop muted>
+        <source src="Videos/bangkok.mp4" type="video/mp4" preload="none" poster="images/bankok-loading.webp" id = "myVideo"> <!-- Give your video path -->
+        Your browser does not support the video tag.
+    </video>
+
+
+    <div class="intro-section">
+        <div class="content">
+            <h1>Bangkok</h1> <!-- Give your destination name -->
+
+        </div>
+    </div>
+
+
+    <div class="scroll-section">
+        <h2>Bangkok the city of Bliss</h2> <!-- Give your destination heading taken from client document -->
+        <p>Bangkok beckons with majestic temples like the Grand Palace, vibrant markets like Chatuchak, and serene escapes like Bang Krachao park. Cruise the Chao Phraya River, experience bustling street life, and embrace the city's electrifying nightlife. Bangkok is a captivating blend of tradition and modernity, promising an unforgettable adventure.</p>  
+      
+
+
+
+        <div class="attractions-section">
+            <h2>Top Attractions</h2>
+            <div class="attractions-container">
+                <div class="attraction destination-1"> <img src="images/grandpalace.webp" alt="Attraction 1">
+                    <div class="overlay">
+                        <div class="text">
+                            <h3>The Grand Palace</h3>
+                            <p>Grand Palace, complex of buildings within walls in Bangkok, Thailand. It has been the
+                                official and ceremonial residence of the country’s kings since the 18th century and
+                                remains a major tourist attraction.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="attraction destination-2"> <img src="images/Bang krachao Park1.webp" alt="Attraction 2">
+                    <div class="overlay">
+                        <div class="text">
+                            <h3>Bang Krachao Park</h3>
+                            <p>Bang Krachao Park, located in Bangkok's Chao Phraya River, is a lush, green oasis often referred to 
+                               as the "Green Lung of Bangkok." Known for its serene natural beauty, the park features winding bike 
+                               paths, elevated walkways through mangrove forests, and peaceful ponds. This tranquil escape from the 
+                               city's hustle offers visitors a chance to experience Bangkok's unique flora and fauna, making it perfect 
+                               for cycling, picnicking, or exploring its vibrant local markets.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="attraction destination-3"> <img src="images/wat arun.webp" alt="Attraction 3">
+                    <div class="overlay">
+                        <div class="text">
+                            <h3>Wat Arun</h3>
+                            <p>Wat Arun, also known as the Temple of Dawn, is a stunning riverside temple located on the west bank of Bangkok's Chao Phraya River. Known for its iconic central spire, which rises majestically over the city, Wat Arun features intricate porcelain decorations that reflect beautifully in the sunlight. This historic landmark, offering panoramic views from its upper terraces, invites visitors to explore its ornate architecture and enjoy a peaceful escape from Bangkok’s bustling streets.
+                            </p> 
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer></footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Load navbar
+    fetch('navbar.html')
+      .then(response => response.text())
+      .then(data => {
+          document.querySelector('header').innerHTML = data;
+
+          // Now navbar is rendered; set up menu icon logic.
+          const menuIcon = document.getElementById('menu-icon');
+          const navLinks = document.getElementById('nav-links');
+
+          if (menuIcon && navLinks) {
+              // Toggle nav links on menu icon click (mobile)
+              menuIcon.addEventListener('click', function(e) {
+                  e.stopPropagation();
+                  navLinks.classList.toggle('show');
+              });
+
+              // Close nav when clicking outside or on a nav link
+              document.addEventListener('click', function(event) {
+                  if (!navLinks.contains(event.target) && !menuIcon.contains(event.target)) {
+                      navLinks.classList.remove('show');
+                  }
+              });
+
+              // Optional: close menu if a nav link is clicked (for better UX)
+              navLinks.querySelectorAll('a').forEach(function(link) {
+                  link.addEventListener('click', function() {
+                      navLinks.classList.remove('show');
+                  });
+              });
+          }
+      });
+
+    // Load footer (can use footer.html or footer2.html as your need)
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(data => {
+          document.querySelector('footer').innerHTML = data;
+      });
+});
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Footer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --dark-bg: #111111;
+            --light-text: #FFFFFF;
+            --accent: #E8C547;
+            --gray-text: rgba(255,255,255,0.7);
+            --transition: all 0.3s ease;
+        }
+        
+        .footer {
+            background: var(--dark-bg);
+            color: var(--light-text);
+            padding: 60px 20px 0;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .footer-header {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo {
+            width: 150px;
+            flex-shrink: 0;
+        }
+        
+        .footer-tagline {
+            color: var(--gray-text);
+            line-height: 1.6;
+            font-size: 0.95rem;
+            max-width: 600px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .social-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        
+        .social-icon:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+        
+        .social-icon i {
+            color: white;
+            font-size: 16px;
+        }
+        
+        .footer-column {
+            margin-bottom: 20px;
+        }
+        
+        .footer-heading {
+            color: var(--light-text);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 8px;
+        }
+        
+        .footer-heading::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background: var(--accent);
+        }
+        
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px 30px;
+        }
+        
+        .footer-links a {
+            color: var(--gray-text);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            display: block;
+            padding: 5px 0;
+        }
+        
+        .footer-links a:hover {
+            color: var(--light-text);
+            transform: translateX(5px);
+        }
+        
+        .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding: 25px 0;
+    text-align: center;
+    display: flex;
+    justify-content: center;  /* Horizontally center the content */
+    align-items: center;
+    width: 100%;
+}
+        
+        .copyright {
+            color: var(--gray-text);
+            font-size: 0.85rem;
+            margin: 0;
+        }
+        
+        @media (max-width: 992px) {
+            .footer-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+            
+            .footer-tagline {
+                max-width: 100%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .footer-links {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-social {
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .footer {
+                padding: 40px 15px 0;
+            }
+            
+            .footer-header {
+                text-align: center;
+                align-items: center;
+            }
+            
+            .footer-social {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-header">
+                <img src="images/logo.webp" alt="VayoAura" class="footer-logo">
+                <div>
+                    <p class="footer-tagline">Redefining travel experiences across Southeast Asia with innovative destination management services.</p>
+                    <div class="footer-social">
+                        <a href="https://www.facebook.com/profile.php?id=61567200098028" class="social-icon" aria-label="Facebook" target="_blank">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/vayoaura/" class="social-icon" aria-label="Instagram" target="_blank">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/company/104862545/admin/dashboard/" class="social-icon" aria-label="LinkedIn" target="_blank">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="mailto:info@vayoaura.com" class="social-icon" aria-label="Email" target="_blank">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="https://wa.me/66642619110" class="social-icon" aria-label="WhatsApp" target="_blank">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@vayoaura" class="social-icon" aria-label="TikTok" target="_blank">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3 class="footer-heading">Explore</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="thailand.html">Thailand</a></li>
+                        <li><a href="vietnam.html">Vietnam</a></li>
+                        <li><a href="indonesia.html">Indonesia</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3 class="footer-heading">Company</h3>
+                    <ul class="footer-links">
+                        <li><a href="aboutus2.html">About Us</a></li>
+                        <li><a href="aboutus2.html#team-container">Our Team</a></li>
+                        <li><a href="news2.html">News</a></li>
+                        <li><a href="Service.html">Services</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+                <p class="copyright">Copyright &copy; 2025 VayoAura. All rights reserved.</p>
+            </div>
+    </footer>
+</body>
+</html>

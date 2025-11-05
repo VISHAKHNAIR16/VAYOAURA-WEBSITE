@@ -1,0 +1,283 @@
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  padding: 20px;
+}
+
+/* Header Section */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 36px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 5%;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease-in-out;
+}
+
+.logo {
+  margin-right: 20px;
+  position: fixed;
+  top: 10px;
+  left: 20px;
+}
+
+.logo img {
+  max-height: 50px;
+  cursor: pointer;
+}
+
+.menu-icon {
+  display: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: white;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  font-weight: 500;
+  font-family: "Lato", Helvetica, sans-serif;
+}
+
+nav ul li {
+  margin: 0 50px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+  padding: 8px 12px;
+  transition: all 0.3s ease;
+}
+
+nav ul li a:hover {
+  border-bottom: 2px solid white;
+}
+
+/* Dropdown Menu Styling */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.2);
+  min-width: 180px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  top: 100%;
+  left: 0;
+  border-radius: 5px;
+  padding: 10px 0;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content a {
+  color: #f1f1f1;
+  padding: 10px 16px;
+  text-decoration: none;
+  display: block;
+  transition: background-color 0.3s;
+}
+
+.dropdown-content a:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+  color: #f1f1f1;
+}
+
+/* Thailand Dropdown (Nested) */
+.dropdown-item {
+  position: relative;
+}
+
+.dropdown2 {
+  display: none;
+  position: absolute;
+  left: 150%;
+  top: 5px;
+  background-color: rgba(0, 0, 0, 0.2);
+  min-width: 160px;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.dropdown-item:hover .dropdown2 {
+  display: block;
+}
+
+.dropdown2 ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.dropdown2 ul li {
+  padding: 3px 8px;
+}
+
+.dropdown2 ul li a {
+  text-decoration: none;
+  color: #f1f1f1;
+  display: block;
+  transition: background-color 0.3s;
+}
+
+.dropdown2 ul li a:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  header {
+      padding: 10px 15px;
+  }
+
+  .logo img {
+      max-height: 40px;
+  }
+
+  nav ul {
+      flex-direction: column;
+      background-color: rgba(0, 0, 0, 0.9);
+      position: absolute;
+      top: 60px;
+      right: 0;
+      width: 100%;
+      display: none;
+  }
+
+  nav ul.show {
+      display: flex;
+  }
+
+  nav ul li {
+      width: 100%;
+      text-align: center;
+      padding: 10px 0;
+  }
+
+  nav ul li a {
+      font-size: 16px;
+  }
+
+  .dropdown-content,
+  .dropdown2 {
+      position: static;
+      width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+      padding: 8px 10px;
+  }
+
+  .logo img {
+      max-height: 35px;
+  }
+
+  nav ul li a {
+      font-size: 14px;
+  }
+}
+
+.footerContainer {
+    background-color: #000; /* Dark black background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: fit-content;
+}
+
+/* Styling for social media icons */
+.socialIcons {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.socialIcons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #fff; /* White background for icons */
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.socialIcons a:hover {
+    transform: scale(1.1);
+}
+
+.socialIcons img {
+    width: 50%;
+    height: auto;
+}
+
+/* Styling for footer navigation */
+.footerNav {
+    margin-top: 15px;
+}
+
+.footerNav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 15px;
+}
+
+.footerNav ul li {
+    display: inline;
+}
+
+.footerNav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.footerNav ul li a:hover {
+    color: #0073e6;
+}
+
+
+
+

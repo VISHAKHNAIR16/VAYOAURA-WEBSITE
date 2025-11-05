@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vayo Aura</title>
+    <link rel="stylesheet" href="destination1.css"> 
+</head>
+<body>
+    <header>
+    </header>
+    <video class="video-background" autoplay loop muted>
+        <source src="videoplayback.mp4" type="video/mp4"> 
+        Your browser does not support the video tag.
+    </video>
+
+    
+    <div class="intro-section">
+        <div class="content">
+            <h1>Nusa Penida</h1> 
+            
+        </div>
+    </div>
+
+    
+    <div class="scroll-section">
+        <h2>Nusa Penida – The Ultimate Island Escape</h2> 
+        <p>Nusa Penida, just off Bali, is known for its rugged beauty and scenic landscapes.With its dramatic cliffs, pristine beaches, and crystal-clear waters, Nusa Penida offers a breathtaking backdrop for adventure seekers and nature lovers alike. Visitors can explore hidden coves, snorkel with vibrant marine life, and hike to stunning viewpoints that showcase the island's natural wonders. The laid-back atmosphere and rich cultural heritage make it a perfect getaway for those looking to unwind and connect with nature.<p>
+    </div>
+
+    
+    <div class="attractions-section">
+        <h2>Top Attractions</h2>
+        <div class="attractions-container">
+            <div class="attraction">
+                <img src="images/Keling King Beach - nusa penida.webp" alt="Attraction 1"> 
+                <div class="overlay">
+                    <div class="text">•	Keling King Beach</div>
+                    <p>Famous for its stunning cliffside view, Keling King Beach offers a breathtaking panorama that has become an iconic image of Nusa Penida. The dramatic cliffs rise majestically above the turquoise waters, creating a picturesque backdrop for photography and relaxation. Adventurous visitors can hike down to the beach, where soft sands and crystal-clear waters await, providing a perfect spot for sunbathing and swimming.</p>
+                </div>
+            </div>
+            <div class="attraction">
+                <img src="images/Angel’s Billabong - nusa penida.webp" alt="Attraction 2"> 
+                <div class="overlay">
+                    <div class="text">•	Angel’s Billabong</div> 
+                    <p>A natural infinity pool, Angel’s Billabong is a mesmerizing spot where the ocean meets a tranquil lagoon, creating a stunning visual effect. The clear waters, surrounded by unique rock formations, invite visitors to take a refreshing dip while enjoying the breathtaking scenery. As the tide changes, the pool transforms, offering a different experience with each visit, making it a must-see destination for nature lovers and photographers alike.</p>
+                </div>
+            </div>
+            <div class="attraction">
+                <img src="images/Broken Beach - nuda penida.webp" alt="Attraction 3"> 
+                <div class="overlay">
+                    <div class="text">•	Broken Beach</div> 
+                    <p>A unique coastal rock formation, Broken Beach features a dramatic archway that allows the ocean to flow into a serene cove, creating a captivating sight. The surrounding cliffs and lush greenery enhance the beauty of this natural wonder, making it an ideal spot for leisurely walks and stunning photographs. Visitors can often spot sea turtles and other marine life in the clear waters below, adding to the enchanting atmosphere of this remarkable location.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer></footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Load navbar
+    fetch('navbar.html')
+      .then(response => response.text())
+      .then(data => {
+          document.querySelector('header').innerHTML = data;
+
+          // Now navbar is rendered; set up menu icon logic.
+          const menuIcon = document.getElementById('menu-icon');
+          const navLinks = document.getElementById('nav-links');
+
+          if (menuIcon && navLinks) {
+              // Toggle nav links on menu icon click (mobile)
+              menuIcon.addEventListener('click', function(e) {
+                  e.stopPropagation();
+                  navLinks.classList.toggle('show');
+              });
+
+              // Close nav when clicking outside or on a nav link
+              document.addEventListener('click', function(event) {
+                  if (!navLinks.contains(event.target) && !menuIcon.contains(event.target)) {
+                      navLinks.classList.remove('show');
+                  }
+              });
+
+              // Optional: close menu if a nav link is clicked (for better UX)
+              navLinks.querySelectorAll('a').forEach(function(link) {
+                  link.addEventListener('click', function() {
+                      navLinks.classList.remove('show');
+                  });
+              });
+          }
+      });
+
+    // Load footer (can use footer.html or footer2.html as your need)
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(data => {
+          document.querySelector('footer').innerHTML = data;
+      });
+});
+</script>
+</body>
+</html>

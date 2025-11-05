@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VayoAura</title>
+    <link rel="stylesheet" href="destination1.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&amp;family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header> 
+    </header>
+    <video class="video-background" autoplay loop muted>
+        <source src="Videos/Chiang Mai Edited Compressed.mp4" type="video/mp4" preload="none" poster="images/chiangmai-loading.webp" id = "myVideo"> <!-- Give your video path -->
+        Your browser does not support the video tag.
+    </video>
+
+
+    <div class="intro-section">
+        <div class="content">
+            <h1>Chiang Mai</h1> <!-- Give your destination name -->
+
+        </div>
+    </div>
+
+
+    <div class="scroll-section">
+        <h2>The Hidden Charms of Chiang Mai</h2> <!-- Give your destination heading taken from client document -->
+        <p>Chiang Mai is a cultural gem, offering ancient temples like Wat Phra That Doi Suthep, vibrant festivals,
+            stunning nature at Doi Inthanon, and unforgettable experiences at places like the Elephant Nature Park and
+            Bua Thong Waterfall.</p>
+
+
+
+        <div class="attractions-section">
+            <h2>Top Attractions</h2>
+            <div class="attractions-container">
+                <div class="attraction destination-1"> <img src="images/Wat Phra That Doi Suthep 1.webp" alt="Attraction 1">
+                    <div class="overlay">
+                        <div class="text">
+                            <h3>Wat Phra That Doi Suthep</h3>
+                            <p>Wat Phra That Doi Suthep, perched on a mountain overlooking Chiang Mai, is a revered temple known for its stunning golden chedi and panoramic city views. This sacred site is a key pilgrimage destination and offers a peaceful, spiritual experience amidst its beautiful surroundings.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="attraction destination-2"> <img src="images/Wat Chedi Luang.webp" alt="Attraction 2">
+                    <div class="overlay">
+                        <div class="text">
+                            <h3>Wat Chedi Luang</h3>
+                            <p>Wat Chedi Luang, located in Chiang Mai, Thailand, is a historic temple known for its towering ancient chedi, once the tallest structure in the Lanna Kingdom. The temple's serene atmosphere and impressive ruins make it a key cultural and spiritual landmark in the city.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="attraction destination-3"> <img src="images/Bua Thong Waterfall.webp" alt="Attraction 3">
+                    <div class="overlay">
+                        <div class="text">
+                            <h3>Bua Thong Waterfall</h3>
+                            <p>Bua Thong Waterfall, located in Chiang Mai, Thailand, is a unique "sticky" limestone waterfall known for its natural grip, allowing visitors to easily climb its cascading tiers. Surrounded by lush jungle, this serene spot offers a refreshing escape and a fun, hands-on experience with nature.
+                            </p> 
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer ></footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Load navbar
+    fetch('navbar.html')
+      .then(response => response.text())
+      .then(data => {
+          document.querySelector('header').innerHTML = data;
+
+          // Now navbar is rendered; set up menu icon logic.
+          const menuIcon = document.getElementById('menu-icon');
+          const navLinks = document.getElementById('nav-links');
+
+          if (menuIcon && navLinks) {
+              // Toggle nav links on menu icon click (mobile)
+              menuIcon.addEventListener('click', function(e) {
+                  e.stopPropagation();
+                  navLinks.classList.toggle('show');
+              });
+
+              // Close nav when clicking outside or on a nav link
+              document.addEventListener('click', function(event) {
+                  if (!navLinks.contains(event.target) && !menuIcon.contains(event.target)) {
+                      navLinks.classList.remove('show');
+                  }
+              });
+
+              // Optional: close menu if a nav link is clicked (for better UX)
+              navLinks.querySelectorAll('a').forEach(function(link) {
+                  link.addEventListener('click', function() {
+                      navLinks.classList.remove('show');
+                  });
+              });
+          }
+      });
+
+    // Load footer (can use footer.html or footer2.html as your need)
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(data => {
+          document.querySelector('footer').innerHTML = data;
+      });
+});
+</script>
+</body>
+
+</html>

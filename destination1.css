@@ -1,0 +1,320 @@
+/* Reset and basics */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    overflow-x: hidden;
+    font-family: Arial, sans-serif; 
+}
+
+h1, h2 {
+    font-family: Georgia, serif; 
+}
+
+h1 {
+    font-size: 3.5rem; 
+    color: #ffffff;
+}
+
+h2 {
+    font-size: 2rem; 
+    margin-bottom: 1rem;
+}
+
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1; 
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    padding: 20px;
+    background: none;
+}
+
+.intro-section {
+    height: 100vh; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scroll-section {
+    padding: 5rem 1rem; 
+    background-color: #ffffff;
+    color: #404040;
+    text-align: center; 
+}
+
+.scroll-section p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 800px; 
+    margin: 0 auto 2rem;
+    color: #767876; 
+}
+
+.attractions-section {
+    padding: 40px 0; 
+    text-align: center;
+    font-family: Arial, sans-serif; 
+}
+
+.attractions-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+    font-weight: bold; 
+    color: #404040;
+    font-family: "Lato", Helvetica, sans-serif;
+}
+
+.attractions-container {
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    max-width: 1200px; 
+    margin: 0 auto; 
+}
+
+.attraction {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    display: flex; 
+    align-items: center; 
+    width: 100%; 
+    margin-bottom: 30px; 
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.attraction:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+}
+
+.attraction img {
+    width: 50%; 
+    height: 300px; 
+    object-fit: cover;
+    border-radius: 0;
+    transition: transform 0.3s ease;
+}
+
+.attraction:hover img {
+    transform: scale(1.03); 
+}
+
+.overlay {
+    position: static;
+    width: 50%; 
+    padding: 20px; 
+}
+
+.text {
+    font-size: 1rem;
+    line-height: 1.5; 
+}
+
+.overlay h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #404040;
+}
+
+.overlay p {
+    margin: 0;
+    color: #767876;
+}
+
+/* Alternate layouts for specific attractions */
+.destination-1 .overlay, 
+.destination-3 .overlay {
+    order: 1; 
+}
+
+.destination-1 img, 
+.destination-3 img {
+    order: 0; 
+    border-radius: 8px 0 0 8px; 
+}
+
+.destination-2 .overlay {
+    order: 0; 
+}
+
+.destination-2 img {
+    order: 1; 
+    border-radius: 0 8px 8px 0; 
+}
+
+header {
+  position: fixed;
+  z-index: 1201;
+  width: 100%;
+  left: 0;
+  top: 0;
+  min-height: 64px;
+  background: linear-gradient(135deg, #0f0f0f, #1c1c1c, #2b2b2b);
+  box-shadow: 0 4px 18px rgba(25,27,38,0.15), 0 1.5px 0 rgba(255, 215, 0, 0.05);
+  display: flex;
+  align-items: center;
+  padding: 16px 30px;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.logo {
+  margin-right: 20px;
+}
+
+.logo img {
+  max-height: 50px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.logo img:hover {
+  transform: scale(1.05);
+}
+
+.menu-icon {
+  display: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #FFD700;
+  transition: color 0.3s ease;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+}
+
+/* ----- DESKTOP NAVIGATION ----- */
+#nav-links {
+  display: block;
+  position: static;
+  background: none;
+  width: auto;
+  height: auto;
+  padding: 0;
+  box-shadow: none;
+  transition: none;
+}
+
+/* ----- MOBILE NAVIGATION ----- */
+@media (max-width: 768px) {
+  .menu-icon {
+    display: block;
+    position: absolute;
+    top: 24px;
+    right: 28px;
+    z-index: 1200;
+  }
+  #nav-links {
+    /* Hidden by default on mobile */
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 80vw;
+    max-width: 340px;
+    height: 100vh;
+    background: linear-gradient(135deg, #191922 0%, #1c1c25 100%);
+    box-shadow: -3px 0 30px 5px rgba(25,25,40,0.18);
+    z-index: 1100;
+    padding-top: 90px;
+    padding-bottom: 35px;
+    transition: right 0.33s cubic-bezier(.61,1.4,.44,1.15), display 0.23s;
+    overflow-y: auto;
+    min-width: 180px;
+    border-radius: 15px 0 0 15px;
+  }
+  #nav-links.show {
+    display: flex;
+    animation: fadeInUp 0.3s ease;
+  }
+
+  nav ul {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  nav ul li {
+    margin: 0 0 18px 0;
+    width: 100%;
+  }
+  nav ul li a {
+    display: block;
+    padding: 14px 28px;
+    font-size: 1.22rem;
+    color: #FFD700;
+    border-radius: 7px;
+    background: none;
+    width: 100%;
+    text-align: left;
+    font-weight: 600;
+    border-bottom: 1px solid rgba(255,215,0,0.10);
+    transition: background 0.23s, color 0.23s;
+  }
+  nav ul li a:hover {
+    background: #FFD70012;
+    color: #fffde3;
+    box-shadow: none;
+    border-bottom: 2px solid #FFD700;
+  }
+
+  /* Dropdowns in mobile */
+  .dropdown-content, .dropdown2 {
+    position: static !important;
+    background: transparent;
+    box-shadow: none;
+    display: none;
+    min-width: 100%;
+    padding: 0;
+    border-radius: 0;
+  }
+  .dropdown:hover .dropdown-content { display: none; }
+  .dropdown-content.active, .dropdown2.active {
+    display: block !important;
+    background: #232336;
+    margin-left: 0;
+    margin-top: 0;
+    border-radius: 0 0 10px 10px;
+    box-shadow: none;
+  }
+  .dropdown-content a, .dropdown2 a {
+    color: #fffbe8 !important;
+    padding: 12px 36px !important;
+    border-bottom: 1px solid #FFD70018;
+    font-size: 1.09rem !important;
+    background: none;
+    text-align: left;
+  }
+  .dropdown-content a:hover, .dropdown2 a:hover {
+    background: #FFD70010 !important;
+    color: #FFD700 !important;
+  }
+}
+
+
+
+

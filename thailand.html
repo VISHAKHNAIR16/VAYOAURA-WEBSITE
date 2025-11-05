@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore Thailand with VayoAura - Discover vibrant culture, stunning landscapes, and tailor-made travel packages for adventure, relaxation, or culinary journeys.">
+    <title>Thailand | VayoAura</title>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #f4f4f4;
+            --accent: #e8c547;
+            --light: #ffffff;
+            --dark: #0a0a0a;
+            --gray-100: #f8f9fa;
+            --gray-200: #e9ecef;
+            --gray-300: #dee2e6;
+            --gray-400: #ced4da;
+            --gray-500: #adb5bd;
+            --gray-600: #6c757d;
+            --gray-700: #495057;
+            --gray-800: #343a40;
+            --gray-900: #212529;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+            --border-radius: 12px;
+            --border-radius-lg: 16px;
+            --border-radius-xl: 20px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            background-color: var(--light);
+            color: var(--primary);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--gray-100);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--gray-400);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--gray-500);
+        }
+
+        /* Hero Section */
+        .hero-slideshow {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 2s cubic-bezier(0.4, 0, 0.2, 1);
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.1) 100%);
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+        }
+
+        .hero-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.8) contrast(1.1);
+        }
+
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: var(--light);
+            text-align: center;
+            max-width: 800px;
+            padding: 3rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: var(--border-radius-xl);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        @media (max-width: 768px) {
+  .overlay-text, .overlay {
+    left: 50% !important;
+    right: auto !important;
+    top: 40% !important;
+    transform: translate(-50%, -50%) !important;
+    max-width: 95% !important;
+    min-width: 0 !important;
+    padding: 1.25rem 0.5rem !important;
+    box-sizing: border-box;
+    font-size: 4vw !important;
+    background: rgba(0,0,0,0.35) !important;
+  }
+  .overlay-text1 h1, .overlay-text h1 {
+    font-size: 7vw !important;
+    padding-left: 0 !important;
+  }
+  .overlay-text p {
+    font-size: 3.6vw !important;
+  }
+}
+
+
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-content p {
+            font-size: clamp(1rem, 1.5vw, 1.25rem);
+            font-weight: 300;
+            line-height: 1.7;
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Progress indicator */
+        .hero-progress {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.5rem;
+            z-index: 10;
+        }
+
+        .progress-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .progress-dot.active {
+            background: var(--light);
+            transform: scale(1.2);
+        }
+
+        /* Content Sections */
+        .content-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            position: relative;
+            letter-spacing: -0.01em;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 2px;
+            background: var(--accent);
+            margin: 2rem auto;
+            border-radius: 1px;
+        }
+
+        .intro-text {
+            text-align: center;
+            font-size: 1.125rem;
+            line-height: 1.8;
+            color: var(--gray-700);
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            font-weight: 300;
+        }
+
+        /* Info Grid */
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-top: 4rem;
+        }
+
+        .map-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition);
+        }
+
+        .map-container:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .map-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .map-container:hover img {
+            transform: scale(1.05);
+        }
+
+        .image-text-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .image-text-grid img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+        }
+
+        .image-text-grid img:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .text-content {
+            grid-column: span 2;
+            margin-top: 2rem;
+        }
+
+        .text-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.01em;
+        }
+
+        .text-content p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--gray-700);
+            font-weight: 300;
+        }
+
+        /* Cities Carousel */
+        .cities-carousel {
+            position: relative;
+            width: 100%;
+            margin: 4rem auto;
+            overflow: hidden;
+            padding: 0 3rem;
+        }
+
+        .carousel-container {
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 2rem 0;
+        }
+
+        .carousel-item {
+            min-width: 280px;
+            margin-right: 2rem;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .carousel-item:hover {
+            transform: translateY(-8px);
+        }
+
+        .carousel-item a {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .carousel-card {
+            background: var(--light);
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            border: 1px solid var(--gray-200);
+        }
+
+        .carousel-item:hover .carousel-card {
+            box-shadow: var(--shadow-xl);
+            border-color: var(--accent);
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .carousel-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .carousel-caption {
+            padding: 1.5rem;
+            text-align: center;
+            font-weight: 500;
+            font-size: 1.1rem;
+            color: var(--primary);
+            background: var(--light);
+            position: relative;
+        }
+
+        .carousel-caption::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: var(--transition);
+        }
+
+        .carousel-item:hover .carousel-caption::before {
+            width: 60px;
+        }
+
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 56px;
+            height: 56px;
+            background: var(--light);
+            border: 1px solid var(--gray-300);
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--primary);
+            transition: var(--transition);
+            box-shadow: var(--shadow-md);
+        }
+
+        .carousel-arrow:hover {
+            background: var(--accent);
+            color: var(--light);
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .carousel-arrow.prev {
+            left: 0;
+        }
+
+        .carousel-arrow.next {
+            right: 0;
+        }
+
+        /* Loading Animation */
+        .loading-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .loading-animation.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--gray-300);
+            border-top: 3px solid var(--accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Fade in animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Footer Space */
+        .footer-space {
+            height: 2rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-content {
+                padding: 2rem;
+                max-width: 600px;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .carousel-item {
+                min-width: 240px;
+            }
+
+            .cities-carousel {
+                padding: 0 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-content {
+                padding: 2rem 1.5rem;
+                max-width: 90%;
+                margin: 0 auto;
+            }
+
+            .content-section {
+                padding: 3rem 1.5rem;
+            }
+
+            .image-text-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .carousel-item {
+                min-width: 200px;
+                margin-right: 1rem;
+            }
+
+            .cities-carousel {
+                padding: 0 1rem;
+            }
+
+            .carousel-arrow {
+                width: 48px;
+                height: 48px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-content {
+                padding: 1.5rem;
+            }
+
+            .content-section {
+                padding: 2rem 1rem;
+            }
+
+            .carousel-item {
+                min-width: 180px;
+            }
+
+            .carousel-arrow {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+        }
+
+        /* Smooth transitions for all interactive elements */
+        a, button, .carousel-item, .carousel-arrow {
+            transition: var(--transition);
+        }
+
+        /* Focus styles for accessibility */
+        a:focus, button:focus {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+        
+        @media (max-width: 768px) {
+  .hero-content {
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    max-width: 90%;
+    text-align: center;
+  }
+}
+    </style>
+</head>
+<body>
+    <!-- Loading Animation -->
+    <div class="loading-animation" id="loadingAnimation">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Navbar will be inserted here -->
+    <header id="navbar-container"></header>
+
+    <div id="main-content">
+        <!-- Hero Slideshow -->
+        <div class="hero-slideshow">
+            <div class="hero-slide active">
+                <img src="images/thai-bg-1.webp" alt="Thailand Landscape">
+            </div>
+            <div class="hero-slide">
+                <img src="images/thai-bg-2.webp" alt="Thailand Temple">
+            </div>
+            <div class="hero-slide">
+                <img src="images/thai-bg-3.webp" alt="Thailand Beach">
+            </div>
+            <div class="hero-slide">
+                <img src="images/thai-bg-4.webp" alt="Thailand City">
+            </div>
+            <div class="hero-slide">
+                <img src="images/thai-bg-6.webp" alt="Thailand Culture">
+            </div>
+
+            <div class="hero-content fade-in">
+                <h1>Experience Thailand</h1>
+                <p>Discover the vibrant culture and stunning landscapes of Thailand with our tailor-made travel packages. Whether you're seeking adventure, relaxation, or a culinary journey, we offer unforgettable experiences for every traveller.</p>
+            </div>
+
+            <div class="hero-progress">
+                <span class="progress-dot active" data-slide="0"></span>
+                <span class="progress-dot" data-slide="1"></span>
+                <span class="progress-dot" data-slide="2"></span>
+                <span class="progress-dot" data-slide="3"></span>
+                <span class="progress-dot" data-slide="4"></span>
+            </div>
+        </div>
+
+        <!-- Why Thailand Section -->
+        <section class="content-section">
+            <h2 class="section-title fade-in">Why Thailand?</h2>
+            <p class="intro-text fade-in">
+                It's hard to capture the vast range of Thailand's culinary delights, cultural treasures, and thrilling adventures. 
+                Thailand offers something exceptional for every traveler, from the stunning southern beaches to the modern malls and 
+                tourist spots in Bangkok. Whether you're lounging on the beaches or diving into Bangkok's vibrant city life, history buffs, 
+                culture enthusiasts, and food lovers alike will discover something unique.
+            </p>
+
+            <div class="info-grid">
+                <div class="map-container fade-in">
+                    <img src="images/thai-map.webp" alt="Map of Thailand">
+                </div>
+                <div class="image-text-grid fade-in">
+                    <img src="images/Bangkok why thailand.jpg" alt="Bangkok City">
+                    <img src="images/temple.jpeg.jpg" alt="Thai Temple">
+                    <div class="text-content">
+                        <h2>Capital: Bangkok</h2>
+                        <p>
+                            Bangkok, often referred to as the "City of Angels," is a captivating fusion of tradition and modernity. Its shimmering temples and ornate shrines coexist with a bustling skyline filled with shopping malls and skyscrapers. Visitors can wander through vibrant local markets, enjoy exquisite dining options, and immerse themselves in the lively art scene. From renowned street food to upscale restaurants, Bangkok offers a diverse culinary experience, making it a must-visit destination for all adventurers.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Must-Visit Cities Section -->
+        <section class="content-section">
+            <h2 class="section-title fade-in">Thailand's Must-Visit Cities</h2>
+            
+            <div class="cities-carousel fade-in">
+                <div class="carousel-container">
+                    <div class="carousel-item">
+                        <a href="bankok1.html">
+                            <div class="carousel-card">
+                                <img src="images/bankok-loading.webp" alt="Bangkok">
+                                <div class="carousel-caption">Bangkok</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="carousel-item">
+                        <a href="athyuthaya1.html">
+                            <div class="carousel-card">
+                                <img src="images/ayutthaya-loading.webp" alt="Ayutthaya">
+                                <div class="carousel-caption">Ayutthaya</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="carousel-item">
+                        <a href="sukothaya1.html">
+                            <div class="carousel-card">
+                                <img src="images/sukhothai-loading.webp" alt="Sukhothai">
+                                <div class="carousel-caption">Sukhothai</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="carousel-item">
+                        <a href="Chiang Mai1.html">
+                            <div class="carousel-card">
+                                <img src="images/chiangmai-loading.webp" alt="Chiang Mai">
+                                <div class="carousel-caption">Chiang Mai</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="carousel-item">
+                        <a href="Khon Kaen1.html">
+                            <div class="carousel-card">
+                                <img src="images/khonkaen-loading.webp" alt="Khon Kaen">
+                                <div class="carousel-caption">Khon Kaen</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="carousel-item">
+                        <a href="Krabi1.html">
+                            <div class="carousel-card">
+                                <img src="images/krabi-loading.webp" alt="Krabi">
+                                <div class="carousel-caption">Krabi</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="carousel-item">
+                        <a href="hua hin1.html">
+                            <div class="carousel-card">
+                                <img src="images/huahin-loading.webp" alt="Hua Hin">
+                                <div class="carousel-caption">Hua Hin</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="carousel-item">
+                        <a href="phuket1.html">
+                            <div class="carousel-card">
+                                <img src="images/phuket-loading.webp" alt="Phuket">
+                                <div class="carousel-caption">Phuket</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="carousel-item">
+                        <a href="koh samui1.html">
+                            <div class="carousel-card">
+                                <img src="images/kohsamui-loading.webp" alt="Koh Samui">
+                                <div class="carousel-caption">Koh Samui</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="carousel-item">
+                        <a href="Koh Lanta & Phi Phi1.html">
+                            <div class="carousel-card">
+                                <img src="images/kohlanta.webp" alt="Koh Lanta & Phi Phi">
+                                <div class="carousel-caption">Koh Lanta & Phi Phi</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <button class="carousel-arrow prev" aria-label="Previous cities">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="carousel-arrow next" aria-label="Next cities">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </section>
+
+        <div class="footer-space"></div>
+    </div>
+
+    <!-- Footer will be inserted here -->
+    <footer id="footer-container"></footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+   <script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Load navbar
+    fetch('navbar.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('navbar-container').innerHTML = data;
+            // Re-initialize navbar scripts since they are loaded dynamically
+            const menuIcon = document.getElementById('menu-icon');
+            const navLinks = document.getElementById('nav-links');
+            const dropdowns = document.querySelectorAll('.dropdown');
+
+            if (menuIcon && navLinks) {
+                menuIcon.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    navLinks.classList.toggle('active');
+                    document.body.classList.toggle('no-scroll');
+                });
+
+                document.addEventListener('click', function(e) {
+                    if (!e.target.closest('#nav-links') && !e.target.closest('#menu-icon')) {
+                        navLinks.classList.remove('active');
+                        document.body.classList.remove('no-scroll');
+                    }
+                });
+            }
+
+            if (window.innerWidth <= 768) {
+                dropdowns.forEach(dropdown => {
+                    const dropbtn = dropdown.querySelector('.dropbtn');
+                    if (dropbtn) {
+                        dropbtn.addEventListener('click', function(e) {
+                            e.preventDefault();
+                            const content = this.nextElementSibling;
+                            if (content) content.classList.toggle('active');
+                            const caret = this.querySelector('.mobile-caret');
+                            if (caret) caret.classList.toggle('rotate');
+                        });
+                    }
+                });
+            }
+
+            // Scroll effect on header
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('header');
+                if (header) {
+                    if (window.scrollY > 50) {
+                        header.classList.add('scrolled');
+                    } else {
+                        header.classList.remove('scrolled');
+                    }
+                }
+            });
+        });
+
+    // Load footer
+    fetch('footer.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('footer-container').innerHTML = data;
+        });
+
+    // Show loading animation
+    const loadingAnimation = document.getElementById('loadingAnimation');
+    if (loadingAnimation) {
+        loadingAnimation.classList.add('active');
+        setTimeout(() => {
+            loadingAnimation.classList.remove('active');
+        }, 500);
+    }
+
+    // Fade in animation on scroll
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, observerOptions);
+    document.querySelectorAll('.fade-in').forEach(el => {
+        observer.observe(el);
+    });
+
+    // Hero Slideshow
+    const slides = document.querySelectorAll('.hero-slide');
+    const progressDots = document.querySelectorAll('.progress-dot');
+    let currentSlide = 0;
+    let slideInterval;
+
+    function showSlide(n) {
+        slides.forEach(slide => slide.classList.remove('active'));
+        progressDots.forEach(dot => dot.classList.remove('active'));
+
+        currentSlide = (n + slides.length) % slides.length;
+        slides[currentSlide].classList.add('active');
+        progressDots[currentSlide].classList.add('active');
+    }
+
+    function nextSlide() {
+        showSlide(currentSlide + 1);
+    }
+
+    function startSlideshow() {
+        slideInterval = setInterval(nextSlide, 5000);
+    }
+
+    function stopSlideshow() {
+        clearInterval(slideInterval);
+    }
+
+    // Progress dot click handlers
+    progressDots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            showSlide(index);
+            stopSlideshow();
+            startSlideshow();
+        });
+    });
+
+    // Start slideshow
+    startSlideshow();
+
+    // Pause slideshow on hover
+    const heroSlideshow = document.querySelector('.hero-slideshow');
+    if (heroSlideshow) {
+        heroSlideshow.addEventListener('mouseenter', stopSlideshow);
+        heroSlideshow.addEventListener('mouseleave', startSlideshow);
+    }
+
+    // Cities Carousel
+    const carousel = document.querySelector('.carousel-container');
+    const items = document.querySelectorAll('.carousel-item');
+    const itemCount = items.length;
+    const prevBtn = document.querySelector('.carousel-arrow.prev');
+    const nextBtn = document.querySelector('.carousel-arrow.next');
+    let currentIndex = 0;
+
+    function getVisibleItems() {
+        const container = document.querySelector('.cities-carousel');
+        if (!container || items.length === 0) return 0;
+        const containerWidth = container.offsetWidth;
+        const itemWidth = items[0].offsetWidth + 32; // including margin
+        return Math.floor(containerWidth / itemWidth);
+    }
+
+    function updateCarousel() {
+        if (!carousel || items.length === 0) return;
+        const itemWidth = items[0].offsetWidth + 32;
+        const offset = -currentIndex * itemWidth;
+        carousel.style.transform = `translateX(${offset}px)`;
+
+        // Update button states
+        const visibleItems = getVisibleItems();
+        if (prevBtn) prevBtn.style.opacity = currentIndex === 0 ? '0.5' : '1';
+        if (nextBtn) nextBtn.style.opacity = currentIndex >= itemCount - visibleItems ? '0.5' : '1';
+    }
+
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            const visibleItems = getVisibleItems();
+            if (currentIndex < itemCount - visibleItems) {
+                currentIndex++;
+                updateCarousel();
+            }
+        });
+    }
+
+    if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateCarousel();
+            }
+        });
+    }
+
+    // Handle window resize
+    window.addEventListener('resize', () => {
+        currentIndex = 0;
+        updateCarousel();
+    });
+
+    // Initial carousel setup
+    updateCarousel();
+
+    // Smooth scrolling for anchor links (also added in case any anchor appears after load)
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+
+    // Keyboard navigation for carousel
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft' && prevBtn) {
+            prevBtn.click();
+        } else if (e.key === 'ArrowRight' && nextBtn) {
+            nextBtn.click();
+        }
+    });
+});
+</script>
+
+</body>
+</html>

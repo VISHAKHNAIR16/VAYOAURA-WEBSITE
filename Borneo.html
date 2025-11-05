@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vayo Aura</title>
+    <link rel="stylesheet" href="destination1.css"> 
+</head>
+<body>
+    <header>
+    </header>
+    <video class="video-background" autoplay loop muted>
+        <source src="videoplayback.mp4" type="video/mp4"> 
+        Your browser does not support the video tag.
+    </video>
+
+    
+    <div class="intro-section">
+        <div class="content">
+            <h1>Borneo</h1> 
+            
+        </div>
+    </div>
+
+    
+    <div class="scroll-section">
+        <h2>Borneo – Indonesian Kalimantan</h2> 
+        <p>Borneo’s Indonesian region, Kalimantan, is a paradise for eco-tourists, with its vast jungles and unique wildlife.Home to some of the world's oldest rainforests, Kalimantan boasts an incredible biodiversity, including endangered species like orangutans and proboscis monkeys. Adventurers can embark on river cruises, trek through lush landscapes, and visit traditional Dayak villages to experience the rich cultural heritage of the indigenous people. With its pristine nature and commitment to conservation, Kalimantan offers a truly immersive experience for those seeking to connect with the environment.<p>
+    </div>
+    
+    <div class="attractions-section">
+        <h2>Top Attractions</h2>
+        <div class="attractions-container">
+            <div class="attraction">
+                <img src="images/Tanjung Puting National Park - borneo.webp" alt="Attraction 1"> 
+                <div class="overlay">
+                    <div class="text">•	Tanjung Puting National Park</div> 
+                    <p>A haven for orangutans, Tanjung Puting National Park is a UNESCO World Heritage site that offers a rare opportunity to observe these magnificent creatures in their natural habitat. Visitors can embark on riverboat tours through the lush rainforest, where they may encounter not only orangutans but also proboscis monkeys, gibbons, and a variety of bird species. The park's diverse ecosystems and stunning landscapes make it a must-visit destination for wildlife enthusiasts and nature lovers alike</p>
+                </div>
+            </div>
+            <div class="attraction">
+                <img src="images/Derawan Islands - borneo.webp" alt="Attraction 2">
+                <div class="overlay">
+                    <div class="text">•	Derawan Islands</div> 
+                    <p>Known for pristine beaches and vibrant underwater life, the Derawan Islands are a tropical paradise that beckons snorkelers and divers from around the world. The crystal-clear waters teem with colorful coral reefs, sea turtles, and an array of marine species, providing an unforgettable underwater experience. With its idyllic beaches and laid-back atmosphere, the islands also offer opportunities for relaxation and exploration, making it the perfect escape for those seeking both adventure and tranquility.</p>
+                </div>
+            </div>
+            <div class="attraction">
+                <img src="images/Banjarmasin Floating Market - borneo.webp" alt="Attraction 3">
+                <div class="overlay">
+                    <div class="text">•	Banjarmasin Floating Market</div>
+                    <p>A unique cultural experience, the Banjarmasin Floating Market is a vibrant hub of local commerce where traditional wooden boats, known as "jukung," are filled with fresh produce and local delicacies. Visitors can stroll along the riverbanks, sampling delicious snacks and interacting with friendly vendors while soaking in the lively atmosphere. This bustling market not only showcases the rich culture of the region but also offers a glimpse into the daily lives of the local people, making it a memorable stop on any journey through Kalimantan.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer ></footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Load navbar
+    fetch('navbar.html')
+      .then(response => response.text())
+      .then(data => {
+          document.querySelector('header').innerHTML = data;
+
+          // Now navbar is rendered; set up menu icon logic.
+          const menuIcon = document.getElementById('menu-icon');
+          const navLinks = document.getElementById('nav-links');
+
+          if (menuIcon && navLinks) {
+              // Toggle nav links on menu icon click (mobile)
+              menuIcon.addEventListener('click', function(e) {
+                  e.stopPropagation();
+                  navLinks.classList.toggle('show');
+              });
+
+              // Close nav when clicking outside or on a nav link
+              document.addEventListener('click', function(event) {
+                  if (!navLinks.contains(event.target) && !menuIcon.contains(event.target)) {
+                      navLinks.classList.remove('show');
+                  }
+              });
+
+              // Optional: close menu if a nav link is clicked (for better UX)
+              navLinks.querySelectorAll('a').forEach(function(link) {
+                  link.addEventListener('click', function() {
+                      navLinks.classList.remove('show');
+                  });
+              });
+          }
+      });
+
+    // Load footer (can use footer.html or footer2.html as your need)
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(data => {
+          document.querySelector('footer').innerHTML = data;
+      });
+});
+</script>
+</body>
+</html>

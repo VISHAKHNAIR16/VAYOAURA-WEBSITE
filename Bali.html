@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VayoAura</title>
+    <link rel="stylesheet" href="destination1.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&amp;family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+
+<body>
+    <header> 
+    </header>
+
+    <div class="intro-section">
+        <img class="video-background" src="images/bali.webp" alt="Ayutthaya Image">
+        <div class="content">
+            <h1>Bali</h1> <!-- Give your destination name -->
+        </div>
+    </div>
+
+
+    
+
+    <div class="scroll-section">
+        <h2>Bali – The Island of the Gods</h2> <!-- Give your destination heading taken from client document -->
+        <p>Bali is synonymous with tropical beauty, cultural richness, and spiritual significance. Known for its stunning beaches, lush landscapes, and vibrant art scene, it’s the perfect destination for both relaxation and adventure.</p>  
+      
+
+
+
+<div class="attractions-section">
+        <h2>Top Attractions</h2>
+        <div class="attractions-container">
+            <div class="attraction">
+                <img src="images\Ubud- bali.webp" alt="Attraction 1"> 
+                <div class="overlay">
+                    <div class="text">Ubud</div> 
+                    <p>Ubud, located in the heart of Bali, is a cultural hub surrounded by lush rice terraces and dense forests. Known for its art, traditional dance performances, and wellness retreats, it attracts those seeking spiritual and creative inspiration. The Sacred Monkey Forest and ancient temples like Goa Gajah add to its charm. Ubud's serene atmosphere makes it an ideal spot for nature and culture lovers.
+                    </p>
+                </div>
+            </div>
+            <div class="attraction">
+                <img src="images\Tanah lot- Bali.webp" alt="Attraction 2"> 
+                <div class="overlay">
+                    <div class="text">Tanah Lot Temple</div> 
+                    <p>Tanah Lot Temple is one of Bali's most iconic landmarks, perched on a rocky outcrop surrounded by the sea. Known for its breathtaking sunsets, this ancient Hindu shrine is dedicated to the sea gods. Visitors can explore its unique structure during low tide or enjoy its majestic view from the cliffs. Its spiritual significance and scenic beauty make it a must-visit destination.
+                    </p>
+                </div>
+            </div>
+            <div class="attraction">
+                <img src="images\seminyak.webp" alt="Attraction 3"> 
+                <div class="overlay">
+                    <div class="text">Seminyak</div>
+                    <p>A chic beach town in Bali, Seminyak is known for its luxury resorts, trendy boutiques, and vibrant nightlife. Its beaches offer stunning sunsets, while world-class dining makes it perfect for a sophisticated, laid-back escape.
+                    </p>
+                </div>
+
+            </div>
+            <div class="attraction">
+                <img src="images\handara.jpeg" alt="Attraction 4"> 
+                <div class="overlay">
+                    <div class="text">Iconic Handara Gates</div>
+                    <p>A captivating cultural landmark in Bali, the Iconic Handara Gates are known for their majestic beauty and serene ambiance. Set against lush greenery and misty mountains, these towering Balinese-style gates create a picture-perfect setting. Ideal for both spiritual reflection and awe-inspiring photography, Handara Gates offer a peaceful escape into Bali’s rich cultural heritage.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <footer ></footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Load navbar
+    fetch('navbar.html')
+      .then(response => response.text())
+      .then(data => {
+          document.querySelector('header').innerHTML = data;
+
+          // Now navbar is rendered; set up menu icon logic.
+          const menuIcon = document.getElementById('menu-icon');
+          const navLinks = document.getElementById('nav-links');
+
+          if (menuIcon && navLinks) {
+              // Toggle nav links on menu icon click (mobile)
+              menuIcon.addEventListener('click', function(e) {
+                  e.stopPropagation();
+                  navLinks.classList.toggle('show');
+              });
+
+              // Close nav when clicking outside or on a nav link
+              document.addEventListener('click', function(event) {
+                  if (!navLinks.contains(event.target) && !menuIcon.contains(event.target)) {
+                      navLinks.classList.remove('show');
+                  }
+              });
+
+              // Optional: close menu if a nav link is clicked (for better UX)
+              navLinks.querySelectorAll('a').forEach(function(link) {
+                  link.addEventListener('click', function() {
+                      navLinks.classList.remove('show');
+                  });
+              });
+          }
+      });
+
+    // Load footer (can use footer.html or footer2.html as your need)
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(data => {
+          document.querySelector('footer').innerHTML = data;
+      });
+});
+</script>
+    </body>
+    </html>

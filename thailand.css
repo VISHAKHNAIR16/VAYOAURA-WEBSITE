@@ -1,0 +1,1211 @@
+body {
+    font-family: 'Poppins', Arial, sans-serif;
+    margin: 0;
+    background-color: #f3f3f3;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  
+  .slideshow-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 10px;
+  }
+  
+  .mySlides {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .header-section {
+    text-align: center;
+    margin: 50px 0 20px;
+}
+  
+  .fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+  }
+  
+  @keyframes fade {
+    from {
+      opacity: .4
+    }
+  
+    to {
+      opacity: 1
+    }
+  }
+  
+  .overlay-text {
+    position: absolute;
+    top: 28%;
+    right: 7%;
+    transform: translateY(-50%,-50%);
+    color: white;
+    text-align: center;
+    padding: 2vh 2vw;
+    border-radius: 10px;
+    max-width: 40%;
+    box-sizing: border-box;
+    font-family: 'Poppins', Arial, sans-serif;
+  }
+  
+  .overlay-text h1 {
+    font-size: 5.4vw;
+    margin: 0;
+    padding-left: 70px;
+    padding-bottom:0px;
+    font-weight:800;
+  }
+  
+  .overlay-text p {
+    font-size: 1.5vw;
+    margin: 0.01vw 0 0 0;
+    padding-bottom: 10px;
+    font-weight: 400;
+    text-transform: capitalize;
+    text-align: center;
+  }
+  
+  .overlay-text .overlay-text1{
+    font-size: 5.4vw;
+    margin: 0;
+    font-weight: 800;
+    text-align: center;
+  }
+  
+  .card-container {
+    padding: 5vh 5vw;
+    background-color: #f3f3f3;
+  }
+  
+  .scrollable-row {
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    padding: 2vh 0;
+    scroll-snap-type: x mandatory;
+  }
+  
+  .scrollable-row::-webkit-scrollbar {
+    display: none;
+    
+  }
+  
+  .card {
+    min-width: 220px;
+    flex: 0 0 auto;
+    background-color: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    scroll-snap-align: start;
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+  
+  .card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+  }
+  
+  .card p {
+    margin: 0;
+    padding: 10px;
+    background-color: #000;
+    color: white;
+    font-weight: 600;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+  }
+  
+  #exclusive-text,#exclusive-text2 {
+    text-align: center;
+    font-size: 3vw;
+    margin-bottom: 2vh;
+    font-weight: 800;
+  }
+  
+  .news-services {
+    padding: 40px 0;
+    background-image: url(images/texture.png);
+  }
+  
+  .news-services .container {
+    max-width: 600px; 
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .news-services .row {
+    display: block; 
+  }
+  .news-services .col-md-6 {
+    width: 100%;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #fff; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    margin-bottom: 20px;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+  }
+  
+  .news-services .col-md-6:hover {
+    background-color: #02a8a5; 
+    opacity: 0.8;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); 
+  }
+  
+  .news-services h3 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    color: #02a8a5; 
+  }
+  .news-services ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .news-services li {
+    margin-bottom: 10px;
+    padding: 10px;
+    color: #02a8a5; 
+  }
+  
+  .news-services .col-md-6:hover li {
+    color: white;
+  }
+  .news-services .col-md-6:hover h3 {
+    color: white;
+    font-size: 1.7em;
+  }
+  
+  .about-us .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .about-us-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  
+  .about-us-text {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  .about-us-text h2 {
+    font-size: 2.5em;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .about-us-text p {
+    font-size: 1.1em;
+    color: #666;
+    line-height: 1.8;
+  }
+  
+  .about-us-text ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-top: 20px;
+  }
+  
+  .about-us-text ul li {
+    font-size: 1.1em;
+    color: #666;
+    margin-bottom: 10px;
+  }
+  
+  .about-us-image {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  .about-us-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+  
+  
+  
+  .carousel-container {
+    height: 500px;
+    
+  }
+  
+  .tranding-slide .tranding-slide-img img {
+    width: 100%; 
+    height: 21rem;
+    border-radius: 2rem;
+    object-fit: cover;
+    position: relative; 
+    overflow: hidden; 
+  }
+  
+  .tranding-slide .tranding-slide-content {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+  }
+  
+  .tranding-slide .tranding-slide-img {
+    position: relative; 
+    overflow: hidden;   
+    
+    border-radius: 50px;
+  }
+  
+  .card-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    border-radius: 30px;
+    height: 21rem;
+    display: none; 
+  }
+  
+  .tranding-slide-content .tranding-slide-content-bottom {
+    position: absolute;
+    bottom: 2rem;
+    left: 2rem;
+    color: var(--white);
+  }
+  
+  .swiper-slide-shadow-left,
+  .swiper-slide-shadow-right {
+    display: none;
+  }
+  
+  .tranding-slider-control {
+    position: relative;
+    bottom: -1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .tranding-slider-control .swiper-button-next {
+    left: 58%;
+    transform: translateX(-58%);
+  }
+  
+  .tranding-slider-control .slider-arrow {
+    background: var(--white);
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    left: 42%;
+    transform: translateX(-42%);
+    filter: drop-shadow(0px 8px 24px rgba(18, 28, 53, 0.1));
+  }
+  
+  .tranding-slider-control .slider-arrow ion-icon {
+    font-size: 2rem;
+    color: #222224;
+  }
+  
+  .tranding-slider-control .slider-arrow::after {
+    content: '';
+  }
+  
+  .tranding-slider-control .swiper-pagination {
+    position: relative;
+    width: 15rem;
+    bottom: 1rem;
+  }
+  
+  .tranding-slider-control .swiper-pagination .swiper-pagination-bullet {
+    filter: drop-shadow(0px 8px 24px rgba(18, 28, 53, 0.1));
+  }
+  
+  .tranding-slider-control .swiper-pagination .swiper-pagination-bullet-active {
+    background: var(--primary);
+  }
+  
+  .swiper-container .swiper-slide {
+    width: calc((100% / 3) - 10px);
+    margin-right: 10px;
+  }
+  .tranding-slide-content-bottom-text {
+    font-size: 40px;
+    color: rgb(255, 255, 255);
+    text-align: center;
+  }
+  .socialIcons{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .socialIcons a{
+    text-decoration: none;
+    padding: 15px;
+    background-color: white;
+    margin: 10px;
+    border-radius: 50%;
+    max-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .socialIcons a i{
+    font-size: 2em;
+    color: black;
+    opacity: 0.9;
+  }
+  .socialIcons a img {
+    width: 24px;
+    height: 24px;
+    object-fit: cover;
+  }
+  
+  .socialIcons a:hover{
+    background-color: #ffffff;
+    transition: 0.5s;
+  }
+  .socialIcons a:hover i{
+    color: rgb(0, 0, 0);
+    transition: 0.5s;
+  }
+  footer {
+    background-color: #111;
+    padding: 20px 10px;
+  }
+  .footerNav{
+    margin: 30px 0;
+  }
+  .footerNav ul{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Allows wrapping for smaller screens */
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  .footerNav ul li {
+    margin: 10px;
+  }
+  .footerNav ul li a { 
+    color: white;
+    text-decoration: none;
+    font-size: 1.2em;
+    opacity: 0.8;
+    transition: 0.3s;
+  }
+  .footerNav ul li a:hover{
+    opacity: 1;
+  }
+  .footerBottom{
+    background-color: #000;
+    padding: 15px 10px;
+    text-align: center;
+  }
+  .footerBottom p{
+    color: white;
+    font-size: 0.9em;
+    margin: 10px 0 0;
+  }
+  
+  .socialIcons img {
+      width: 24px; 
+      height: 24px; 
+      border-radius: 50%;
+      object-fit: cover; 
+  }
+  .logos {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .logos img {
+    max-height: 120px;
+    width: auto;
+  }
+  
+  .log{
+    margin-left: auto;
+    display: block;
+    filter: brightness(20%);
+  }
+  
+  .log img{
+    max-height: 60px;
+    filter: brightness(20%);
+    margin: 0 auto;
+  }
+  
+  #loading-wrapper {
+    background-color: #333;
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; 
+    animation: fadeIn 0.2s ease-in-out;
+  }
+  #loading-logo {
+    width: 175px;
+    height: 175px;
+    opacity: 0.8;
+    animation: logoAnimation 1s ease-in-out infinite alternate;
+  }
+  .loading-text {
+    margin: 20px 0px;
+    font-size: 1.2em;
+    color: white;
+  }
+  .loader {
+    border: 4px solid #f3f3f3; 
+    border-top: 4px solid #3498db; 
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 2s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); 
+   }
+  }
+  @keyframes logoAnimation {
+    0% { opacity: 0.5; }
+    100% { opacity: 1; }
+  }
+  
+  @keyframes loadProgress {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes fade2 {
+    from {
+      opacity: .2
+    }
+  
+    to {
+      opacity: 1
+    }
+  }
+  .fade2 {
+    opacity: 0;
+  }
+  .news-link {
+    text-decoration: none;
+      color: inherit;
+      display: block; 
+  }
+  .news-link:hover {
+    cursor: pointer;
+  }
+  
+  @media screen and (min-width: 1025px) {
+    .footerNav ul li a {
+      font-size: 18px; 
+    }
+  }
+  
+  @media screen and (max-width: 1024px) {
+    .footerNav ul li a {
+      font-size: 16px; 
+    }
+  }
+  
+  @media screen and (max-width: 767px) {
+    .footerNav ul li a {
+      font-size: 14px; 
+    }
+  }
+  
+  .container69 {
+    width: 90%;
+    margin: 0 auto;
+    max-width: 1200px;
+  }
+  
+  .h169 {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 2.5em;
+  }
+  
+  .intro-text69 {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 1.2em;
+    line-height: 1.6;
+    color:#0b0b0b
+  }
+  
+  .content69{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 40px;
+  }
+  
+  .map69{
+    width: 40%;
+    text-align: center;
+  }
+  
+  .map69 img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .map69 p {
+    margin-top: 10px;
+    font-style: italic;
+    color: #990066;
+  }
+  
+  .image-text69 {
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .images69 {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .images69 img {
+    width: 48%;
+    height: auto;
+    margin-bottom: 20px;
+  }
+  
+  .text-section69 {
+    margin-top: 20px;
+  }
+  
+  .text-section69 h2 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .text-section69 p {
+    font-size: 1em;
+    line-height: 1.6;
+    color: #555;
+    color:#0b0b0b;
+  }
+  /* General responsive adjustments */
+  body {
+    font-size: 16px; /* Sets a base font-size */
+  }
+  
+  /* For screens 1024px and below (tablets) */
+  @media (max-width: 1024px) {
+    .overlay-text h1 {
+      font-size: 4vw;
+      padding-left: 50px;
+    }
+  
+    .overlay-text p {
+      font-size: 1.2vw;
+    }
+  
+    .logo img {
+      max-height: 70px;
+      height: auto;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .footerNav ul li a {
+      font-size: 1em;
+    }
+  
+    .socialIcons a {
+      padding: 10px;
+      margin: 8px;
+    }
+  
+    .logos img {
+      max-height: 100px;
+    }
+    
+    .slideshow-container {
+      position: relative;   /* Ensure positioning context */
+      height: 100vh;        /* Full viewport height for centering */
+      display: flex;        /* Use flex to center children */
+      justify-content: center;
+      align-items: center;
+      padding: 0 10px;
+    }
+    
+    .overlay-text {
+      position: static;     /* Temporarily remove absolute positioning */
+      max-width: 90%;
+      text-align: center;
+      padding-left: 0;
+      transform: none;      /* Remove previous transforms */
+    }
+
+  
+    .overlay-text h1 {
+      font-size: 8vw;
+      padding-left: 30px;
+    }
+  
+    .overlay-text p {
+      font-size: 3vw;
+    }
+  
+    .slideshow-container {
+      height: 55vh;
+    }
+  
+    .container69 {
+      padding: 10px;
+    }
+  
+    .h169 {
+      font-size: 1.8em;
+    }
+  
+    .intro-text69 {
+      font-size: 1em;
+      margin: 10px 0;
+    }
+  
+    .text-section69 h2 {
+      font-size: 1.4em;
+    }
+  
+    .text-section69 p {
+      font-size: 0.95em;
+    }
+    .carousel-container {
+      height: auto; /* Allow the height to adjust dynamically */
+      padding: 1rem;
+    }
+  
+    .tranding-slide .tranding-slide-img img {
+      height: 16rem; /* Scale down image height for smaller screens */
+      border-radius: 1rem; /* Reduce border-radius for better fit */
+    }
+  
+    .tranding-slide .tranding-slide-img {
+      border-radius: 20px;
+    }
+  
+    .card-video {
+      height: 16rem; /* Match video height to image */
+      border-radius: 20px;
+    }
+  
+    .tranding-slide-content-bottom-text {
+      font-size: 24px; /* Smaller font size for mobile */
+    }
+  
+    .swiper-container .swiper-slide {
+      width: 80%; /* Adjust slide width for mobile view */
+      margin-right: 1rem;
+    }
+  
+    .swiper-button-prev,
+    .swiper-button-next {
+      display: none; /* Hide navigation arrows on mobile */
+    }
+  
+    .swiper-pagination {
+      display: block;
+      bottom: 0.5rem; /* Position pagination closer to content */
+    }
+  
+    .tranding-slider-control {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem; /* Add spacing for better touch interaction */
+    }
+    .content69 {
+      flex-direction: column; /* Stack everything vertically */
+      align-items: center;
+    }
+  
+    .map69 {
+      width: 100%; /* Map takes full width */
+    }
+  
+    .image-text69 {
+      width: 100%; /* Text and images take full width */
+    }
+  
+    .images69 {
+      flex-direction: column; /* Stack images vertically on smaller screens */
+      gap: 15px; /* Increase gap between stacked images */
+    }
+  
+    .images69 img {
+      width: 60%; /* Images take full width on small screens */
+    }
+  
+    .text-section69 h2 {
+      font-size: 1.2em;
+    }
+  
+    .text-section69 p {
+      font-size: 0.95em;
+    }
+    .about-us-content {
+      flex-direction: column; /* Stacks the content vertically */
+      text-align: center; /* Centers text for better readability */
+    }
+    
+    .about-us-text h2 {
+      font-size: 2em;
+    }
+  
+    .about-us-text p {
+      font-size: 1em;
+    }
+    
+    .about-us-image {
+      padding: 10px 0;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .footerNav ul {
+      flex-direction: column; /* Stacks navigation links vertically */
+      align-items: center;
+    }
+  
+    .footerNav ul li {
+      margin: 5px 0;
+    }
+  
+    .socialIcons {
+      flex-direction: row; /* Keeps social icons in a row */
+      justify-content: center;
+    }
+  
+    .footerBottom p {
+      font-size: 0.8em;
+    }
+  
+    .logos img {
+      max-height: 80px;
+    }
+  
+    .log img {
+      max-height: 40px;
+      width: auto;
+    }
+    .container69 {
+      padding: 10px;
+      width: 100%;
+    }
+  
+    .h169 {
+      font-size: 1.4em;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+  
+    .intro-text69 {
+      font-size: 0.95em;
+      line-height: 1.5;
+      margin: 10px 0;
+      text-align: justify;
+    }
+  
+    .text-section69 {
+      margin-top: 15px;
+      padding: 0 5px;
+      text-align: center;
+    }
+  
+    .text-section69 h2 {
+      font-size: 1.2em;
+      margin-bottom: 8px;
+      text-align: center;
+    }
+  
+    .text-section69 p {
+      font-size: 0.9em;
+      line-height: 1.4;
+      text-align: justify;
+    }
+    .tranding-slide .tranding-slide-img img,
+    .card-video {
+      height: 12rem; /* Further reduce height for smaller devices */
+    }
+  
+    .tranding-slide-content-bottom-text {
+      font-size: 15px;
+      left: 0; /* Smaller text for very small screens */
+    }
+    .about-us-text h2 {
+      font-size: 1.8em;
+    }
+  
+    .about-us-text p {
+      font-size: 0.95em;
+    }
+  
+    .about-us {
+      padding: 0 10px;
+    }
+    
+    .about-us-image img {
+      width: 100%;
+      max-width: 300px;
+      margin: 0 auto;
+    }
+    .images69 {
+      flex-direction: column; /* Stack images vertically on smaller screens */
+      gap: 15px; /* Increase gap between stacked images */
+    }
+  
+    .images69 img {
+      width: 100%; /* Images take full width on small screens */
+    }
+  
+    .text-section69 h2 {
+      font-size: 1.1em;
+    }
+  
+    .text-section69 p {
+      font-size: 0.9em;
+    }
+  }
+  /* Header Section */
+  
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 5%;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .logo {
+    margin-right: 20px;
+    position: fixed;
+    top: 10px;
+    left: 20px;
+  }
+  
+  .logo img {
+    max-height: 50px;
+    cursor: pointer;
+  }
+  
+  .menu-icon {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: white;
+  }
+  
+  .navbar {
+    display: flex;
+    align-items: center;
+  }
+  
+  nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    font-weight: 500;
+    font-family: "Lato", Helvetica, sans-serif;
+  }
+  
+  nav ul li {
+    margin: 0 50px;
+  }
+  
+  nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    padding: 8px 12px;
+    transition: all 0.3s ease;
+  }
+  
+  nav ul li a:hover {
+    border-bottom: 2px solid white;
+  }
+  
+  /* Dropdown Menu Styling */
+  .dropdown {
+    position: relative;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.2);
+    min-width: 180px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    top: 100%;
+    left: 0;
+    border-radius: 5px;
+    padding: 10px 0;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  .dropdown-content a {
+    color: #f1f1f1;
+    padding: 10px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+    color: #f1f1f1;
+  }
+  
+
+  .dropdown-item {
+    position: relative;
+  }
+  
+  .dropdown2 {
+    display: none;
+    position: absolute;
+    left: 100%;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+    min-width: 160px;
+    border-radius: 5px;
+    padding: 5px;
+  }
+  
+  .dropdown-item:hover .dropdown2 {
+    display: block;
+  }
+  
+  .dropdown2 ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  
+  .dropdown2 ul li {
+    padding: 3px 8px;
+  }
+  
+  .dropdown2 ul li a {
+    text-decoration: none;
+    color: #f1f1f1;
+    display: block;
+    transition: background-color 0.3s;
+  }
+  
+  .dropdown2 ul li a:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Responsive Design for Mobile */
+  @media (max-width: 768px) {
+    body {
+      padding: 0 10px;
+    }
+  
+    .news-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    header {
+      padding: 10px 15px;
+    }
+  
+    .logo img {
+      max-height: 40px;
+    }
+  
+    .menu-icon {
+      display: block;
+      position: absolute;
+      top: 15px;
+      right: 20px;
+    }
+  
+    nav ul {
+      display: none;
+      flex-direction: column;
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 50%;
+      background: rgba(0, 0, 0, 0.95);
+      justify-content: center;
+      align-items: center;
+      z-index: 20;
+      overflow-y: auto;
+    }
+  
+    #nav-links.show ul {
+      display: flex;
+    }
+  
+    nav ul li {
+      margin: 20px 0;
+    }
+  
+    nav ul li a {
+      font-size: 1.2rem;
+      color: white;
+    }
+  
+    .dropdown-content,
+    .dropdown2 {
+      position: static;
+      width: 100%;
+    }
+  }
+  .places-container {
+    display: flex;
+    flex-wrap: wrap; /* Allows wrapping to the next row if needed */
+    gap: 20px; /* Space between the boxes */
+    justify-content: center; /* Centers the boxes horizontally */
+}
+
+.box {
+    position: relative;
+    width: calc(20% - 20px); /* Adjust the width for 5 columns, including the gap */
+    height: 200px;
+    border-radius: 15px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.box:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.overlay-text2 {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background-color: rgba(0, 0, 0, 0.2);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+.carousel {
+  position: relative;
+  width: 90%;
+  margin: auto;
+  overflow: hidden;
+}
+
+.carousel-container {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.carousel-item {
+  min-width: 20%;
+  box-sizing: border-box;
+  padding: 10px;
+  text-align: center;
+  position: relative;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 300px; /* Adjust height as necessary */
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.carousel-item .caption {
+  position: absolute;
+  bottom: 200px; /* Adjusted to place caption on the image */
+  left: 0;
+  right: 0;
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-size: 1.2em;
+   /* Semi-transparent background for better readability */
+  padding: 5px 0;
+  border-radius: 0 0 10px 10px; /* Optional: matches the border-radius of the image */
+}
+
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.8);
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 1;
+  border-radius: 50%; /* Make arrow buttons circular */
+}
+
+.carousel-arrow.prev {
+  left: 10px;
+}
+
+.carousel-arrow.next {
+  right: 10px;
+}
+
+  

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vayo Aura</title>
+    <link rel="stylesheet" href="destination1.css"> 
+</head>
+<body>
+    <header>
+    </header>
+    <video class="video-background" autoplay loop muted>
+        <source src="videoplayback.mp4" type="video/mp4"> 
+        Your browser does not support the video tag.
+    </video>
+
+    
+    <div class="intro-section">
+        <div class="content">
+            <h1>Sulawesi</h1> 
+            
+        </div>
+    </div>
+
+    
+    <div class="scroll-section">
+        <h2>Sulawesi – The Land of Unique Culture</h2> 
+        <p>Sulawesi is famous for its unique culture, amazing marine life, and historical sites. The island is home to diverse ethnic groups,each with their own distinct traditions, languages, and art forms, making it a vibrant tapestry of cultural heritage. From the intricate wood carvings of the Toraja people to the colorful festivals celebrated throughout the region, Sulawesi offers a rich cultural experience for visitors. Additionally, its stunning underwater ecosystems, particularly in places like Bunaken and Wakatobi, attract divers and snorkelers eager to explore some of the world's most biodiverse marine environments. With its blend of natural beauty and cultural richness, Sulawesi is a captivating destination waiting to be discovered.<p>
+    </div>
+
+
+    
+    <div class="attractions-section">
+        <h2>Top Attractions</h2>
+        <div class="attractions-container">
+            <div class="attraction">
+                <img src="images/Toraja Highlands- solavesi.webp" alt="Attraction 1"> 
+                <div class="overlay">
+                    <div class="text">Toraja Highlands</div> 
+                    <p>Known for unique burial sites and ceremonies, the Toraja Highlands offer a captivating insight into the rich traditions of the Torajan people. Visitors can explore intricately carved wooden houses and witness elaborate funeral rituals that can last for days, reflecting the community's deep spiritual beliefs. The breathtaking landscapes, adorned with rice paddies and towering mountains, create a stunning backdrop for this cultural journey</p>
+                </div>
+            </div>
+            <div class="attraction">
+                <img src="images/Bunaken Marine Park - solavesi.webp" alt="Attraction 2">
+                <div class="overlay">
+                    <div class="text">Bunaken Marine Park</div> 
+                    <p>One of Indonesia's most stunning dive spots, Bunaken Marine Park is a diver's paradise, boasting vibrant coral reefs and an abundance of marine life. The park is home to over 3,000 species of fish and various sea turtles, making each dive an exhilarating adventure. With its warm, clear waters and diverse underwater ecosystems, Bunaken offers both novice and experienced divers the chance to explore some of the most beautiful marine environments in the world. </p>
+                </div>
+            </div>
+            <div class="attraction">
+                <img src="images/Tanjung Puting National Park 3.webp" alt="Attraction 3">
+                <div class="overlay">
+                    <div class="text">Wakatobi National Park</div>
+                    <p>A world-class diving destination, Wakatobi National Park is renowned for its pristine coral reefs and exceptional biodiversity. The park features some of the richest marine habitats on the planet, with over 750 species of fish and 400 species of coral, making it a haven for underwater enthusiasts. Beyond diving, the tranquil islands of Wakatobi invite visitors to relax on secluded beaches and immerse themselves in the local culture, creating a perfect blend of adventure and serenity.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer ></footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Load navbar
+    fetch('navbar.html')
+      .then(response => response.text())
+      .then(data => {
+          document.querySelector('header').innerHTML = data;
+
+          // Now navbar is rendered; set up menu icon logic.
+          const menuIcon = document.getElementById('menu-icon');
+          const navLinks = document.getElementById('nav-links');
+
+          if (menuIcon && navLinks) {
+              // Toggle nav links on menu icon click (mobile)
+              menuIcon.addEventListener('click', function(e) {
+                  e.stopPropagation();
+                  navLinks.classList.toggle('show');
+              });
+
+              // Close nav when clicking outside or on a nav link
+              document.addEventListener('click', function(event) {
+                  if (!navLinks.contains(event.target) && !menuIcon.contains(event.target)) {
+                      navLinks.classList.remove('show');
+                  }
+              });
+
+              // Optional: close menu if a nav link is clicked (for better UX)
+              navLinks.querySelectorAll('a').forEach(function(link) {
+                  link.addEventListener('click', function() {
+                      navLinks.classList.remove('show');
+                  });
+              });
+          }
+      });
+
+    // Load footer (can use footer.html or footer2.html as your need)
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(data => {
+          document.querySelector('footer').innerHTML = data;
+      });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Founded in 2024, VayoAura is a dynamic and innovative travel B2B company with a fresh perspective on the travel industry. Led by young, talented owners who are dedicated to customer satisfaction, quality of service, and timely execution, we are passionate about creating unique, unforgettable experiences that resonate with travelers of all ages. Our mission is to redefine travel by offering tailor-made and immersive programs that cater to the diverse interests and passions of our clients, making everyone feel youthful and invigorated.">
+    <title>Vietnam | VayoAura</title>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #f4f4f4;
+            --accent: #e74c3c;
+            --accent-light: #ff6b5a;
+            --light: #ffffff;
+            --dark: #0a0a0a;
+            --gray-100: #f8f9fa;
+            --gray-200: #e9ecef;
+            --gray-300: #dee2e6;
+            --gray-400: #ced4da;
+            --gray-500: #adb5bd;
+            --gray-600: #6c757d;
+            --gray-700: #495057;
+            --gray-800: #343a40;
+            --gray-900: #212529;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+            --border-radius: 12px;
+            --border-radius-lg: 16px;
+            --border-radius-xl: 20px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            background-color: var(--light);
+            color: var(--primary);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--gray-100);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--gray-400);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--gray-500);
+        }
+
+        /* Loading Animation */
+        .loading-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .loading-animation.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        @media (max-width: 768px) {
+  .overlay-text, .overlay {
+    left: 50% !important;
+    right: auto !important;
+    top: 40% !important;
+    transform: translate(-50%, -50%) !important;
+    max-width: 95% !important;
+    min-width: 0 !important;
+    padding: 1.25rem 0.5rem !important;
+    box-sizing: border-box;
+    font-size: 4vw !important;
+    background: rgba(0,0,0,0.35) !important;
+  }
+  .overlay-text1 h1, .overlay-text h1 {
+    font-size: 7vw !important;
+    padding-left: 0 !important;
+  }
+  .overlay-text p {
+    font-size: 3.6vw !important;
+  }
+}
+
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--gray-300);
+            border-top: 3px solid var(--accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Hero Slideshow */
+        .slideshow-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mySlides {
+            display: none;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .mySlides.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .mySlides img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.8) contrast(1.1);
+        }
+
+        /* Fixed overlay positioning */
+        .overlay-text {
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: var(--light);
+            text-align: center;
+            max-width: 800px;
+            padding: 3rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: var(--border-radius-xl);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: var(--shadow-xl);
+            z-index: 5;
+        }
+
+        .overlay-text1 h1, .overlay-text h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .overlay-text p {
+            font-size: clamp(1rem, 1.5vw, 1.25rem);
+            font-weight: 300;
+            line-height: 1.7;
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Progress indicator */
+        .hero-progress {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.5rem;
+            z-index: 10;
+        }
+
+        .progress-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .progress-dot.active {
+            background: var(--light);
+            transform: scale(1.2);
+        }
+
+        /* Content Sections */
+        .content-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            position: relative;
+            letter-spacing: -0.01em;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 2px;
+            background: var(--accent);
+            margin: 2rem auto;
+            border-radius: 1px;
+        }
+
+        .intro-text {
+            text-align: center;
+            font-size: 1.125rem;
+            line-height: 1.8;
+            color: var(--gray-700);
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            font-weight: 300;
+        }
+
+        /* Why Vietnam Section */
+        .container69 {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        .h169 h1 {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            position: relative;
+            letter-spacing: -0.01em;
+        }
+
+        .h169 h1::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 2px;
+            background: var(--accent);
+            margin: 2rem auto;
+            border-radius: 1px;
+        }
+
+        .intro-text69 {
+            text-align: center;
+            font-size: 1.125rem;
+            line-height: 1.8;
+            color: var(--gray-700);
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            font-weight: 300;
+        }
+
+        .content69 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-top: 4rem;
+        }
+
+        .map69 {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition);
+        }
+
+        .map69:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .map69 img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .map69:hover img {
+            transform: scale(1.05);
+        }
+
+        .image-text69 {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .images69 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .images69 img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+        }
+
+        .images69 img:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .text-section69 h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.01em;
+        }
+
+        .text-section69 p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--gray-700);
+            font-weight: 300;
+        }
+
+        /* Must-Visit Cities Section */
+        .header-section {
+            text-align: center;
+            padding: 3rem 2rem 2rem;
+        }
+
+        .header-section h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            position: relative;
+            letter-spacing: -0.01em;
+        }
+
+        .header-section h1::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 2px;
+            background: var(--accent);
+            margin: 2rem auto;
+            border-radius: 1px;
+        }
+
+        .places-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .box {
+            position: relative;
+            height: 300px;
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow-md);
+            background-size: cover;
+            background-position: center;
+        }
+
+        .box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.1) 100%);
+            transition: var(--transition);
+            z-index: 1;
+        }
+
+        .box:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .box:hover::before {
+            background: linear-gradient(135deg, rgba(231, 76, 60, 0.6) 0%, rgba(231, 76, 60, 0.3) 100%);
+        }
+
+        .overlay-text2 {
+            position: absolute;
+            bottom: 2rem;
+            left: 2rem;
+            right: 2rem;
+            color: var(--light);
+            z-index: 2;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .overlay-text2 h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 0;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .box:hover .overlay-text2 {
+            transform: translateY(-5px);
+        }
+
+        /* Fade in animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .content69 {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .places-container {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .overlay-text {
+                padding: 2rem 1.5rem;
+                max-width: 90%;
+            }
+
+            .content-section, .container69 {
+                padding: 3rem 1.5rem;
+            }
+
+            .images69 {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .box {
+                height: 250px;
+            }
+
+            .overlay-text2 {
+                bottom: 1rem;
+                left: 1rem;
+                right: 1rem;
+                padding: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .overlay-text {
+                padding: 1.5rem;
+            }
+
+            .content-section, .container69 {
+                padding: 2rem 1rem;
+            }
+
+            .box {
+                height: 200px;
+            }
+
+            .overlay-text2 h1 {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Focus styles for accessibility */
+        a:focus, button:focus {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Animation -->
+    <div class="loading-animation" id="loadingAnimation">
+        <div class="spinner"></div>
+    </div>
+
+    <div id="main-content">
+        <!-- Navbar will be inserted here -->
+        <header></header>
+
+        <!-- Hero Slideshow -->
+        <div class="slideshow-container">
+            <div class="mySlides fade active">
+                <img src="images/vietnam2 img.webp" alt="Vietnam Landscape">
+            </div>
+            <div class="mySlides fade">
+                <img src="images/vietnam1 img.webp" alt="Vietnam Culture">
+            </div>
+            <div class="mySlides fade">
+                <img src="images/vietnam3 img.webp" alt="Vietnam Beach">
+            </div>
+            <div class="mySlides fade">
+                <img src="images/vietnam 4 img.webp" alt="Vietnam City">
+            </div>
+            <div class="mySlides fade">
+                <img src="images/vietnam 5 img.webp" alt="Vietnam Heritage">
+            </div>
+
+            <div class="overlay-text fade-in">
+                <div class="overlay-text1">
+                    <h1 class="explore">Venture</h1>
+                </div>
+                <h1 class="thailand">Vietnam</h1>
+                <p>Discover the rich history and breathtaking landscapes of Vietnam with our customized travel packages. Whether you're looking for adventure, tranquility, or a culinary exploration, we provide unforgettable experiences for every traveler.</p>
+            </div>
+
+            <div class="hero-progress">
+                <span class="progress-dot active" data-slide="0"></span>
+                <span class="progress-dot" data-slide="1"></span>
+                <span class="progress-dot" data-slide="2"></span>
+                <span class="progress-dot" data-slide="3"></span>
+                <span class="progress-dot" data-slide="4"></span>
+            </div>
+        </div>
+
+        <!-- Why Vietnam Section -->
+        <div class="container69">
+            <div class="h169 fade-in">
+                <h1>Why Vietnam?</h1>
+            </div>
+            <p class="intro-text69 fade-in">
+                It's hard to capture the vast range of Vietnam's culinary delights, cultural treasures, and thrilling adventures. Vietnam offers something exceptional for every traveler, from the picturesque beaches of the central coast to the bustling streets and vibrant markets of Hanoi and Ho Chi Minh City. Whether you're savoring the delicious street food or exploring the rich history and culture, history buffs, culture enthusiasts, and food lovers alike will find something unique. The serene beauty of Ha Long Bay and the peaceful countryside of the Mekong Delta offer a tranquil retreat for those seeking relaxation.
+            </p>
+            
+            <div class="content69">
+                <div class="map69 fade-in">
+                    <img src="images/vietnam map2.webp" alt="Map of Vietnam">
+                </div>
+
+                <div class="image-text69 fade-in">
+                    <div class="images69">
+                        <img src="images/vietnam image 1.webp" alt="Hanoi Streets">
+                        <img src="images/vietnam image2.webp" alt="Vietnamese Temple">
+                    </div>
+                    <div class="text-section69">
+                        <h2>Capital: Hanoi</h2>
+                        <p>
+                            Hanoi, the charming capital of Vietnam, is a captivating blend of rich history and vibrant modernity. Its ancient temples, serene lakes, and colonial architecture coexist with bustling streets lined with cafes, shops, and markets. Visitors can explore the city's historic Old Quarter, savor delicious street food, and experience the lively cultural scene, from traditional performances to contemporary art. Hanoi offers a diverse culinary experience, from savory pho to delightful egg coffee, making it a must-visit destination for those seeking adventure, culture, and unique flavors.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Must-Visit Cities Section -->
+        <div class="header-section fade-in">
+            <h1>Vietnam's Must-Visit Cities</h1>
+        </div>
+        
+        <div class="places-container fade-in">
+            <div class="box" onclick="window.location.href='northern.html';" style="background-image: url('images/north vietnam.webp');">
+                <div class="overlay-text2">
+                    <h1>Northern</h1>
+                </div>
+            </div>
+            <div class="box" onclick="window.location.href='central.html';" style="background-image: url('images/central vietnam.webp');">
+                <div class="overlay-text2">
+                    <h1>Central</h1>
+                </div>
+            </div>
+            <div class="box" onclick="window.location.href='southern.html';" style="background-image: url('images/south-vietnam-1-week-itinerary-5.webp');">
+                <div class="overlay-text2">
+                    <h1>Southern</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer will be inserted here -->
+    <footer id="footer-container"></footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Show loading animation
+    const loadingAnimation = document.getElementById('loadingAnimation');
+    if (loadingAnimation) {
+        loadingAnimation.classList.add('active');
+    }
+
+    // Load navbar
+    fetch('navbar.html')
+        .then(response => response.text())
+        .then(data => {
+            // You used different containers in your two scripts:
+            // Here we'll insert into #navbar-container (preferred for consistency)
+            const navbarContainer = document.getElementById('navbar-container');
+            if (navbarContainer) {
+                navbarContainer.innerHTML = data;
+            } else {
+                // fallback: insert into <header>
+                const header = document.querySelector('header');
+                if (header) header.innerHTML = data;
+            }
+
+            // Navbar menu initialization
+            const menuIcon = document.getElementById('menu-icon');
+            const navLinks = document.getElementById('nav-links');
+            const dropdowns = document.querySelectorAll('.dropdown');
+
+            if (menuIcon && navLinks) {
+                menuIcon.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    navLinks.classList.toggle('active');
+                    document.body.classList.toggle('no-scroll');
+                });
+
+                document.addEventListener('click', function(e) {
+                    if (!e.target.closest('#nav-links') && !e.target.closest('#menu-icon')) {
+                        navLinks.classList.remove('active');
+                        document.body.classList.remove('no-scroll');
+                    }
+                });
+            }
+
+            if (window.innerWidth <= 768) {
+                dropdowns.forEach(dropdown => {
+                    const dropbtn = dropdown.querySelector('.dropbtn');
+                    if (dropbtn) {
+                        dropbtn.addEventListener('click', function(e) {
+                            e.preventDefault();
+                            const content = this.nextElementSibling;
+                            if (content) content.classList.toggle('active');
+                            const caret = this.querySelector('.mobile-caret');
+                            if (caret) caret.classList.toggle('rotate');
+                        });
+                    }
+                });
+            }
+
+            // Scroll effect on header
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('header');
+                if (header) {
+                    if (window.scrollY > 50) {
+                        header.classList.add('scrolled');
+                    } else {
+                        header.classList.remove('scrolled');
+                    }
+                }
+            });
+        })
+        .catch(error => console.error('Error loading navbar:', error));
+
+    // Load footer
+    fetch('footer.html')
+        .then(response => response.text())
+        .then(data => {
+            const footerContainer = document.getElementById('footer-container');
+            if (footerContainer) {
+                footerContainer.innerHTML = data;
+            }
+        })
+        .catch(error => console.error('Error loading footer:', error));
+
+    // Hide loading animation after 500ms
+    setTimeout(() => {
+        if (loadingAnimation) {
+            loadingAnimation.classList.remove('active');
+        }
+    }, 500);
+
+    // Fade in animation on scroll
+    const observerOptions = {threshold: 0.1, rootMargin: '0px 0px -50px 0px'};
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, observerOptions);
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Slideshow functionality (using classes from first script: .mySlides and .progress-dot)
+    const slides = document.querySelectorAll('.mySlides');
+    const progressDots = document.querySelectorAll('.progress-dot');
+    let currentSlide = 0;
+    let slideInterval;
+
+    function showSlide(n) {
+        slides.forEach(slide => slide.classList.remove('active'));
+        progressDots.forEach(dot => dot.classList.remove('active'));
+
+        currentSlide = (n + slides.length) % slides.length;
+        slides[currentSlide].classList.add('active');
+        progressDots[currentSlide].classList.add('active');
+    }
+
+    function nextSlide() {
+        showSlide(currentSlide + 1);
+    }
+
+    function startSlideshow() {
+        slideInterval = setInterval(nextSlide, 5000);
+    }
+
+    function stopSlideshow() {
+        clearInterval(slideInterval);
+    }
+
+    progressDots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            showSlide(index);
+            stopSlideshow();
+            startSlideshow();
+        });
+    });
+
+    startSlideshow();
+
+    const slideshowContainer = document.querySelector('.slideshow-container');
+    if (slideshowContainer) {
+        slideshowContainer.addEventListener('mouseenter', stopSlideshow);
+        slideshowContainer.addEventListener('mouseleave', startSlideshow);
+    }
+
+    // Smooth scrolling for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+});
+</script>
+
+</body>
+</html>

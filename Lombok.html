@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vayo Aura</title>
+    <link rel="stylesheet" href="destination1.css"> 
+</head>
+<body>
+    <header>
+    </header>
+    <video class="video-background" autoplay loop muted>
+        <source src="videoplayback.mp4" type="video/mp4"> 
+        Your browser does not support the video tag.
+    </video>
+
+    
+    <div class="intro-section">
+        <div class="content">
+            <h1>Lombok</h1> 
+            
+        </div>
+    </div>
+
+    
+    <div class="scroll-section">
+        <h2>Lombok – A Serene Escape</h2> 
+        <p>Lombok is an island less crowded than Bali but equally captivating, offering pristine beaches, majestic waterfalls, and incredible hiking opportunities.</p>
+    </div>
+
+    
+    <div class="attractions-section">
+        <h2>Top Attractions</h2>
+        <div class="attractions-container">
+            <div class="attraction">
+                <img src="images\Mount Rinjani - lombok.webp" alt="Attraction 1"> 
+                <div class="overlay">
+                    <div class="text">Mount Rinjani</div> 
+                    <p>Mount Rinjani, located on Lombok Island, is Indonesia’s second-highest volcano, standing at 3,726 meters. A popular destination for trekkers, it offers breathtaking views, including a crater lake called Segara Anak. The trek to the summit is challenging but rewards hikers with stunning landscapes. Mount Rinjani is a spiritual site for locals and a must-visit for adventure enthusiasts and nature lovers.
+                    </p>
+                </div>
+            </div>
+            <div class="attraction">
+                <img src="images\Gili Islands - lombok.webp" alt="Attraction 2"> 
+                <div class="overlay">
+                    <div class="text">Gili Islands</div> 
+                    <p>The Gili Islands, located off the coast of Lombok, are a paradise for beach lovers and water sports enthusiasts. Comprising Gili Trawangan, Gili Air, and Gili Meno, these islands offer crystal-clear waters, vibrant coral reefs, and excellent diving and snorkeling opportunities. With no motorized vehicles, the islands have a laid-back atmosphere, perfect for relaxation and exploring natural beauty. The Gili Islands are a must-visit for a tropical escape.
+                    </p>
+                </div>
+            </div>
+            <div class="attraction">
+                <img src="images\Senggigi Beach - lombok.webp" alt="Attraction 3"> 
+                <div class="overlay">
+                    <div class="text">Senggigi Beach</div>
+                    <p>Senggigi Beach, located on Lombok’s west coast, is known for its scenic beauty and calm waters. It’s a popular spot for swimming, snorkeling, and enjoying stunning sunsets. The beach is lined with resorts, cafes, and local shops, offering a mix of relaxation and entertainment. Senggigi serves as a gateway to explore Lombok’s other attractions, making it a great starting point for your island adventure.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer ></footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Load navbar
+    fetch('navbar.html')
+      .then(response => response.text())
+      .then(data => {
+          document.querySelector('header').innerHTML = data;
+
+          // Now navbar is rendered; set up menu icon logic.
+          const menuIcon = document.getElementById('menu-icon');
+          const navLinks = document.getElementById('nav-links');
+
+          if (menuIcon && navLinks) {
+              // Toggle nav links on menu icon click (mobile)
+              menuIcon.addEventListener('click', function(e) {
+                  e.stopPropagation();
+                  navLinks.classList.toggle('show');
+              });
+
+              // Close nav when clicking outside or on a nav link
+              document.addEventListener('click', function(event) {
+                  if (!navLinks.contains(event.target) && !menuIcon.contains(event.target)) {
+                      navLinks.classList.remove('show');
+                  }
+              });
+
+              // Optional: close menu if a nav link is clicked (for better UX)
+              navLinks.querySelectorAll('a').forEach(function(link) {
+                  link.addEventListener('click', function() {
+                      navLinks.classList.remove('show');
+                  });
+              });
+          }
+      });
+
+    // Load footer (can use footer.html or footer2.html as your need)
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(data => {
+          document.querySelector('footer').innerHTML = data;
+      });
+});
+</script>
+</body>
+</html>
