@@ -9,7 +9,7 @@ body, html {
 
 
 .Kannapy {
-  background-image: url('images/4.jpg'); /* Replace with the actual background image */
+  background-image: url('media/4.jpg'); /* Replace with the actual background image */
   background-size: cover;
   background-position-y: top;
   background-position: center;

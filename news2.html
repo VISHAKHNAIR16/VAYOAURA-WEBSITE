@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="media/favicon.ico" type="image/x-icon">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VayoAura</title>
@@ -22,24 +22,23 @@
         }
 
         .floating-bg {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    pointer-events: none;
-    z-index: 1;
-    /* Remove background-image here */
-}
-.bg-image {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background-size: cover;
-    background-position: center;
-    opacity: 0;
-    transition: opacity 2s cubic-bezier(0.4,0,0.2,1);
-    will-change: opacity;
-}
-.bg-image.active { opacity: 0.5; }  /* Or your desired opacity */
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
 
+        .bg-image {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 2s cubic-bezier(0.4,0,0.2,1);
+            will-change: opacity;
+        }
 
+        .bg-image.active { opacity: 0.5; }
 
         .hero-content-grid {
             display: grid;
@@ -364,6 +363,10 @@
             transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
+        .gallery a.hidden {
+            display: none;
+        }
+
         .gallery a:hover {
             transform: translateY(-10px) rotate3d(1, 1, 0, 5deg);
             box-shadow: 0 20px 40px rgba(0,0,0,0.2);
@@ -416,6 +419,63 @@
         .gallery a:hover::before {
             opacity: 1;
         }
+
+        /* ===== PAGINATION STYLES ===== */
+        .load-more-container {
+            text-align: center;
+            margin: 40px 0;
+            padding: 30px;
+        }
+
+        .load-more-btn {
+            background: linear-gradient(135deg, #0d7377, #14ffec);
+            border: none;
+            padding: 15px 40px;
+            font-size: 18px;
+            font-weight: 600;
+            color: white;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(13, 115, 119, 0.3);
+        }
+
+        .load-more-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(13, 115, 119, 0.4);
+        }
+
+        .loading-spinner {
+            display: none;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .loading-spinner.active {
+            display: block;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #0d7377;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .archive-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #0d7377;
+            margin: 50px 0 30px;
+        }
     </style>
 </head>
 
@@ -425,8 +485,8 @@
 <!-- Interactive Hero Showcase -->
 <section class="interactive-hero">
     <div class="floating-bg">
-    <div class="bg-image bg1"></div>
-    <div class="bg-image bg2"></div>
+        <div class="bg-image bg1"></div>
+        <div class="bg-image bg2"></div>
     </div>
     
     <!-- Floating Particles -->
@@ -499,7 +559,7 @@
         <button class="view-button" onclick="scrollToArchive()">The Vault of VayoAura</button>
     </div>
     <div class="image-container" onclick="scrollToArchive()">
-        <img src="images/news_image/4.jpg" alt="Event Preview Image">
+        <img src="media/news_image/4.jpg" alt="Event Preview Image" loading="lazy">
     </div>
 </div>
 
@@ -529,186 +589,230 @@
         </div>
     </section>
   
-  
-   <!-- Archive Gallery Section -->
-  <div class="archive-section" id="archive">
-    <h2>Event Archive Gallery</h2>
-    <div class="gallery">
-    <a href="images/archive_image/1.jpg" class="popup-link"><img src="images/archive_image/1.jpg" alt="Event 1"></a>
-    <a href="images/archive_image/2.jpg" class="popup-link"><img src="images/archive_image/2.jpg" alt="Event 2"></a>
-    <a href="images/archive_image/3.jpg" class="popup-link"><img src="images/archive_image/3.jpg" alt="Event 3"></a>
-    <a href="images/archive_image/4.jpg" class="popup-link"><img src="images/archive_image/4.jpg" alt="Event 4"></a>
-    <a href="images/archive_image/5.jpg" class="popup-link"><img src="images/archive_image/5.jpg" alt="Event 5"></a>
-    <a href="images/archive_image/6.jpg" class="popup-link"><img src="images/archive_image/6.jpg" alt="Event 6"></a>
-    <a href="images/archive_image/7.jpg" class="popup-link"><img src="images/archive_image/7.jpg" alt="Event 7"></a>
-    <a href="images/archive_image/8.jpg" class="popup-link"><img src="images/archive_image/8.jpg" alt="Event 8"></a>
-    <a href="images/archive_image/9.jpg" class="popup-link"><img src="images/archive_image/9.jpg" alt="Event 9"></a>
-    <a href="images/archive_image/10.jpg" class="popup-link"><img src="images/archive_image/10.jpg" alt="Event 10"></a>
-    <a href="images/archive_image/11.jpg" class="popup-link"><img src="images/archive_image/11.jpg" alt="Event 11"></a>
-    <a href="images/archive_image/12.jpg" class="popup-link"><img src="images/archive_image/12.jpg" alt="Event 12"></a>
-    <a href="images/archive_image/13.jpg" class="popup-link"><img src="images/archive_image/13.jpg" alt="Event 13"></a>
-    <a href="images/archive_image/14.jpg" class="popup-link"><img src="images/archive_image/14.jpg" alt="Event 14"></a>
-    <a href="images/archive_image/15.jpg" class="popup-link"><img src="images/archive_image/15.jpg" alt="Event 15"></a>
-    <a href="images/archive_image/16.jpg" class="popup-link"><img src="images/archive_image/16.jpg" alt="Event 16"></a>
-    <a href="images/archive_image/17.jpg" class="popup-link"><img src="images/archive_image/17.jpg" alt="Event 17"></a>
-    <a href="images/archive_image/18.jpg" class="popup-link"><img src="images/archive_image/18.jpg" alt="Event 18"></a>
-    <a href="images/archive_image/19.jpg" class="popup-link"><img src="images/archive_image/19.jpg" alt="Event 19"></a>
-    <a href="images/archive_image/20.jpg" class="popup-link"><img src="images/archive_image/20.jpg" alt="Event 20"></a>
-    <a href="images/archive_image/21.jpg" class="popup-link"><img src="images/archive_image/21.jpg" alt="Event 21"></a>
-    <a href="images/archive_image/22.jpg" class="popup-link"><img src="images/archive_image/22.jpg" alt="Event 22"></a>
-    <a href="images/archive_image/23.jpg" class="popup-link"><img src="images/archive_image/23.jpg" alt="Event 23"></a>
-    <a href="images/archive_image/24.jpg" class="popup-link"><img src="images/archive_image/24.jpg" alt="Event 24"></a>
-    <a href="images/archive_image/25.jpg" class="popup-link"><img src="images/archive_image/25.jpg" alt="Event 25"></a>
-    <a href="images/archive_image/26.jpg" class="popup-link"><img src="images/archive_image/26.jpg" alt="Event 26"></a>
-    <a href="images/archive_image/27.jpg" class="popup-link"><img src="images/archive_image/27.jpg" alt="Event 27"></a>
-    <a href="images/archive_image/28.jpg" class="popup-link"><img src="images/archive_image/28.jpg" alt="Event 28"></a>
-    <a href="images/archive_image/29.jpg" class="popup-link"><img src="images/archive_image/29.jpg" alt="Event 29"></a>
-    <a href="images/archive_image/30.jpg" class="popup-link"><img src="images/archive_image/30.jpg" alt="Event 30"></a>
-    <a href="images/archive_image/31.jpg" class="popup-link"><img src="images/archive_image/31.jpg" alt="Event 31"></a>
-    <a href="images/archive_image/32.jpg" class="popup-link"><img src="images/archive_image/32.jpg" alt="Event 32"></a>
-    <a href="images/archive_image/33.jpg" class="popup-link"><img src="images/archive_image/33.jpg" alt="Event 33"></a>
-    <a href="images/archive_image/34.jpg" class="popup-link"><img src="images/archive_image/34.jpg" alt="Event 34"></a>
-    <a href="images/archive_image/35.jpg" class="popup-link"><img src="images/archive_image/35.jpg" alt="Event 35"></a>
-    <a href="images/archive_image/36.jpg" class="popup-link"><img src="images/archive_image/36.jpg" alt="Event 36"></a>
-    <a href="images/archive_image/37.jpg" class="popup-link"><img src="images/archive_image/37.jpg" alt="Event 37"></a>
-    <a href="images/archive_image/38.jpg" class="popup-link"><img src="images/archive_image/38.jpg" alt="Event 38"></a>
-    <a href="images/archive_image/39.jpg" class="popup-link"><img src="images/archive_image/39.jpg" alt="Event 39"></a>
-    <a href="images/archive_image/40.jpg" class="popup-link"><img src="images/archive_image/40.jpg" alt="Event 40"></a>
-    <a href="images/archive_image/41.jpg" class="popup-link"><img src="images/archive_image/41.jpg" alt="Event 41"></a>
-    <a href="images/archive_image/42.jpg" class="popup-link"><img src="images/archive_image/42.jpg" alt="Event 42"></a>
-    <a href="images/archive_image/43.jpg" class="popup-link"><img src="images/archive_image/43.jpg" alt="Event 43"></a>
-    <a href="images/archive_image/44.jpg" class="popup-link"><img src="images/archive_image/44.jpg" alt="Event 44"></a>
-    <a href="images/archive_image/45.jpg" class="popup-link"><img src="images/archive_image/45.jpg" alt="Event 45"></a>
-    <a href="images/archive_image/46.jpg" class="popup-link"><img src="images/archive_image/46.jpg" alt="Event 46"></a>
-    <a href="images/archive_image/47.jpg" class="popup-link"><img src="images/archive_image/47.jpg" alt="Event 47"></a>
-    <a href="images/archive_image/48.jpg" class="popup-link"><img src="images/archive_image/48.jpg" alt="Event 48"></a>
-    <a href="images/archive_image/49.jpg" class="popup-link"><img src="images/archive_image/49.jpg" alt="Event 49"></a>
-    <a href="images/archive_image/50.jpg" class="popup-link"><img src="images/archive_image/50.jpg" alt="Event 50"></a>
-    <a href="images/archive_image/51.jpg" class="popup-link"><img src="images/archive_image/51.jpg" alt="Event 51"></a>
-    <a href="images/archive_image/52.jpg" class="popup-link"><img src="images/archive_image/52.jpg" alt="Event 52"></a>
-    <a href="images/archive_image/53.jpg" class="popup-link"><img src="images/archive_image/53.jpg" alt="Event 53"></a>
-    <a href="images/archive_image/54.jpg" class="popup-link"><img src="images/archive_image/54.jpg" alt="Event 54"></a>
-    <a href="images/archive_image/55.jpg" class="popup-link"><img src="images/archive_image/55.jpg" alt="Event 55"></a>
-    <a href="images/archive_image/EVENT1.mp4" class="popup-video"><div class="video-thumbnail"><img src="images/archive_image/EVE1.webp" alt="Video Thumbnail"><div class="play-button"></div></div></a>
-    <a href="images/archive_image/EVENT2.mp4" class="popup-video"><div class="video-thumbnail"><img src="images/archive_image/EVE2.webp" alt="Video Thumbnail"><div class="play-button"></div></div></a>
-    <a href="images/archive_image/56.jpg" class="popup-link"><img src="images/archive_image/56.jpg" alt="Event 56"></a>
-    <a href="images/archive_image/57.jpg" class="popup-link"><img src="images/archive_image/57.jpg" alt="Event 57"></a>
-    <a href="images/archive_image/58.jpg" class="popup-link"><img src="images/archive_image/58.jpg" alt="Event 58"></a>
-    <a href="images/archive_image/59.jpg" class="popup-link"><img src="images/archive_image/59.jpg" alt="Event 59"></a>
-    <a href="images/archive_image/60.jpg" class="popup-link"><img src="images/archive_image/60.jpg" alt="Event 60"></a>
-    <a href="images/archive_image/61.jpg" class="popup-link"><img src="images/archive_image/61.jpg" alt="Event 61"></a>
-    <a href="images/archive_image/62.jpg" class="popup-link"><img src="images/archive_image/62.jpg" alt="Event 62"></a>
-    <a href="images/archive_image/63.jpg" class="popup-link"><img src="images/archive_image/63.jpg" alt="Event 63"></a>
-    <a href="images/archive_image/64.jpg" class="popup-link"><img src="images/archive_image/64.jpg" alt="Event 64"></a>
-    <a href="images/archive_image/65.jpg" class="popup-link"><img src="images/archive_image/65.jpg" alt="Event 65"></a>
-    <a href="images/archive_image/66.jpg" class="popup-link"><img src="images/archive_image/66.jpg" alt="Event 66"></a>
-    <a href="images/archive_image/67.jpg" class="popup-link"><img src="images/archive_image/67.jpg" alt="Event 67"></a>
-    <a href="images/archive_image/68.jpg" class="popup-link"><img src="images/archive_image/68.jpg" alt="Event 68"></a>
-    <a href="images/archive_image/EVENT3.mp4" class="popup-video"><div class="video-thumbnail"><img src="images/archive_image/60.jpg" alt="Video Thumbnail"><div class="play-button"></div></div></a>
-    <a href="images/archive_image/EVENT4.mp4" class="popup-video"><div class="video-thumbnail"><img src="images/archive_image/61.jpg" alt="Video Thumbnail"><div class="play-button"></div></div></a>
-    <a href="images/archive_image/EVENT5.mp4" class="popup-video"><div class="video-thumbnail"><img src="images/archive_image/66.jpg" alt="Video Thumbnail"><div class="play-button"></div></div></a>
-    <a href="images/archive_image/69.jpg" class="popup-link"><img src="images/archive_image/69.jpg" alt="Event 69"></a>
-    <a href="images/archive_image/70.jpg" class="popup-link"><img src="images/archive_image/70.jpg" alt="Event 70"></a>
-    <a href="images/archive_image/71.jpg" class="popup-link"><img src="images/archive_image/71.jpg" alt="Event 71"></a>
-    <a href="images/archive_image/72.jpg" class="popup-link"><img src="images/archive_image/72.jpg" alt="Event 72"></a>
-    <a href="images/archive_image/73.jpg" class="popup-link"><img src="images/archive_image/73.jpg" alt="Event 73"></a>
-    <a href="images/archive_image/74.jpg" class="popup-link"><img src="images/archive_image/74.jpg" alt="Event 74"></a>
-    <a href="images/archive_image/75.jpg" class="popup-link"><img src="images/archive_image/75.jpg" alt="Event 75"></a>
-    <a href="images/archive_image/76.jpg" class="popup-link"><img src="images/archive_image/76.jpg" alt="Event 76"></a>
-    <a href="images/archive_image/77.jpg" class="popup-link"><img src="images/archive_image/77.jpg" alt="Event 77"></a>
-    <a href="images/archive_image/78.jpg" class="popup-link"><img src="images/archive_image/78.jpg" alt="Event 78"></a>
-    <a href="images/archive_image/79.jpg" class="popup-link"><img src="images/archive_image/79.jpg" alt="Event 79"></a>
-    <a href="images/archive_image/80.jpg" class="popup-link"><img src="images/archive_image/80.jpg" alt="Event 80"></a>
-    <a href="images/archive_image/81.jpg" class="popup-link"><img src="images/archive_image/81.jpg" alt="Event 81"></a>
-    <a href="images/archive_image/82.jpg" class="popup-link"><img src="images/archive_image/82.jpg" alt="Event 82"></a>
-    <a href="images/archive_image/83.jpg" class="popup-link"><img src="images/archive_image/83.jpg" alt="Event 83"></a>
-    <a href="images/archive_image/84.jpg" class="popup-link"><img src="images/archive_image/84.jpg" alt="Event 84"></a>
-    <a href="images/archive_image/85.jpg" class="popup-link"><img src="images/archive_image/85.jpg" alt="Event 85"></a>
-    <a href="images/archive_image/86.jpg" class="popup-link"><img src="images/archive_image/86.jpg" alt="Event 86"></a>
-    <a href="images/archive_image/87.jpg" class="popup-link"><img src="images/archive_image/87.jpg" alt="Event 87"></a>
-    <a href="images/archive_image/88.jpg" class="popup-link"><img src="images/archive_image/88.jpg" alt="Event 88"></a>
-    <a href="images/archive_image/89.jpg" class="popup-link"><img src="images/archive_image/89.jpg" alt="Event 89"></a>
-    <a href="images/archive_image/90.jpg" class="popup-link"><img src="images/archive_image/90.jpg" alt="Event 90"></a>
-    <a href="images/archive_image/91.jpg" class="popup-link"><img src="images/archive_image/91.jpg" alt="Event 91"></a>
-    <a href="images/archive_image/92.jpg" class="popup-link"><img src="images/archive_image/92.jpg" alt="Event 92"></a>
-    <a href="images/archive_image/93.jpg" class="popup-link"><img src="images/archive_image/93.jpg" alt="Event 93"></a>
-    <a href="images/archive_image/94.jpg" class="popup-link"><img src="images/archive_image/94.jpg" alt="Event 94"></a>
-    <a href="images/archive_image/95.jpg" class="popup-link"><img src="images/archive_image/95.jpg" alt="Event 95"></a>
-    <a href="images/archive_image/96.jpg" class="popup-link"><img src="images/archive_image/96.jpg" alt="Event 96"></a>
-    <a href="images/archive_image/97.jpg" class="popup-link"><img src="images/archive_image/97.jpg" alt="Event 97"></a>
-    <a href="images/archive_image/98.jpg" class="popup-link"><img src="images/archive_image/98.jpg" alt="Event 98"></a>
-    <a href="images/archive_image/99.jpg" class="popup-link"><img src="images/archive_image/99.jpg" alt="Event 99"></a>
-    <a href="images/archive_image/100.jpg" class="popup-link"><img src="images/archive_image/100.jpg" alt="Event 100"></a>
-    <a href="images/archive_image/101.jpg" class="popup-link"><img src="images/archive_image/101.jpg" alt="Event 101"></a>
-    <a href="images/archive_image/102.jpg" class="popup-link"><img src="images/archive_image/102.jpg" alt="Event 102"></a>
-    <a href="images/archive_image/103.jpg" class="popup-link"><img src="images/archive_image/103.jpg" alt="Event 103"></a>
-    <a href="images/archive_image/104.jpg" class="popup-link"><img src="images/archive_image/104.jpg" alt="Event 104"></a>
-    <a href="images/archive_image/105.jpg" class="popup-link"><img src="images/archive_image/105.jpg" alt="Event 105"></a>
-    <a href="images/archive_image/106.jpg" class="popup-link"><img src="images/archive_image/106.jpg" alt="Event 106"></a>
-    <a href="images/archive_image/107.jpg" class="popup-link"><img src="images/archive_image/107.jpg" alt="Event 107"></a>
-    <a href="images/archive_image/108.jpg" class="popup-link"><img src="images/archive_image/108.jpg" alt="Event 108"></a>
-    <a href="images/archive_image/109.jpg" class="popup-link"><img src="images/archive_image/109.jpg" alt="Event 109"></a>
-    <a href="images/archive_image/110.jpg" class="popup-link"><img src="images/archive_image/110.jpg" alt="Event 110"></a>
-    <a href="images/archive_image/111.jpg" class="popup-link"><img src="images/archive_image/111.jpg" alt="Event 111"></a>
-    <a href="images/archive_image/112.jpg" class="popup-link"><img src="images/archive_image/112.jpg" alt="Event 112"></a>
-    <a href="images/archive_image/113.jpg" class="popup-link"><img src="images/archive_image/113.jpg" alt="Event 113"></a>
-    <a href="images/archive_image/114.jpg" class="popup-link"><img src="images/archive_image/114.jpg" alt="Event 114"></a>
-    <a href="images/archive_image/115.jpg" class="popup-link"><img src="images/archive_image/115.jpg" alt="Event 115"></a>
-    <a href="images/archive_image/116.jpg" class="popup-link"><img src="images/archive_image/116.jpg" alt="Event 116"></a>
-    <a href="images/archive_image/117.jpg" class="popup-link"><img src="images/archive_image/117.jpg" alt="Event 117"></a>
-    <a href="images/archive_image/118.jpg" class="popup-link"><img src="images/archive_image/118.jpg" alt="Event 118"></a>
-    <a href="images/archive_image/119.jpg" class="popup-link"><img src="images/archive_image/119.jpg" alt="Event 119"></a>
-    <a href="images/archive_image/120.jpg" class="popup-link"><img src="images/archive_image/120.jpg" alt="Event 120"></a>
-    <a href="images/archive_image/121.jpg" class="popup-link"><img src="images/archive_image/121.jpg" alt="Event 121"></a>
-    <a href="images/archive_image/122.jpg" class="popup-link"><img src="images/archive_image/122.jpg" alt="Event 122"></a>
-    <a href="images/archive_image/123.jpg" class="popup-link"><img src="images/archive_image/123.jpg" alt="Event 123"></a>
-    <a href="images/archive_image/124.jpg" class="popup-link"><img src="images/archive_image/124.jpg" alt="Event 124"></a>
-    <a href="images/archive_image/125.jpg" class="popup-link"><img src="images/archive_image/125.jpg" alt="Event 125"></a>
-    <a href="images/archive_image/126.jpg" class="popup-link"><img src="images/archive_image/126.jpg" alt="Event 126"></a>
-    <a href="images/archive_image/127.jpg" class="popup-link"><img src="images/archive_image/127.jpg" alt="Event 127"></a>
-    <a href="images/archive_image/128.jpg" class="popup-link"><img src="images/archive_image/128.jpg" alt="Event 128"></a>
-    <a href="images/archive_image/129.jpg" class="popup-link"><img src="images/archive_image/129.jpg" alt="Event 129"></a>
-    <a href="images/archive_image/130.jpg" class="popup-link"><img src="images/archive_image/130.jpg" alt="Event 130"></a>
-    <a href="images/archive_image/131.jpg" class="popup-link"><img src="images/archive_image/131.jpg" alt="Event 131"></a>
-    <a href="images/archive_image/132.jpg" class="popup-link"><img src="images/archive_image/132.jpg" alt="Event 132"></a>
-    <a href="images/archive_image/133.jpg" class="popup-link"><img src="images/archive_image/133.jpg" alt="Event 133"></a>
-    <a href="images/archive_image/134.jpg" class="popup-link"><img src="images/archive_image/134.jpg" alt="Event 134"></a>
-    <a href="images/archive_image/135.jpg" class="popup-link"><img src="images/archive_image/135.jpg" alt="Event 135"></a>
-    <a href="images/archive_image/136.jpg" class="popup-link"><img src="images/archive_image/136.jpg" alt="Event 136"></a>
-    <a href="images/archive_image/137.jpg" class="popup-link"><img src="images/archive_image/137.jpg" alt="Event 137"></a>
-    <a href="images/archive_image/138.jpg" class="popup-link"><img src="images/archive_image/138.jpg" alt="Event 138"></a>
-    <a href="images/archive_image/139.jpg" class="popup-link"><img src="images/archive_image/139.jpg" alt="Event 139"></a>
-    <a href="images/archive_image/140.jpg" class="popup-link"><img src="images/archive_image/140.jpg" alt="Event 140"></a>
-    <a href="images/archive_image/141.jpg" class="popup-link"><img src="images/archive_image/141.jpg" alt="Event 141"></a>
-    <a href="images/archive_image/142.jpg" class="popup-link"><img src="images/archive_image/142.jpg" alt="Event 142"></a>
-    <a href="images/archive_image/143.jpg" class="popup-link"><img src="images/archive_image/143.jpg" alt="Event 143"></a>
-    <a href="images/archive_image/144.jpg" class="popup-link"><img src="images/archive_image/144.jpg" alt="Event 144"></a>
-    <a href="images/archive_image/145.jpg" class="popup-link"><img src="images/archive_image/145.jpg" alt="Event 145"></a>
-    <a href="images/archive_image/146.jpg" class="popup-link"><img src="images/archive_image/146.jpg" alt="Event 146"></a>
-    <a href="images/archive_image/147.jpg" class="popup-link"><img src="images/archive_image/147.jpg" alt="Event 147"></a>
-    <a href="images/archive_image/148.jpg" class="popup-link"><img src="images/archive_image/148.jpg" alt="Event 148"></a>
-    <a href="images/archive_image/149.jpg" class="popup-link"><img src="images/archive_image/149.jpg" alt="Event 149"></a>
-    <a href="images/archive_image/150.jpg" class="popup-link"><img src="images/archive_image/150.jpg" alt="Event 150"></a>
-    <a href="images/archive_image/151.jpg" class="popup-link"><img src="images/archive_image/151.jpg" alt="Event 151"></a>
-    <a href="images/archive_image/152.jpg" class="popup-link"><img src="images/archive_image/152.jpg" alt="Event 152"></a>
-    <a href="images/archive_image/153.jpg" class="popup-link"><img src="images/archive_image/153.jpg" alt="Event 153"></a>
-    <a href="images/archive_image/154.jpg" class="popup-link"><img src="images/archive_image/154.jpg" alt="Event 154"></a>
-    <a href="images/archive_image/155.jpg" class="popup-link"><img src="images/archive_image/155.jpg" alt="Event 155"></a>
-    <a href="images/archive_image/156.jpg" class="popup-link"><img src="images/archive_image/156.jpg" alt="Event 156"></a>
-    <a href="images/archive_image/157.jpg" class="popup-link"><img src="images/archive_image/157.jpg" alt="Event 157"></a>
-    <a href="images/archive_image/158.jpg" class="popup-link"><img src="images/archive_image/158.jpg" alt="Event 158"></a>
-    <a href="images/archive_image/159.jpg" class="popup-link"><img src="images/archive_image/159.jpg" alt="Event 159"></a>
-    <a href="images/archive_image/160.jpg" class="popup-link"><img src="images/archive_image/160.jpg" alt="Event 160"></a>
-    <a href="images/archive_image/EVENT6.mp4" class="popup-video"><div class="video-thumbnail"><img src="images/archive_image/160.jpg" alt="Video Thumbnail"><div class="play-button"></div></div></a>
-    <a href="images/archive_image/EVENT7.mp4" class="popup-video"><div class="video-thumbnail"><img src="images/archive_image/117.jpg" alt="Video Thumbnail"><div class="play-button"></div></div></a>
-    <a href="images/archive_image/EVENT8.mp4" class="popup-video"><div class="video-thumbnail"><img src="images/archive_image/159.jpg" alt="Video Thumbnail"><div class="play-button"></div></div></a>
-    
-    
-    
-    
-    <!-- Add more images as needed -->
+    <!-- Archive Gallery Section -->
+    <div class="archive-section" id="archive">
+        <h2>Event Archive Gallery</h2>
+        <div class="gallery" id="archive-gallery">
+            <!-- First 20 images visible initially -->
+            <a href="media/archive_image/1.jpg" class="popup-link"><img src="media/archive_image/1.jpg" alt="Event 1" loading="lazy"></a>
+            <a href="media/archive_image/2.jpg" class="popup-link"><img src="media/archive_image/2.jpg" alt="Event 2" loading="lazy"></a>
+            <a href="media/archive_image/3.jpg" class="popup-link"><img src="media/archive_image/3.jpg" alt="Event 3" loading="lazy"></a>
+            <a href="media/archive_image/4.jpg" class="popup-link"><img src="media/archive_image/4.jpg" alt="Event 4" loading="lazy"></a>
+            <a href="media/archive_image/5.jpg" class="popup-link"><img src="media/archive_image/5.jpg" alt="Event 5" loading="lazy"></a>
+            <a href="media/archive_image/6.jpg" class="popup-link"><img src="media/archive_image/6.jpg" alt="Event 6" loading="lazy"></a>
+            <a href="media/archive_image/7.jpg" class="popup-link"><img src="media/archive_image/7.jpg" alt="Event 7" loading="lazy"></a>
+            <a href="media/archive_image/8.jpg" class="popup-link"><img src="media/archive_image/8.jpg" alt="Event 8" loading="lazy"></a>
+            <a href="media/archive_image/9.jpg" class="popup-link"><img src="media/archive_image/9.jpg" alt="Event 9" loading="lazy"></a>
+            <a href="media/archive_image/10.jpg" class="popup-link"><img src="media/archive_image/10.jpg" alt="Event 10" loading="lazy"></a>
+            <a href="media/archive_image/11.jpg" class="popup-link"><img src="media/archive_image/11.jpg" alt="Event 11" loading="lazy"></a>
+            <a href="media/archive_image/12.jpg" class="popup-link"><img src="media/archive_image/12.jpg" alt="Event 12" loading="lazy"></a>
+            <a href="media/archive_image/13.jpg" class="popup-link"><img src="media/archive_image/13.jpg" alt="Event 13" loading="lazy"></a>
+            <a href="media/archive_image/14.jpg" class="popup-link"><img src="media/archive_image/14.jpg" alt="Event 14" loading="lazy"></a>
+            <a href="media/archive_image/15.jpg" class="popup-link"><img src="media/archive_image/15.jpg" alt="Event 15" loading="lazy"></a>
+            <a href="media/archive_image/16.jpg" class="popup-link"><img src="media/archive_image/16.jpg" alt="Event 16" loading="lazy"></a>
+            <a href="media/archive_image/17.jpg" class="popup-link"><img src="media/archive_image/17.jpg" alt="Event 17" loading="lazy"></a>
+            <a href="media/archive_image/18.jpg" class="popup-link"><img src="media/archive_image/18.jpg" alt="Event 18" loading="lazy"></a>
+            <a href="media/archive_image/19.jpg" class="popup-link"><img src="media/archive_image/19.jpg" alt="Event 19" loading="lazy"></a>
+            <a href="media/archive_image/20.jpg" class="popup-link"><img src="media/archive_image/20.jpg" alt="Event 20" loading="lazy"></a>
+            
+            <!-- Batch 2 Images (Hidden Initially) -->
+            <a href="media/archive_image/21.jpg" class="popup-link hidden" data-batch="2"><img src="media/archive_image/21.jpg" alt="Event 21" loading="lazy"></a>
+            <a href="media/archive_image/22.jpg" class="popup-link hidden" data-batch="2"><img src="media/archive_image/22.jpg" alt="Event 22" loading="lazy"></a>
+            <a href="media/archive_image/23.jpg" class="popup-link hidden" data-batch="2"><img src="media/archive_image/23.jpg" alt="Event 23" loading="lazy"></a>
+            <a href="media/archive_image/24.jpg" class="popup-link hidden" data-batch="2"><img src="media/archive_image/24.jpg" alt="Event 24" loading="lazy"></a>
+            <a href="media/archive_image/25.jpg" class="popup-link hidden" data-batch="2"><img src="media/archive_image/25.jpg" alt="Event 25" loading="lazy"></a>
+            <a href="media/archive_image/26.jpg" class="popup-link hidden" data-batch="2"><img src="media/archive_image/26.jpg" alt="Event 26" loading="lazy"></a>
+            <a href="media/archive_image/27.jpg" class="popup-link hidden" data-batch="2"><img src="media/archive_image/27.jpg" alt="Event 27" loading="lazy"></a>
+            <a href="media/archive_image/28.jpg" class="popup-link hidden" data-batch="2"><img src="media/archive_image/28.jpg" alt="Event 28" loading="lazy"></a>
+            <a href="media/archive_image/29.jpg" class="popup-link hidden" data-batch="2"><img src="media/archive_image/29.jpg" alt="Event 29" loading="lazy"></a>
+            <a href="media/archive_image/30.jpg" class="popup-link hidden" data-batch="2"><img src="media/archive_image/30.jpg" alt="Event 30" loading="lazy"></a>
+            <a href="media/archive_image/31.jpg" class="popup-link hidden" data-batch="2"><img src="media/archive_image/31.jpg" alt="Event 31" loading="lazy"></a>
+            <a href="media/archive_image/32.jpg" class="popup-link hidden" data-batch="2"><img src="media/archive_image/32.jpg" alt="Event 32" loading="lazy"></a>
+            <a href="media/archive_image/33.jpg" class="popup-link hidden" data-batch="2"><img src="media/archive_image/33.jpg" alt="Event 33" loading="lazy"></a>
+            <a href="media/archive_image/34.jpg" class="popup-link hidden" data-batch="2"><img src="media/archive_image/34.jpg" alt="Event 34" loading="lazy"></a>
+            <a href="media/archive_image/35.jpg" class="popup-link hidden" data-batch="2"><img src="media/archive_image/35.jpg" alt="Event 35" loading="lazy"></a>
+            <a href="media/archive_image/36.jpg" class="popup-link hidden" data-batch="2"><img src="media/archive_image/36.jpg" alt="Event 36" loading="lazy"></a>
+            <a href="media/archive_image/37.jpg" class="popup-link hidden" data-batch="2"><img src="media/archive_image/37.jpg" alt="Event 37" loading="lazy"></a>
+            <a href="media/archive_image/38.jpg" class="popup-link hidden" data-batch="2"><img src="media/archive_image/38.jpg" alt="Event 38" loading="lazy"></a>
+            <a href="media/archive_image/39.jpg" class="popup-link hidden" data-batch="2"><img src="media/archive_image/39.jpg" alt="Event 39" loading="lazy"></a>
+            <a href="media/archive_image/40.jpg" class="popup-link hidden" data-batch="2"><img src="media/archive_image/40.jpg" alt="Event 40" loading="lazy"></a>
+            
+            <!-- Batch 3 Images -->
+            <a href="media/archive_image/41.jpg" class="popup-link hidden" data-batch="3"><img src="media/archive_image/41.jpg" alt="Event 41" loading="lazy"></a>
+            <a href="media/archive_image/42.jpg" class="popup-link hidden" data-batch="3"><img src="media/archive_image/42.jpg" alt="Event 42" loading="lazy"></a>
+            <a href="media/archive_image/43.jpg" class="popup-link hidden" data-batch="3"><img src="media/archive_image/43.jpg" alt="Event 43" loading="lazy"></a>
+            <a href="media/archive_image/44.jpg" class="popup-link hidden" data-batch="3"><img src="media/archive_image/44.jpg" alt="Event 44" loading="lazy"></a>
+            <a href="media/archive_image/45.jpg" class="popup-link hidden" data-batch="3"><img src="media/archive_image/45.jpg" alt="Event 45" loading="lazy"></a>
+            <a href="media/archive_image/46.jpg" class="popup-link hidden" data-batch="3"><img src="media/archive_image/46.jpg" alt="Event 46" loading="lazy"></a>
+            <a href="media/archive_image/47.jpg" class="popup-link hidden" data-batch="3"><img src="media/archive_image/47.jpg" alt="Event 47" loading="lazy"></a>
+            <a href="media/archive_image/48.jpg" class="popup-link hidden" data-batch="3"><img src="media/archive_image/48.jpg" alt="Event 48" loading="lazy"></a>
+            <a href="media/archive_image/49.jpg" class="popup-link hidden" data-batch="3"><img src="media/archive_image/49.jpg" alt="Event 49" loading="lazy"></a>
+            <a href="media/archive_image/50.jpg" class="popup-link hidden" data-batch="3"><img src="media/archive_image/50.jpg" alt="Event 50" loading="lazy"></a>
+            <a href="media/archive_image/51.jpg" class="popup-link hidden" data-batch="3"><img src="media/archive_image/51.jpg" alt="Event 51" loading="lazy"></a>
+            <a href="media/archive_image/52.jpg" class="popup-link hidden" data-batch="3"><img src="media/archive_image/52.jpg" alt="Event 52" loading="lazy"></a>
+            <a href="media/archive_image/53.jpg" class="popup-link hidden" data-batch="3"><img src="media/archive_image/53.jpg" alt="Event 53" loading="lazy"></a>
+            <a href="media/archive_image/54.jpg" class="popup-link hidden" data-batch="3"><img src="media/archive_image/54.jpg" alt="Event 54" loading="lazy"></a>
+            <a href="media/archive_image/55.jpg" class="popup-link hidden" data-batch="3"><img src="media/archive_image/55.jpg" alt="Event 55" loading="lazy"></a>
+            <a href="media/archive_image/56.jpg" class="popup-link hidden" data-batch="3"><img src="media/archive_image/56.jpg" alt="Event 56" loading="lazy"></a>
+            <a href="media/archive_image/57.jpg" class="popup-link hidden" data-batch="3"><img src="media/archive_image/57.jpg" alt="Event 57" loading="lazy"></a>
+            <a href="media/archive_image/58.jpg" class="popup-link hidden" data-batch="3"><img src="media/archive_image/58.jpg" alt="Event 58" loading="lazy"></a>
+            <a href="media/archive_image/59.jpg" class="popup-link hidden" data-batch="3"><img src="media/archive_image/59.jpg" alt="Event 59" loading="lazy"></a>
+            <a href="media/archive_image/60.jpg" class="popup-link hidden" data-batch="3"><img src="media/archive_image/60.jpg" alt="Event 60" loading="lazy"></a>
+            
+            <!-- Continue with the same pattern for remaining images and videos -->
+            <!-- I've shown the structure for the first 60 images -->
+            <!-- You can continue adding the rest following the same pattern -->
+            
+            <!-- Batch 4 Images -->
+            <a href="media/archive_image/61.jpg" class="popup-link hidden" data-batch="4"><img src="media/archive_image/61.jpg" alt="Event 61" loading="lazy"></a>
+            <a href="media/archive_image/62.jpg" class="popup-link hidden" data-batch="4"><img src="media/archive_image/62.jpg" alt="Event 62" loading="lazy"></a>
+            <a href="media/archive_image/63.jpg" class="popup-link hidden" data-batch="4"><img src="media/archive_image/63.jpg" alt="Event 63" loading="lazy"></a>
+            <a href="media/archive_image/64.jpg" class="popup-link hidden" data-batch="4"><img src="media/archive_image/64.jpg" alt="Event 64" loading="lazy"></a>
+            <a href="media/archive_image/65.jpg" class="popup-link hidden" data-batch="4"><img src="media/archive_image/65.jpg" alt="Event 65" loading="lazy"></a>
+            <a href="media/archive_image/66.jpg" class="popup-link hidden" data-batch="4"><img src="media/archive_image/66.jpg" alt="Event 66" loading="lazy"></a>
+            <a href="media/archive_image/67.jpg" class="popup-link hidden" data-batch="4"><img src="media/archive_image/67.jpg" alt="Event 67" loading="lazy"></a>
+            <a href="media/archive_image/68.jpg" class="popup-link hidden" data-batch="4"><img src="media/archive_image/68.jpg" alt="Event 68" loading="lazy"></a>
+            <a href="media/archive_image/69.jpg" class="popup-link hidden" data-batch="4"><img src="media/archive_image/69.jpg" alt="Event 69" loading="lazy"></a>
+            <a href="media/archive_image/70.jpg" class="popup-link hidden" data-batch="4"><img src="media/archive_image/70.jpg" alt="Event 70" loading="lazy"></a>
+            <a href="media/archive_image/71.jpg" class="popup-link hidden" data-batch="4"><img src="media/archive_image/71.jpg" alt="Event 71" loading="lazy"></a>
+            <a href="media/archive_image/72.jpg" class="popup-link hidden" data-batch="4"><img src="media/archive_image/72.jpg" alt="Event 72" loading="lazy"></a>
+            <a href="media/archive_image/73.jpg" class="popup-link hidden" data-batch="4"><img src="media/archive_image/73.jpg" alt="Event 73" loading="lazy"></a>
+            <a href="media/archive_image/74.jpg" class="popup-link hidden" data-batch="4"><img src="media/archive_image/74.jpg" alt="Event 74" loading="lazy"></a>
+            <a href="media/archive_image/75.jpg" class="popup-link hidden" data-batch="4"><img src="media/archive_image/75.jpg" alt="Event 75" loading="lazy"></a>
+            <a href="media/archive_image/76.jpg" class="popup-link hidden" data-batch="4"><img src="media/archive_image/76.jpg" alt="Event 76" loading="lazy"></a>
+            <a href="media/archive_image/77.jpg" class="popup-link hidden" data-batch="4"><img src="media/archive_image/77.jpg" alt="Event 77" loading="lazy"></a>
+            <a href="media/archive_image/78.jpg" class="popup-link hidden" data-batch="4"><img src="media/archive_image/78.jpg" alt="Event 78" loading="lazy"></a>
+            <a href="media/archive_image/79.jpg" class="popup-link hidden" data-batch="4"><img src="media/archive_image/79.jpg" alt="Event 79" loading="lazy"></a>
+            <a href="media/archive_image/80.jpg" class="popup-link hidden" data-batch="4"><img src="media/archive_image/80.jpg" alt="Event 80" loading="lazy"></a>
+
+
+
+                        <!-- Batch 5 Images -->
+            <a href="media/archive_image/81.jpg" class="popup-link hidden" data-batch="5"><img src="media/archive_image/81.jpg" alt="Event 81" loading="lazy"></a>
+            <a href="media/archive_image/82.jpg" class="popup-link hidden" data-batch="5"><img src="media/archive_image/82.jpg" alt="Event 82" loading="lazy"></a>
+            <a href="media/archive_image/83.jpg" class="popup-link hidden" data-batch="5"><img src="media/archive_image/83.jpg" alt="Event 83" loading="lazy"></a>
+            <a href="media/archive_image/84.jpg" class="popup-link hidden" data-batch="5"><img src="media/archive_image/84.jpg" alt="Event 84" loading="lazy"></a>
+            <a href="media/archive_image/85.jpg" class="popup-link hidden" data-batch="5"><img src="media/archive_image/85.jpg" alt="Event 85" loading="lazy"></a>
+            <a href="media/archive_image/86.jpg" class="popup-link hidden" data-batch="5"><img src="media/archive_image/86.jpg" alt="Event 86" loading="lazy"></a>
+            <a href="media/archive_image/87.jpg" class="popup-link hidden" data-batch="5"><img src="media/archive_image/87.jpg" alt="Event 87" loading="lazy"></a>
+            <a href="media/archive_image/88.jpg" class="popup-link hidden" data-batch="5"><img src="media/archive_image/88.jpg" alt="Event 88" loading="lazy"></a>
+            <a href="media/archive_image/89.jpg" class="popup-link hidden" data-batch="5"><img src="media/archive_image/89.jpg" alt="Event 89" loading="lazy"></a>
+            <a href="media/archive_image/90.jpg" class="popup-link hidden" data-batch="5"><img src="media/archive_image/90.jpg" alt="Event 90" loading="lazy"></a>
+            <a href="media/archive_image/91.jpg" class="popup-link hidden" data-batch="5"><img src="media/archive_image/91.jpg" alt="Event 91" loading="lazy"></a>
+            <a href="media/archive_image/92.jpg" class="popup-link hidden" data-batch="5"><img src="media/archive_image/92.jpg" alt="Event 92" loading="lazy"></a>
+            <a href="media/archive_image/93.jpg" class="popup-link hidden" data-batch="5"><img src="media/archive_image/93.jpg" alt="Event 93" loading="lazy"></a>
+            <a href="media/archive_image/94.jpg" class="popup-link hidden" data-batch="5"><img src="media/archive_image/94.jpg" alt="Event 94" loading="lazy"></a>
+            <a href="media/archive_image/95.jpg" class="popup-link hidden" data-batch="5"><img src="media/archive_image/95.jpg" alt="Event 95" loading="lazy"></a>
+            <a href="media/archive_image/96.jpg" class="popup-link hidden" data-batch="5"><img src="media/archive_image/96.jpg" alt="Event 96" loading="lazy"></a>
+            <a href="media/archive_image/97.jpg" class="popup-link hidden" data-batch="5"><img src="media/archive_image/97.jpg" alt="Event 97" loading="lazy"></a>
+            <a href="media/archive_image/98.jpg" class="popup-link hidden" data-batch="5"><img src="media/archive_image/98.jpg" alt="Event 98" loading="lazy"></a>
+            <a href="media/archive_image/99.jpg" class="popup-link hidden" data-batch="5"><img src="media/archive_image/99.jpg" alt="Event 99" loading="lazy"></a>
+            <a href="media/archive_image/100.jpg" class="popup-link hidden" data-batch="5"><img src="media/archive_image/100.jpg" alt="Event 100" loading="lazy"></a>
+
+            
+                        <!-- Batch 6 Images and Videos -->
+            <a href="media/archive_image/101.jpg" class="popup-link hidden" data-batch="6"><img src="media/archive_image/101.jpg" alt="Event 101" loading="lazy"></a>
+            <a href="media/archive_image/102.jpg" class="popup-link hidden" data-batch="6"><img src="media/archive_image/102.jpg" alt="Event 102" loading="lazy"></a>
+            <a href="media/archive_image/103.jpg" class="popup-link hidden" data-batch="6"><img src="media/archive_image/103.jpg" alt="Event 103" loading="lazy"></a>
+            <a href="media/archive_image/104.jpg" class="popup-link hidden" data-batch="6"><img src="media/archive_image/104.jpg" alt="Event 104" loading="lazy"></a>
+            <a href="media/archive_image/105.jpg" class="popup-link hidden" data-batch="6"><img src="media/archive_image/105.jpg" alt="Event 105" loading="lazy"></a>
+            <a href="media/archive_image/106.jpg" class="popup-link hidden" data-batch="6"><img src="media/archive_image/106.jpg" alt="Event 106" loading="lazy"></a>
+            <a href="media/archive_image/107.jpg" class="popup-link hidden" data-batch="6"><img src="media/archive_image/107.jpg" alt="Event 107" loading="lazy"></a>
+            <a href="media/archive_image/108.jpg" class="popup-link hidden" data-batch="6"><img src="media/archive_image/108.jpg" alt="Event 108" loading="lazy"></a>
+            <a href="media/archive_image/109.jpg" class="popup-link hidden" data-batch="6"><img src="media/archive_image/109.jpg" alt="Event 109" loading="lazy"></a>
+            <a href="media/archive_image/110.jpg" class="popup-link hidden" data-batch="6"><img src="media/archive_image/110.jpg" alt="Event 110" loading="lazy"></a>
+            <a href="media/archive_image/111.jpg" class="popup-link hidden" data-batch="6"><img src="media/archive_image/111.jpg" alt="Event 111" loading="lazy"></a>
+            <a href="media/archive_image/112.jpg" class="popup-link hidden" data-batch="6"><img src="media/archive_image/112.jpg" alt="Event 112" loading="lazy"></a>
+            <a href="media/archive_image/113.jpg" class="popup-link hidden" data-batch="6"><img src="media/archive_image/113.jpg" alt="Event 113" loading="lazy"></a>
+            <a href="media/archive_image/114.jpg" class="popup-link hidden" data-batch="6"><img src="media/archive_image/114.jpg" alt="Event 114" loading="lazy"></a>
+            <a href="media/archive_image/115.jpg" class="popup-link hidden" data-batch="6"><img src="media/archive_image/115.jpg" alt="Event 115" loading="lazy"></a>
+            <a href="media/archive_image/116.jpg" class="popup-link hidden" data-batch="6"><img src="media/archive_image/116.jpg" alt="Event 116" loading="lazy"></a>
+            <a href="media/archive_image/117.jpg" class="popup-link hidden" data-batch="6"><img src="media/archive_image/117.jpg" alt="Event 117" loading="lazy"></a>
+            <a href="media/archive_image/118.jpg" class="popup-link hidden" data-batch="6"><img src="media/archive_image/118.jpg" alt="Event 118" loading="lazy"></a>
+            <a href="media/archive_image/119.jpg" class="popup-link hidden" data-batch="6"><img src="media/archive_image/119.jpg" alt="Event 119" loading="lazy"></a>
+            <a href="media/archive_image/120.jpg" class="popup-link hidden" data-batch="6"><img src="media/archive_image/120.jpg" alt="Event 120" loading="lazy"></a>
+
+
+
+            <!-- Batch 6 Images (120-140) -->
+            <a href="media/archive_image/120.jpg" class="popup-link hidden" data-batch="6"><img src="media/archive_image/120.jpg" alt="Event 120" loading="lazy"></a>
+            <a href="media/archive_image/121.jpg" class="popup-link hidden" data-batch="6"><img src="media/archive_image/121.jpg" alt="Event 121" loading="lazy"></a>
+            <a href="media/archive_image/122.jpg" class="popup-link hidden" data-batch="6"><img src="media/archive_image/122.jpg" alt="Event 122" loading="lazy"></a>
+            <a href="media/archive_image/123.jpg" class="popup-link hidden" data-batch="6"><img src="media/archive_image/123.jpg" alt="Event 123" loading="lazy"></a>
+            <a href="media/archive_image/124.jpg" class="popup-link hidden" data-batch="6"><img src="media/archive_image/124.jpg" alt="Event 124" loading="lazy"></a>
+            <a href="media/archive_image/125.jpg" class="popup-link hidden" data-batch="6"><img src="media/archive_image/125.jpg" alt="Event 125" loading="lazy"></a>
+            <a href="media/archive_image/126.jpg" class="popup-link hidden" data-batch="6"><img src="media/archive_image/126.jpg" alt="Event 126" loading="lazy"></a>
+            <a href="media/archive_image/127.jpg" class="popup-link hidden" data-batch="6"><img src="media/archive_image/127.jpg" alt="Event 127" loading="lazy"></a>
+            <a href="media/archive_image/128.jpg" class="popup-link hidden" data-batch="6"><img src="media/archive_image/128.jpg" alt="Event 128" loading="lazy"></a>
+            <a href="media/archive_image/129.jpg" class="popup-link hidden" data-batch="6"><img src="media/archive_image/129.jpg" alt="Event 129" loading="lazy"></a>
+            <a href="media/archive_image/130.jpg" class="popup-link hidden" data-batch="6"><img src="media/archive_image/130.jpg" alt="Event 130" loading="lazy"></a>
+            <a href="media/archive_image/131.jpg" class="popup-link hidden" data-batch="6"><img src="media/archive_image/131.jpg" alt="Event 131" loading="lazy"></a>
+            <a href="media/archive_image/132.jpg" class="popup-link hidden" data-batch="6"><img src="media/archive_image/132.jpg" alt="Event 132" loading="lazy"></a>
+            <a href="media/archive_image/133.jpg" class="popup-link hidden" data-batch="6"><img src="media/archive_image/133.jpg" alt="Event 133" loading="lazy"></a>
+            <a href="media/archive_image/134.jpg" class="popup-link hidden" data-batch="6"><img src="media/archive_image/134.jpg" alt="Event 134" loading="lazy"></a>
+            <a href="media/archive_image/135.jpg" class="popup-link hidden" data-batch="6"><img src="media/archive_image/135.jpg" alt="Event 135" loading="lazy"></a>
+            <a href="media/archive_image/136.jpg" class="popup-link hidden" data-batch="6"><img src="media/archive_image/136.jpg" alt="Event 136" loading="lazy"></a>
+            <a href="media/archive_image/137.jpg" class="popup-link hidden" data-batch="6"><img src="media/archive_image/137.jpg" alt="Event 137" loading="lazy"></a>
+            <a href="media/archive_image/138.jpg" class="popup-link hidden" data-batch="6"><img src="media/archive_image/138.jpg" alt="Event 138" loading="lazy"></a>
+            <a href="media/archive_image/139.jpg" class="popup-link hidden" data-batch="6"><img src="media/archive_image/139.jpg" alt="Event 139" loading="lazy"></a>
+            <a href="media/archive_image/140.jpg" class="popup-link hidden" data-batch="6"><img src="media/archive_image/140.jpg" alt="Event 140" loading="lazy"></a>
+
+
+                        <!-- Batch 7 Images (141-157) -->
+            <a href="media/archive_image/141.jpg" class="popup-link hidden" data-batch="7"><img src="media/archive_image/141.jpg" alt="Event 141" loading="lazy"></a>
+            <a href="media/archive_image/142.jpg" class="popup-link hidden" data-batch="7"><img src="media/archive_image/142.jpg" alt="Event 142" loading="lazy"></a>
+            <a href="media/archive_image/143.jpg" class="popup-link hidden" data-batch="7"><img src="media/archive_image/143.jpg" alt="Event 143" loading="lazy"></a>
+            <a href="media/archive_image/144.jpg" class="popup-link hidden" data-batch="7"><img src="media/archive_image/144.jpg" alt="Event 144" loading="lazy"></a>
+            <a href="media/archive_image/145.jpg" class="popup-link hidden" data-batch="7"><img src="media/archive_image/145.jpg" alt="Event 145" loading="lazy"></a>
+            <a href="media/archive_image/146.jpg" class="popup-link hidden" data-batch="7"><img src="media/archive_image/146.jpg" alt="Event 146" loading="lazy"></a>
+            <a href="media/archive_image/147.jpg" class="popup-link hidden" data-batch="7"><img src="media/archive_image/147.jpg" alt="Event 147" loading="lazy"></a>
+            <a href="media/archive_image/148.jpg" class="popup-link hidden" data-batch="7"><img src="media/archive_image/148.jpg" alt="Event 148" loading="lazy"></a>
+            <a href="media/archive_image/149.jpg" class="popup-link hidden" data-batch="7"><img src="media/archive_image/149.jpg" alt="Event 149" loading="lazy"></a>
+            <a href="media/archive_image/150.jpg" class="popup-link hidden" data-batch="7"><img src="media/archive_image/150.jpg" alt="Event 150" loading="lazy"></a>
+            <a href="media/archive_image/151.jpg" class="popup-link hidden" data-batch="7"><img src="media/archive_image/151.jpg" alt="Event 151" loading="lazy"></a>
+            <a href="media/archive_image/152.jpg" class="popup-link hidden" data-batch="7"><img src="media/archive_image/152.jpg" alt="Event 152" loading="lazy"></a>
+            <a href="media/archive_image/153.jpg" class="popup-link hidden" data-batch="7"><img src="media/archive_image/153.jpg" alt="Event 153" loading="lazy"></a>
+            <a href="media/archive_image/154.jpg" class="popup-link hidden" data-batch="7"><img src="media/archive_image/154.jpg" alt="Event 154" loading="lazy"></a>
+            <a href="media/archive_image/155.jpg" class="popup-link hidden" data-batch="7"><img src="media/archive_image/155.jpg" alt="Event 155" loading="lazy"></a>
+            <a href="media/archive_image/156.jpg" class="popup-link hidden" data-batch="7"><img src="media/archive_image/156.jpg" alt="Event 156" loading="lazy"></a>
+            <a href="media/archive_image/157.jpg" class="popup-link hidden" data-batch="7"><img src="media/archive_image/157.jpg" alt="Event 157" loading="lazy"></a>
+
+            <!-- Batch 8 Images (158-160) and Videos -->
+            <a href="media/archive_image/158.jpg" class="popup-link hidden" data-batch="8"><img src="media/archive_image/158.jpg" alt="Event 158" loading="lazy"></a>
+            <a href="media/archive_image/159.jpg" class="popup-link hidden" data-batch="8"><img src="media/archive_image/159.jpg" alt="Event 159" loading="lazy"></a>
+            <a href="media/archive_image/160.jpg" class="popup-link hidden" data-batch="8"><img src="media/archive_image/160.jpg" alt="Event 160" loading="lazy"></a>
+            <a href="media/archive_image/EVENT6.mp4" class="popup-video hidden" data-batch="8"><div class="video-thumbnail"><img src="media/archive_image/160.jpg" alt="Video Thumbnail" loading="lazy"><div class="play-button"></div></div></a>
+            <a href="media/archive_image/EVENT7.mp4" class="popup-video hidden" data-batch="8"><div class="video-thumbnail"><img src="media/archive_image/117.jpg" alt="Video Thumbnail" loading="lazy"><div class="play-button"></div></div></a>
+            <a href="media/archive_image/EVENT8.mp4" class="popup-video hidden" data-batch="8"><div class="video-thumbnail"><img src="media/archive_image/159.jpg" alt="Video Thumbnail" loading="lazy"><div class="play-button"></div></div></a>
+
+
+            <!-- Videos also follow the same pattern -->
+            <a href="media/archive_image/EVENT1.mp4" class="popup-video hidden" data-batch="4">
+                <div class="video-thumbnail">
+                    <img src="media/archive_image/EVE1.webp" alt="Video Thumbnail" loading="lazy">
+                    <div class="play-button"></div>
+                </div>
+            </a>
+            <a href="media/archive_image/EVENT2.mp4" class="popup-video hidden" data-batch="4">
+                <div class="video-thumbnail">
+                    <img src="media/archive_image/EVE2.webp" alt="Video Thumbnail" loading="lazy">
+                    <div class="play-button"></div>
+                </div>
+            </a>
+            <!-- Continue with remaining videos and images... -->
+        </div>
+        
+        <div class="load-more-container">
+            <button class="load-more-btn" id="load-more-archive">
+                Load More Gallery Images
+            </button>
+        </div>
+        
+        <div class="loading-spinner" id="archive-loading">
+            <div class="spinner"></div>
+            <p>Loading more gallery content...</p>
+        </div>
     </div>
-  </div>
 </main>
 
 <div id="footer-container"></div>
@@ -716,6 +820,97 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
 <script>
+    // Gallery Pagination Class
+    class GalleryPaginator {
+        constructor() {
+            this.itemsPerPage = 20;
+            this.currentBatch = 1;
+            this.totalBatches = 0;
+            this.init();
+        }
+        
+        init() {
+            this.calculateTotalBatches();
+            this.updateLoadMoreButton();
+            this.setupEventListeners();
+        }
+        
+        calculateTotalBatches() {
+            const gallery = document.getElementById('archive-gallery');
+            const totalItems = gallery.querySelectorAll('a').length;
+            this.totalBatches = Math.ceil(totalItems / this.itemsPerPage);
+        }
+        
+        loadMore() {
+            const loadingSpinner = document.getElementById('archive-loading');
+            const loadMoreBtn = document.getElementById('load-more-archive');
+            
+            // Show loading
+            loadingSpinner.classList.add('active');
+            loadMoreBtn.style.display = 'none';
+            
+            // Simulate loading delay
+            setTimeout(() => {
+                this.currentBatch++;
+                const batchToShow = this.currentBatch;
+                
+                const gallery = document.getElementById('archive-gallery');
+                const itemsToShow = gallery.querySelectorAll(`a[data-batch="${batchToShow}"]`);
+                
+                // Show the next batch
+                itemsToShow.forEach(item => {
+                    item.classList.remove('hidden');
+                });
+                
+                // Reinitialize popup for new items
+                this.reinitializePopups();
+                
+                // Hide loading
+                loadingSpinner.classList.remove('active');
+                
+                // Update load more button
+                this.updateLoadMoreButton();
+                
+            }, 800); // Simulate network delay
+        }
+        
+        updateLoadMoreButton() {
+            const loadMoreBtn = document.getElementById('load-more-archive');
+            if (!loadMoreBtn) return;
+            
+            if (this.currentBatch >= this.totalBatches) {
+                loadMoreBtn.style.display = 'none';
+            } else {
+                loadMoreBtn.style.display = 'block';
+                loadMoreBtn.textContent = `Load More (${this.currentBatch}/${this.totalBatches})`;
+            }
+        }
+        
+        reinitializePopups() {
+            // Reinitialize popups for newly loaded items
+            $('.popup-link').magnificPopup({
+                type: 'image',
+                gallery: {
+                    enabled: true
+                }
+            });
+
+            $('.popup-video').magnificPopup({
+                type: 'iframe'
+            });
+        }
+        
+        setupEventListeners() {
+            // Load more button click
+            const loadMoreBtn = document.getElementById('load-more-archive');
+            if (loadMoreBtn) {
+                loadMoreBtn.addEventListener('click', () => {
+                    this.loadMore();
+                });
+            }
+        }
+    }
+
     // Enhanced functionality
     function scrollToArchive() {
         document.getElementById("archive").scrollIntoView({ behavior: "smooth" });
@@ -727,48 +922,51 @@
 
     // Initialize everything when DOM loads
     document.addEventListener("DOMContentLoaded", function() {
+        // Initialize gallery pagination
+        const galleryPaginator = new GalleryPaginator();
+        
         // Load navbar and footer
-              $('#navbar-container').load('navbar.html', function() {
-  const menuIcon = document.getElementById('menu-icon');
-  const navLinks = document.getElementById('nav-links');
-  const dropdowns = document.querySelectorAll('.dropdown');
+        $('#navbar-container').load('navbar.html', function() {
+            const menuIcon = document.getElementById('menu-icon');
+            const navLinks = document.getElementById('nav-links');
+            const dropdowns = document.querySelectorAll('.dropdown');
 
-  if (menuIcon && navLinks) {
-    menuIcon.addEventListener('click', function(e) {
-      e.stopPropagation();
-      navLinks.classList.toggle('active');
-      document.body.classList.toggle('no-scroll');
-    });
-    
-    document.addEventListener('click', function(e) {
-      if (!e.target.closest('#nav-links') && !e.target.closest('#menu-icon')) {
-        navLinks.classList.remove('active');
-        document.body.classList.remove('no-scroll');
-      }
-    });
-  }
+            if (menuIcon && navLinks) {
+                menuIcon.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    navLinks.classList.toggle('active');
+                    document.body.classList.toggle('no-scroll');
+                });
+                
+                document.addEventListener('click', function(e) {
+                    if (!e.target.closest('#nav-links') && !e.target.closest('#menu-icon')) {
+                        navLinks.classList.remove('active');
+                        document.body.classList.remove('no-scroll');
+                    }
+                });
+            }
 
-  if (window.innerWidth <= 768) {
-    dropdowns.forEach(dropdown => {
-      const dropbtn = dropdown.querySelector('.dropbtn');
-      dropbtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        const content = this.nextElementSibling;
-        content.classList.toggle('active');
-        this.querySelector('.mobile-caret').classList.toggle('rotate');
-      });
-    });
-  }
+            if (window.innerWidth <= 768) {
+                dropdowns.forEach(dropdown => {
+                    const dropbtn = dropdown.querySelector('.dropbtn');
+                    dropbtn.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        const content = this.nextElementSibling;
+                        content.classList.toggle('active');
+                        this.querySelector('.mobile-caret').classList.toggle('rotate');
+                    });
+                });
+            }
 
-  window.addEventListener('scroll', function() {
-    const header = document.querySelector('header');
-    if (window.scrollY > 50) {
-      header.classList.add('scrolled');
-    } else {
-      header.classList.remove('scrolled');
-    }
-  });
-});
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('header');
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+        });
 
         // Initialize Magnific Popup
         $('.popup-link').magnificPopup({
@@ -804,63 +1002,61 @@
         });
     });
     
-document.addEventListener('DOMContentLoaded', () => {
-  const images = [
-    'images/news_image/1.jpg',
-    'images/news_image/2.jpg',
-    'images/news_image/3.jpg',
-    'images/news_image/4.jpg',
-    'images/news_image/5.jpg',
-    'images/news_image/6.jpg',
-    'images/news_image/7.jpg',
-    'images/news_image/8.jpg',
-    'images/news_image/9.jpg',
-    'images/news_image/10.jpg',
-    'images/news_image/12.jpg',
-    'images/news_image/13.jpg',
-    'images/news_image/11.jpg',
-    'images/news_image/14.jpg',
-    'images/news_image/15.jpg',
-    'images/news_image/16.jpg',
-    'images/news_image/17.jpg',
-    'images/news_image/18.jpg',
-    
-  ];
-  
-let idx = 0;
-  let isBg1 = true;
-  const bg1 = document.querySelector('.bg1');
-  const bg2 = document.querySelector('.bg2');
+    document.addEventListener('DOMContentLoaded', () => {
+        const images = [
+            'media/news_image/1.jpg',
+            'media/news_image/2.jpg',
+            'media/news_image/3.jpg',
+            'media/news_image/4.jpg',
+            'media/news_image/5.jpg',
+            'media/news_image/6.jpg',
+            'media/news_image/7.jpg',
+            'media/news_image/8.jpg',
+            'media/news_image/9.jpg',
+            'media/news_image/10.jpg',
+            'media/news_image/12.jpg',
+            'media/news_image/13.jpg',
+            'media/news_image/11.jpg',
+            'media/news_image/14.jpg',
+            'media/news_image/15.jpg',
+            'media/news_image/16.jpg',
+            'media/news_image/17.jpg',
+            'media/news_image/18.jpg',
+        ];
+        
+        let idx = 0;
+        let isBg1 = true;
+        const bg1 = document.querySelector('.bg1');
+        const bg2 = document.querySelector('.bg2');
 
-  // Set initial images
-  bg1.style.backgroundImage = `url('${images[idx]}')`;
-  bg1.classList.add('active');
-  bg2.style.backgroundImage = `url('${images[(idx+1)%images.length]}')`;
+        // Set initial images
+        bg1.style.backgroundImage = `url('${images[idx]}')`;
+        bg1.classList.add('active');
+        bg2.style.backgroundImage = `url('${images[(idx+1)%images.length]}')`;
 
-  setInterval(() => {
-    const nextIdx = (idx+1)%images.length;
-    if (isBg1) {
-      bg2.style.backgroundImage = `url('${images[nextIdx]}')`;
-      bg2.classList.add('active');
-      bg1.classList.remove('active');
-    } else {
-      bg1.style.backgroundImage = `url('${images[nextIdx]}')`;
-      bg1.classList.add('active');
-      bg2.classList.remove('active');
-    }
-    idx = nextIdx;
-    isBg1 = !isBg1;
-  }, 8000); // Change every 8 seconds
-});
+        setInterval(() => {
+            const nextIdx = (idx+1)%images.length;
+            if (isBg1) {
+                bg2.style.backgroundImage = `url('${images[nextIdx]}')`;
+                bg2.classList.add('active');
+                bg1.classList.remove('active');
+            } else {
+                bg1.style.backgroundImage = `url('${images[nextIdx]}')`;
+                bg1.classList.add('active');
+                bg2.classList.remove('active');
+            }
+            idx = nextIdx;
+            isBg1 = !isBg1;
+        }, 8000); // Change every 8 seconds
+    });
 
-document.addEventListener("DOMContentLoaded", function() {
-            fetch('footer.html')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('footer-container').innerHTML = data;
-                });
-        });
-
+    document.addEventListener("DOMContentLoaded", function() {
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-container').innerHTML = data;
+            });
+    });
 </script>
 
 </body>

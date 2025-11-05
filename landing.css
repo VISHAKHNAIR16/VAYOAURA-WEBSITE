@@ -250,7 +250,7 @@ img {
 /* Intro Section */
 .intro-section {
     padding: var(--section-padding);
-    background: url('images/mainmap.webp') no-repeat center center/cover;
+    background: url('media/mainmap.webp') no-repeat center center/cover;
     background-color: rgba(255, 255, 255, 0.7);
     background-blend-mode: lighten;
 }

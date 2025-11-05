@@ -41,7 +41,7 @@ header {
 /* Kannapy Section Overhaul */
 .Kannapy {
     background: linear-gradient(120deg, rgba(15,15,15,0.87), rgba(28,28,35,0.87)),
-                url('images/3.jpg') center/cover no-repeat;
+                url('media/3.jpg') center/cover no-repeat;
     padding: 120px 20px 90px 20px;
     text-align: center;
     color: white;
