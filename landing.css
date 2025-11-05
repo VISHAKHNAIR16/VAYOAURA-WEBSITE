@@ -206,7 +206,7 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: url('images/landing_bg.webp') no-repeat center center/cover;
+    background: url('media/landing_bg.webp') no-repeat center center/cover;
     color: var(--light-color);
     text-align: center;
     margin-top: 0;
