@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="VayoAura - Curated travel deals and booking search powered by 12Go." />
+    <title>VayoAura — Travel Deals</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=League+Spartan:wght@300;400;600&family=Poppins:wght@100;900&family=Brandon+Grotesque:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg: #0b0d10;
+            --panel: #0f1114;
+            --muted: #9aa4b2;
+            --accent: #ffd400;
+            --accent-2: #7c5cff;
+            --glass: rgba(255, 255, 255, 0.03);
+            --radius: 14px;
+            --max-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html,
+        body {
+            height: 100%
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+            background: var(--bg);
+            color: #e6eef8;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Navbar styling */
+        header {
+            z-index: 40;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 72px;
+            height: 480px;
+            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?q=80&w=2000&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-inner {
+            position: relative;
+            z-index: 5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px;
+            gap: 20px;
+            max-width: 1000px;
+        }
+
+        .hero h1 {
+            font-size: 52px;
+            color: var(--accent);
+            margin: 0;
+            font-weight: 800;
+            line-height: 1.1;
+            text-shadow: 0 3px 15px rgba(0, 0, 0, 0.7);
+            letter-spacing: -0.5px;
+        }
+
+        .hero p {
+            color: #e7f0f9;
+            opacity: 0.95;
+            font-size: 18px;
+            margin: 0;
+            max-width: 600px;
+            font-weight: 400;
+        }
+
+        .cta-hero {
+            margin-top: 10px;
+            padding: 14px 32px;
+            background: #fff;
+            border-radius: 10px;
+            color: #06121a;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            font-size: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .cta-hero:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Search panel styling */
+        .search-panel {
+            background: rgba(255, 255, 255, 0.98);
+            color: #06121a;
+            border-radius: 12px;
+            padding: 16px;
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+            width: 100%;
+            max-width: 980px;
+            margin-top: 16px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .search-panel > div {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            flex: 1;
+        }
+
+        .search-panel input {
+            padding: 11px 14px;
+            border-radius: 8px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            font-size: 14px;
+            width: 100%;
+            background: #fff;
+            color: #06121a;
+        }
+
+        .search-panel input::placeholder {
+            color: #999;
+        }
+
+        .search-btn {
+            padding: 11px 22px;
+            background: linear-gradient(90deg, var(--accent-2), var(--accent));
+            border-radius: 8px;
+            border: none;
+            color: #021024;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 14px;
+            white-space: nowrap;
+            transition: transform 0.2s;
+        }
+
+        .search-btn:hover {
+            transform: translateY(-1px);
+        }
+
+        .powered {
+            font-size: 11px;
+            color: #666;
+            margin-top: 4px;
+            text-align: right;
+        }
+
+        .powered a {
+            color: var(--accent-2);
+            text-decoration: none;
+        }
+
+        /* Main content area */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .widgets-section {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 28px;
+            margin-top: 40px;
+        }
+
+        .widget-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 14px;
+            padding: 24px;
+            backdrop-filter: blur(10px);
+        }
+
+        .widget-card h3 {
+            margin: 0 0 16px 0;
+            font-size: 18px;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .widget-card p {
+            margin: 0 0 16px 0;
+            font-size: 14px;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
+        footer {
+            margin-top: 60px;
+            padding: 30px 20px;
+            text-align: center;
+            color: var(--muted);
+            font-size: 13px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        /* Modal */
+        .modal {
+            position: fixed;
+            inset: 0;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 120;
+            padding: 20px;
+        }
+
+        .modal.show {
+            display: flex
+        }
+
+        .modal-card {
+            width: min(980px, 100%);
+            background: #07121a;
+            padding: 24px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .modal-close {
+            background: transparent;
+            border: none;
+            color: var(--muted);
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                height: 400px;
+                margin-top: 60px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .search-panel {
+                flex-direction: column;
+            }
+
+            .search-panel > div {
+                width: 100%;
+                flex-direction: column;
+            }
+
+            .widgets-section {
+                grid-template-columns: 1fr;
+            }
+
+            .search-btn {
+                width: 100%;
+            }
+        }
+
+        .muted {
+            color: var(--muted)
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- header / nav (loaded from navbar.html) -->
+    <header id="navbar-container"></header>
+
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="heroTitle">
+        <div class="hero-inner">
+            <h1 id="heroTitle">Discover Amazing Destinations</h1>
+            <p>Explore our premium travel packages and book buses, trains and ferries with fast search powered by 12Go.
+            </p>
+
+            <div>
+                <button class="cta-hero" onclick="document.getElementById('searchInputFrom').focus()">DISCOVER
+                    NOW</button>
+            </div>
+
+            <!-- Search panel (integrates 12Go script, with robust fallback) -->
+            <div class="search-panel" id="mainSearchPanel" role="search" aria-label="Search routes">
+                <div style="display:flex;flex:1;gap:8px;align-items:center">
+                    <input id="searchInputFrom" type="text" placeholder="From (city/ station)" aria-label="From" />
+                    <input id="searchInputTo" type="text" placeholder="To (city / station)" aria-label="To" />
+                    <input id="searchInputDate" type="date" aria-label="Date" />
+                </div>
+
+                <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-end">
+                    <button id="searchBtn" class="search-btn">Search</button>
+                    <div class="powered">Powered by <a href="https://12go.asia/?z=13484348" target="_blank"
+                            rel="noopener">12Go</a></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main content -->
+    <main>
+        <!-- City Widget Section -->
+        <section class="widgets-section">
+            <div class="widget-card">
+                <h3>🏙️ Search by City</h3>
+                <p>Find and book transport from popular cities across Southeast Asia and Japan.</p>
+                <script src="https://agent.12go.asia/tools/widget/widget.js"></script>
+                <onetwogo-travelto-widget
+                    city="Bangkok"
+                    width="100%" 
+                    agent="13484348" 
+                    lang="en" 
+                    fxcode="USD" 
+                    wl="12go.asia">
+                </onetwogo-travelto-widget>
+            </div>
+
+            <!-- Country Widget Section -->
+            <div class="widget-card">
+                <h3>🗺️ Search by Country</h3>
+                <p>Browse all available routes and destinations across entire countries.</p>
+                <script src="https://agent.12go.asia/tools/widget/country_widget.js"></script>
+                <onetwogo-country-widget
+                    country="TH"
+                    width="100%" 
+                    agent="13484348" 
+                    lang="en" 
+                    fxcode="USD" 
+                    wl="12go.asia">
+                </onetwogo-country-widget>
+            </div>
+        </section>
+
+        <footer>
+            <div>© <strong>VayoAura</strong> — Powered by <a href="https://12go.asia/?z=13484348" target="_blank" rel="noopener">12Go</a> • <a href="sitemap.xml">Sitemap</a></div>
+            <div class="muted" style="margin-top:12px">Book buses, trains and ferries across Southeast Asia</div>
+        </footer>
+    </main>
+
+    <!-- footer (loaded from footer.html) -->
+    <div id="footer-container"></div>
+
+    <!-- Modal for booking widget -->
+    <div class="modal" id="modal" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="modal-card">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+                <div><strong id="modalTitle">Book route</strong>
+                    <div class="muted" id="modalSub">Powered by 12Go</div>
+                </div>
+                <button id="closeModal"
+                    style="background:transparent;border:none;color:var(--muted);font-size:18px;cursor:pointer">✕</button>
+            </div>
+            <div id="modalContent" style="min-height:260px;color:var(--muted)">Loading booking widget…</div>
+            <div style="display:flex;gap:8px;margin-top:12px;justify-content:flex-end">
+                <button class="search-btn" id="openExternal">Open 12Go site</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 12go scripts -->
+    <script>
+        // Load navbar and footer dynamically
+        document.addEventListener("DOMContentLoaded", function () {
+            // Load navbar
+            fetch('navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar-container').innerHTML = data;
+
+                    // Re-initialize navbar scripts
+                    const menuIcon = document.getElementById('menu-icon');
+                    const navLinks = document.getElementById('nav-links');
+                    const dropdowns = document.querySelectorAll('.dropdown');
+
+                    if (menuIcon && navLinks) {
+                        menuIcon.addEventListener('click', function (e) {
+                            e.stopPropagation();
+                            navLinks.classList.toggle('active');
+                            document.body.classList.toggle('no-scroll');
+                        });
+
+                        document.addEventListener('click', function (e) {
+                            if (!e.target.closest('#nav-links') && !e.target.closest('#menu-icon')) {
+                                navLinks.classList.remove('active');
+                                document.body.classList.remove('no-scroll');
+                            }
+                        });
+                    }
+
+                    if (window.innerWidth <= 768) {
+                        dropdowns.forEach(dropdown => {
+                            const dropbtn = dropdown.querySelector('.dropbtn');
+                            if (dropbtn) {
+                                dropbtn.addEventListener('click', function (e) {
+                                    e.preventDefault();
+                                    const content = this.nextElementSibling;
+                                    if (content) content.classList.toggle('active');
+                                    const caret = this.querySelector('.mobile-caret');
+                                    if (caret) caret.classList.toggle('rotate');
+                                });
+                            }
+                        });
+                    }
+
+                    // Scroll effect on header
+                    window.addEventListener('scroll', function () {
+                        const header = document.querySelector('header');
+                        if (header) {
+                            if (window.scrollY > 50) {
+                                header.classList.add('scrolled');
+                            } else {
+                                header.classList.remove('scrolled');
+                            }
+                        }
+                    });
+                });
+
+            // Load footer
+            fetch('footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer-container').innerHTML = data;
+                });
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        e.preventDefault();
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+
+            // Search functionality
+            const searchBtn = document.getElementById('searchBtn');
+            if (searchBtn) {
+                searchBtn.addEventListener('click', (e) => {
+                    const from = document.getElementById('searchInputFrom').value.trim();
+                    const to = document.getElementById('searchInputTo').value.trim();
+                    const date = document.getElementById('searchInputDate').value;
+
+                    if (!from || !to) {
+                        alert('Please enter both From and To cities');
+                        return;
+                    }
+
+                    // Open 12go with query params
+                    let url = 'https://12go.asia/?z=13484348';
+                    if (from) url += '&from=' + encodeURIComponent(from);
+                    if (to) url += '&to=' + encodeURIComponent(to);
+                    if (date) url += '&date=' + encodeURIComponent(date);
+                    window.open(url, '_blank');
+                });
+            }
+        });
+    </script>
+
+</body>
+
+</html>
