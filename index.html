@@ -15,6 +15,181 @@
         .no-scroll {
             overflow: hidden;
         }
+
+        /* Modern Offer Popup Styles */
+        .offer-popup {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 320px;
+            background: linear-gradient(135deg, #ffd400 0%, #7c5cff 100%);
+            border-radius: 16px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+            z-index: 999;
+            overflow: hidden;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(30px) translateX(30px);
+            animation: popupSlideIn 0.5s ease-out forwards;
+        }
+
+        @keyframes popupSlideIn {
+            to {
+                opacity: 1;
+                transform: translateY(0) translateX(0);
+            }
+        }
+
+        .offer-popup.closing {
+            animation: popupSlideOut 0.4s ease-in forwards;
+        }
+
+        @keyframes popupSlideOut {
+            to {
+                opacity: 0;
+                transform: translateY(30px) translateX(30px);
+            }
+        }
+
+        .popup-content {
+            padding: 18px;
+            position: relative;
+        }
+
+        .popup-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .popup-icon {
+            font-size: 24px;
+            animation: iconPulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes iconPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .popup-label {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: rgba(0, 0, 0, 0.7);
+        }
+
+        .popup-text {
+            font-size: 14px;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .popup-subtext {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 12px;
+        }
+
+        .popup-cta {
+            font-size: 11px;
+            font-weight: 700;
+            color: #7c5cff;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 12px;
+        }
+
+        .popup-cta i {
+            font-size: 10px;
+        }
+
+        .popup-progress {
+            height: 3px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .popup-progress-bar {
+            height: 100%;
+            background: #fff;
+            border-radius: 10px;
+            animation: progressBar 30s linear forwards;
+        }
+
+        @keyframes progressBar {
+            from {
+                width: 100%;
+            }
+            to {
+                width: 0%;
+            }
+        }
+
+        .popup-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255, 255, 255, 0.3);
+            border: none;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .popup-close:hover {
+            background: rgba(255, 255, 255, 0.5);
+            transform: rotate(90deg);
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            .offer-popup {
+                width: 280px;
+                bottom: 15px;
+                right: 15px;
+            }
+
+            .popup-text {
+                font-size: 13px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .offer-popup {
+                width: 260px;
+                bottom: 10px;
+                right: 10px;
+            }
+
+            .popup-content {
+                padding: 14px;
+            }
+
+            .popup-text {
+                font-size: 12px;
+            }
+
+            .popup-subtext {
+                font-size: 11px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -99,8 +274,66 @@
 
     <div id="footer-container"></div>
 
+    <!-- Modern Offer Popup -->
+    <div class="offer-popup" id="offerPopup">
+        <button class="popup-close" id="popupClose" title="Close offer">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="popup-content">
+            <div class="popup-header">
+                <span class="popup-icon">🎉</span>
+                <span class="popup-label">Exclusive Offer</span>
+            </div>
+            <div class="popup-text">New Travel Deals!</div>
+            <div class="popup-subtext">Book buses, trains & ferries at unbeatable prices</div>
+            <div class="popup-cta">
+                <span>Explore Now</span>
+                <i class="fas fa-arrow-right"></i>
+            </div>
+            <div class="popup-progress">
+                <div class="popup-progress-bar"></div>
+            </div>
+            <div style="font-size: 10px; color: rgba(255, 255, 255, 0.7); margin-top: 6px;">Powered by 12Go</div>
+        </div>
+    </div>
+
 <script>
 document.addEventListener("DOMContentLoaded", function() {
+    // ===== Popup Functionality =====
+    const offerPopup = document.getElementById('offerPopup');
+    const popupClose = document.getElementById('popupClose');
+    let popupTimeout;
+
+    // Function to close popup
+    function closePopup() {
+        offerPopup.classList.add('closing');
+        setTimeout(() => {
+            offerPopup.style.display = 'none';
+        }, 400);
+        clearTimeout(popupTimeout);
+    }
+
+    // Close button click
+    if (popupClose) {
+        popupClose.addEventListener('click', (e) => {
+            e.stopPropagation();
+            closePopup();
+        });
+    }
+
+    // Popup click to redirect
+    offerPopup.addEventListener('click', (e) => {
+        if (!e.target.closest('.popup-close')) {
+            window.location.href = 'travel_deal.html';
+        }
+    });
+
+    // Auto-close after 30 seconds
+    popupTimeout = setTimeout(() => {
+        closePopup();
+    }, 30000);
+
+    // ===== Navbar Loading =====
     // Load navbar
     fetch('navbar.html')
         .then(response => response.text())
