@@ -53,18 +53,20 @@
         #navbar-container {
             position: fixed;
             top: 0;
+            left: 0;
             width: 100%;
             z-index: 1000;
-            background: rgba(11, 13, 16, 0.95);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 0 20px;
+            background: transparent;
+            backdrop-filter: none;
+            border-bottom: none;
+            padding: 0;
+            box-shadow: none;
+            transition: none;
         }
 
         /* Hero Section */
         .hero {
-            margin-top: 80px;
-            min-height: 650px;
+            min-height: 700px;
             background: linear-gradient(135deg,
                     rgba(11, 13, 16, 0.9) 0%,
                     rgba(11, 13, 16, 0.7) 100%),
@@ -381,8 +383,9 @@
         #footer-container {
             margin-top: 100px;
             padding: 60px 20px 40px;
-            background: rgba(0, 0, 0, 0.3);
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            background: transparent;
+            border-top: none;
+            box-shadow: none;
         }
 
         /* Scrollbar */
@@ -763,29 +766,8 @@
                 });
             });
 
-            // Navbar scroll effect
-            let lastScroll = 0;
-            const navbar = document.getElementById('navbar-container');
-
-            window.addEventListener('scroll', () => {
-                const currentScroll = window.pageYOffset;
-
-                if (currentScroll > lastScroll && currentScroll > 100) {
-                    navbar.style.transform = 'translateY(-100%)';
-                } else {
-                    navbar.style.transform = 'translateY(0)';
-                }
-
-                if (currentScroll > 100) {
-                    navbar.style.background = 'rgba(11, 13, 16, 0.98)';
-                    navbar.style.backdropFilter = 'blur(20px)';
-                } else {
-                    navbar.style.background = 'rgba(11, 13, 16, 0.95)';
-                    navbar.style.backdropFilter = 'blur(20px)';
-                }
-
-                lastScroll = currentScroll;
-            });
+            // Remove navbar scroll effect: navbar always stays visible and transparent
+            // No scroll event needed; navbar remains fixed and transparent
 
             // Initialize animations
             setTimeout(() => {
