@@ -297,9 +297,26 @@
             margin-bottom: 24px;
         }
 
+        /* Updated Flag Styles for Images */
         .country-flag {
-            font-size: 2.5rem;
-            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            flex-shrink: 0;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .country-flag img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
 
         .country-widget-header h3 {
@@ -470,6 +487,15 @@
             .country-widget-card {
                 padding: 24px;
             }
+            
+            .country-flag {
+                width: 45px;
+                height: 45px;
+            }
+            
+            .country-widget-header h3 {
+                font-size: 1.35rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -483,6 +509,15 @@
 
             .search-container {
                 padding: 20px;
+            }
+            
+            .country-flag {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .country-widget-header {
+                gap: 12px;
             }
         }
     </style>
@@ -521,7 +556,11 @@
                 <!-- Thailand -->
                 <div class="country-widget-card animate-fade-in delay-1">
                     <div class="country-widget-header">
-                        <div class="country-flag">🇹🇭</div>
+                        <div class="country-flag">
+                            <img src="https://flagcdn.com/w80/th.png" 
+                                 srcset="https://flagcdn.com/w160/th.png 2x" 
+                                 alt="Thailand Flag">
+                        </div>
                         <h3>Thailand</h3>
                     </div>
                     <p>From Bangkok's bustling streets to Phuket's serene beaches, explore Thailand's diverse landscapes
@@ -537,7 +576,11 @@
                 <!-- United Kingdom -->
                 <div class="country-widget-card animate-fade-in delay-2">
                     <div class="country-widget-header">
-                        <div class="country-flag">🇬🇧</div>
+                        <div class="country-flag">
+                            <img src="https://flagcdn.com/w80/gb.png" 
+                                 srcset="https://flagcdn.com/w160/gb.png 2x" 
+                                 alt="United Kingdom Flag">
+                        </div>
                         <h3>United Kingdom</h3>
                     </div>
                     <p>Travel across England, Scotland, Wales, and Northern Ireland with extensive rail, bus, and ferry
@@ -553,7 +596,11 @@
                 <!-- Vietnam -->
                 <div class="country-widget-card animate-fade-in delay-3">
                     <div class="country-widget-header">
-                        <div class="country-flag">🇻🇳</div>
+                        <div class="country-flag">
+                            <img src="https://flagcdn.com/w80/vn.png" 
+                                 srcset="https://flagcdn.com/w160/vn.png 2x" 
+                                 alt="Vietnam Flag">
+                        </div>
                         <h3>Vietnam</h3>
                     </div>
                     <p>Experience Vietnam's rich culture and stunning landscapes with reliable bus and train services
@@ -569,7 +616,11 @@
                 <!-- Japan -->
                 <div class="country-widget-card animate-fade-in delay-4">
                     <div class="country-widget-header">
-                        <div class="country-flag">🇯🇵</div>
+                        <div class="country-flag">
+                            <img src="https://flagcdn.com/w80/jp.png" 
+                                 srcset="https://flagcdn.com/w160/jp.png 2x" 
+                                 alt="Japan Flag">
+                        </div>
                         <h3>Japan</h3>
                     </div>
                     <p>Experience Japan's efficient bullet trains and comprehensive public transportation system
@@ -582,12 +633,14 @@
                     </div>
                 </div>
 
-                
-
                 <!-- Indonesia -->
                 <div class="country-widget-card animate-fade-in delay-2">
                     <div class="country-widget-header">
-                        <div class="country-flag">🇮🇩</div>
+                        <div class="country-flag">
+                            <img src="https://flagcdn.com/w80/id.png" 
+                                 srcset="https://flagcdn.com/w160/id.png 2x" 
+                                 alt="Indonesia Flag">
+                        </div>
                         <h3>Indonesia</h3>
                     </div>
                     <p>Island hopping made easy with ferry connections between Bali, Java, Sumatra, and comprehensive
@@ -603,7 +656,11 @@
                 <!-- Malaysia -->
                 <div class="country-widget-card animate-fade-in delay-3">
                     <div class="country-widget-header">
-                        <div class="country-flag">🇲🇾</div>
+                        <div class="country-flag">
+                            <img src="https://flagcdn.com/w80/my.png" 
+                                 srcset="https://flagcdn.com/w160/my.png 2x" 
+                                 alt="Malaysia Flag">
+                        </div>
                         <h3>Malaysia</h3>
                     </div>
                     <p>Modern transportation connecting Kuala Lumpur, Penang, Langkawi, and other destinations with
@@ -615,8 +672,6 @@
                         </onetwogo-country-widget>
                     </div>
                 </div>
-
-                
             </div>
         </section>
 
@@ -775,6 +830,26 @@
                     el.style.animationDelay = `${index * 0.1}s`;
                 });
             }, 100);
+            
+            // Preload flag images for better performance
+            function preloadFlagImages() {
+                const flagUrls = [
+                    'https://flagcdn.com/w80/th.png',
+                    'https://flagcdn.com/w80/gb.png',
+                    'https://flagcdn.com/w80/vn.png',
+                    'https://flagcdn.com/w80/jp.png',
+                    'https://flagcdn.com/w80/id.png',
+                    'https://flagcdn.com/w80/my.png'
+                ];
+                
+                flagUrls.forEach(url => {
+                    const img = new Image();
+                    img.src = url;
+                });
+            }
+            
+            // Preload images when page loads
+            window.addEventListener('load', preloadFlagImages);
         });
     </script>
 
