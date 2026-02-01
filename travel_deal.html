@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -122,168 +121,48 @@
             line-height: 1.6;
         }
 
-        /* Search Form Container */
-        .search-form-container {
-            background: rgba(255, 255, 255, 0.98);
-            border-radius: var(--radius);
-            padding: 40px;
-            width: 100%;
+        /* 12Go Search Widget Container */
+        .widget-wrapper {
             max-width: 900px;
-            margin: 0 auto;
-            box-shadow:
-                0 20px 60px rgba(0, 0, 0, 0.3),
-                0 8px 32px rgba(124, 92, 255, 0.1),
-                0 0 0 1px rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin: 40px auto 0;
             position: relative;
+        }
+
+        #widget-embed-container {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 20px;
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.3),
+                0 0 0 1px rgba(124, 92, 255, 0.1);
             overflow: hidden;
+            min-height: 120px;
         }
 
-        /* Fixed gradient border */
-        .search-form-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg,
-                    var(--accent-2) 0%,
-                    var(--accent) 50%,
-                    var(--accent-2) 100%);
-            z-index: 2;
+        /* Style overrides for 12Go widget - IMPORTANT FOR ONE-LINE LAYOUT */
+        #widget-embed-container iframe,
+        #widget-embed-container div[data-one2go] {
+            width: 100% !important;
+            border: none !important;
+            background: transparent !important;
         }
 
-        /* Direct Search Widget */
-        .direct-search-widget {
-            width: 100%;
+        /* Target the 12Go widget specifically to make it one-line */
+        #widget-embed-container iframe {
+            height: 80px !important;
+            min-height: 80px !important;
         }
 
-        .direct-search-widget h3 {
-            color: #000;
-            margin-bottom: 25px;
-            font-size: 1.5rem;
-            font-weight: 700;
-            text-align: center;
+        /* Hide specific elements in the widget */
+        #widget-embed-container iframe body .container .title,
+        #widget-embed-container iframe body .container h2,
+        #widget-embed-container iframe body .container .heading {
+            display: none !important;
         }
 
-        /* Form row layout */
-        .search-form-row {
-            display: flex;
-            gap: 12px;
-            align-items: flex-end;
-            width: 100%;
-        }
-
-        /* Form group styling */
-        .form-group {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .form-group label {
-            color: #333;
-            font-size: 0.85rem;
-            font-weight: 500;
-            margin-bottom: 6px;
-            text-align: left;
-        }
-
-        .search-form-row input {
-            width: 100%;
-            padding: 14px 16px;
-            border: 1.5px solid rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            font-size: 15px;
-            font-family: 'Inter', sans-serif;
-            background: white;
-            transition: all 0.3s ease;
-            color: #333;
-        }
-
-        .search-form-row input:focus {
-            outline: none;
-            border-color: var(--accent-2);
-            box-shadow: 0 0 0 3px rgba(124, 92, 255, 0.1);
-        }
-
-        .search-form-row input::placeholder {
-            color: #888;
-        }
-
-        /* Date input specific styling */
-        .form-group.date-group {
-            min-width: 180px;
-        }
-
-        /* Search button */
-        .search-btn {
-            background: var(--gradient);
-            color: #181a1f;
-            border: none;
-            padding: 14px 32px;
-            border-radius: 10px;
-            font-weight: 600;
-            cursor: pointer;
-            font-size: 15px;
-            transition: all 0.3s ease;
-            font-family: 'Inter', sans-serif;
-            height: 48px;
-            min-width: 140px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            white-space: nowrap;
-        }
-
-        .search-btn:hover {
-            background: linear-gradient(135deg, #ffd400 0%, #7c5cff 100%);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(124, 92, 255, 0.25);
-        }
-
-        .search-btn:active {
-            transform: translateY(0);
-        }
-
-        .search-btn i {
-            font-size: 0.9rem;
-        }
-
-        /* Powered by section */
-        #powered {
-            text-align: center;
-            margin-top: 25px;
-            padding-top: 20px;
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 14px;
-            position: relative;
-        }
-
-        #powered::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 25%;
-            right: 25%;
-            height: 1px;
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        #powered a {
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-
-        #powered a:hover {
-            color: var(--accent-2);
-        }
-
-        /* Explore Deals CTA Button */
+        /* CTA Button */
         .cta-hero {
             display: inline-block;
             background: var(--gradient);
@@ -396,7 +275,6 @@
             margin-bottom: 24px;
         }
 
-        /* Updated Flag Styles for Images */
         .country-flag {
             width: 50px;
             height: 50px;
@@ -432,7 +310,6 @@
             margin-bottom: 24px;
         }
 
-        /* Widget Container */
         .widget-container {
             margin-top: 24px;
             border-radius: 12px;
@@ -440,6 +317,14 @@
             background: rgba(0, 0, 0, 0.2);
             padding: 20px;
             border: 1px solid rgba(255, 255, 255, 0.05);
+            min-height: 150px;
+            position: relative;
+        }
+
+        /* Style for 12Go country widgets */
+        .widget-container onetwogo-country-widget {
+            display: block !important;
+            width: 100% !important;
         }
 
         /* Features Section */
@@ -504,6 +389,67 @@
             box-shadow: none;
         }
 
+        /* Powered by (main search) */
+        #powered {
+            text-align: center;
+            margin-top: 25px;
+            padding-top: 20px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+            position: relative;
+        }
+
+        #powered::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 25%;
+            right: 25%;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        #powered a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        #powered a:hover {
+            color: var(--accent-2);
+        }
+
+        /* Loading indicator */
+        .loading-indicator {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 10;
+        }
+
+        .loading-indicator.active {
+            display: block;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            border-top: 3px solid var(--accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
         /* Scrollbar */
         ::-webkit-scrollbar {
             width: 10px;
@@ -541,23 +487,13 @@
 
         .animate-fade-in {
             animation: fadeInUp 0.6s ease-out forwards;
+            opacity: 0;
         }
 
-        .delay-1 {
-            animation-delay: 0.1s;
-        }
-
-        .delay-2 {
-            animation-delay: 0.2s;
-        }
-
-        .delay-3 {
-            animation-delay: 0.3s;
-        }
-
-        .delay-4 {
-            animation-delay: 0.4s;
-        }
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
 
         /* Responsive Design */
         @media (max-width: 768px) {
@@ -566,26 +502,21 @@
                 margin-top: 70px;
             }
 
-            .search-form-container {
-                padding: 30px 20px;
+            .widget-wrapper {
+                margin-top: 30px;
+                max-width: 95%;
             }
 
-            .search-form-row {
-                flex-direction: column;
-                gap: 15px;
+            #widget-embed-container {
+                padding: 15px;
+                border-radius: 20px;
+                min-height: 100px;
             }
 
-            .form-group {
-                width: 100%;
-            }
-
-            .form-group.date-group {
-                min-width: 100%;
-            }
-
-            .search-btn {
-                width: 100%;
-                margin-top: 5px;
+            /* On mobile, widget might need more height */
+            #widget-embed-container iframe {
+                height: 100px !important;
+                min-height: 100px !important;
             }
 
             .country-widgets-grid {
@@ -604,14 +535,23 @@
             .country-widget-card {
                 padding: 24px;
             }
-            
+
             .country-flag {
                 width: 45px;
                 height: 45px;
             }
-            
+
             .country-widget-header h3 {
                 font-size: 1.35rem;
+            }
+
+            #powered::before {
+                left: 20%;
+                right: 20%;
+            }
+
+            .widget-container {
+                padding: 15px;
             }
         }
 
@@ -623,39 +563,41 @@
             .section-title {
                 font-size: 1.75rem;
             }
-            
-            .search-form-container {
-                padding: 25px 15px;
-            }
-            
-            .direct-search-widget h3 {
-                font-size: 1.3rem;
-            }
-            
+
             .country-flag {
                 width: 40px;
                 height: 40px;
             }
-            
+
             .country-widget-header {
                 gap: 12px;
             }
-            
+
             .cta-hero {
                 font-size: 1rem;
                 padding: 14px 32px;
             }
-            
+
             #powered::before {
                 left: 15%;
                 right: 15%;
+            }
+
+            #widget-embed-container {
+                padding: 10px;
+                border-radius: 18px;
+                min-height: 90px;
+            }
+
+            #widget-embed-container iframe {
+                height: 90px !important;
+                min-height: 90px !important;
             }
         }
     </style>
 </head>
 
 <body>
-
     <!-- Navbar will be loaded dynamically -->
     <header id="navbar-container"></header>
 
@@ -665,42 +607,25 @@
             <h1>Discover Amazing Destinations</h1>
             <p>Explore simple, secure bookings for buses, trains, and ferries worldwide with our integrated 12Go system</p>
 
-            <!-- Search Form Container -->
-            <div class="search-form-container animate-fade-in delay-1">
-                <div class="direct-search-widget">
-                    <h3>Search Travel Routes</h3>
-                    <form class="search-form-row" id="searchForm">
-                        <!-- From field -->
-                        <div class="form-group">
-                            <label for="from-input">From</label>
-                            <input type="text" id="from-input" placeholder="City or station" value="Bangkok">
-                        </div>
-                        
-                        <!-- To field -->
-                        <div class="form-group">
-                            <label for="to-input">To</label>
-                            <input type="text" id="to-input" placeholder="City or station" value="Phuket">
-                        </div>
-                        
-                        <!-- Date field -->
-                        <div class="form-group date-group">
-                            <label for="date-input">Date</label>
-                            <input type="date" id="date-input" value="2026-02-02">
-                        </div>
-                        
-                        <!-- Search button -->
-                        <button type="button" class="search-btn" id="searchBtn">
-                            <i class="fas fa-search"></i> Search
-                        </button>
-                    </form>
+            <!-- 12Go Main Search Widget -->
+            <div class="widget-wrapper animate-fade-in delay-1">
+                <div id="widget-embed-container">
+                    <!-- Loading indicator -->
+                    <div class="loading-indicator" id="widget-loading">
+                        <div class="spinner"></div>
+                        <p>Loading search widget...</p>
+                    </div>
+                </div>
+                
+                <div id="powered">
+                    Powered by <a href="https://12go.asia/?z=13484348" target="_blank">12Go system</a>
                 </div>
             </div>
 
-            <!-- Powered by section -->
-            <div id="powered" class="animate-fade-in delay-2">Powered by <a href="https://12go.asia/?z=13484348" target="_blank">12Go system</a></div>
-
             <!-- CTA: jump to country deals -->
-            <button id="exploreDeals" class="cta-hero animate-fade-in delay-3">Explore Country Deals</button>
+            <button id="exploreDeals" class="cta-hero animate-fade-in delay-3">
+                Explore Country Deals
+            </button>
         </div>
     </section>
 
@@ -718,8 +643,8 @@
                 <div class="country-widget-card animate-fade-in delay-1">
                     <div class="country-widget-header">
                         <div class="country-flag">
-                            <img src="https://flagcdn.com/w80/th.png" 
-                                 srcset="https://flagcdn.com/w160/th.png 2x" 
+                            <img src="https://flagcdn.com/w80/th.png"
+                                 srcset="https://flagcdn.com/w160/th.png 2x"
                                  alt="Thailand Flag">
                         </div>
                         <h3>Thailand</h3>
@@ -727,6 +652,9 @@
                     <p>From Bangkok's bustling streets to Phuket's serene beaches, explore Thailand's diverse landscapes
                         with comprehensive transportation options.</p>
                     <div class="widget-container">
+                        <div class="loading-indicator" id="th-loading">
+                            <div class="spinner"></div>
+                        </div>
                         <script src="https://agent.12go.asia/tools/widget/country_widget.js"></script>
                         <onetwogo-country-widget country="TH" width="100%" agent="13484348" lang="en" fxcode="USD"
                             wl="12go.asia">
@@ -738,8 +666,8 @@
                 <div class="country-widget-card animate-fade-in delay-2">
                     <div class="country-widget-header">
                         <div class="country-flag">
-                            <img src="https://flagcdn.com/w80/gb.png" 
-                                 srcset="https://flagcdn.com/w160/gb.png 2x" 
+                            <img src="https://flagcdn.com/w80/gb.png"
+                                 srcset="https://flagcdn.com/w160/gb.png 2x"
                                  alt="United Kingdom Flag">
                         </div>
                         <h3>United Kingdom</h3>
@@ -747,6 +675,9 @@
                     <p>Travel across England, Scotland, Wales, and Northern Ireland with extensive rail, bus, and ferry
                         connections throughout the UK.</p>
                     <div class="widget-container">
+                        <div class="loading-indicator" id="gb-loading">
+                            <div class="spinner"></div>
+                        </div>
                         <script src="https://agent.12go.asia/tools/widget/country_widget.js"></script>
                         <onetwogo-country-widget country="GB" width="100%" agent="13484348" lang="en" fxcode="USD"
                             wl="12go.asia">
@@ -758,8 +689,8 @@
                 <div class="country-widget-card animate-fade-in delay-3">
                     <div class="country-widget-header">
                         <div class="country-flag">
-                            <img src="https://flagcdn.com/w80/vn.png" 
-                                 srcset="https://flagcdn.com/w160/vn.png 2x" 
+                            <img src="https://flagcdn.com/w80/vn.png"
+                                 srcset="https://flagcdn.com/w160/vn.png 2x"
                                  alt="Vietnam Flag">
                         </div>
                         <h3>Vietnam</h3>
@@ -767,6 +698,9 @@
                     <p>Experience Vietnam's rich culture and stunning landscapes with reliable bus and train services
                         connecting major cities and scenic regions.</p>
                     <div class="widget-container">
+                        <div class="loading-indicator" id="vn-loading">
+                            <div class="spinner"></div>
+                        </div>
                         <script src="https://agent.12go.asia/tools/widget/country_widget.js"></script>
                         <onetwogo-country-widget country="VN" width="100%" agent="13484348" lang="en" fxcode="USD"
                             wl="12go.asia">
@@ -778,8 +712,8 @@
                 <div class="country-widget-card animate-fade-in delay-4">
                     <div class="country-widget-header">
                         <div class="country-flag">
-                            <img src="https://flagcdn.com/w80/jp.png" 
-                                 srcset="https://flagcdn.com/w160/jp.png 2x" 
+                            <img src="https://flagcdn.com/w80/jp.png"
+                                 srcset="https://flagcdn.com/w160/jp.png 2x"
                                  alt="Japan Flag">
                         </div>
                         <h3>Japan</h3>
@@ -787,6 +721,9 @@
                     <p>Experience Japan's efficient bullet trains and comprehensive public transportation system
                         connecting Tokyo, Kyoto, Osaka, and beyond.</p>
                     <div class="widget-container">
+                        <div class="loading-indicator" id="jp-loading">
+                            <div class="spinner"></div>
+                        </div>
                         <script src="https://agent.12go.asia/tools/widget/country_widget.js"></script>
                         <onetwogo-country-widget country="JP" width="100%" agent="13484348" lang="en" fxcode="USD"
                             wl="12go.asia">
@@ -798,8 +735,8 @@
                 <div class="country-widget-card animate-fade-in delay-2">
                     <div class="country-widget-header">
                         <div class="country-flag">
-                            <img src="https://flagcdn.com/w80/id.png" 
-                                 srcset="https://flagcdn.com/w160/id.png 2x" 
+                            <img src="https://flagcdn.com/w80/id.png"
+                                 srcset="https://flagcdn.com/w160/id.png 2x"
                                  alt="Indonesia Flag">
                         </div>
                         <h3>Indonesia</h3>
@@ -807,6 +744,9 @@
                     <p>Island hopping made easy with ferry connections between Bali, Java, Sumatra, and comprehensive
                         bus networks across the archipelago.</p>
                     <div class="widget-container">
+                        <div class="loading-indicator" id="id-loading">
+                            <div class="spinner"></div>
+                        </div>
                         <script src="https://agent.12go.asia/tools/widget/country_widget.js"></script>
                         <onetwogo-country-widget country="ID" width="100%" agent="13484348" lang="en" fxcode="USD"
                             wl="12go.asia">
@@ -818,8 +758,8 @@
                 <div class="country-widget-card animate-fade-in delay-3">
                     <div class="country-widget-header">
                         <div class="country-flag">
-                            <img src="https://flagcdn.com/w80/my.png" 
-                                 srcset="https://flagcdn.com/w160/my.png 2x" 
+                            <img src="https://flagcdn.com/w80/my.png"
+                                 srcset="https://flagcdn.com/w160/my.png 2x"
                                  alt="Malaysia Flag">
                         </div>
                         <h3>Malaysia</h3>
@@ -827,6 +767,9 @@
                     <p>Modern transportation connecting Kuala Lumpur, Penang, Langkawi, and other destinations with
                         reliable bus and train services.</p>
                     <div class="widget-container">
+                        <div class="loading-indicator" id="my-loading">
+                            <div class="spinner"></div>
+                        </div>
                         <script src="https://agent.12go.asia/tools/widget/country_widget.js"></script>
                         <onetwogo-country-widget country="MY" width="100%" agent="13484348" lang="en" fxcode="USD"
                             wl="12go.asia">
@@ -844,8 +787,7 @@
                         <i class="fas fa-shield-alt"></i>
                     </div>
                     <h4>Secure Bookings</h4>
-                    <p>All transactions are protected with bank-level security and verified by 12Go's trusted platform.
-                    </p>
+                    <p>All transactions are protected with bank-level security and verified by 12Go's trusted platform.</p>
                 </div>
 
                 <div class="feature-card animate-fade-in delay-2">
@@ -876,19 +818,127 @@
     </main>
 
     <!-- Footer Container -->
-    <div id="footer-container">
-    </div>
+    <div id="footer-container"></div>
 
     <!-- Scripts -->
     <script>
         document.addEventListener("DOMContentLoaded", function () {
+            // Show loading indicator
+            const widgetLoading = document.getElementById('widget-loading');
+            if (widgetLoading) {
+                widgetLoading.classList.add('active');
+            }
+
+            // Load 12Go widget with parameters to hide the title
+            function load12GoWidget() {
+                const widgetContainer = document.getElementById("widget-embed-container");
+                if (!widgetContainer) return;
+
+                // Remove any existing script to avoid duplicates
+                const existingScript = document.querySelector('script[data-one2go="13484348"]');
+                if (existingScript) {
+                    existingScript.remove();
+                }
+
+                // Create new script element with parameters to hide title
+                const script = document.createElement("script");
+                script.src = "https://cdn0.trainbusferry.com/tools/form/en/?id=13484348&domain=12go.asia&hide_title=1&compact=1";
+                script.setAttribute("data-one2go", "13484348");
+                script.setAttribute("data-color", "purple");
+                script.setAttribute("data-language", "en");
+                script.setAttribute("data-adaptive", "1");
+                script.setAttribute("data-caption", "Vayoaura");
+                script.setAttribute("data-border", "1");
+                script.setAttribute("data-origin-empty", "true");
+                script.setAttribute("data-destination-empty", "true");
+                script.setAttribute("data-domain", "12go.asia");
+                script.setAttribute("data-curr", "USD");
+                script.setAttribute("data-compact", "1");
+                script.setAttribute("data-hide-title", "1");
+                
+                // Add onload event to hide loading indicator and adjust widget
+                script.onload = function() {
+                    if (widgetLoading) {
+                        setTimeout(() => {
+                            widgetLoading.classList.remove('active');
+                        }, 500);
+                    }
+                    
+                    // Fix for iframe styling to make it compact
+                    setTimeout(() => {
+                        const iframe = widgetContainer.querySelector('iframe');
+                        if (iframe) {
+                            // Force compact layout
+                            iframe.style.width = '100%';
+                            iframe.style.height = '80px';
+                            iframe.style.minHeight = '80px';
+                            iframe.style.border = 'none';
+                            iframe.style.background = 'transparent';
+                            
+                            // Try to inject CSS to hide the title inside the iframe
+                            try {
+                                iframe.onload = function() {
+                                    const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                                    if (iframeDoc) {
+                                        // Create style element to hide titles
+                                        const style = iframeDoc.createElement('style');
+                                        style.textContent = `
+                                            .title, h2, .heading, .search-form-title {
+                                                display: none !important;
+                                            }
+                                            .search-form-container {
+                                                padding-top: 0 !important;
+                                                margin-top: 0 !important;
+                                            }
+                                            .search-form {
+                                                padding: 5px 0 !important;
+                                            }
+                                        `;
+                                        iframeDoc.head.appendChild(style);
+                                    }
+                                };
+                            } catch (e) {
+                                console.log('Cannot modify iframe due to cross-origin restrictions');
+                            }
+                        }
+                    }, 1000);
+                };
+                
+                // Add onerror event
+                script.onerror = function() {
+                    if (widgetLoading) {
+                        widgetLoading.innerHTML = '<div class="spinner" style="border-top-color: #ff4444;"></div><p style="color: #ff4444;">Failed to load widget. Please refresh the page.</p>';
+                    }
+                };
+
+                widgetContainer.appendChild(script);
+            }
+
+            // Initialize main 12Go widget
+            load12GoWidget();
+
+            // Handle country widget loading
+            function handleCountryWidgets() {
+                const countryWidgets = document.querySelectorAll('onetwogo-country-widget');
+                countryWidgets.forEach((widget, index) => {
+                    widget.onload = function() {
+                        const loadingId = widget.parentElement.querySelector('.loading-indicator')?.id;
+                        if (loadingId) {
+                            const loadingEl = document.getElementById(loadingId);
+                            if (loadingEl) {
+                                loadingEl.style.display = 'none';
+                            }
+                        }
+                    };
+                });
+            }
+
             // Load navbar dynamically
             fetch('navbar.html')
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById('navbar-container').innerHTML = data;
 
-                    // Re-initialize simple navbar behavior if needed
                     const menuIcon = document.getElementById('menu-icon');
                     const navLinks = document.getElementById('nav-links');
                     if (menuIcon && navLinks) {
@@ -906,60 +956,8 @@
                     }
                 })
                 .catch(() => {
-                    // if fetch fails, keep existing header empty
+                    console.log('Navbar not found, continuing without it.');
                 });
-
-            // Set default date to tomorrow
-            function setDefaultDate() {
-                const today = new Date();
-                const tomorrow = new Date(today);
-                tomorrow.setDate(today.getDate() + 1);
-                
-                // Format date as YYYY-MM-DD
-                const yyyy = tomorrow.getFullYear();
-                const mm = String(tomorrow.getMonth() + 1).padStart(2, '0');
-                const dd = String(tomorrow.getDate()).padStart(2, '0');
-                
-                document.getElementById('date-input').value = `${yyyy}-${mm}-${dd}`;
-            }
-            
-            // Set default date
-            setDefaultDate();
-
-            // Search button functionality
-            const searchBtn = document.getElementById('searchBtn');
-            if (searchBtn) {
-                searchBtn.addEventListener('click', function() {
-                    const from = document.getElementById('from-input').value.trim();
-                    const to = document.getElementById('to-input').value.trim();
-                    const date = document.getElementById('date-input').value;
-                    
-                    if (!from || !to) {
-                        alert('Please enter both From and To locations');
-                        return;
-                    }
-                    
-                    // Build 12Go URL
-                    let url = 'https://12go.asia/?z=13484348';
-                    url += '&from=' + encodeURIComponent(from);
-                    url += '&to=' + encodeURIComponent(to);
-                    if (date) {
-                        url += '&date=' + encodeURIComponent(date);
-                    }
-                    
-                    // Open in new tab
-                    window.open(url, '_blank');
-                });
-            }
-
-            // Allow form submission with Enter key
-            const searchForm = document.getElementById('searchForm');
-            if (searchForm) {
-                searchForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    searchBtn.click();
-                });
-            }
 
             // CTA: scroll to the country widgets section
             const exploreBtn = document.getElementById('exploreDeals');
@@ -977,9 +975,11 @@
                     const existing = document.getElementById('footer-container');
                     if (existing) existing.innerHTML = data;
                 })
-                .catch(() => { });
-                
-            // Add animation classes to elements
+                .catch(() => { 
+                    console.log('Footer not found, continuing without it.');
+                });
+
+            // Intersection observer animations
             const observerOptions = {
                 threshold: 0.1,
                 rootMargin: '0px 0px -50px 0px'
@@ -994,33 +994,23 @@
                 });
             }, observerOptions);
 
-            // Observe all animated elements
             document.querySelectorAll('.animate-fade-in').forEach(el => {
                 observer.observe(el);
             });
 
-            // Smooth scroll for navigation links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                });
-            });
-
-            // Initialize animations
+            // Handle country widget loading indicators
             setTimeout(() => {
-                document.querySelectorAll('.animate-fade-in').forEach((el, index) => {
-                    el.style.animationDelay = `${index * 0.1}s`;
-                });
-            }, 100);
-            
-            // Preload flag images for better performance
+                handleCountryWidgets();
+                
+                // Hide all loading indicators after 3 seconds (fallback)
+                setTimeout(() => {
+                    document.querySelectorAll('.loading-indicator').forEach(loader => {
+                        loader.style.display = 'none';
+                    });
+                }, 3000);
+            }, 1000);
+
+            // Preload flag images
             function preloadFlagImages() {
                 const flagUrls = [
                     'https://flagcdn.com/w80/th.png',
@@ -1030,18 +1020,24 @@
                     'https://flagcdn.com/w80/id.png',
                     'https://flagcdn.com/w80/my.png'
                 ];
-                
+
                 flagUrls.forEach(url => {
                     const img = new Image();
                     img.src = url;
                 });
             }
-            
-            // Preload images when page loads
+
             window.addEventListener('load', preloadFlagImages);
+            
+            // Fix for widget iframe issues on resize
+            window.addEventListener('resize', function() {
+                const iframe = document.querySelector('#widget-embed-container iframe');
+                if (iframe) {
+                    iframe.style.width = '100%';
+                    iframe.style.height = '80px';
+                }
+            });
         });
     </script>
-
 </body>
-
 </html>
