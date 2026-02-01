@@ -141,25 +141,12 @@
             min-height: 120px;
         }
 
-        /* Style overrides for 12Go widget - IMPORTANT FOR ONE-LINE LAYOUT */
+        /* Style overrides for 12Go widget */
         #widget-embed-container iframe,
         #widget-embed-container div[data-one2go] {
             width: 100% !important;
             border: none !important;
             background: transparent !important;
-        }
-
-        /* Target the 12Go widget specifically to make it one-line */
-        #widget-embed-container iframe {
-            height: 80px !important;
-            min-height: 80px !important;
-        }
-
-        /* Hide specific elements in the widget */
-        #widget-embed-container iframe body .container .title,
-        #widget-embed-container iframe body .container h2,
-        #widget-embed-container iframe body .container .heading {
-            display: none !important;
         }
 
         /* CTA Button */
@@ -495,7 +482,7 @@
         .delay-3 { animation-delay: 0.3s; }
         .delay-4 { animation-delay: 0.4s; }
 
-        /* Responsive Design */
+        /* Mobile-specific styles for widget */
         @media (max-width: 768px) {
             .hero {
                 min-height: 500px;
@@ -510,13 +497,20 @@
             #widget-embed-container {
                 padding: 15px;
                 border-radius: 20px;
-                min-height: 100px;
+                min-height: 280px; /* Increased height for column layout */
             }
 
-            /* On mobile, widget might need more height */
+            /* Force column layout for the widget on mobile */
             #widget-embed-container iframe {
-                height: 100px !important;
-                min-height: 100px !important;
+                height: 280px !important;
+                min-height: 280px !important;
+            }
+
+            /* Mobile-specific widget adjustments */
+            .mobile-widget-container {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
             }
 
             .country-widgets-grid {
@@ -584,14 +578,27 @@
             }
 
             #widget-embed-container {
-                padding: 10px;
+                padding: 12px;
                 border-radius: 18px;
-                min-height: 90px;
+                min-height: 260px;
             }
 
             #widget-embed-container iframe {
-                height: 90px !important;
-                min-height: 90px !important;
+                height: 260px !important;
+                min-height: 260px !important;
+            }
+        }
+
+        /* Very small screens */
+        @media (max-width: 360px) {
+            #widget-embed-container {
+                min-height: 300px;
+                padding: 10px;
+            }
+
+            #widget-embed-container iframe {
+                height: 300px !important;
+                min-height: 300px !important;
             }
         }
     </style>
@@ -842,7 +849,7 @@
 
                 // Create new script element with parameters to hide title
                 const script = document.createElement("script");
-                script.src = "https://cdn0.trainbusferry.com/tools/form/en/?id=13484348&domain=12go.asia&hide_title=1&compact=1";
+                script.src = "https://cdn0.trainbusferry.com/tools/form/en/?id=13484348&domain=12go.asia&hide_title=1";
                 script.setAttribute("data-one2go", "13484348");
                 script.setAttribute("data-color", "purple");
                 script.setAttribute("data-language", "en");
@@ -853,7 +860,6 @@
                 script.setAttribute("data-destination-empty", "true");
                 script.setAttribute("data-domain", "12go.asia");
                 script.setAttribute("data-curr", "USD");
-                script.setAttribute("data-compact", "1");
                 script.setAttribute("data-hide-title", "1");
                 
                 // Add onload event to hide loading indicator and adjust widget
@@ -864,41 +870,23 @@
                         }, 500);
                     }
                     
-                    // Fix for iframe styling to make it compact
+                    // Adjust widget height based on screen size
                     setTimeout(() => {
                         const iframe = widgetContainer.querySelector('iframe');
                         if (iframe) {
-                            // Force compact layout
                             iframe.style.width = '100%';
-                            iframe.style.height = '80px';
-                            iframe.style.minHeight = '80px';
                             iframe.style.border = 'none';
                             iframe.style.background = 'transparent';
                             
-                            // Try to inject CSS to hide the title inside the iframe
-                            try {
-                                iframe.onload = function() {
-                                    const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-                                    if (iframeDoc) {
-                                        // Create style element to hide titles
-                                        const style = iframeDoc.createElement('style');
-                                        style.textContent = `
-                                            .title, h2, .heading, .search-form-title {
-                                                display: none !important;
-                                            }
-                                            .search-form-container {
-                                                padding-top: 0 !important;
-                                                margin-top: 0 !important;
-                                            }
-                                            .search-form {
-                                                padding: 5px 0 !important;
-                                            }
-                                        `;
-                                        iframeDoc.head.appendChild(style);
-                                    }
-                                };
-                            } catch (e) {
-                                console.log('Cannot modify iframe due to cross-origin restrictions');
+                            // Set appropriate height based on screen width
+                            if (window.innerWidth <= 768) {
+                                // Mobile: taller for column layout
+                                iframe.style.height = '280px';
+                                iframe.style.minHeight = '280px';
+                            } else {
+                                // Desktop: shorter for single line
+                                iframe.style.height = '80px';
+                                iframe.style.minHeight = '80px';
                             }
                         }
                     }, 1000);
@@ -1029,14 +1017,43 @@
 
             window.addEventListener('load', preloadFlagImages);
             
-            // Fix for widget iframe issues on resize
-            window.addEventListener('resize', function() {
+            // Handle widget resize on window resize
+            function adjustWidgetHeight() {
                 const iframe = document.querySelector('#widget-embed-container iframe');
-                if (iframe) {
-                    iframe.style.width = '100%';
-                    iframe.style.height = '80px';
+                const container = document.getElementById('widget-embed-container');
+                
+                if (iframe && container) {
+                    if (window.innerWidth <= 768) {
+                        // Mobile: taller for column layout
+                        container.style.minHeight = '280px';
+                        iframe.style.height = '280px';
+                        iframe.style.minHeight = '280px';
+                        
+                        if (window.innerWidth <= 480) {
+                            container.style.minHeight = '260px';
+                            iframe.style.height = '260px';
+                            iframe.style.minHeight = '260px';
+                        }
+                        
+                        if (window.innerWidth <= 360) {
+                            container.style.minHeight = '300px';
+                            iframe.style.height = '300px';
+                            iframe.style.minHeight = '300px';
+                        }
+                    } else {
+                        // Desktop: shorter for single line
+                        container.style.minHeight = '120px';
+                        iframe.style.height = '80px';
+                        iframe.style.minHeight = '80px';
+                    }
                 }
-            });
+            }
+            
+            // Initial adjustment
+            setTimeout(adjustWidgetHeight, 1500);
+            
+            // Adjust on resize
+            window.addEventListener('resize', adjustWidgetHeight);
         });
     </script>
 </body>
