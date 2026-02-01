@@ -122,22 +122,166 @@
             line-height: 1.6;
         }
 
-        /* Search Container */
-        .search-container {
-            background: rgba(255, 255, 255, 0.95);
+        /* Search Form Container */
+        .search-form-container {
+            background: rgba(255, 255, 255, 0.98);
             border-radius: var(--radius);
-            padding: 32px;
+            padding: 40px;
             width: 100%;
             max-width: 900px;
             margin: 0 auto;
             box-shadow:
                 0 20px 60px rgba(0, 0, 0, 0.3),
                 0 8px 32px rgba(124, 92, 255, 0.1),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
+                0 0 0 1px rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
         }
 
+        /* Fixed gradient border */
+        .search-form-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg,
+                    var(--accent-2) 0%,
+                    var(--accent) 50%,
+                    var(--accent-2) 100%);
+            z-index: 2;
+        }
+
+        /* Direct Search Widget */
+        .direct-search-widget {
+            width: 100%;
+        }
+
+        .direct-search-widget h3 {
+            color: #000;
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        /* Form row layout */
+        .search-form-row {
+            display: flex;
+            gap: 12px;
+            align-items: flex-end;
+            width: 100%;
+        }
+
+        /* Form group styling */
+        .form-group {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            color: #333;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 6px;
+            text-align: left;
+        }
+
+        .search-form-row input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1.5px solid rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            font-size: 15px;
+            font-family: 'Inter', sans-serif;
+            background: white;
+            transition: all 0.3s ease;
+            color: #333;
+        }
+
+        .search-form-row input:focus {
+            outline: none;
+            border-color: var(--accent-2);
+            box-shadow: 0 0 0 3px rgba(124, 92, 255, 0.1);
+        }
+
+        .search-form-row input::placeholder {
+            color: #888;
+        }
+
+        /* Date input specific styling */
+        .form-group.date-group {
+            min-width: 180px;
+        }
+
+        /* Search button */
+        .search-btn {
+            background: var(--gradient);
+            color: #181a1f;
+            border: none;
+            padding: 14px 32px;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+            height: 48px;
+            min-width: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+
+        .search-btn:hover {
+            background: linear-gradient(135deg, #ffd400 0%, #7c5cff 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(124, 92, 255, 0.25);
+        }
+
+        .search-btn:active {
+            transform: translateY(0);
+        }
+
+        .search-btn i {
+            font-size: 0.9rem;
+        }
+
+        /* Powered by section */
+        #powered {
+            text-align: center;
+            margin-top: 25px;
+            padding-top: 20px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+            position: relative;
+        }
+
+        #powered::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 25%;
+            right: 25%;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        #powered a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        #powered a:hover {
+            color: var(--accent-2);
+        }
 
         /* Explore Deals CTA Button */
         .cta-hero {
@@ -154,7 +298,7 @@
             cursor: pointer;
             transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
             letter-spacing: 0.03em;
-            margin: 0 auto;
+            margin: 40px auto 0;
             outline: none;
         }
         .cta-hero:hover, .cta-hero:focus {
@@ -166,51 +310,6 @@
         .cta-hero:active {
             transform: scale(0.98);
             box-shadow: 0 4px 12px rgba(124, 92, 255, 0.10);
-        }
-        /* Center CTA in hero */
-        .hero-content > div {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 18px;
-        }
-        @media (max-width: 768px) {
-            .cta-hero {
-                font-size: 1rem;
-                padding: 14px 32px;
-            }
-        }
-        @media (max-width: 480px) {
-            .cta-hero {
-                font-size: 0.95rem;
-                padding: 12px 18px;
-            }
-        }
-
-        /* Enhanced 12Go Widget Styling */
-        .one2go-form-wrapper {
-            width: 100%;
-            margin-bottom: 16px;
-        }
-
-        .powered-by {
-            text-align: center;
-            font-size: 14px;
-            color: #666;
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(0, 0, 0, 0.1);
-        }
-
-        .powered-by a {
-            color: var(--accent-2);
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .powered-by a:hover {
-            color: var(--accent);
         }
 
         /* Main Content */
@@ -467,8 +566,26 @@
                 margin-top: 70px;
             }
 
-            .search-container {
-                padding: 24px;
+            .search-form-container {
+                padding: 30px 20px;
+            }
+
+            .search-form-row {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .form-group {
+                width: 100%;
+            }
+
+            .form-group.date-group {
+                min-width: 100%;
+            }
+
+            .search-btn {
+                width: 100%;
+                margin-top: 5px;
             }
 
             .country-widgets-grid {
@@ -506,9 +623,13 @@
             .section-title {
                 font-size: 1.75rem;
             }
-
-            .search-container {
-                padding: 20px;
+            
+            .search-form-container {
+                padding: 25px 15px;
+            }
+            
+            .direct-search-widget h3 {
+                font-size: 1.3rem;
             }
             
             .country-flag {
@@ -518,6 +639,16 @@
             
             .country-widget-header {
                 gap: 12px;
+            }
+            
+            .cta-hero {
+                font-size: 1rem;
+                padding: 14px 32px;
+            }
+            
+            #powered::before {
+                left: 15%;
+                right: 15%;
             }
         }
     </style>
@@ -532,13 +663,44 @@
     <section class="hero">
         <div class="hero-content animate-fade-in">
             <h1>Discover Amazing Destinations</h1>
-            <p>Explore simple, secure bookings for buses, trains, and ferries worldwide with our integrated 12Go system
-            </p>
+            <p>Explore simple, secure bookings for buses, trains, and ferries worldwide with our integrated 12Go system</p>
+
+            <!-- Search Form Container -->
+            <div class="search-form-container animate-fade-in delay-1">
+                <div class="direct-search-widget">
+                    <h3>Search Travel Routes</h3>
+                    <form class="search-form-row" id="searchForm">
+                        <!-- From field -->
+                        <div class="form-group">
+                            <label for="from-input">From</label>
+                            <input type="text" id="from-input" placeholder="City or station" value="Bangkok">
+                        </div>
+                        
+                        <!-- To field -->
+                        <div class="form-group">
+                            <label for="to-input">To</label>
+                            <input type="text" id="to-input" placeholder="City or station" value="Phuket">
+                        </div>
+                        
+                        <!-- Date field -->
+                        <div class="form-group date-group">
+                            <label for="date-input">Date</label>
+                            <input type="date" id="date-input" value="2026-02-02">
+                        </div>
+                        
+                        <!-- Search button -->
+                        <button type="button" class="search-btn" id="searchBtn">
+                            <i class="fas fa-search"></i> Search
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Powered by section -->
+            <div id="powered" class="animate-fade-in delay-2">Powered by <a href="https://12go.asia/?z=13484348" target="_blank">12Go system</a></div>
 
             <!-- CTA: jump to country deals -->
-            <div style="margin-top:18px;">
-                <button id="exploreDeals" class="cta-hero" style="padding:16px 36px; font-size:16px;">Explore Deals</button>
-            </div>
+            <button id="exploreDeals" class="cta-hero animate-fade-in delay-3">Explore Country Deals</button>
         </div>
     </section>
 
@@ -548,8 +710,7 @@
         <section class="country-widgets-section">
             <div class="section-header animate-fade-in">
                 <h2 class="section-title">Search by Country</h2>
-                <p class="section-subtitle">Browse all available routes and destinations across entire countries with
-                    real-time availability and pricing</p>
+                <p class="section-subtitle">Browse all available routes and destinations across entire countries with real-time availability and pricing</p>
             </div>
 
             <div class="country-widgets-grid">
@@ -721,7 +882,7 @@
     <!-- Scripts -->
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            // Load navbar dynamically (same logic as index.html)
+            // Load navbar dynamically
             fetch('navbar.html')
                 .then(response => response.text())
                 .then(data => {
@@ -748,25 +909,55 @@
                     // if fetch fails, keep existing header empty
                 });
 
-            // Search functionality for visible search panel (kept for backward compatibility)
+            // Set default date to tomorrow
+            function setDefaultDate() {
+                const today = new Date();
+                const tomorrow = new Date(today);
+                tomorrow.setDate(today.getDate() + 1);
+                
+                // Format date as YYYY-MM-DD
+                const yyyy = tomorrow.getFullYear();
+                const mm = String(tomorrow.getMonth() + 1).padStart(2, '0');
+                const dd = String(tomorrow.getDate()).padStart(2, '0');
+                
+                document.getElementById('date-input').value = `${yyyy}-${mm}-${dd}`;
+            }
+            
+            // Set default date
+            setDefaultDate();
+
+            // Search button functionality
             const searchBtn = document.getElementById('searchBtn');
             if (searchBtn) {
-                searchBtn.addEventListener('click', (e) => {
-                    const from = document.getElementById('searchInputFrom') ? document.getElementById('searchInputFrom').value.trim() : '';
-                    const to = document.getElementById('searchInputTo') ? document.getElementById('searchInputTo').value.trim() : '';
-                    const date = document.getElementById('searchInputDate') ? document.getElementById('searchInputDate').value : '';
-
+                searchBtn.addEventListener('click', function() {
+                    const from = document.getElementById('from-input').value.trim();
+                    const to = document.getElementById('to-input').value.trim();
+                    const date = document.getElementById('date-input').value;
+                    
                     if (!from || !to) {
-                        alert('Please enter both From and To cities');
+                        alert('Please enter both From and To locations');
                         return;
                     }
-
-                    // Open 12Go with query params
+                    
+                    // Build 12Go URL
                     let url = 'https://12go.asia/?z=13484348';
-                    if (from) url += '&from=' + encodeURIComponent(from);
-                    if (to) url += '&to=' + encodeURIComponent(to);
-                    if (date) url += '&date=' + encodeURIComponent(date);
+                    url += '&from=' + encodeURIComponent(from);
+                    url += '&to=' + encodeURIComponent(to);
+                    if (date) {
+                        url += '&date=' + encodeURIComponent(date);
+                    }
+                    
+                    // Open in new tab
                     window.open(url, '_blank');
+                });
+            }
+
+            // Allow form submission with Enter key
+            const searchForm = document.getElementById('searchForm');
+            if (searchForm) {
+                searchForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    searchBtn.click();
                 });
             }
 
@@ -787,6 +978,7 @@
                     if (existing) existing.innerHTML = data;
                 })
                 .catch(() => { });
+                
             // Add animation classes to elements
             const observerOptions = {
                 threshold: 0.1,
@@ -820,9 +1012,6 @@
                     }
                 });
             });
-
-            // Remove navbar scroll effect: navbar always stays visible and transparent
-            // No scroll event needed; navbar remains fixed and transparent
 
             // Initialize animations
             setTimeout(() => {
