@@ -129,16 +129,16 @@
         }
 
         #widget-embed-container {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            /* background: rgba(255, 255, 255, 0.03); */
+            /* backdrop-filter: blur(20px); */
+            /* border: 1px solid rgba(255, 255, 255, 0.1); */
             border-radius: 24px;
             padding: 20px;
-            box-shadow: 
+            /* box-shadow: 
                 0 20px 40px rgba(0, 0, 0, 0.3),
-                0 0 0 1px rgba(124, 92, 255, 0.1);
+                0 0 0 1px rgba(124, 92, 255, 0.1); */
             overflow: hidden;
-            min-height: 120px;
+            min-height: 300px;
         }
 
         /* Style overrides for 12Go widget */
@@ -851,16 +851,17 @@
                 const script = document.createElement("script");
                 script.src = "https://cdn0.trainbusferry.com/tools/form/en/?id=13484348&domain=12go.asia&hide_title=1";
                 script.setAttribute("data-one2go", "13484348");
-                script.setAttribute("data-color", "purple");
+                script.setAttribute("data-color", "black");
                 script.setAttribute("data-language", "en");
                 script.setAttribute("data-adaptive", "1");
-                script.setAttribute("data-caption", "Vayoaura");
+                script.setAttribute("data-caption", "VayoAura - Explore Unseen Wonders");
                 script.setAttribute("data-border", "1");
                 script.setAttribute("data-origin-empty", "true");
                 script.setAttribute("data-destination-empty", "true");
                 script.setAttribute("data-domain", "12go.asia");
                 script.setAttribute("data-curr", "USD");
                 script.setAttribute("data-hide-title", "1");
+                
                 
                 // Add onload event to hide loading indicator and adjust widget
                 script.onload = function() {
