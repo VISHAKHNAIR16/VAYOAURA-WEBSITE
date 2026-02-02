@@ -65,7 +65,7 @@
 
         /* Hero Section */
         .hero {
-            min-height: 700px;
+            height: 120vh; /* Changed from min-height: 700px to height: 100vh */
             background: linear-gradient(135deg,
                     rgba(11, 13, 16, 0.9) 0%,
                     rgba(11, 13, 16, 0.7) 100%),
@@ -630,9 +630,9 @@
             </div>
 
             <!-- CTA: jump to country deals -->
-            <button id="exploreDeals" class="cta-hero animate-fade-in delay-3">
+            <!-- <button id="exploreDeals" class="cta-hero animate-fade-in delay-3">
                 Explore Country Deals
-            </button>
+            </button> -->
         </div>
     </section>
 
@@ -856,11 +856,14 @@
                 script.setAttribute("data-adaptive", "1");
                 script.setAttribute("data-caption", "VayoAura - Explore Unseen Wonders");
                 script.setAttribute("data-border", "1");
+                script.setAttribute("data-radius", "25");
                 script.setAttribute("data-origin-empty", "true");
                 script.setAttribute("data-destination-empty", "true");
                 script.setAttribute("data-domain", "12go.asia");
                 script.setAttribute("data-curr", "USD");
                 script.setAttribute("data-hide-title", "1");
+                script.setAttribute("data-destination", "Pattaya");
+                script.setAttribute("data-origin", "Bangkok");
                 
                 
                 // Add onload event to hide loading indicator and adjust widget
