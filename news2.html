@@ -828,6 +828,7 @@
 <script>
     // Gallery data - define all your images and videos here
     // Gallery data - define all your images and videos here in YOUR original order
+// Gallery data - define all your images and videos here in YOUR original order
 const galleryItems = [
     // First batch from your HTML (Files 100-120) - Batch 1
     { type: 'image', src: 'media/100.jpeg', thumb: 'media/100.jpeg', batch: 1 },
@@ -848,12 +849,12 @@ const galleryItems = [
     { type: 'image', src: 'media/115.jpeg', thumb: 'media/115.jpeg', batch: 1 },
     { type: 'image', src: 'media/116.jpeg', thumb: 'media/116.jpeg', batch: 1 },
     { type: 'image', src: 'media/117.jpeg', thumb: 'media/117.jpeg', batch: 1 },
-    { type: 'video', src: 'media/118.mp4', thumb: 'media/118.mp4', batch: 1 },
-    { type: 'video', src: 'media/119.mp4', thumb: 'media/119.mp4', batch: 1 },
-    { type: 'video', src: 'media/120.mp4', thumb: 'media/120.mp4', batch: 1 },
+    { type: 'video', src: 'media/118.mp4', thumb: 'media/archive_image/1.jpg', batch: 1 },
+    { type: 'video', src: 'media/119.mp4', thumb: 'media/archive_image/2.jpg', batch: 1 },
+    { type: 'video', src: 'media/120.mp4', thumb: 'media/archive_image/3.jpg', batch: 1 },
 
     // Batch 2 from your HTML (Files 120-129) - Note: 120.mp4 appears again in your HTML
-    { type: 'video', src: 'media/121.mp4', thumb: 'media/121.jpeg', batch: 2 },
+    { type: 'video', src: 'media/121.mp4', thumb: 'media/archive_image/4.jpg', batch: 2 },
     { type: 'image', src: 'media/122.jpeg', thumb: 'media/122.jpeg', batch: 2 },
     { type: 'image', src: 'media/123.jpeg', thumb: 'media/123.jpeg', batch: 2 },
     { type: 'image', src: 'media/124.jpeg', thumb: 'media/124.jpeg', batch: 2 },
@@ -1055,8 +1056,8 @@ const galleryItems = [
         constructor(items, itemsPerPage = 20) {
             this.items = items;
             this.itemsPerPage = itemsPerPage;
-            this.currentBatch = 1;
-            this.totalBatches = Math.ceil(items.length / itemsPerPage);
+            this.currentIndex = 0; // Track by index instead of batch
+            this.totalItems = items.length;
             this.loading = false;
             this.init();
         }
@@ -1069,14 +1070,17 @@ const galleryItems = [
         
         renderInitialBatch() {
             const gallery = document.getElementById('archive-gallery');
-            const firstBatchItems = this.items.filter(item => item.batch === 1);
             
             // Clear any existing content
             gallery.innerHTML = '';
             
+            // Get first batch of items (first 20 items regardless of batch number)
+            const initialItems = this.items.slice(0, this.itemsPerPage);
+            this.currentIndex = initialItems.length;
+            
             // Render first batch
-            firstBatchItems.forEach(item => {
-                gallery.appendChild(this.createGalleryItem(item));
+            initialItems.forEach(item => {
+                gallery.appendChild(this.createGalleryItem(item, false));
             });
             
             // Initialize lazy loading
@@ -1085,18 +1089,19 @@ const galleryItems = [
             // Update counter
             this.updateCounter();
             
-            // Check if there are more batches
-            if (this.currentBatch >= this.totalBatches) {
+            // Check if there are more items
+            if (this.currentIndex >= this.totalItems) {
                 document.getElementById('no-more-items').classList.add('active');
+                document.getElementById('load-more-archive').style.display = 'none';
             }
         }
         
-        createGalleryItem(item) {
+        createGalleryItem(item, hidden = false) {
             const link = document.createElement('a');
             link.href = item.src;
             link.className = `gallery-item ${item.type === 'video' ? 'popup-video' : 'popup-link'}`;
             
-            if (item.batch > 1) {
+            if (hidden) {
                 link.classList.add('hidden');
             }
             
@@ -1141,7 +1146,7 @@ const galleryItems = [
         }
         
         loadMore() {
-            if (this.loading || this.currentBatch >= this.totalBatches) return;
+            if (this.loading || this.currentIndex >= this.totalItems) return;
             
             this.loading = true;
             const loadMoreBtn = document.getElementById('load-more-archive');
@@ -1153,19 +1158,21 @@ const galleryItems = [
             loadMoreBtn.disabled = true;
             progressContainer.classList.add('active');
             
+            // Calculate next batch of items
+            const nextIndex = Math.min(this.currentIndex + this.itemsPerPage, this.totalItems);
+            const nextItems = this.items.slice(this.currentIndex, nextIndex);
+            
             // Update progress
-            const progress = ((this.currentBatch) / this.totalBatches) * 100;
+            const progress = (nextIndex / this.totalItems) * 100;
             progressBar.style.width = `${progress}%`;
             
             // Simulate loading delay for smooth UX
             setTimeout(() => {
-                this.currentBatch++;
-                const nextBatchItems = this.items.filter(item => item.batch === this.currentBatch);
                 const gallery = document.getElementById('archive-gallery');
                 
                 // Add new items with fade-in effect
-                nextBatchItems.forEach(item => {
-                    const element = this.createGalleryItem(item);
+                nextItems.forEach(item => {
+                    const element = this.createGalleryItem(item, false);
                     element.style.opacity = '0';
                     element.style.transition = 'opacity 0.5s ease';
                     gallery.appendChild(element);
@@ -1175,6 +1182,9 @@ const galleryItems = [
                         element.style.opacity = '1';
                     }, 50);
                 });
+                
+                // Update current index
+                this.currentIndex = nextIndex;
                 
                 // Reinitialize popups
                 this.reinitializePopups();
@@ -1188,7 +1198,7 @@ const galleryItems = [
                 this.updateCounter();
                 
                 // Check if all items loaded
-                if (this.currentBatch >= this.totalBatches) {
+                if (this.currentIndex >= this.totalItems) {
                     loadMoreBtn.style.display = 'none';
                     document.getElementById('no-more-items').classList.add('active');
                 }
@@ -1202,9 +1212,8 @@ const galleryItems = [
         }
         
         updateCounter() {
-            const loadedCount = document.querySelectorAll('.gallery-item:not(.hidden)').length;
             const counter = document.getElementById('image-counter');
-            counter.textContent = `${loadedCount}/${this.items.length}`;
+            counter.textContent = `${this.currentIndex}/${this.totalItems}`;
         }
         
         initLazyLoading() {
@@ -1213,7 +1222,10 @@ const galleryItems = [
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         const img = entry.target;
-                        img.src = img.dataset.src || img.src;
+                        // If image has data-src attribute, load it
+                        if (img.dataset.src) {
+                            img.src = img.dataset.src;
+                        }
                         imageObserver.unobserve(img);
                     }
                 });
@@ -1224,7 +1236,9 @@ const galleryItems = [
         
         reinitializePopups() {
             // Destroy existing popups
-            $.magnificPopup.instance.close();
+            if ($.magnificPopup.instance) {
+                $.magnificPopup.instance.close();
+            }
             
             // Reinitialize image popups
             $('.popup-link').magnificPopup({
@@ -1291,14 +1305,14 @@ const galleryItems = [
                 });
             });
             
-            // Infinite scroll (optional)
-            window.addEventListener('scroll', () => {
-                if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 1000) {
-                    if (!this.loading && this.currentBatch < this.totalBatches) {
-                        this.loadMore();
-                    }
-                }
-            });
+            // Infinite scroll (optional) - uncomment if you want infinite scroll
+            // window.addEventListener('scroll', () => {
+            //     if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 1000) {
+            //         if (!this.loading && this.currentIndex < this.totalItems) {
+            //             this.loadMore();
+            //         }
+            //     }
+            // });
         }
     }
 
