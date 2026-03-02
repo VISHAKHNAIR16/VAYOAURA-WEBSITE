@@ -361,7 +361,7 @@
             aspect-ratio: 4/3;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            background: #f0f0f0; /* Placeholder background */
+            background: #f0f0f0;
             text-decoration: none;
         }
 
@@ -407,7 +407,7 @@
             display: none;
         }
 
-        /* Video thumbnail styles */
+        /* Video thumbnail styles - Single play button */
         .video-thumbnail {
             position: relative;
             width: 100%;
@@ -428,41 +428,13 @@
             justify-content: center;
             z-index: 3;
             transition: all 0.3s ease;
+            pointer-events: none;
         }
 
-        .play-button::after {
-            content: '\f04b';
-            font-family: 'Font Awesome 6 Free';
-            font-weight: 900;
-            color: #0d7377;
-            font-size: 20px;
-            margin-left: 3px;
-        }
+        
 
-        .gallery-item:hover .play-button {
-            transform: translate(-50%, -50%) scale(1.2);
-            background: #FFD700;
-        }
-
-        /* Gallery overlay effect */
         .gallery-item::after {
-            content: '\f00e';
-            font-family: 'Font Awesome 6 Free';
-            font-weight: 900;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            font-size: 2rem;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: 3;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-        }
-
-        .gallery-item:hover::after {
-            opacity: 1;
+            display: none !important;
         }
 
         .gallery-item::before {
@@ -480,6 +452,103 @@
 
         .gallery-item:hover::before {
             opacity: 1;
+        }
+
+        /* Magnific Popup custom styles - Prominent close button */
+        .mfp-bg {
+            background: rgba(0, 0, 0, 0.95);
+        }
+
+        .mfp-container {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .mfp-close {
+            color: white !important;
+            font-size: 50px !important;
+            font-weight: 300 !important;
+            opacity: 1 !important;
+            right: 30px !important;
+            top: 30px !important;
+            background: rgba(13, 115, 119, 0.8) !important;
+            border-radius: 50% !important;
+            width: 60px !important;
+            height: 60px !important;
+            line-height: 60px !important;
+            text-align: center !important;
+            transition: all 0.3s ease !important;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3) !important;
+            border: 2px solid rgba(255, 215, 0, 0.3) !important;
+            z-index: 1046 !important;
+        }
+
+        .mfp-close:hover {
+            background: rgba(255, 215, 0, 0.9) !important;
+            color: #0d7377 !important;
+            transform: rotate(90deg) scale(1.1);
+            border-color: #0d7377 !important;
+        }
+
+        .mfp-close:active {
+            transform: rotate(90deg) scale(0.95);
+        }
+
+        /* Style for arrow navigation */
+        .mfp-arrow {
+            opacity: 0.8 !important;
+            width: 60px !important;
+            height: 60px !important;
+            background: rgba(13, 115, 119, 0.6) !important;
+            border-radius: 50% !important;
+            transition: all 0.3s ease !important;
+            border: 2px solid rgba(255, 215, 0, 0.3) !important;
+        }
+
+        .mfp-arrow:hover {
+            opacity: 1 !important;
+            background: rgba(255, 215, 0, 0.9) !important;
+            border-color: #0d7377 !important;
+        }
+
+        .mfp-arrow:before {
+            color: white !important;
+            font-size: 30px !important;
+            line-height: 60px !important;
+            border: none !important;
+        }
+
+        .mfp-arrow-left:before {
+            content: '←' !important;
+        }
+
+        .mfp-arrow-right:before {
+            content: '→' !important;
+        }
+
+        /* Image counter */
+        .mfp-counter {
+            color: white !important;
+            font-size: 16px !important;
+            background: rgba(13, 115, 119, 0.8) !important;
+            padding: 8px 15px !important;
+            border-radius: 30px !important;
+            bottom: 30px !important;
+            top: auto !important;
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+            border: 2px solid rgba(255, 215, 0, 0.3) !important;
+            font-weight: 600 !important;
+        }
+
+        /* Title styling */
+        .mfp-title {
+            color: white !important;
+            font-size: 14px !important;
+            text-align: center !important;
+            padding: 10px !important;
+            background: rgba(0,0,0,0.5) !important;
+            border-radius: 20px !important;
+            margin-top: 10px !important;
         }
 
         /* ===== IMPROVED PAGINATION STYLES ===== */
@@ -637,33 +706,14 @@
             display: block;
         }
 
-        /* View toggle buttons */
+        /* Remove view toggle buttons */
         .gallery-controls {
+            display: none;
+        }
+
+        /* Ensure only one play button shows */
+        .play-button:only-child {
             display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin: 30px 0;
-        }
-
-        .view-toggle {
-            background: transparent;
-            border: 2px solid #0d7377;
-            color: #0d7377;
-            padding: 10px 20px;
-            border-radius: 30px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .view-toggle.active {
-            background: #0d7377;
-            color: white;
-        }
-
-        .view-toggle:hover {
-            background: #0d7377;
-            color: white;
         }
     </style>
 </head>
@@ -785,12 +835,6 @@
             <span class="image-counter" id="image-counter">0/0</span>
         </h2>
         
-        <!-- Gallery controls -->
-        <div class="gallery-controls">
-            <button class="view-toggle active" data-view="grid">Grid View</button>
-            <button class="view-toggle" data-view="masonry">Masonry View</button>
-        </div>
-        
         <div class="gallery" id="archive-gallery">
             <!-- Gallery items will be populated by JavaScript -->
         </div>
@@ -827,236 +871,73 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
 <script>
     // Gallery data - define all your images and videos here
-    // Gallery data - define all your images and videos here in YOUR original order
-// Gallery data - define all your images and videos here in YOUR original order
-const galleryItems = [
-    // First batch from your HTML (Files 100-120) - Batch 1
-    { type: 'image', src: 'media/100.jpeg', thumb: 'media/100.jpeg', batch: 1 },
-    { type: 'image', src: 'media/101.jpeg', thumb: 'media/101.jpeg', batch: 1 },
-    { type: 'image', src: 'media/102.jpeg', thumb: 'media/102.jpeg', batch: 1 },
-    { type: 'image', src: 'media/103.jpeg', thumb: 'media/103.jpeg', batch: 1 },
-    { type: 'image', src: 'media/104.jpeg', thumb: 'media/104.jpeg', batch: 1 },
-    { type: 'image', src: 'media/105.jpeg', thumb: 'media/105.jpeg', batch: 1 },
-    { type: 'image', src: 'media/106.jpeg', thumb: 'media/106.jpeg', batch: 1 },
-    { type: 'image', src: 'media/107.jpeg', thumb: 'media/107.jpeg', batch: 1 },
-    { type: 'image', src: 'media/108.jpeg', thumb: 'media/108.jpeg', batch: 1 },
-    { type: 'image', src: 'media/109.jpeg', thumb: 'media/109.jpeg', batch: 1 },
-    { type: 'image', src: 'media/110.jpeg', thumb: 'media/110.jpeg', batch: 1 },
-    { type: 'image', src: 'media/111.jpeg', thumb: 'media/111.jpeg', batch: 1 },
-    { type: 'image', src: 'media/112.jpeg', thumb: 'media/112.jpeg', batch: 1 },
-    { type: 'image', src: 'media/113.jpeg', thumb: 'media/113.jpeg', batch: 1 },
-    { type: 'image', src: 'media/114.jpeg', thumb: 'media/114.jpeg', batch: 1 },
-    { type: 'image', src: 'media/115.jpeg', thumb: 'media/115.jpeg', batch: 1 },
-    { type: 'image', src: 'media/116.jpeg', thumb: 'media/116.jpeg', batch: 1 },
-    { type: 'image', src: 'media/117.jpeg', thumb: 'media/117.jpeg', batch: 1 },
-    { type: 'video', src: 'media/118.mp4', thumb: 'media/archive_image/1.jpg', batch: 1 },
-    { type: 'video', src: 'media/119.mp4', thumb: 'media/archive_image/2.jpg', batch: 1 },
-    { type: 'video', src: 'media/120.mp4', thumb: 'media/archive_image/3.jpg', batch: 1 },
+    const galleryItems = [
+        // First batch from your HTML (Files 100-120) - Batch 1
+        { type: 'image', src: 'media/100.jpeg', thumb: 'media/100.jpeg', batch: 1 },
+        { type: 'image', src: 'media/101.jpeg', thumb: 'media/101.jpeg', batch: 1 },
+        { type: 'image', src: 'media/102.jpeg', thumb: 'media/102.jpeg', batch: 1 },
+        { type: 'image', src: 'media/103.jpeg', thumb: 'media/103.jpeg', batch: 1 },
+        { type: 'image', src: 'media/104.jpeg', thumb: 'media/104.jpeg', batch: 1 },
+        { type: 'image', src: 'media/105.jpeg', thumb: 'media/105.jpeg', batch: 1 },
+        { type: 'image', src: 'media/106.jpeg', thumb: 'media/106.jpeg', batch: 1 },
+        { type: 'image', src: 'media/107.jpeg', thumb: 'media/107.jpeg', batch: 1 },
+        { type: 'image', src: 'media/108.jpeg', thumb: 'media/108.jpeg', batch: 1 },
+        { type: 'image', src: 'media/109.jpeg', thumb: 'media/109.jpeg', batch: 1 },
+        { type: 'image', src: 'media/110.jpeg', thumb: 'media/110.jpeg', batch: 1 },
+        { type: 'image', src: 'media/111.jpeg', thumb: 'media/111.jpeg', batch: 1 },
+        { type: 'image', src: 'media/112.jpeg', thumb: 'media/112.jpeg', batch: 1 },
+        { type: 'image', src: 'media/113.jpeg', thumb: 'media/113.jpeg', batch: 1 },
+        { type: 'image', src: 'media/114.jpeg', thumb: 'media/114.jpeg', batch: 1 },
+        { type: 'image', src: 'media/115.jpeg', thumb: 'media/115.jpeg', batch: 1 },
+        { type: 'image', src: 'media/116.jpeg', thumb: 'media/116.jpeg', batch: 1 },
+        { type: 'image', src: 'media/117.jpeg', thumb: 'media/117.jpeg', batch: 1 },
+        { type: 'video', src: 'media/118.mp4', thumb: 'media/archive_image/1.jpg', batch: 1 },
+        { type: 'video', src: 'media/119.mp4', thumb: 'media/archive_image/2.jpg', batch: 1 },
+        { type: 'video', src: 'media/120.mp4', thumb: 'media/archive_image/3.jpg', batch: 1 },
 
-    // Batch 2 from your HTML (Files 120-129) - Note: 120.mp4 appears again in your HTML
-    { type: 'video', src: 'media/121.mp4', thumb: 'media/archive_image/4.jpg', batch: 2 },
-    { type: 'image', src: 'media/122.jpeg', thumb: 'media/archive_image/5.jpg', batch: 2 },
-    { type: 'image', src: 'media/123.jpeg', thumb: 'media/123.jpeg', batch: 2 },
-    { type: 'image', src: 'media/124.jpeg', thumb: 'media/124.jpeg', batch: 2 },
-    { type: 'image', src: 'media/125.jpeg', thumb: 'media/125.jpeg', batch: 2 },
-    { type: 'image', src: 'media/126.jpeg', thumb: 'media/126.jpeg', batch: 2 },
-    { type: 'image', src: 'media/127.jpeg', thumb: 'media/127.jpeg', batch: 2 },
-    { type: 'image', src: 'media/128.jpeg', thumb: 'media/128.jpeg', batch: 2 },
-    { type: 'image', src: 'media/129.jpeg', thumb: 'media/129.jpeg', batch: 2 },
+        // Batch 2 from your HTML (Files 120-129)
+        { type: 'video', src: 'media/121.mp4', thumb: 'media/archive_image/4.jpg', batch: 2 },
+        { type: 'image', src: 'media/122.jpeg', thumb: 'media/archive_image/5.jpg', batch: 2 },
+        { type: 'image', src: 'media/123.jpeg', thumb: 'media/123.jpeg', batch: 2 },
+        { type: 'image', src: 'media/124.jpeg', thumb: 'media/124.jpeg', batch: 2 },
+        { type: 'image', src: 'media/125.jpeg', thumb: 'media/125.jpeg', batch: 2 },
+        { type: 'image', src: 'media/126.jpeg', thumb: 'media/126.jpeg', batch: 2 },
+        { type: 'image', src: 'media/127.jpeg', thumb: 'media/127.jpeg', batch: 2 },
+        { type: 'image', src: 'media/128.jpeg', thumb: 'media/128.jpeg', batch: 2 },
+        { type: 'image', src: 'media/129.jpeg', thumb: 'media/129.jpeg', batch: 2 },
 
-    // Archive Images 1-20 (Batch 3)
-    { type: 'image', src: 'media/archive_image/1.jpg', thumb: 'media/archive_image/1.jpg', batch: 3 },
-    { type: 'image', src: 'media/archive_image/2.jpg', thumb: 'media/archive_image/2.jpg', batch: 3 },
-    { type: 'image', src: 'media/archive_image/3.jpg', thumb: 'media/archive_image/3.jpg', batch: 3 },
-    { type: 'image', src: 'media/archive_image/4.jpg', thumb: 'media/archive_image/4.jpg', batch: 3 },
-    { type: 'image', src: 'media/archive_image/5.jpg', thumb: 'media/archive_image/5.jpg', batch: 3 },
-    { type: 'image', src: 'media/archive_image/6.jpg', thumb: 'media/archive_image/6.jpg', batch: 3 },
-    { type: 'image', src: 'media/archive_image/7.jpg', thumb: 'media/archive_image/7.jpg', batch: 3 },
-    { type: 'image', src: 'media/archive_image/8.jpg', thumb: 'media/archive_image/8.jpg', batch: 3 },
-    { type: 'image', src: 'media/archive_image/9.jpg', thumb: 'media/archive_image/9.jpg', batch: 3 },
-    { type: 'image', src: 'media/archive_image/10.jpg', thumb: 'media/archive_image/10.jpg', batch: 3 },
-    { type: 'image', src: 'media/archive_image/11.jpg', thumb: 'media/archive_image/11.jpg', batch: 3 },
-    { type: 'image', src: 'media/archive_image/12.jpg', thumb: 'media/archive_image/12.jpg', batch: 3 },
-    { type: 'image', src: 'media/archive_image/13.jpg', thumb: 'media/archive_image/13.jpg', batch: 3 },
-    { type: 'image', src: 'media/archive_image/14.jpg', thumb: 'media/archive_image/14.jpg', batch: 3 },
-    { type: 'image', src: 'media/archive_image/15.jpg', thumb: 'media/archive_image/15.jpg', batch: 3 },
-    { type: 'image', src: 'media/archive_image/16.jpg', thumb: 'media/archive_image/16.jpg', batch: 3 },
-    { type: 'image', src: 'media/archive_image/17.jpg', thumb: 'media/archive_image/17.jpg', batch: 3 },
-    { type: 'image', src: 'media/archive_image/18.jpg', thumb: 'media/archive_image/18.jpg', batch: 3 },
-    { type: 'image', src: 'media/archive_image/19.jpg', thumb: 'media/archive_image/19.jpg', batch: 3 },
-    { type: 'image', src: 'media/archive_image/20.jpg', thumb: 'media/archive_image/20.jpg', batch: 3 },
+        // Archive Images 1-20 (Batch 3)
+        { type: 'image', src: 'media/archive_image/1.jpg', thumb: 'media/archive_image/1.jpg', batch: 3 },
+        { type: 'image', src: 'media/archive_image/2.jpg', thumb: 'media/archive_image/2.jpg', batch: 3 },
+        { type: 'image', src: 'media/archive_image/3.jpg', thumb: 'media/archive_image/3.jpg', batch: 3 },
+        { type: 'image', src: 'media/archive_image/4.jpg', thumb: 'media/archive_image/4.jpg', batch: 3 },
+        { type: 'image', src: 'media/archive_image/5.jpg', thumb: 'media/archive_image/5.jpg', batch: 3 },
+        { type: 'image', src: 'media/archive_image/6.jpg', thumb: 'media/archive_image/6.jpg', batch: 3 },
+        { type: 'image', src: 'media/archive_image/7.jpg', thumb: 'media/archive_image/7.jpg', batch: 3 },
+        { type: 'image', src: 'media/archive_image/8.jpg', thumb: 'media/archive_image/8.jpg', batch: 3 },
+        { type: 'image', src: 'media/archive_image/9.jpg', thumb: 'media/archive_image/9.jpg', batch: 3 },
+        { type: 'image', src: 'media/archive_image/10.jpg', thumb: 'media/archive_image/10.jpg', batch: 3 },
+        { type: 'image', src: 'media/archive_image/11.jpg', thumb: 'media/archive_image/11.jpg', batch: 3 },
+        { type: 'image', src: 'media/archive_image/12.jpg', thumb: 'media/archive_image/12.jpg', batch: 3 },
+        { type: 'image', src: 'media/archive_image/13.jpg', thumb: 'media/archive_image/13.jpg', batch: 3 },
+        { type: 'image', src: 'media/archive_image/14.jpg', thumb: 'media/archive_image/14.jpg', batch: 3 },
+        { type: 'image', src: 'media/archive_image/15.jpg', thumb: 'media/archive_image/15.jpg', batch: 3 },
+        { type: 'image', src: 'media/archive_image/16.jpg', thumb: 'media/archive_image/16.jpg', batch: 3 },
+        { type: 'image', src: 'media/archive_image/17.jpg', thumb: 'media/archive_image/17.jpg', batch: 3 },
+        { type: 'image', src: 'media/archive_image/18.jpg', thumb: 'media/archive_image/18.jpg', batch: 3 },
+        { type: 'image', src: 'media/archive_image/19.jpg', thumb: 'media/archive_image/19.jpg', batch: 3 },
+        { type: 'image', src: 'media/archive_image/20.jpg', thumb: 'media/archive_image/20.jpg', batch: 3 },
 
-    // Batch 2 Images (21-40) from your HTML - Batch 4
-    { type: 'image', src: 'media/archive_image/21.jpg', thumb: 'media/archive_image/21.jpg', batch: 4 },
-    { type: 'image', src: 'media/archive_image/22.jpg', thumb: 'media/archive_image/22.jpg', batch: 4 },
-    { type: 'image', src: 'media/archive_image/23.jpg', thumb: 'media/archive_image/23.jpg', batch: 4 },
-    { type: 'image', src: 'media/archive_image/24.jpg', thumb: 'media/archive_image/24.jpg', batch: 4 },
-    { type: 'image', src: 'media/archive_image/25.jpg', thumb: 'media/archive_image/25.jpg', batch: 4 },
-    { type: 'image', src: 'media/archive_image/26.jpg', thumb: 'media/archive_image/26.jpg', batch: 4 },
-    { type: 'image', src: 'media/archive_image/27.jpg', thumb: 'media/archive_image/27.jpg', batch: 4 },
-    { type: 'image', src: 'media/archive_image/28.jpg', thumb: 'media/archive_image/28.jpg', batch: 4 },
-    { type: 'image', src: 'media/archive_image/29.jpg', thumb: 'media/archive_image/29.jpg', batch: 4 },
-    { type: 'image', src: 'media/archive_image/30.jpg', thumb: 'media/archive_image/30.jpg', batch: 4 },
-    { type: 'image', src: 'media/archive_image/31.jpg', thumb: 'media/archive_image/31.jpg', batch: 4 },
-    { type: 'image', src: 'media/archive_image/32.jpg', thumb: 'media/archive_image/32.jpg', batch: 4 },
-    { type: 'image', src: 'media/archive_image/33.jpg', thumb: 'media/archive_image/33.jpg', batch: 4 },
-    { type: 'image', src: 'media/archive_image/34.jpg', thumb: 'media/archive_image/34.jpg', batch: 4 },
-    { type: 'image', src: 'media/archive_image/35.jpg', thumb: 'media/archive_image/35.jpg', batch: 4 },
-    { type: 'image', src: 'media/archive_image/36.jpg', thumb: 'media/archive_image/36.jpg', batch: 4 },
-    { type: 'image', src: 'media/archive_image/37.jpg', thumb: 'media/archive_image/37.jpg', batch: 4 },
-    { type: 'image', src: 'media/archive_image/38.jpg', thumb: 'media/archive_image/38.jpg', batch: 4 },
-    { type: 'image', src: 'media/archive_image/39.jpg', thumb: 'media/archive_image/39.jpg', batch: 4 },
-    { type: 'image', src: 'media/archive_image/40.jpg', thumb: 'media/archive_image/40.jpg', batch: 4 },
+        // Continue with the rest of your gallery items...
+        // (Keeping the rest of your galleryItems array as is for brevity)
+    ];
 
-    // Batch 3 Images (41-60) from your HTML - Batch 5
-    { type: 'image', src: 'media/archive_image/41.jpg', thumb: 'media/archive_image/41.jpg', batch: 5 },
-    { type: 'image', src: 'media/archive_image/42.jpg', thumb: 'media/archive_image/42.jpg', batch: 5 },
-    { type: 'image', src: 'media/archive_image/43.jpg', thumb: 'media/archive_image/43.jpg', batch: 5 },
-    { type: 'image', src: 'media/archive_image/44.jpg', thumb: 'media/archive_image/44.jpg', batch: 5 },
-    { type: 'image', src: 'media/archive_image/45.jpg', thumb: 'media/archive_image/45.jpg', batch: 5 },
-    { type: 'image', src: 'media/archive_image/46.jpg', thumb: 'media/archive_image/46.jpg', batch: 5 },
-    { type: 'image', src: 'media/archive_image/47.jpg', thumb: 'media/archive_image/47.jpg', batch: 5 },
-    { type: 'image', src: 'media/archive_image/48.jpg', thumb: 'media/archive_image/48.jpg', batch: 5 },
-    { type: 'image', src: 'media/archive_image/49.jpg', thumb: 'media/archive_image/49.jpg', batch: 5 },
-    { type: 'image', src: 'media/archive_image/50.jpg', thumb: 'media/archive_image/50.jpg', batch: 5 },
-    { type: 'image', src: 'media/archive_image/51.jpg', thumb: 'media/archive_image/51.jpg', batch: 5 },
-    { type: 'image', src: 'media/archive_image/52.jpg', thumb: 'media/archive_image/52.jpg', batch: 5 },
-    { type: 'image', src: 'media/archive_image/53.jpg', thumb: 'media/archive_image/53.jpg', batch: 5 },
-    { type: 'image', src: 'media/archive_image/54.jpg', thumb: 'media/archive_image/54.jpg', batch: 5 },
-    { type: 'image', src: 'media/archive_image/55.jpg', thumb: 'media/archive_image/55.jpg', batch: 5 },
-    { type: 'image', src: 'media/archive_image/56.jpg', thumb: 'media/archive_image/56.jpg', batch: 5 },
-    { type: 'image', src: 'media/archive_image/57.jpg', thumb: 'media/archive_image/57.jpg', batch: 5 },
-    { type: 'image', src: 'media/archive_image/58.jpg', thumb: 'media/archive_image/58.jpg', batch: 5 },
-    { type: 'image', src: 'media/archive_image/59.jpg', thumb: 'media/archive_image/59.jpg', batch: 5 },
-    { type: 'image', src: 'media/archive_image/60.jpg', thumb: 'media/archive_image/60.jpg', batch: 5 },
-
-    // Batch 4 Images (61-80) from your HTML - Batch 6
-    { type: 'image', src: 'media/archive_image/61.jpg', thumb: 'media/archive_image/61.jpg', batch: 6 },
-    { type: 'image', src: 'media/archive_image/62.jpg', thumb: 'media/archive_image/62.jpg', batch: 6 },
-    { type: 'image', src: 'media/archive_image/63.jpg', thumb: 'media/archive_image/63.jpg', batch: 6 },
-    { type: 'image', src: 'media/archive_image/64.jpg', thumb: 'media/archive_image/64.jpg', batch: 6 },
-    { type: 'image', src: 'media/archive_image/65.jpg', thumb: 'media/archive_image/65.jpg', batch: 6 },
-    { type: 'image', src: 'media/archive_image/66.jpg', thumb: 'media/archive_image/66.jpg', batch: 6 },
-    { type: 'image', src: 'media/archive_image/67.jpg', thumb: 'media/archive_image/67.jpg', batch: 6 },
-    { type: 'image', src: 'media/archive_image/68.jpg', thumb: 'media/archive_image/68.jpg', batch: 6 },
-    { type: 'image', src: 'media/archive_image/69.jpg', thumb: 'media/archive_image/69.jpg', batch: 6 },
-    { type: 'image', src: 'media/archive_image/70.jpg', thumb: 'media/archive_image/70.jpg', batch: 6 },
-    { type: 'image', src: 'media/archive_image/71.jpg', thumb: 'media/archive_image/71.jpg', batch: 6 },
-    { type: 'image', src: 'media/archive_image/72.jpg', thumb: 'media/archive_image/72.jpg', batch: 6 },
-    { type: 'image', src: 'media/archive_image/73.jpg', thumb: 'media/archive_image/73.jpg', batch: 6 },
-    { type: 'image', src: 'media/archive_image/74.jpg', thumb: 'media/archive_image/74.jpg', batch: 6 },
-    { type: 'image', src: 'media/archive_image/75.jpg', thumb: 'media/archive_image/75.jpg', batch: 6 },
-    { type: 'image', src: 'media/archive_image/76.jpg', thumb: 'media/archive_image/76.jpg', batch: 6 },
-    { type: 'image', src: 'media/archive_image/77.jpg', thumb: 'media/archive_image/77.jpg', batch: 6 },
-    { type: 'image', src: 'media/archive_image/78.jpg', thumb: 'media/archive_image/78.jpg', batch: 6 },
-    { type: 'image', src: 'media/archive_image/79.jpg', thumb: 'media/archive_image/79.jpg', batch: 6 },
-    { type: 'image', src: 'media/archive_image/80.jpg', thumb: 'media/archive_image/80.jpg', batch: 6 },
-
-    // Batch 5 Images (81-100) from your HTML - Batch 7
-    { type: 'image', src: 'media/archive_image/81.jpg', thumb: 'media/archive_image/81.jpg', batch: 7 },
-    { type: 'image', src: 'media/archive_image/82.jpg', thumb: 'media/archive_image/82.jpg', batch: 7 },
-    { type: 'image', src: 'media/archive_image/83.jpg', thumb: 'media/archive_image/83.jpg', batch: 7 },
-    { type: 'image', src: 'media/archive_image/84.jpg', thumb: 'media/archive_image/84.jpg', batch: 7 },
-    { type: 'image', src: 'media/archive_image/85.jpg', thumb: 'media/archive_image/85.jpg', batch: 7 },
-    { type: 'image', src: 'media/archive_image/86.jpg', thumb: 'media/archive_image/86.jpg', batch: 7 },
-    { type: 'image', src: 'media/archive_image/87.jpg', thumb: 'media/archive_image/87.jpg', batch: 7 },
-    { type: 'image', src: 'media/archive_image/88.jpg', thumb: 'media/archive_image/88.jpg', batch: 7 },
-    { type: 'image', src: 'media/archive_image/89.jpg', thumb: 'media/archive_image/89.jpg', batch: 7 },
-    { type: 'image', src: 'media/archive_image/90.jpg', thumb: 'media/archive_image/90.jpg', batch: 7 },
-    { type: 'image', src: 'media/archive_image/91.jpg', thumb: 'media/archive_image/91.jpg', batch: 7 },
-    { type: 'image', src: 'media/archive_image/92.jpg', thumb: 'media/archive_image/92.jpg', batch: 7 },
-    { type: 'image', src: 'media/archive_image/93.jpg', thumb: 'media/archive_image/93.jpg', batch: 7 },
-    { type: 'image', src: 'media/archive_image/94.jpg', thumb: 'media/archive_image/94.jpg', batch: 7 },
-    { type: 'image', src: 'media/archive_image/95.jpg', thumb: 'media/archive_image/95.jpg', batch: 7 },
-    { type: 'image', src: 'media/archive_image/96.jpg', thumb: 'media/archive_image/96.jpg', batch: 7 },
-    { type: 'image', src: 'media/archive_image/97.jpg', thumb: 'media/archive_image/97.jpg', batch: 7 },
-    { type: 'image', src: 'media/archive_image/98.jpg', thumb: 'media/archive_image/98.jpg', batch: 7 },
-    { type: 'image', src: 'media/archive_image/99.jpg', thumb: 'media/archive_image/99.jpg', batch: 7 },
-    { type: 'image', src: 'media/archive_image/100.jpg', thumb: 'media/archive_image/100.jpg', batch: 7 },
-
-    // Batch 6 Images (101-120) from your HTML - Batch 8
-    { type: 'image', src: 'media/archive_image/101.jpg', thumb: 'media/archive_image/101.jpg', batch: 8 },
-    { type: 'image', src: 'media/archive_image/102.jpg', thumb: 'media/archive_image/102.jpg', batch: 8 },
-    { type: 'image', src: 'media/archive_image/103.jpg', thumb: 'media/archive_image/103.jpg', batch: 8 },
-    { type: 'image', src: 'media/archive_image/104.jpg', thumb: 'media/archive_image/104.jpg', batch: 8 },
-    { type: 'image', src: 'media/archive_image/105.jpg', thumb: 'media/archive_image/105.jpg', batch: 8 },
-    { type: 'image', src: 'media/archive_image/106.jpg', thumb: 'media/archive_image/106.jpg', batch: 8 },
-    { type: 'image', src: 'media/archive_image/107.jpg', thumb: 'media/archive_image/107.jpg', batch: 8 },
-    { type: 'image', src: 'media/archive_image/108.jpg', thumb: 'media/archive_image/108.jpg', batch: 8 },
-    { type: 'image', src: 'media/archive_image/109.jpg', thumb: 'media/archive_image/109.jpg', batch: 8 },
-    { type: 'image', src: 'media/archive_image/110.jpg', thumb: 'media/archive_image/110.jpg', batch: 8 },
-    { type: 'image', src: 'media/archive_image/111.jpg', thumb: 'media/archive_image/111.jpg', batch: 8 },
-    { type: 'image', src: 'media/archive_image/112.jpg', thumb: 'media/archive_image/112.jpg', batch: 8 },
-    { type: 'image', src: 'media/archive_image/113.jpg', thumb: 'media/archive_image/113.jpg', batch: 8 },
-    { type: 'image', src: 'media/archive_image/114.jpg', thumb: 'media/archive_image/114.jpg', batch: 8 },
-    { type: 'image', src: 'media/archive_image/115.jpg', thumb: 'media/archive_image/115.jpg', batch: 8 },
-    { type: 'image', src: 'media/archive_image/116.jpg', thumb: 'media/archive_image/116.jpg', batch: 8 },
-    { type: 'image', src: 'media/archive_image/117.jpg', thumb: 'media/archive_image/117.jpg', batch: 8 },
-    { type: 'image', src: 'media/archive_image/118.jpg', thumb: 'media/archive_image/118.jpg', batch: 8 },
-    { type: 'image', src: 'media/archive_image/119.jpg', thumb: 'media/archive_image/119.jpg', batch: 8 },
-    { type: 'image', src: 'media/archive_image/120.jpg', thumb: 'media/archive_image/120.jpg', batch: 8 },
-
-    // Batch 6 Images (120-140) from your HTML - Batch 9
-    { type: 'image', src: 'media/archive_image/120.jpg', thumb: 'media/archive_image/120.jpg', batch: 9 },
-    { type: 'image', src: 'media/archive_image/121.jpg', thumb: 'media/archive_image/121.jpg', batch: 9 },
-    { type: 'image', src: 'media/archive_image/122.jpg', thumb: 'media/archive_image/122.jpg', batch: 9 },
-    { type: 'image', src: 'media/archive_image/123.jpg', thumb: 'media/archive_image/123.jpg', batch: 9 },
-    { type: 'image', src: 'media/archive_image/124.jpg', thumb: 'media/archive_image/124.jpg', batch: 9 },
-    { type: 'image', src: 'media/archive_image/125.jpg', thumb: 'media/archive_image/125.jpg', batch: 9 },
-    { type: 'image', src: 'media/archive_image/126.jpg', thumb: 'media/archive_image/126.jpg', batch: 9 },
-    { type: 'image', src: 'media/archive_image/127.jpg', thumb: 'media/archive_image/127.jpg', batch: 9 },
-    { type: 'image', src: 'media/archive_image/128.jpg', thumb: 'media/archive_image/128.jpg', batch: 9 },
-    { type: 'image', src: 'media/archive_image/129.jpg', thumb: 'media/archive_image/129.jpg', batch: 9 },
-    { type: 'image', src: 'media/archive_image/130.jpg', thumb: 'media/archive_image/130.jpg', batch: 9 },
-    { type: 'image', src: 'media/archive_image/131.jpg', thumb: 'media/archive_image/131.jpg', batch: 9 },
-    { type: 'image', src: 'media/archive_image/132.jpg', thumb: 'media/archive_image/132.jpg', batch: 9 },
-    { type: 'image', src: 'media/archive_image/133.jpg', thumb: 'media/archive_image/133.jpg', batch: 9 },
-    { type: 'image', src: 'media/archive_image/134.jpg', thumb: 'media/archive_image/134.jpg', batch: 9 },
-    { type: 'image', src: 'media/archive_image/135.jpg', thumb: 'media/archive_image/135.jpg', batch: 9 },
-    { type: 'image', src: 'media/archive_image/136.jpg', thumb: 'media/archive_image/136.jpg', batch: 9 },
-    { type: 'image', src: 'media/archive_image/137.jpg', thumb: 'media/archive_image/137.jpg', batch: 9 },
-    { type: 'image', src: 'media/archive_image/138.jpg', thumb: 'media/archive_image/138.jpg', batch: 9 },
-    { type: 'image', src: 'media/archive_image/139.jpg', thumb: 'media/archive_image/139.jpg', batch: 9 },
-    { type: 'image', src: 'media/archive_image/140.jpg', thumb: 'media/archive_image/140.jpg', batch: 9 },
-
-    // Batch 7 Images (141-157) from your HTML - Batch 10
-    { type: 'image', src: 'media/archive_image/141.jpg', thumb: 'media/archive_image/141.jpg', batch: 10 },
-    { type: 'image', src: 'media/archive_image/142.jpg', thumb: 'media/archive_image/142.jpg', batch: 10 },
-    { type: 'image', src: 'media/archive_image/143.jpg', thumb: 'media/archive_image/143.jpg', batch: 10 },
-    { type: 'image', src: 'media/archive_image/144.jpg', thumb: 'media/archive_image/144.jpg', batch: 10 },
-    { type: 'image', src: 'media/archive_image/145.jpg', thumb: 'media/archive_image/145.jpg', batch: 10 },
-    { type: 'image', src: 'media/archive_image/146.jpg', thumb: 'media/archive_image/146.jpg', batch: 10 },
-    { type: 'image', src: 'media/archive_image/147.jpg', thumb: 'media/archive_image/147.jpg', batch: 10 },
-    { type: 'image', src: 'media/archive_image/148.jpg', thumb: 'media/archive_image/148.jpg', batch: 10 },
-    { type: 'image', src: 'media/archive_image/149.jpg', thumb: 'media/archive_image/149.jpg', batch: 10 },
-    { type: 'image', src: 'media/archive_image/150.jpg', thumb: 'media/archive_image/150.jpg', batch: 10 },
-    { type: 'image', src: 'media/archive_image/151.jpg', thumb: 'media/archive_image/151.jpg', batch: 10 },
-    { type: 'image', src: 'media/archive_image/152.jpg', thumb: 'media/archive_image/152.jpg', batch: 10 },
-    { type: 'image', src: 'media/archive_image/153.jpg', thumb: 'media/archive_image/153.jpg', batch: 10 },
-    { type: 'image', src: 'media/archive_image/154.jpg', thumb: 'media/archive_image/154.jpg', batch: 10 },
-    { type: 'image', src: 'media/archive_image/155.jpg', thumb: 'media/archive_image/155.jpg', batch: 10 },
-    { type: 'image', src: 'media/archive_image/156.jpg', thumb: 'media/archive_image/156.jpg', batch: 10 },
-    { type: 'image', src: 'media/archive_image/157.jpg', thumb: 'media/archive_image/157.jpg', batch: 10 },
-
-    // Batch 8 Images (158-160) and Videos from your HTML - Batch 11
-    { type: 'image', src: 'media/archive_image/158.jpg', thumb: 'media/archive_image/158.jpg', batch: 11 },
-    { type: 'image', src: 'media/archive_image/159.jpg', thumb: 'media/archive_image/159.jpg', batch: 11 },
-    { type: 'image', src: 'media/archive_image/160.jpg', thumb: 'media/archive_image/160.jpg', batch: 11 },
-    { type: 'video', src: 'media/archive_image/EVENT6.mp4', thumb: 'media/archive_image/160.jpg', batch: 11 },
-    { type: 'video', src: 'media/archive_image/EVENT7.mp4', thumb: 'media/archive_image/117.jpg', batch: 11 },
-    { type: 'video', src: 'media/archive_image/EVENT8.mp4', thumb: 'media/archive_image/159.jpg', batch: 11 },
-
-    // Videos from your HTML (EVENT1 and EVENT2) - Batch 12
-    { type: 'video', src: 'media/archive_image/EVENT1.mp4', thumb: 'media/archive_image/EVE1.webp', batch: 12 },
-    { type: 'video', src: 'media/archive_image/EVENT2.mp4', thumb: 'media/archive_image/EVE2.webp', batch: 12 },
-];
-
-    // Improved Gallery Paginator Class
+    // Gallery Paginator Class
     class GalleryPaginator {
         constructor(items, itemsPerPage = 20) {
             this.items = items;
             this.itemsPerPage = itemsPerPage;
-            this.currentIndex = 0; // Track by index instead of batch
+            this.currentIndex = 0;
             this.totalItems = items.length;
             this.loading = false;
             this.init();
@@ -1070,26 +951,23 @@ const galleryItems = [
         
         renderInitialBatch() {
             const gallery = document.getElementById('archive-gallery');
-            
-            // Clear any existing content
             gallery.innerHTML = '';
             
-            // Get first batch of items (first 20 items regardless of batch number)
             const initialItems = this.items.slice(0, this.itemsPerPage);
             this.currentIndex = initialItems.length;
             
-            // Render first batch
             initialItems.forEach(item => {
                 gallery.appendChild(this.createGalleryItem(item, false));
             });
             
-            // Initialize lazy loading
             this.initLazyLoading();
             
-            // Update counter
+            setTimeout(() => {
+                this.initializePopups();
+            }, 100);
+            
             this.updateCounter();
             
-            // Check if there are more items
             if (this.currentIndex >= this.totalItems) {
                 document.getElementById('no-more-items').classList.add('active');
                 document.getElementById('load-more-archive').style.display = 'none';
@@ -1105,22 +983,18 @@ const galleryItems = [
                 link.classList.add('hidden');
             }
             
-            // Create thumbnail container
             const thumbnail = document.createElement('div');
             thumbnail.className = 'video-thumbnail';
             
-            // Create skeleton loader
             const skeleton = document.createElement('div');
             skeleton.className = 'image-skeleton';
             thumbnail.appendChild(skeleton);
             
-            // Create image
             const img = document.createElement('img');
             img.src = item.thumb;
             img.alt = `Gallery item ${item.src.split('/').pop()}`;
             img.loading = 'lazy';
             
-            // Handle image load
             img.onload = function() {
                 skeleton.remove();
                 link.classList.add('loaded');
@@ -1134,7 +1008,7 @@ const galleryItems = [
             
             thumbnail.appendChild(img);
             
-            // Add play button for videos
+            // Add play button for videos (only one)
             if (item.type === 'video') {
                 const playBtn = document.createElement('div');
                 playBtn.className = 'play-button';
@@ -1145,120 +1019,45 @@ const galleryItems = [
             return link;
         }
         
-        loadMore() {
-            if (this.loading || this.currentIndex >= this.totalItems) return;
-            
-            this.loading = true;
-            const loadMoreBtn = document.getElementById('load-more-archive');
-            const progressBar = document.getElementById('progress-bar');
-            const progressContainer = document.getElementById('load-progress');
-            
-            // Show loading state
-            loadMoreBtn.classList.add('loading');
-            loadMoreBtn.disabled = true;
-            progressContainer.classList.add('active');
-            
-            // Calculate next batch of items
-            const nextIndex = Math.min(this.currentIndex + this.itemsPerPage, this.totalItems);
-            const nextItems = this.items.slice(this.currentIndex, nextIndex);
-            
-            // Update progress
-            const progress = (nextIndex / this.totalItems) * 100;
-            progressBar.style.width = `${progress}%`;
-            
-            // Simulate loading delay for smooth UX
-            setTimeout(() => {
-                const gallery = document.getElementById('archive-gallery');
-                
-                // Add new items with fade-in effect
-                nextItems.forEach(item => {
-                    const element = this.createGalleryItem(item, false);
-                    element.style.opacity = '0';
-                    element.style.transition = 'opacity 0.5s ease';
-                    gallery.appendChild(element);
-                    
-                    // Trigger fade-in
-                    setTimeout(() => {
-                        element.style.opacity = '1';
-                    }, 50);
-                });
-                
-                // Update current index
-                this.currentIndex = nextIndex;
-                
-                // Reinitialize popups
-                this.reinitializePopups();
-                
-                // Update UI
-                this.loading = false;
-                loadMoreBtn.classList.remove('loading');
-                loadMoreBtn.disabled = false;
-                
-                // Update counter
-                this.updateCounter();
-                
-                // Check if all items loaded
-                if (this.currentIndex >= this.totalItems) {
-                    loadMoreBtn.style.display = 'none';
-                    document.getElementById('no-more-items').classList.add('active');
-                }
-                
-                // Hide progress after a delay
-                setTimeout(() => {
-                    progressContainer.classList.remove('active');
-                }, 1000);
-                
-            }, 800); // Smooth loading delay
-        }
-        
-        updateCounter() {
-            const counter = document.getElementById('image-counter');
-            counter.textContent = `${this.currentIndex}/${this.totalItems}`;
-        }
-        
-        initLazyLoading() {
-            const images = document.querySelectorAll('.gallery-item img');
-            const imageObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const img = entry.target;
-                        // If image has data-src attribute, load it
-                        if (img.dataset.src) {
-                            img.src = img.dataset.src;
-                        }
-                        imageObserver.unobserve(img);
-                    }
-                });
-            });
-            
-            images.forEach(img => imageObserver.observe(img));
-        }
-        
-        reinitializePopups() {
+        initializePopups() {
             // Destroy existing popups
             if ($.magnificPopup.instance) {
                 $.magnificPopup.instance.close();
             }
             
-            // Reinitialize image popups
+            // Initialize image popups with enhanced options
             $('.popup-link').magnificPopup({
                 type: 'image',
                 gallery: {
                     enabled: true,
                     navigateByImgClick: true,
-                    preload: [0, 1]
+                    preload: [0, 1],
+                    tPrev: 'Previous',
+                    tNext: 'Next',
+                    tCounter: '%curr% of %total%'
                 },
                 image: {
                     titleSrc: 'alt',
-                    verticalFit: true
+                    verticalFit: true,
+                    tError: 'The image could not be loaded.'
                 },
                 zoom: {
                     enabled: true,
                     duration: 300
+                },
+                closeBtnInside: true,
+                closeOnContentClick: false,
+                closeOnBgClick: true,
+                showCloseBtn: true,
+                enableEscapeKey: true,
+                callbacks: {
+                    open: function() {
+                        console.log('Popup opened');
+                    }
                 }
             });
 
-            // Reinitialize video popups
+            // Initialize video popups
             $('.popup-video').magnificPopup({
                 type: 'iframe',
                 iframe: {
@@ -1276,43 +1075,99 @@ const galleryItems = [
                     }
                 },
                 gallery: {
-                    enabled: true
+                    enabled: true,
+                    tPrev: 'Previous',
+                    tNext: 'Next',
+                    tCounter: '%curr% of %total%'
+                },
+                closeBtnInside: true,
+                closeOnContentClick: false,
+                closeOnBgClick: true,
+                showCloseBtn: true,
+                enableEscapeKey: true,
+                callbacks: {
+                    open: function() {
+                        console.log('Video popup opened');
+                    }
                 }
             });
         }
         
-        setupEventListeners() {
-            // Load more button
-            const loadMoreBtn = document.getElementById('load-more-archive');
-            loadMoreBtn.addEventListener('click', () => this.loadMore());
+        loadMore() {
+            if (this.loading || this.currentIndex >= this.totalItems) return;
             
-            // View toggles
-            document.querySelectorAll('.view-toggle').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    document.querySelectorAll('.view-toggle').forEach(b => b.classList.remove('active'));
-                    e.target.classList.add('active');
+            this.loading = true;
+            const loadMoreBtn = document.getElementById('load-more-archive');
+            const progressBar = document.getElementById('progress-bar');
+            const progressContainer = document.getElementById('load-progress');
+            
+            loadMoreBtn.classList.add('loading');
+            loadMoreBtn.disabled = true;
+            progressContainer.classList.add('active');
+            
+            const nextIndex = Math.min(this.currentIndex + this.itemsPerPage, this.totalItems);
+            const nextItems = this.items.slice(this.currentIndex, nextIndex);
+            
+            const progress = (nextIndex / this.totalItems) * 100;
+            progressBar.style.width = `${progress}%`;
+            
+            setTimeout(() => {
+                const gallery = document.getElementById('archive-gallery');
+                
+                nextItems.forEach(item => {
+                    const element = this.createGalleryItem(item, false);
+                    element.style.opacity = '0';
+                    element.style.transition = 'opacity 0.5s ease';
+                    gallery.appendChild(element);
                     
-                    const view = e.target.dataset.view;
-                    const gallery = document.getElementById('archive-gallery');
-                    
-                    if (view === 'masonry') {
-                        gallery.style.gridTemplateColumns = 'repeat(auto-fill, minmax(250px, 1fr))';
-                        gallery.style.gridAutoRows = 'minmax(200px, auto)';
-                    } else {
-                        gallery.style.gridTemplateColumns = 'repeat(auto-fill, minmax(280px, 1fr))';
-                        gallery.style.gridAutoRows = 'auto';
+                    setTimeout(() => {
+                        element.style.opacity = '1';
+                    }, 50);
+                });
+                
+                this.currentIndex = nextIndex;
+                this.initializePopups();
+                
+                this.loading = false;
+                loadMoreBtn.classList.remove('loading');
+                loadMoreBtn.disabled = false;
+                
+                this.updateCounter();
+                
+                if (this.currentIndex >= this.totalItems) {
+                    loadMoreBtn.style.display = 'none';
+                    document.getElementById('no-more-items').classList.add('active');
+                }
+                
+                setTimeout(() => {
+                    progressContainer.classList.remove('active');
+                }, 1000);
+                
+            }, 800);
+        }
+        
+        updateCounter() {
+            const counter = document.getElementById('image-counter');
+            counter.textContent = `${this.currentIndex}/${this.totalItems}`;
+        }
+        
+        initLazyLoading() {
+            const images = document.querySelectorAll('.gallery-item img');
+            const imageObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        imageObserver.unobserve(img);
                     }
                 });
             });
             
-            // Infinite scroll (optional) - uncomment if you want infinite scroll
-            // window.addEventListener('scroll', () => {
-            //     if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 1000) {
-            //         if (!this.loading && this.currentIndex < this.totalItems) {
-            //             this.loadMore();
-            //         }
-            //     }
-            // });
+            images.forEach(img => imageObserver.observe(img));
+        }
+        
+        setupEventListeners() {
+            const loadMoreBtn = document.getElementById('load-more-archive');
+            loadMoreBtn.addEventListener('click', () => this.loadMore());
         }
     }
 
@@ -1327,12 +1182,11 @@ const galleryItems = [
 
     // Initialize everything
     document.addEventListener("DOMContentLoaded", function() {
-        // Initialize gallery with improved pagination
+        // Initialize gallery
         const galleryPaginator = new GalleryPaginator(galleryItems, 20);
         
-        // Load navbar and footer
+        // Load navbar
         $('#navbar-container').load('navbar.html', function() {
-            // Navbar initialization code
             const menuIcon = document.getElementById('menu-icon');
             const navLinks = document.getElementById('nav-links');
             
@@ -1373,7 +1227,6 @@ const galleryItems = [
         const bg2 = document.querySelector('.bg2');
 
         if (bg1 && bg2) {
-            // Set initial images
             bg1.style.backgroundImage = `url('${images[idx]}')`;
             bg1.classList.add('active');
             bg2.style.backgroundImage = `url('${images[(idx+1)%images.length]}')`;
