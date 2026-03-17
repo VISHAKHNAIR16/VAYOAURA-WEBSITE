@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="attractions.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" />
-    <link rel="icon" href="media/shared/assets/favicon.ico" type="image/x-icon">
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
     <style>
@@ -43,13 +42,13 @@
             min-width: 150px;
         }
 
-        .buttons button:hover, .buttons button.active {
+        .buttons button:hover {
             background: rgba(255, 255, 255, 0.4);
             transform: scale(1.05);
         }
 
         .Kannapy {
-            background-image: url('media/attractions/images/3.jpg');
+            background-image: url('images/3.jpg');
             background-size: cover;
             background-position: center;
             padding: 150px 20px;
@@ -111,59 +110,6 @@
             padding: 15px;
         }
 
-        .card.hidden {
-            display: none;
-        }
-        
-        .load-more-container {
-            text-align: center;
-            margin: 30px 0;
-            padding: 20px;
-        }
-        
-        .load-more-btn {
-            background: rgba(40, 40, 40, 0.8);
-            border: 2px solid rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(10px);
-            padding: 15px 30px;
-            font-size: 18px;
-            font-weight: bold;
-            color: white;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.3s ease-in-out;
-        }
-        
-        .load-more-btn:hover {
-            background: rgba(255, 255, 255, 0.8);
-            color: #333;
-            transform: scale(1.05);
-        }
-        
-        .loading-spinner {
-            display: none;
-            text-align: center;
-            padding: 20px;
-        }
-        
-        .loading-spinner.active {
-            display: block;
-        }
-        
-        .spinner {
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #333;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto;
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
 
         @media (max-width: 768px) {
             .buttons {
@@ -219,10 +165,10 @@
             background-color: #555;
         }
     
-        .country-section { display: none; }
-        .country-section.active { display: block; }
+.country-section { display: none; }
+.country-section.active { display: block; }
 
-    </style>
+</style>
 </head>
 <body>
 <header id="navbar-container"></header>
@@ -237,7 +183,7 @@
 </div>
 <div class="container">
     <div class="buttons">
-        <button data-country="thailand" class="active">Thailand</button>
+        <button data-country="thailand">Thailand</button>
         <button data-country="indonesia">Indonesia</button>
         <button data-country="vietnam">Vietnam</button>
         <button data-country="japan">Japan</button>
@@ -253,10 +199,10 @@
             <div class="city-header">
                 <h2>Bangkok</h2>
             </div>
-            <div class="cards" id="bangkok-cards">
+            <div class="cards">
                 <div class="card">
                     <a href="media/attractions/images/safari.webp" class="popup-link" title="Safari World">
-                        <img src="media/attractions/images/safari.webp" alt="Safari World" loading="lazy">
+                        <img src="media/attractions/images/safari.webp" alt="Safari World">
                     </a>
                     <div class="card-content">
                         <h3>Safari World</h3>
@@ -265,7 +211,7 @@
                 </div>
                 <div class="card">
                     <a href="media/attractions/images/dream.webp" class="popup-link" title="Dream World">
-                        <img src="media/attractions/images/dream.webp" alt="Dream World" loading="lazy">
+                        <img src="media/attractions/images/dream.webp" alt="Dream World">
                     </a>
                     <div class="card-content">
                         <h3>Dream World</h3>
@@ -274,7 +220,7 @@
                 </div>
                 <div class="card">
                     <a href="media/attractions/images/ancient.webp" class="popup-link" title="Ancient City">
-                        <img src="media/attractions/images/ancient.webp" alt="Ancient City" loading="lazy">
+                        <img src="media/attractions/images/ancient.webp" alt="Ancient City">
                     </a>
                     <div class="card-content">
                         <h3>Ancient City</h3>
@@ -283,7 +229,7 @@
                 </div>
                 <div class="card">
                     <a href="media/attractions/images/baiyoke.webp" class="popup-link" title="Baiyoke Observation Deck">
-                        <img src="media/attractions/images/baiyoke.webp" alt="Baiyoke Observation Deck" loading="lazy">
+                        <img src="media/attractions/images/baiyoke.webp" alt="Baiyoke Observation Deck">
                     </a>
                     <div class="card-content">
                         <h3>Baiyoke Observation Deck</h3>
@@ -292,7 +238,7 @@
                 </div>
                 <div class="card">
                     <a href="media/attractions/images/calypso.webp" class="popup-link" title="Calypso Cabaret">
-                        <img src="media/attractions/images/calypso.webp" alt="Calypso Cabaret" loading="lazy">
+                        <img src="media/attractions/images/calypso.webp" alt="Calypso Cabaret">
                     </a>
                     <div class="card-content">
                         <h3>Calypso Cabaret</h3>
@@ -301,7 +247,7 @@
                 </div>
                 <div class="card">
                     <a href="media/attractions/images/damnoen.webp" class="popup-link" title="Damnoen Saduak Floating Market">
-                        <img src="media/attractions/images/damnoen.webp" alt="Damnoen Saduak Floating Market" loading="lazy">
+                        <img src="media/attractions/images/damnoen.webp" alt="Damnoen Saduak Floating Market">
                     </a>
                     <div class="card-content">
                         <h3>Damnoen Saduak Floating Market</h3>
@@ -309,8 +255,8 @@
                     <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
                 </div>
                 <div class="card">
-                    <a href="media/attractions/images/Erawan.webp" class="popup-link" title="The Erawan Museum">
-                        <img src="media/attractions/images/Erawan.webp" alt="The Erawan Museum" loading="lazy">
+                    <a href="media/attractions/images/erawan.webp" class="popup-link" title="The Erawan Museum">
+                        <img src="media/attractions/images/erawan.webp" alt="The Erawan Museum">
                     </a>
                     <div class="card-content">
                         <h3>The Erawan Museum</h3>
@@ -319,7 +265,7 @@
                 </div>
                 <div class="card">
                     <a href="media/attractions/images/goldendome.webp" class="popup-link" title="Golden Dome Cabaret Show">
-                        <img src="media/attractions/images/goldendome.webp" alt="Golden Dome Cabaret Show" loading="lazy">
+                        <img src="media/attractions/images/goldendome.webp" alt="Golden Dome Cabaret Show">
                     </a>
                     <div class="card-content">
                         <h3>Golden Dome Cabaret Show</h3>
@@ -328,7 +274,7 @@
                 </div>
                 <div class="card">
                     <a href="media/attractions/images/madamtussads.webp" class="popup-link" title="Madame Tussauds">
-                        <img src="media/attractions/images/madamtussads.webp" alt="Madame Tussauds" loading="lazy">
+                        <img src="media/attractions/images/madamtussads.webp" alt="Madame Tussauds">
                     </a>
                     <div class="card-content">
                         <h3>Madame Tussauds</h3>
@@ -337,7 +283,7 @@
                 </div>
                 <div class="card">
                     <a href="media/attractions/images/hoponhop.webp" class="popup-link" title="Hop On Hop Off Sightseeing Tours">
-                        <img src="media/attractions/images/hoponhop.webp" alt="Hop On Hop Off Sightseeing Tours" loading="lazy">
+                        <img src="media/attractions/images/hoponhop.webp" alt="Hop On Hop Off Sightseeing Tours">
                     </a>
                     <div class="card-content">
                         <h3>Hop On Hop Off Sightseeing Tours</h3>
@@ -346,7 +292,7 @@
                 </div>
                 <div class="card">
                     <a href="media/attractions/images/saffron.webp" class="popup-link" title="Saffron Cruise by Banyan Tree">
-                        <img src="media/attractions/images/saffron.webp" alt="Saffron Cruise by Banyan Tree" loading="lazy">
+                        <img src="media/attractions/images/saffron.webp" alt="Saffron Cruise by Banyan Tree">
                     </a>
                     <div class="card-content">
                         <h3>Saffron Cruise by Banyan Tree</h3>
@@ -355,7 +301,7 @@
                 </div>
                 <div class="card">
                     <a href="media/attractions/images/sealife.webp" class="popup-link" title="SEA LIFE Bangkok Ocean World">
-                        <img src="media/attractions/images/sealife.webp" alt="SEA LIFE Bangkok Ocean World" loading="lazy">
+                        <img src="media/attractions/images/sealife.webp" alt="SEA LIFE Bangkok Ocean World">
                     </a>
                     <div class="card-content">
                         <h3>SEA LIFE Bangkok Ocean World</h3>
@@ -364,7 +310,7 @@
                 </div>
                 <div class="card">
                     <a href="media/attractions/images/skywalk.webp" class="popup-link" title="Mahanakhon Skywalk">
-                        <img src="media/attractions/images/skywalk.webp" alt="Mahanakhon Skywalk" loading="lazy">
+                        <img src="media/attractions/images/skywalk.webp" alt="Mahanakhon Skywalk">
                     </a>
                     <div class="card-content">
                         <h3>Mahanakhon Skywalk</h3>
@@ -373,7 +319,7 @@
                 </div>
                 <div class="card">
                     <a href="media/attractions/images/meridianala.webp" class="popup-link" title="Meridian Alangka Cruise">
-                        <img src="media/attractions/images/meridianala.webp" alt="Meridian Alangka Cruise" loading="lazy">
+                        <img src="media/attractions/images/meridianala.webp" alt="Meridian Alangka Cruise">
                     </a>
                     <div class="card-content">
                         <h3>Meridian Alangka Cruise</h3>
@@ -382,7 +328,7 @@
                 </div>
                 <div class="card">
                     <a href="media/attractions/images/opul.webp" class="popup-link" title="The Opulence Cruise">
-                        <img src="media/attractions/images/opul.webp" alt="The Opulence Cruise" loading="lazy">
+                        <img src="media/attractions/images/opul.webp" alt="The Opulence Cruise">
                     </a>
                     <div class="card-content">
                         <h3>The Opulence Cruise</h3>
@@ -391,7 +337,7 @@
                 </div>
                 <div class="card">
                     <a href="media/attractions/images/royal.webp" class="popup-link" title="Royal Galaxy Cruise">
-                        <img src="media/attractions/images/royal.webp" alt="Royal Galaxy Cruise" loading="lazy">
+                        <img src="media/attractions/images/royal.webp" alt="Royal Galaxy Cruise">
                     </a>
                     <div class="card-content">
                         <h3>Royal Galaxy Cruise</h3>
@@ -400,7 +346,7 @@
                 </div>
                 <div class="card">
                     <a href="media/attractions/images/serp.webp" class="popup-link" title="Siam Serpentarium Snake Museum">
-                        <img src="media/attractions/images/serp.webp" alt="Siam Serpentarium Snake Museum" loading="lazy">
+                        <img src="media/attractions/images/serp.webp" alt="Siam Serpentarium Snake Museum">
                     </a>
                     <div class="card-content">
                         <h3>Siam Serpentarium Snake Museum</h3>
@@ -409,7 +355,7 @@
                 </div>
                 <div class="card">
                     <a href="media/attractions/images/siam.webp" class="popup-link" title="Siam Amazing Park">
-                        <img src="media/attractions/images/siam.webp" alt="Siam Amazing Park" loading="lazy">
+                        <img src="media/attractions/images/siam.webp" alt="Siam Amazing Park">
                     </a>
                     <div class="card-content">
                         <h3>Siam Amazing Park</h3>
@@ -418,7 +364,7 @@
                 </div>
                 <div class="card">
                     <a href="media/attractions/images/unicorn.webp" class="popup-link" title="Unicorn Dinner Cruise">
-                        <img src="media/attractions/images/unicorn.webp" alt="Unicorn Dinner Cruise" loading="lazy">
+                        <img src="media/attractions/images/unicorn.webp" alt="Unicorn Dinner Cruise">
                     </a>
                     <div class="card-content">
                         <h3>Unicorn Dinner Cruise</h3>
@@ -427,126 +373,122 @@
                 </div>
                 <div class="card">
                     <a href="media/attractions/images/chao.webp" class="popup-link" title="Chao Phraya Princess Dinner Cruise">
-                        <img src="media/attractions/images/chao.webp" alt="Chao Phraya Princess Dinner Cruise" loading="lazy">
+                        <img src="media/attractions/images/chao.webp" alt="Chao Phraya Princess Dinner Cruise">
                     </a>
                     <div class="card-content">
                         <h3>Chao Phraya Princess Dinner Cruise</h3>
                     </div>
                     <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
                 </div>
-                
-                <!-- Batch 2 Cards (Hidden Initially) -->
-                <div class="card hidden" data-batch="2">
+                <div class="card">
                     <a href="media/attractions/images/grand.webp" class="popup-link" title="Grand Pearl Dinner Cruise">
-                        <img src="media/attractions/images/grand.webp" alt="Grand Pearl Dinner Cruise" loading="lazy">
+                        <img src="media/attractions/images/grand.webp" alt="Grand Pearl Dinner Cruise">
                     </a>
                     <div class="card-content">
                         <h3>Grand Pearl Dinner Cruise</h3>
                     </div>
                     <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
                 </div>
-                <div class="card hidden" data-batch="2">
+                <div class="card">
                     <a href="media/attractions/images/wonder.webp" class="popup-link" title="Wonderful Pearl Dinner Cruise">
-                        <img src="media/attractions/images/wonder.webp" alt="Wonderful Pearl Dinner Cruise" loading="lazy">
+                        <img src="media/attractions/images/wonder.webp" alt="Wonderful Pearl Dinner Cruise">
                     </a>
                     <div class="card-content">
                         <h3>Wonderful Pearl Dinner Cruise</h3>
                     </div>
                     <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
                 </div>
-                <div class="card hidden" data-batch="2">
+                <div class="card">
                     <a href="media/attractions/images/alaganka.webp" class="popup-link" title="Alangka Dinner Cruise">
-                        <img src="media/attractions/images/alaganka.webp" alt="Alangka Dinner Cruise" loading="lazy">
+                        <img src="media/attractions/images/alaganka.webp" alt="Alangka Dinner Cruise">
                     </a>
                     <div class="card-content">
                         <h3>Alangka Dinner Cruise</h3>
                     </div>
                     <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
                 </div>
-                <div class="card hidden" data-batch="2">
+                <div class="card">
                     <a href="media/attractions/images/NASATTABKK.webp" class="popup-link" title="NaSatta Park">
-                        <img src="media/attractions/images/NASATTABKK.webp" alt="NaSatta Park" loading="lazy">
+                        <img src="media/attractions/images/NASATTABKK.webp" alt="NaSatta Park">
                     </a>
                     <div class="card-content">
                         <h3>NaSatta Park</h3>
                     </div>
                     <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
                 </div>
-                <div class="card hidden" data-batch="2">
+                <div class="card">
                     <a href="media/attractions/images/GOLDBKK.webp" class="popup-link" title="Golden Buddha Temple - Wat Trai Mit">
-                        <img src="media/attractions/images/GOLDBKK.webp" alt="Golden Buddha Temple - Wat Trai Mit" loading="lazy">
+                        <img src="media/attractions/images/GOLDBKK.webp" alt="Golden Buddha Temple - Wat Trai Mit">
                     </a>
                     <div class="card-content">
                         <h3>Golden Buddha Temple - Wat Trai Mit</h3>
                     </div>
                     <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
                 </div>
-                <div class="card hidden" data-batch="2">
+                <div class="card">
                     <a href="media/attractions/images/GRANDBKK.webp" class="popup-link" title="The Grand Palace">
-                        <img src="media/attractions/images/GRANDBKK.webp" alt="The Grand Palace" loading="lazy">
+                        <img src="media/attractions/images/GRANDBKK.webp" alt="The Grand Palace">
                     </a>
                     <div class="card-content">
                         <h3>The Grand Palace</h3>
                     </div>
                     <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
                 </div>
-                <div class="card hidden" data-batch="2">
+                <div class="card">
                     <a href="media/attractions/images/RECLIBKK.webp" class="popup-link" title="Reclining Buddha Temple - Wat Phra">
-                        <img src="media/attractions/images/RECLIBKK.webp" alt="Reclining Buddha Temple - Wat Phra" loading="lazy">
+                        <img src="media/attractions/images/RECLIBKK.webp" alt="Reclining Buddha Temple - Wat Phra">
                     </a>
                     <div class="card-content">
                         <h3>Reclining Buddha Temple - Wat Phra</h3>
                     </div>
                     <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
                 </div>
-                <div class="card hidden" data-batch="2">
+                <div class="card">
                     <a href="media/attractions/images/MARBLEBKK.webp" class="popup-link" title="Marble Buddha Temple - Wat Benchamabophit">
-                        <img src="media/attractions/images/MARBLEBKK.webp" alt="Marble Buddha Temple - Wat Benchamabophit" loading="lazy">
+                        <img src="media/attractions/images/MARBLEBKK.webp" alt="Marble Buddha Temple - Wat Benchamabophit">
                     </a>
                     <div class="card-content">
                         <h3>Marble Buddha Temple - Wat Benchamabophit</h3>
                     </div>
                     <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
                 </div>
-                <div class="card hidden" data-batch="2">
+                <div class="card">
                     <a href="media/attractions/images/Erawan.webp" class="popup-link" title="Erawan Waterfall">
-                        <img src="media/attractions/images/Erawan.webp" alt="Erawan Waterfall" loading="lazy">
+                        <img src="media/attractions/images/Erawan.webp" alt="Erawan Waterfall">
                     </a>
                     <div class="card-content">
                         <h3>Erawan Waterfall</h3>
                     </div>
                     <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
                 </div>
-                <div class="card hidden" data-batch="2">
+                <div class="card">
                     <a href="media/attractions/images/Ayutthaya.webp" class="popup-link" title="Ayutthaya">
-                        <img src="media/attractions/images/Ayutthaya.webp" alt="Ayutthaya" loading="lazy">
+                        <img src="media/attractions/images/Ayutthaya.webp" alt="Ayutthaya">
                     </a>
                     <div class="card-content">
                         <h3>Ayutthaya</h3>
                     </div>
                     <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
                 </div>
-                
-                <!-- Batch 3 Cards (Hidden Initially) -->
-                <div class="card hidden" data-batch="3">
+                <div class="card">
                     <a href="media/attractions/images/Sukhothai.webp" class="popup-link" title="Sukhothai Historical Park">
-                        <img src="media/attractions/images/Sukhothai.webp" alt="Sukhothai Historical Park" loading="lazy">
+                        <img src="media/attractions/images/Sukhothai.webp" alt="Sukhothai Historical Park">
                     </a>
                     <div class="card-content">
                         <h3>Sukhothai Historical Park</h3>
                     </div>
                     <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
                 </div>
-                <div class="card hidden" data-batch="3">
-                    <a href="media/attractions/images/Space-Time-Cube-.webp" class="popup-link" title="Space & Time Cube+">
-                        <img src="media/attractions/images/Space-Time-Cube-.webp" alt="Space & Time Cube+" loading="lazy">
+                <div class="card">
+                    <a href="media/attractions/images/Space & Time Cube+.webp" class="popup-link" title="Space & Time Cube+">
+                        <img src="media/attractions/images/Space & Time Cube+.webp" alt="Space & Time Cube+">
                     </a>
                     <div class="card-content">
                         <h3>Space & Time Cube+</h3>
                     </div>
                     <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
                 </div>
-                <div class="card hidden" data-batch="3">
+                <div class="card">
                 <a 
                     href="media/attractions/videos/space-.webm" 
                     class="fancybox" 
@@ -554,7 +496,7 @@
                     data-type="video" 
                     title="Space & Time Cube+">
                     <div class="video-thumbnail">
-                    <img src="media/attractions/images/space-PLY.webp" alt="Space & Time Cube+" loading="lazy">
+                    <img src="media/attractions/images/space-PLY.webp" alt="Space & Time Cube+">
                     <div class="play-button"></div>
                     </div>
                 </a>
@@ -563,9 +505,9 @@
                     </div>
                     <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
                 </div>
-                <div class="card hidden" data-batch="3">
-                    <a href="media/attractions/images/Jurassic-World-The-Experience.webp" class="popup-link" title="Jurassic World : The Experience">
-                        <img src="media/attractions/images/Jurassic-World-The-Experience.webp" alt="Jurassic World : The Experience" loading="lazy">
+                <div class="card">
+                    <a href="media/attractions/images/Jurassic World The Experience.webp" class="popup-link" title="Jurassic World : The Experience">
+                        <img src="media/attractions/images/Jurassic World The Experience.webp" alt="Jurassic World : The Experience">
                     </a>
                     <div class="card-content">
                         <h3>Jurassic World : The Experience</h3>
@@ -573,28 +515,17 @@
                     <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
                 </div>
             </div>
-            
-            <div class="load-more-container">
-                <button class="load-more-btn" data-city="bangkok">
-                    Load More Bangkok Attractions
-                </button>
-            </div>
-            
-            <div class="loading-spinner" id="bangkok-loading">
-                <div class="spinner"></div>
-                <p>Loading more attractions...</p>
-            </div>
         </div>
+    
 
-        <!-- Pattaya -->
-        <div class="city-section">
+   <div class="city-section">
             <div class="city-header">
                 <h2>Pattaya</h2>
             </div>
-            <div class="cards" id="pattaya-cards">
+            <div class="cards">
                 <div class="card">
                     <a href="media/attractions/images/ALCAZARPTY.webp" class="popup-link" title="Alcazar Cabaret Show">
-                        <img src="media/attractions/images/ALCAZARPTY.webp" alt="Alcazar Cabaret Show" loading="lazy">
+                        <img src="media/attractions/images/ALCAZARPTY.webp" alt="Alcazar Cabaret Show">
                     </a>
                     <div class="card-content">
                         <h3>Alcazar Cabaret Show</h3>
@@ -603,7 +534,7 @@
                 </div>
                 <div class="card">
                     <a href="media/attractions/images/ARTPTY.webp" class="popup-link" title="Art In Paradise">
-                        <img src="media/attractions/images/ARTPTY.webp" alt="Art In Paradise" loading="lazy">
+                        <img src="media/attractions/images/ARTPTY.webp" alt="Art In Paradise">
                     </a>
                     <div class="card-content">
                         <h3>Art In Paradise</h3>
@@ -612,7 +543,7 @@
                 </div>
                 <div class="card">
                     <a href="media/attractions/images/BULLETPTY.webp" class="popup-link" title="Light Bullet Shooting Park">
-                        <img src="media/attractions/images/BULLETPTY.webp" alt="Light Bullet Shooting Park" loading="lazy">
+                        <img src="media/attractions/images/BULLETPTY.webp" alt="Light Bullet Shooting Park">
                     </a>
                     <div class="card-content">
                         <h3>Light Bullet Shooting Park</h3>
@@ -621,7 +552,7 @@
                 </div>
                 <div class="card">
                     <a href="media/attractions/images/COLOMBBIAPTY.webp" class="popup-link" title="Columbia Pictures Aquaverse">
-                        <img src="media/attractions/images/COLOMBBIAPTY.webp" alt="Columbia Pictures Aquaverse" loading="lazy">
+                        <img src="media/attractions/images/COLOMBBIAPTY.webp" alt="Columbia Pictures Aquaverse">
                     </a>
                     <div class="card-content">
                         <h3>Columbia Pictures Aquaverse</h3>
@@ -630,7 +561,7 @@
                 </div>
                 <div class="card">
                     <a href="media/attractions/images/CORALPTY.webp" class="popup-link" title="Coral Island">
-                        <img src="media/attractions/images/CORALPTY.webp" alt="Coral Island" loading="lazy">
+                        <img src="media/attractions/images/CORALPTY.webp" alt="Coral Island">
                     </a>
                     <div class="card-content">
                         <h3>Coral Island</h3>
@@ -639,7 +570,7 @@
                 </div>
                 <div class="card">
                     <a href="media/attractions/images/COLOSEUMPTY.webp" class="popup-link" title="Colosseum Show">
-                        <img src="media/attractions/images/COLOSEUMPTY.webp" alt="Colosseum Show" loading="lazy">
+                        <img src="media/attractions/images/COLOSEUMPTY.webp" alt="Colosseum Show">
                     </a>
                     <div class="card-content">
                         <h3>Colosseum Show</h3>
@@ -648,7 +579,7 @@
                 </div>
                 <div class="card">
                     <a href="media/attractions/images/DOLPHINPTY.webp" class="popup-link" title="Dolphinarium">
-                        <img src="media/attractions/images/DOLPHINPTY.webp" alt="Dolphinarium" loading="lazy">
+                        <img src="media/attractions/images/DOLPHINPTY.webp" alt="Dolphinarium">
                     </a>
                     <div class="card-content">
                         <h3>Dolphinarium</h3>
@@ -657,7 +588,7 @@
                 </div>
                 <div class="card">
                     <a href="media/attractions/images/EJSHKTPTY.webp" class="popup-link" title="Elephant Jungle Sanctuary">
-                        <img src="media/attractions/images/EJSHKTPTY.webp" alt="Elephant Jungle Sanctuary" loading="lazy">
+                        <img src="media/attractions/images/EJSHKTPTY.webp" alt="Elephant Jungle Sanctuary">
                     </a>
                     <div class="card-content">
                         <h3>Elephant Jungle Sanctuary</h3>
@@ -666,7 +597,7 @@
                 </div>
                 <div class="card">
                     <a href="media/attractions/images/FLOATPTY.webp" class="popup-link" title="Floating Market">
-                        <img src="media/attractions/images/FLOATPTY.webp" alt="Floating Market" loading="lazy">
+                        <img src="media/attractions/images/FLOATPTY.webp" alt="Floating Market">
                     </a>
                     <div class="card-content">
                         <h3>Floating Market</h3>
@@ -675,7 +606,7 @@
                 </div>
                 <div class="card">
                     <a href="media/attractions/images/FROSTPTY.webp" class="popup-link" title="FROST Magical Ice of Siam">
-                        <img src="media/attractions/images/FROSTPTY.webp" alt="FROST Magical Ice of Siam" loading="lazy">
+                        <img src="media/attractions/images/FROSTPTY.webp" alt="FROST Magical Ice of Siam">
                     </a>
                     <div class="card-content">
                         <h3>FROST Magical Ice of Siam</h3>
@@ -684,7 +615,7 @@
                 </div>
                 <div class="card">
                     <a href="media/attractions/images/GREATGRANDPTY.webp" class="popup-link" title="GREAT & GRAND Sweet Destination">
-                        <img src="media/attractions/images/GREATGRANDPTY.webp" alt="GREAT & GRAND Sweet Destination" loading="lazy">
+                        <img src="media/attractions/images/GREATGRANDPTY.webp" alt="GREAT & GRAND Sweet Destination">
                     </a>
                     <div class="card-content">
                         <h3>GREAT & GRAND Sweet Destination</h3>
@@ -693,7 +624,7 @@
                 </div>
                 <div class="card">
                     <a href="media/attractions/images/LEGENDPTY.webp" class="popup-link" title="Legend Siam">
-                        <img src="media/attractions/images/LEGENDPTY.webp" alt="Legend Siam" loading="lazy">
+                        <img src="media/attractions/images/LEGENDPTY.webp" alt="Legend Siam">
                     </a>
                     <div class="card-content">
                         <h3>Legend Siam</h3>
@@ -702,7 +633,7 @@
                 </div>
                 <div class="card">
                     <a href="media/attractions/images/MINIPTY.webp" class="popup-link" title="Mini Siam">
-                        <img src="media/attractions/images/MINIPTY.webp" alt="Mini Siam" loading="lazy">
+                        <img src="media/attractions/images/MINIPTY.webp" alt="Mini Siam">
                     </a>
                     <div class="card-content">
                         <h3>Mini Siam</h3>
@@ -711,7 +642,7 @@
                 </div>
                 <div class="card">
                     <a href="media/attractions/images/NONGPTY.webp" class="popup-link" title="Nong Nooch Botanical Garden">
-                        <img src="media/attractions/images/NONGPTY.webp" alt="Nong Nooch Botanical Garden" loading="lazy">
+                        <img src="media/attractions/images/NONGPTY.webp" alt="Nong Nooch Botanical Garden">
                     </a>
                     <div class="card-content">
                         <h3>Nong Nooch Botanical Garden</h3>
@@ -720,7 +651,7 @@
                 </div>
                 <div class="card">
                     <a href="media/attractions/images/RAMAYANAPTY.webp" class="popup-link" title="Ramayana Water Park">
-                        <img src="media/attractions/images/RAMAYANAPTY.webp" alt="Ramayana Water Park" loading="lazy">
+                        <img src="media/attractions/images/RAMAYANAPTY.webp" alt="Ramayana Water Park">
                     </a>
                     <div class="card-content">
                         <h3>Ramayana Water Park</h3>
@@ -729,7 +660,7 @@
                 </div>
                 <div class="card">
                     <a href="media/attractions/images/RIPLEYPTY.webp" class="popup-link" title="Ripley's Believe It or Not!">
-                        <img src="media/attractions/images/RIPLEYPTY.webp" alt="Ripley's Believe It or Not!" loading="lazy">
+                        <img src="media/attractions/images/RIPLEYPTY.webp" alt="Ripley's Believe It or Not!">
                     </a>
                     <div class="card-content">
                         <h3>Ripley's Believe It or Not!</h3>
@@ -738,7 +669,7 @@
                 </div>
                 <div class="card">
                     <a href="media/attractions/images/SHEEPPTY.webp" class="popup-link" title="Sheep Farm">
-                        <img src="media/attractions/images/SHEEPPTY.webp" alt="Sheep Farm" loading="lazy">
+                        <img src="media/attractions/images/SHEEPPTY.webp" alt="Sheep Farm">
                     </a>
                     <div class="card-content">
                         <h3>Sheep Farm</h3>
@@ -747,7 +678,7 @@
                 </div>
                 <div class="card">
                     <a href="media/attractions/images/SOTPTY.webp" class="popup-link" title="Sanctuary of Truth">
-                        <img src="media/attractions/images/SOTPTY.webp" alt="Sanctuary of Truth" loading="lazy">
+                        <img src="media/attractions/images/SOTPTY.webp" alt="Sanctuary of Truth">
                     </a>
                     <div class="card-content">
                         <h3>Sanctuary of Truth</h3>
@@ -756,7 +687,7 @@
                 </div>
                 <div class="card">
                     <a href="media/attractions/images/TIFFPTY.webp" class="popup-link" title="Tiffany's Show">
-                        <img src="media/attractions/images/TIFFPTY.webp" alt="Tiffany's Show" loading="lazy">
+                        <img src="media/attractions/images/TIFFPTY.webp" alt="Tiffany's Show">
                     </a>
                     <div class="card-content">
                         <h3>Tiffany's Show</h3>
@@ -765,43 +696,41 @@
                 </div>
                 <div class="card">
                     <a href="media/attractions/images/TIGERPARKPTY.webp" class="popup-link" title="Tiger Park">
-                        <img src="media/attractions/images/TIGERPARKPTY.webp" alt="Tiger Park" loading="lazy">
+                        <img src="media/attractions/images/TIGERPARKPTY.webp" alt="Tiger Park">
                     </a>
                     <div class="card-content">
                         <h3>Tiger Park</h3>
                     </div>
                     <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
                 </div>
-                
-                <!-- Batch 2 Pattaya Cards -->
-                <div class="card hidden" data-batch="2">
+                <div class="card">
                     <a href="media/attractions/images/TOPIAPTY.webp" class="popup-link" title="Tiger Topia Sriracha Zoo">
-                        <img src="media/attractions/images/TOPIAPTY.webp" alt="Tiger Topia Sriracha Zoo" loading="lazy">
+                        <img src="media/attractions/images/TOPIAPTY.webp" alt="Tiger Topia Sriracha Zoo">
                     </a>
                     <div class="card-content">
                         <h3>Tiger Topia Sriracha Zoo</h3>
                     </div>
                     <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
                 </div>
-                <div class="card hidden" data-batch="2">
+                <div class="card">
                     <a href="media/attractions/images/UNDERPTY.webp" class="popup-link" title="Underwater World">
-                        <img src="media/attractions/images/UNDERPTY.webp" alt="Underwater World" loading="lazy">
+                        <img src="media/attractions/images/UNDERPTY.webp" alt="Underwater World">
                     </a>
                     <div class="card-content">
                         <h3>Underwater World</h3>
                     </div>
                     <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
                 </div>
-                <div class="card hidden" data-batch="2">
+                <div class="card">
                     <a href="media/attractions/images/ZOOPTY.webp" class="popup-link" title="Khao Kheow Open Zoo">
-                        <img src="media/attractions/images/ZOOPTY.webp" alt="Khao Kheow Open Zoo" loading="lazy">
+                        <img src="media/attractions/images/ZOOPTY.webp" alt="Khao Kheow Open Zoo">
                     </a>
                     <div class="card-content">
                         <h3>Khao Kheow Open Zoo</h3>
                     </div>
                     <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
                 </div>
-                <div class="card hidden" data-batch="2">
+                <div class="card">
                 <a 
                     href="media/attractions/videos/Aqua.webm" 
                     class="fancybox" 
@@ -809,7 +738,7 @@
                     data-type="video" 
                     title="Columbia Pictures Aquaverse">
                     <div class="video-thumbnail">
-                    <img src="media/attractions/images/AquaPLY.webp" alt="Columbia Pictures Aquaverse" loading="lazy">
+                    <img src="media/attractions/images/AquaPLY.webp" alt="Columbia Pictures Aquaverse">
                     <div class="play-button"></div>
                 </div>
                 </a>
@@ -818,7 +747,7 @@
                     </div>
                     <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
                 </div>
-                <div class="card hidden" data-batch="2">
+                <div class="card">
                 <a 
                     href="media/attractions/videos/Aquacart.webm" 
                     class="fancybox" 
@@ -826,7 +755,7 @@
                     data-type="video" 
                     title="Aquaverse Go-Karting">
                     <div class="video-thumbnail">
-                    <img src="media/attractions/images/AquacartPLY.webp" alt="Aquaverse Go-Karting" loading="lazy">
+                    <img src="media/attractions/images/AquacartPLY.webp" alt="Aquaverse Go-Karting">
                     <div class="play-button"></div>
                 </div>
                 </a>
@@ -835,18 +764,7 @@
                 </div>
                 <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
             </div>
-            </div>
-            
-            <div class="load-more-container">
-                <button class="load-more-btn" data-city="pattaya">
-                    Load More Pattaya Attractions
-                </button>
-            </div>
-            
-            <div class="loading-spinner" id="pattaya-loading">
-                <div class="spinner"></div>
-                <p>Loading more attractions...</p>
-            </div>
+        </div>
         </div>
 
         <!-- Phuket -->
@@ -854,10 +772,10 @@
             <div class="city-header">
                 <h2>Phuket</h2>
             </div>
-            <div class="cards" id="phuket-cards">
+            <div class="cards">
                 <div class="card">
                     <a href="media/attractions/images/UPSIDEHKT.webp" class="popup-link" title="The Upside Down House Museum">
-                        <img src="media/attractions/images/UPSIDEHKT.webp" alt="The Upside Down House Museum" loading="lazy">
+                        <img src="media/attractions/images/UPSIDEHKT.webp" alt="The Upside Down House Museum">
                     </a>
                     <div class="card-content">
                         <h3>The Upside Down House Museum</h3>
@@ -866,7 +784,7 @@
                 </div>
                 <div class="card">
                     <a href="media/attractions/images/AQUARIAHKT.webp" class="popup-link" title="Aquaria Phuket">
-                        <img src="media/attractions/images/AQUARIAHKT.webp" alt="Aquaria Phuket" loading="lazy">
+                        <img src="media/attractions/images/AQUARIAHKT.webp" alt="Aquaria Phuket">
                     </a>
                     <div class="card-content">
                         <h3>Aquaria Phuket</h3>
@@ -875,7 +793,7 @@
                 </div>
                 <div class="card">
                     <a href="media/attractions/images/ANDAMANDAHKT.webp" class="popup-link" title="Andamanda Water Park">
-                        <img src="media/attractions/images/ANDAMANDAHKT.webp" alt="Andamanda Water Park" loading="lazy">
+                        <img src="media/attractions/images/ANDAMANDAHKT.webp" alt="Andamanda Water Park">
                     </a>
                     <div class="card-content">
                         <h3>Andamanda Water Park</h3>
@@ -884,7 +802,7 @@
                 </div>
                 <div class="card">
                     <a href="media/attractions/images/ATHENAHKT.webp" class="popup-link" title="Athena Cabaret Show">
-                        <img src="media/attractions/images/ATHENAHKT.webp" alt="Athena Cabaret Show" loading="lazy">
+                        <img src="media/attractions/images/ATHENAHKT.webp" alt="Athena Cabaret Show">
                     </a>
                     <div class="card-content">
                         <h3>Athena Cabaret Show</h3>
@@ -893,7 +811,7 @@
                 </div>
                 <div class="card">
                     <a href="media/attractions/images/BIRDHKT.webp" class="popup-link" title="Phuket Bird Park">
-                        <img src="media/attractions/images/BIRDHKT.webp" alt="Phuket Bird Park" loading="lazy">
+                        <img src="media/attractions/images/BIRDHKT.webp" alt="Phuket Bird Park">
                     </a>
                     <div class="card-content">
                         <h3>Phuket Bird Park</h3>
@@ -902,7 +820,7 @@
                 </div>
                 <div class="card">
                     <a href="media/attractions/images/CARNIVALHKT.webp" class="popup-link" title="Carnival Magic">
-                        <img src="media/attractions/images/CARNIVALHKT.webp" alt="Carnival Magic" loading="lazy">
+                        <img src="media/attractions/images/CARNIVALHKT.webp" alt="Carnival Magic">
                     </a>
                     <div class="card-content">
                         <h3>Carnival Magic</h3>
@@ -911,7 +829,7 @@
                 </div>
                 <div class="card">
                     <a href="media/attractions/images/DOLPHINHKT.webp" class="popup-link" title="Dolphins Bay">
-                        <img src="media/attractions/images/DOLPHINHKT.webp" alt="Dolphins Bay" loading="lazy">
+                        <img src="media/attractions/images/DOLPHINHKT.webp" alt="Dolphins Bay">
                     </a>
                     <div class="card-content">
                         <h3>Dolphins Bay</h3>
@@ -920,7 +838,7 @@
                 </div>
                 <div class="card">
                     <a href="media/attractions/images/CROCHKT.webp" class="popup-link" title="Crocodile Farm">
-                        <img src="media/attractions/images/CROCHKT.webp" alt="Crocodile Farm" loading="lazy">
+                        <img src="media/attractions/images/CROCHKT.webp" alt="Crocodile Farm">
                     </a>
                     <div class="card-content">
                         <h3>Crocodile Farm</h3>
@@ -929,7 +847,7 @@
                 </div>
                 <div class="card">
                     <a href="media/attractions/images/HANUMANHKT.webp" class="popup-link" title="Hanuman World Zipline Adventure">
-                        <img src="media/attractions/images/HANUMANHKT.webp" alt="Hanuman World Zipline Adventure" loading="lazy">
+                        <img src="media/attractions/images/HANUMANHKT.webp" alt="Hanuman World Zipline Adventure">
                     </a>
                     <div class="card-content">
                         <h3>Hanuman World Zipline Adventure</h3>
@@ -938,7 +856,7 @@
                 </div>
                 <div class="card">
                     <a href="media/attractions/images/NIRAMITHKT.webp" class="popup-link" title="Siam Niramit">
-                        <img src="media/attractions/images/NIRAMITHKT.webp" alt="Siam Niramit" loading="lazy">
+                        <img src="media/attractions/images/NIRAMITHKT.webp" alt="Siam Niramit">
                     </a>
                     <div class="card-content">
                         <h3>Siam Niramit</h3>
@@ -947,7 +865,7 @@
                 </div>
                 <div class="card">
                     <a href="media/attractions/images/SIMONHKT.webp" class="popup-link" title="Simon Cabaret">
-                        <img src="media/attractions/images/SIMONHKT.webp" alt="Simon Cabaret" loading="lazy">
+                        <img src="media/attractions/images/SIMONHKT.webp" alt="Simon Cabaret">
                     </a>
                     <div class="card-content">
                         <h3>Simon Cabaret</h3>
@@ -956,7 +874,7 @@
                 </div>
                 <div class="card">
                     <a href="media/attractions/images/TIGERHKT.webp" class="popup-link" title="Tiger Kingdom">
-                        <img src="media/attractions/images/TIGERHKT.webp" alt="Tiger Kingdom" loading="lazy">
+                        <img src="media/attractions/images/TIGERHKT.webp" alt="Tiger Kingdom">
                     </a>
                     <div class="card-content">
                         <h3>Tiger Kingdom</h3>
@@ -965,7 +883,7 @@
                 </div> 
                 <div class="card">
                     <a href="media/attractions/images/CIRCUSHKT.webp" class="popup-link" title="Aqua Circus">
-                        <img src="media/attractions/images/CIRCUSHKT.webp" alt="Aqua Circus" loading="lazy">
+                        <img src="media/attractions/images/CIRCUSHKT.webp" alt="Aqua Circus">
                     </a>
                     <div class="card-content">
                         <h3>Aqua Circus</h3>
@@ -974,7 +892,7 @@
                 </div>
                 <div class="card">
             <a href="media/attractions/images/ESHKT.webp" class="popup-link" title="Elephant Jungle Sanctuary">
-                <img src="media/attractions/images/ESHKT.webp" alt="Elephant Jungle Sanctuary" loading="lazy">
+                <img src="media/attractions/images/ESHKT.webp" alt="Elephant Jungle Sanctuary">
             </a>
             <div class="card-content">
                 <h3>Elephant Jungle Sanctuary</h3>
@@ -983,7 +901,7 @@
         </div>
         <div class="card">
             <a href="media/attractions/images/FANTHKT.webp" class="popup-link" title="Phuket FantaSea">
-                <img src="media/attractions/images/FANTHKT.webp" alt="Phuket FantaSea" loading="lazy">
+                <img src="media/attractions/images/FANTHKT.webp" alt="Phuket FantaSea">
             </a>
             <div class="card-content">
                 <h3>Phuket FantaSea</h3>
@@ -992,7 +910,7 @@
         </div>
         <div class="card">
             <a href="media/attractions/images/JAMESPGNA.webp" class="popup-link" title="James Bond Island">
-                <img src="media/attractions/images/JAMESPGNA.webp" alt="James Bond Island" loading="lazy">
+                <img src="media/attractions/images/JAMESPGNA.webp" alt="James Bond Island">
             </a>
             <div class="card-content">
                 <h3>James Bond Island - Phang Nga Bay</h3>
@@ -1001,7 +919,7 @@
         </div>
         <div class="card">
             <a href="media/attractions/images/PHIPHIHKT.webp" class="popup-link" title="Phi Phi Islands">
-                <img src="media/attractions/images/PHIPHIHKT.webp" alt="Phi Phi Islands" loading="lazy">
+                <img src="media/attractions/images/PHIPHIHKT.webp" alt="Phi Phi Islands">
             </a>
             <div class="card-content">
                 <h3>Phi Phi Islands</h3>
@@ -1010,7 +928,7 @@
         </div>
         <div class="card">
             <a href="media/attractions/images/SIMILANPGNA.webp" class="popup-link" title="Similan Islands">
-                <img src="media/attractions/images/SIMILANPGNA.webp" alt="Similan Islands" loading="lazy">
+                <img src="media/attractions/images/SIMILANPGNA.webp" alt="Similan Islands">
             </a>
             <div class="card-content">
                 <h3>Similan Islands - Phang Nga Bay</h3>
@@ -1019,7 +937,7 @@
         </div>
         <div class="card">
             <a href="media/attractions/images/TIGPARKHKT.webp" class="popup-link" title="Tiger Park">
-                <img src="media/attractions/images/TIGPARKHKT.webp" alt="Tiger Park" loading="lazy">
+                <img src="media/attractions/images/TIGPARKHKT.webp" alt="Tiger Park">
             </a>
             <div class="card-content">
                 <h3>Tiger Park</h3>
@@ -1028,7 +946,7 @@
         </div>
             <div class="card">
                 <a href="media/attractions/images/YONAHKT.webp" class="popup-link" title="Yona Beach Club">
-                    <img src="media/attractions/images/YONAHKT.webp" alt="Yona Beach Club" loading="lazy">
+                    <img src="media/attractions/images/YONAHKT.webp" alt="Yona Beach Club">
                 </a>
                 <div class="card-content">
                     <h3>Yona Beach Club</h3>
@@ -1037,24 +955,22 @@
         </div>
             <div class="card">
                 <a href="media/attractions/images/LIONLAND.webp" class="popup-link" title="Lion Land Phuket">
-                    <img src="media/attractions/images/LIONLAND.webp" alt="Lion Land Phuket" loading="lazy">
+                    <img src="media/attractions/images/LIONLAND.webp" alt="Lion Land Phuket">
                 </a>
                 <div class="card-content">
                     <h3>Lion Land Phuket</h3>
                 </div>
                 <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
             </div>
-            
-            <!-- Batch 2 Phuket Cards -->
-            <div class="card hidden" data-batch="2">
+            <div class="card">
             <a 
-                href="media/attractions/videos/Lion-Land-Phuket.mp4" 
+                href="media/attractions/images/Lion Land Phuket.mp4" 
                 class="fancybox" 
                 data-fancybox 
                 data-type="video" 
                 title="Lion Land Phuket">
                 <div class="video-thumbnail">
-                <img src="media/attractions/images/LIONLANDVDO.webp" alt="Lion Land Video Thumbnail" loading="lazy">
+                <img src="media/attractions/images/LIONLANDVDO.webp" alt="Lion Land Video Thumbnail">
                 <div class="play-button"></div>
             </div>
             </a>
@@ -1063,7 +979,7 @@
             </div>
             <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
         </div>
-            <div class="card hidden" data-batch="2">
+            <div class="card">
             <a 
                 href="media/attractions/videos/ACircus.mp4" 
                 class="fancybox" 
@@ -1071,7 +987,7 @@
                 data-type="video" 
                 title="Aqua Circus Phuket">
                 <div class="video-thumbnail">
-                <img src="media/attractions/images/CIRCUSHKTPLY.webp" alt="Aqua Circus Phuket" loading="lazy">
+                <img src="media/attractions/images/CIRCUSHKTPLY.webp" alt="Aqua Circus Phuket">
                 <div class="play-button"></div>
             </div>
             </a>
@@ -1080,15 +996,15 @@
             </div>
             <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
         </div>
-            <div class="card hidden" data-batch="2">
+            <div class="card">
                 <a href="media/attractions/images/Erawanzip.webp" class="popup-link" title="Erawan Seaview Zipline">
-                    <img src="media/attractions/images/Erawanzip.webp" alt="Erawan Seaview Zipline" loading="lazy">
+                    <img src="media/attractions/images/Erawanzip.webp" alt="Erawan Seaview Zipline">
                 </a>
                 <div class="card-content">
                     <h3>Erawan Seaview Zipline</h3>
                 </div>
             </div>
-        <div class="card hidden" data-batch="2">
+        <div class="card">
             <a 
                 href="media/attractions/videos/ErawanzipPLY.webm" 
                 class="fancybox" 
@@ -1096,7 +1012,7 @@
                 data-type="video" 
                 title="Erawan Seaview Zipline">
                 <div class="video-thumbnail">
-                <img src="media/attractions/images/ErawanzipPLY.webp" alt="Erawan Seaview Zipline" loading="lazy">
+                <img src="media/attractions/images/ErawanzipPLY.webp" alt="Erawan Seaview Zipline">
                 <div class="play-button"></div>
             </div>
             </a>
@@ -1106,258 +1022,634 @@
             <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
         </div>    
     </div>
-    
-    <div class="load-more-container">
-        <button class="load-more-btn" data-city="phuket">
-            Load More Phuket Attractions
-        </button>
     </div>
+            
     
-    <div class="loading-spinner" id="phuket-loading">
-        <div class="spinner"></div>
-        <p>Loading more attractions...</p>
-    </div>
+
+    <!-- Thailand - Krabi -->
+    <div class="city-section">
+        <div class="city-header">
+            <h2>Krabi</h2>
+        </div>
+        <div class="cards">
+            <div class="card">
+                <a href="media/attractions/images/4ISLANDKBV.webp" class="popup-link" title="4 Islands">
+                    <img src="media/attractions/images/4ISLANDKBV.webp" alt="4 Islands">
+                </a>
+                <div class="card-content">
+                    <h3>4 Islands - Phuket / Krabi</h3>
+                </div>
+                <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+            </div>
+            <div class="card">
+                <a href="media/attractions/images/Thung Teao Forest Natural Park.webp" class="popup-link" title="Thung Teao Forest Natural Park">
+                    <img src="media/attractions/images/Thung Teao Forest Natural Park.webp" alt="Thung Teao Forest Natural Park">
+                </a>
+                <div class="card-content">
+                    <h3>Thung Teao Forest Natural Park</h3>
+                </div>
+                <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+            </div>
+            <div class="card">
+                <a href="media/attractions/images/tigercavetemple.webp" class="popup-link" title="Wat Tham Suea">
+                    <img src="media/attractions/images/tigercavetemple.webp" alt="Wat Tham Suea">
+                </a>
+                <div class="card-content">
+                    <h3>Wat Tham Suea - Tiger Cave Temple</h3>
+                </div>
+                <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+            </div>
+            <div class="card">
+                <a href="media/attractions/images/emerald.webp" class="popup-link" title="Emerald Pool">
+                    <img src="media/attractions/images/emerald.webp" alt="Emerald Pool">
+                </a>
+                <div class="card-content">
+                    <h3>Emerald Pool</h3>
+                </div>
+                <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+            </div>
+            <div class="card">
+                <a href="media/attractions/images/Railay Beach.webp" class="popup-link" title="Railay Beach">
+                    <img src="media/attractions/images/Railay Beach.webp" alt="Railay Beach">
+                </a>
+                <div class="card-content">
+                    <h3>Railay Beach</h3>
+                </div>
+                <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+            </div>
+            <div class="card">
+                <a href="media/attractions/images/hong.webp" class="popup-link" title="Hong Island">
+                    <img src="media/attractions/images/hong.webp" alt="Hong Island">
+                </a>
+                <div class="card-content">
+                    <h3>Hong Island</h3>
+                </div>
+                <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+            </div>
+        </div>
     </div>
 
-    <!-- Continue with the same pattern for other cities and countries -->
-    <!-- I've shown the structure for Bangkok, Pattaya, and Phuket -->
-    <!-- You can apply the same pattern to Krabi, Khon Kaen, Hua Hin, Indonesia, Vietnam, Japan -->
+    <!-- Thailand - Khon Kaen -->
+    <div class="city-section">
+        <div class="city-header">
+            <h2>Khon Kaen</h2>
+        </div>
+        <div class="cards">
+            <div class="card">
+                <a href="media/attractions/images/Dino.webp" class="popup-link" title="Phu Wiang Dinosaur Museum">
+                    <img src="media/attractions/images/Dino.webp" alt="Phu Wiang Dinosaur Museum">
+                </a>
+                <div class="card-content">
+                    <h3>Phu Wiang Dinosaur Museum</h3>
+                </div>
+                <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+            </div>
+            <div class="card">
+                <a href="media/attractions/images/Khon Kaen muuseum.webp" class="popup-link" title="Khon Kaen National Museum">
+                    <img src="media/attractions/images/Khon Kaen muuseum.webp" alt="Khon Kaen National Museum">
+                </a>
+                <div class="card-content">
+                    <h3>Khon Kaen National Museum</h3>
+                </div>
+                <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+            </div>
+            <div class="card">
+                <a href="media/attractions/images/Wat Nong Waeng.webp" class="popup-link" title="Wat Nong Waeng">
+                    <img src="media/attractions/images/Wat Nong Waeng.webp" alt="Wat Nong Waeng">
+                </a>
+                <div class="card-content">
+                    <h3>Wat Nong Waeng</h3>
+                </div>
+                <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+            </div>
+            <div class="card">
+                <a href="media/attractions/images/Prasat.webp" class="popup-link" title="Prasat Pueai Noi">
+                    <img src="media/attractions/images/Prasat.webp" alt="Prasat Pueai Noi">
+                </a>
+                <div class="card-content">
+                    <h3>Prasat Pueai Noi</h3>
+                </div>
+                <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+            </div>
+        </div>
+    </div>
 
+    <!-- Thailand - Hua Hin -->
+    <div class="city-section">
+        <div class="city-header">
+            <h2>Hua Hin</h2>
+        </div>
+        <div class="cards">
+            <div class="card">
+                <a href="media/attractions/images/cicadamarket.webp" class="popup-link" title="Cicada Market">
+                    <img src="media/attractions/images/cicadamarket.webp" alt="Cicada Market">
+                </a>
+                <div class="card-content">
+                    <h3>Cicada Market</h3>
+                </div>
+                <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+            </div>
+            <div class="card">
+                <a href="media/attractions/images/huahinnight.webp" class="popup-link" title="Hua Hin Night Market">
+                    <img src="media/attractions/images/huahinnight.webp" alt="Hua Hin Night Market">
+                </a>
+                <div class="card-content">
+                    <h3>Hua Hin Night Market</h3>
+                </div>
+                <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+            </div>
+            <div class="card">
+                <a href="media/attractions/images/huahinvillage.webp" class="popup-link" title="Hua Hin Art Village">
+                    <img src="media/attractions/images/huahinvillage.webp" alt="Hua Hin Art Village">
+                </a>
+                <div class="card-content">
+                    <h3>Hua Hin Art Village</h3>
+                </div>
+                <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+            </div>
+            <div class="card">
+                <a href="media/attractions/images/HuaRail.webp" class="popup-link" title="Hua Hin Railway Station">
+                    <img src="media/attractions/images/HuaRail.webp" alt="Hua Hin Railway Station">
+                </a>
+                <div class="card-content">
+                    <h3>Hua Hin Railway Station</h3>
+                </div>
+                <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+            </div>
+            <div class="card">
+                <a href="media/attractions/images/palace.webp" class="popup-link" title="Mrigadayavan Palace">
+                    <img src="media/attractions/images/palace.webp" alt="Mrigadayavan Palace">
+                </a>
+                <div class="card-content">
+                    <h3>Mrigadayavan Palace</h3>
+                </div>
+                <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+            </div>
+            <div class="card">
+                <a href="media/attractions/images/Phrakhiri.webp" class="popup-link" title="Phra Nakhon Khiri">
+                    <img src="media/attractions/images/Phrakhiri.webp" alt="Phra Nakhon Khiri">
+                </a>
+                <div class="card-content">
+                    <h3>Phra Nakhon Khiri</h3>
+                </div>
+                <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+            </div>
+            <div class="card">
+                <a href="media/attractions/images/Siripark.webp" class="popup-link" title="Sirindhorn Environment Park">
+                    <img src="media/attractions/images/Siripark.webp" alt="Sirindhorn Environment Park">
+                </a>
+                <div class="card-content">
+                    <h3>Sirindhorn Environment Park</h3>
+                </div>
+                <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+            </div>
+            <div class="card">
+                <a href="media/attractions/images/vana.webp" class="popup-link" title="Vana Nava Water Jungle">
+                    <img src="media/attractions/images/vana.webp" alt="Vana Nava Water Jungle">
+                </a>
+                <div class="card-content">
+                    <h3>Vana Nava Water Jungle</h3>
+                </div>
+                <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+            </div>
+        </div>
+    </div>
     </div>
 
     <!-- Indonesia - Must Visit -->
     <div id="indonesia" class="country-section">
         <div class="section-header"><h1>Indonesia</h1></div>
-        <!-- Apply the same pagination structure to Indonesia -->
+        <!-- City: Must Visit -->
         <div class="city-section">
             <div class="city-header">
                 <h2>Must Visit</h2>
             </div>
-            <div class="cards" id="indonesia-cards">
-                <!-- First 20 Indonesia cards visible -->
+            <div class="cards">
                 <div class="card">
                     <a href="media/attractions/images/safaribali.webp" class="popup-link" title="Bali Safari and Marine Park">
-                        <img src="media/attractions/images/safaribali.webp" alt="Bali Safari and Marine Park" loading="lazy">
+                        <img src="media/attractions/images/safaribali.webp" alt="Bali Safari and Marine Park">
                     </a>
                     <div class="card-content">
                         <h3>Bali Safari and Marine Park</h3>
                     </div>
                     <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>    
+                <div class="card">
+                    <a href="media/attractions/images/indonesia 2 img.webp" class="popup-link" title="Iconic Handara Gates">
+                        <img src="media/attractions/images/indonesia 2 img.webp" alt="Iconic Handara Gates">
+                    </a>
+                    <div class="card-content">
+                        <h3>Iconic Handara Gates</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
                 </div>
-                <!-- Add remaining Indonesia cards with data-batch attributes -->
-            </div>
-            
-            <div class="load-more-container">
-                <button class="load-more-btn" data-city="indonesia">
-                    Load More Indonesia Attractions
-                </button>
-            </div>
-            
-            <div class="loading-spinner" id="indonesia-loading">
-                <div class="spinner"></div>
-                <p>Loading more attractions...</p>
-            </div>
-        </div>
-    </div>
+                <div class="card">
+                    <a href="media/attractions/images/monkeyforest.webp" class="popup-link" title="Sacred Monkey Forest">
+                        <img src="media/attractions/images/monkeyforest.webp" alt="Sacred Monkey Forest">
+                    </a>
+                    <div class="card-content">
+                        <h3>Sacred Monkey Forest</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card">
+                    <a href="media/attractions/images/uluwatu.webp" class="popup-link" title="Uluwatu Temple">
+                        <img src="media/attractions/images/uluwatu.webp" alt="Uluwatu Temple">
+                    </a>
+                    <div class="card-content">
+                        <h3>Uluwatu Temple</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card">
+                    <a href="media/attractions/images/Ceking Rice Terrace.webp" class="popup-link" title="Ceking Rice Terrace">
+                        <img src="media/attractions/images/Ceking Rice Terrace.webp" alt="Ceking Rice Terrace">
+                    </a>
+                    <div class="card-content">
+                        <h3>Ceking Rice Terrace</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card">
+                    <a href="media/attractions/images/Sekumpul Waterfall.webp" class="popup-link" title="Sekumpul Waterfall">
+                        <img src="media/attractions/images/Sekumpul Waterfall.webp" alt="Sekumpul Waterfall">
+                    </a>
+                    <div class="card-content">
+                        <h3>Sekumpul Waterfall</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card">
+                    <a href="media/attractions/images/Wayag.webp" class="popup-link" title="Wayag Raja Ampat Islands">
+                        <img src="media/attractions/images/Wayag.webp" alt="Wayag Raja Ampat Islands">
+                    </a>
+                    <div class="card-content">
+                        <h3>Wayag Raja Ampat Islands</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card">
+                    <a href="media/attractions/images/Kelimutu National Park.webp" class="popup-link" title="Kelimutu National Park">
+                        <img src="media/attractions/images/Kelimutu National Park.webp" alt="Kelimutu National Park">
+                    </a>
+                    <div class="card-content">
+                        <h3>Kelimutu National Park</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card">
+                    <a href="media/attractions/images/Prambanan.webp" class="popup-link" title="Prambanan Temple">
+                        <img src="media/attractions/images/Prambanan.webp" alt="Prambanan Temple">
+                    </a>
+                    <div class="card-content">
+                        <h3>Prambanan Temple</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card">
+                    <a href="media/attractions/images/Ulun.webp" class="popup-link" title="Ulun Danu Beratan Temple">
+                        <img src="media/attractions/images/Ulun.webp" alt="Ulun Danu Beratan Temple">
+                    </a>
+                    <div class="card-content">
+                        <h3>Ulun Danu Beratan Temple</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card">
+                    <a href="media/attractions/images/Penataran.webp" class="popup-link" title="Penataran Agung Lempuyang">
+                        <img src="media/attractions/images/Penataran.webp" alt="Penataran Agung Lempuyang">
+                    </a>
+                    <div class="card-content">
+                        <h3>Penataran Agung Lempuyang</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card">
+                    <a href="media/attractions/images/Wanna Jungle Pool and Bar.webp" class="popup-link" title="Wanna Jungle Pool and Bar">
+                        <img src="media/attractions/images/Wanna Jungle Pool and Bar.webp" alt="Wanna Jungle Pool and Bar">
+                    </a>
+                    <div class="card-content">
+                        <h3>Wanna Jungle Pool and Bar</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card">
+                    <a href="media/attractions/images/Jakarta AQuarium Safari.webp" class="popup-link" title="Jakarta AQuarium Safari">
+                        <img src="media/attractions/images/Jakarta AQuarium Safari.webp" alt="Jakarta AQuarium Safari">
+                    </a>
+                    <div class="card-content">
+                        <h3>Jakarta AQuarium Safari</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card">
+                    <a href="media/attractions/images/Museum Bank Indonesia.webp" class="popup-link" title="Museum Bank Indonesia">
+                        <img src="media/attractions/images/Museum Bank Indonesia.webp" alt="Museum Bank Indonesia">
+                    </a>
+                    <div class="card-content">
+                        <h3>Museum Bank Indonesia</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+            </div> <!-- Closing cards div -->
+        </div> <!-- Closing city-section div -->
+    </div> <!-- Closing country-section div -->
+
 
     <!-- Vietnam - Must Visit -->
     <div id="vietnam" class="country-section">
         <div class="section-header"><h1>Vietnam</h1></div>
-        <!-- Apply the same pagination structure to Vietnam -->
         <div class="city-section">
             <div class="city-header">
                 <h2>Must Visit</h2>
             </div>
-            <div class="cards" id="vietnam-cards">
-                <!-- First 20 Vietnam cards visible -->
-                <div class="card">
-                    <a href="media/attractions/images/Ha-Long-Bay-.webp" class="popup-link" title="Hạ Long Bay">
-                        <img src="media/attractions/images/Ha-Long-Bay-.webp" alt="Hạ Long Bay" loading="lazy">
-                    </a>
-                    <div class="card-content">
-                        <h3>Hạ Long Bay</h3>
-                    </div>
-                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+        <div class="cards">
+            <div class="card">
+                <a href="media/attractions/images/Ha Long Bay .webp" class="popup-link" title="Hạ Long Bay">
+                    <img src="media/attractions/images/Ha Long Bay .webp" alt="Hạ Long Bay">
+                </a>
+                <div class="card-content">
+                    <h3>Hạ Long Bay</h3>
                 </div>
-                <!-- Add remaining Vietnam cards with data-batch attributes -->
+                <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
             </div>
-            
-            <div class="load-more-container">
-                <button class="load-more-btn" data-city="vietnam">
-                    Load More Vietnam Attractions
-                </button>
+            <div class="card">
+                <a href="media/attractions/images/LAN HA BAY .webp" class="popup-link" title="Lan Ha Bay">
+                    <img src="media/attractions/images/LAN HA BAY .webp" alt="Lan Ha Bay">
+                </a>
+                <div class="card-content">
+                    <h3>Lan Ha Bay</h3>
+                </div>
+                <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
             </div>
-            
-            <div class="loading-spinner" id="vietnam-loading">
-                <div class="spinner"></div>
-                <p>Loading more attractions...</p>
+            <div class="card">
+                <a href="media/attractions/images/condao.webp" class="popup-link" title="Côn Đảo">
+                    <img src="media/attractions/images/condao.webp" alt="Côn Đảo">
+                </a>
+                <div class="card-content">
+                    <h3>Côn Đảo</h3>
+                </div>
+                <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+            </div>
+            <div class="card">
+                <a href="media/attractions/images/Fansipan Peak.webp" class="popup-link" title="Fansipan Peak">
+                    <img src="media/attractions/images/Fansipan Peak.webp" alt="Fansipan Peak">
+                </a>
+                <div class="card-content">
+                    <h3>Fansipan Peak</h3>
+                </div>
+                <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+            </div>
+            <div class="card">
+                <a href="media/attractions/images/HO CHI MINH CITY.webp" class="popup-link" title="Ho Chi Minh City">
+                    <img src="media/attractions/images/HO CHI MINH CITY.webp" alt="Ho Chi Minh City">
+                </a>
+                <div class="card-content">
+                    <h3>Ho Chi Minh City</h3>
+                </div>
+                <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+            </div>
+            <div class="card">
+                <a href="media/attractions/images/HOIAN.webp" class="popup-link" title="Hội An">
+                    <img src="media/attractions/images/HOIAN.webp" alt="Hội An">
+                </a>
+                <div class="card-content">
+                    <h3>Hội An</h3>
+                </div>
+                <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+            </div>
+            <div class="card">
+                <a href="media/attractions/images/HUE – IMPERIAL CITY.webp" class="popup-link" title="Hue Imperial City">
+                    <img src="media/attractions/images/HUE – IMPERIAL CITY.webp" alt="Hue Imperial City">
+                </a>
+                <div class="card-content">
+                    <h3>Hue Imperial City</h3>
+                </div>
+                <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+            </div>
+            <div class="card">
+                <a href="media/attractions/images/MAI CHAU.webp" class="popup-link" title="Mai Châu">
+                    <img src="media/attractions/images/MAI CHAU.webp" alt="Mai Châu">
+                </a>
+                <div class="card-content">
+                    <h3>Mai Châu</h3>
+                </div>
+                <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+            </div>
+            <div class="card">
+                <a href="media/attractions/images/MEKONG DELTA.webp" class="popup-link" title="Mekong River Delta">
+                    <img src="media/attractions/images/MEKONG DELTA.webp" alt="Mekong River Delta">
+                </a>
+                <div class="card-content">
+                    <h3>Mekong River Delta</h3>
+                </div>
+                <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+            </div>
+            <div class="card">
+                <a href="media/attractions/images/MUINE.webp" class="popup-link" title="Mui Ne Beach">
+                    <img src="media/attractions/images/MUINE.webp" alt="Mui Ne Beach">
+                </a>
+                <div class="card-content">
+                    <h3>Mui Ne Beach</h3>
+                </div>
+                <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+            </div>
+            <div class="card">
+                <a href="media/attractions/images/MY SON - SANCTUARY.webp" class="popup-link" title="My Son Sanctuary">
+                    <img src="media/attractions/images/MY SON - SANCTUARY.webp" alt="My Son Sanctuary">
+                </a>
+                <div class="card-content">
+                    <h3>My Son Sanctuary</h3>
+                </div>
+                <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+            </div>
+            <div class="card">
+                <a href="media/attractions/images/NHA TRANG.webp" class="popup-link" title="Nha Trang">
+                    <img src="media/attractions/images/NHA TRANG.webp" alt="Nha Trang">
+                </a>
+                <div class="card-content">
+                    <h3>Nha Trang</h3>
+                </div>
+                <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+            </div>
+            <div class="card">
+                <a href="media/attractions/images/NINH BINH.webp" class="popup-link" title="Hoa Lư">
+                    <img src="media/attractions/images/NINH BINH.webp" alt="Hoa Lư">
+                </a>
+                <div class="card-content">
+                    <h3>Hoa Lư</h3>
+                </div>
+                <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+            </div>
+            <div class="card">
+                <a href="media/attractions/images/PHU-QUOC-ISLAND.webp" class="popup-link" title="Phú Quốc">
+                    <img src="media/attractions/images/PHU-QUOC-ISLAND.webp" alt="Phú Quốc">
+                </a>
+                <div class="card-content">
+                    <h3>Phú Quốc</h3>
+                </div>
+                <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+            </div>
+            <div class="card">
+                <a href="media/attractions/images/PU-LUONG-NATURE-RESERVE.webp" class="popup-link" title="Pu Luong Nature Reserve">
+                    <img src="media/attractions/images/PU-LUONG-NATURE-RESERVE.webp" alt="Pu Luong Nature Reserve">
+                </a>
+                <div class="card-content">
+                    <h3>Pu Luong Nature Reserve</h3>
+                </div>
+                <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+            </div>
+            <div class="card">
+                <a href="media/attractions/images/Sapa Glass Skywalk.webp" class="popup-link" title="Rong May Glass Bridge">
+                    <img src="media/attractions/images/Sapa Glass Skywalk.webp" alt="Rong May Glass Bridge">
+                </a>
+                <div class="card-content">
+                    <h3>Rong May Glass Bridge</h3>
+                </div>
+                <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+            </div>
+            <div class="card">
+                <a href="media/attractions/images/SAPA.webp" class="popup-link" title="Sa Pa">
+                    <img src="media/attractions/images/SAPA.webp" alt="Sa Pa">
+                </a>
+                <div class="card-content">
+                    <h3>Sa Pa</h3>
+                </div>
+                <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
             </div>
         </div>
-    </div>
-
-    <!-- Japan - Must Visit -->
-    <div id="japan" class="country-section">
+        </div>
+        </div>
+        
+        
+        
+        
+        
+        
+        
+        <div id="japan" class="country-section">
         <div class="section-header"><h1>Japan</h1></div>
-        <!-- Apply the same pagination structure to Japan -->
         <div class="city-section">
             <div class="city-header">
                 <h2>Must Visit</h2>
             </div>
-            <div class="cards" id="japan-cards">
-                <div class="card">
-                    <a href="media/attractions/images/comingsoon.jpg" class="popup-link" title="">
-                        <img src="media/attractions/images/comingsoon.jpg" alt="" loading="lazy">
-                    </a>
-                    <div class="card-content">
-                        <h3></h3>
-                    </div>
-                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+        <div class="cards">
+            <div class="card">
+                <a href="media/attractions/images/comingsoon.jpg" class="popup-link" title="">
+                    <img src="media/attractions/images/comingsoon.jpg" alt="">
+                </a>
+                <div class="card-content">
+                    <h3></h3>
                 </div>
-            </div>
-            
-            <div class="load-more-container">
-                <button class="load-more-btn" data-city="japan">
-                    Load More Japan Attractions
-                </button>
-            </div>
-            
-            <div class="loading-spinner" id="japan-loading">
-                <div class="spinner"></div>
-                <p>Loading more attractions...</p>
+                <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
             </div>
         </div>
+        </div>
+        </div>
+        
+        
+    
     </div>
-</div>
-
+    
+    
+   
 <div id="footer-container"></div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
 
 <script>
-class ImagePaginator {
-    constructor() {
-        this.itemsPerPage = 20;
-        this.currentBatches = {};
-        this.init();
-    }
-    
-    init() {
-        // Initialize all cities with first batch
-        const cities = ['bangkok', 'pattaya', 'phuket', 'krabi', 'khon-kaen', 'hua-hin', 'indonesia', 'vietnam', 'japan'];
-        cities.forEach(city => this.initializeCity(city));
-        
-        // Add event listeners for load more buttons
-        this.setupEventListeners();
-    }
-    
-    initializeCity(cityName) {
-        const cardsContainer = document.getElementById(`${cityName}-cards`);
-        if (!cardsContainer) return;
-        
-        const allCards = cardsContainer.querySelectorAll('.card');
-        this.currentBatches[cityName] = 1;
-        
-        // Show first batch, hide others
-        allCards.forEach((card, index) => {
-            if (index < this.itemsPerPage) {
-                card.classList.remove('hidden');
-            } else {
-                card.classList.add('hidden');
-                // Set batch number for hidden cards
-                const batchNumber = Math.floor(index / this.itemsPerPage) + 1;
-                card.setAttribute('data-batch', batchNumber);
-            }
-        });
-        
-        // Hide load more button if no more cards
-        this.updateLoadMoreButton(cityName, allCards.length);
-    }
-    
-    loadMore(cityName) {
-        const loadingSpinner = document.getElementById(`${cityName}-loading`);
-        const loadMoreBtn = document.querySelector(`.load-more-btn[data-city="${cityName}"]`);
-        
-        // Show loading
-        if (loadingSpinner) loadingSpinner.classList.add('active');
-        if (loadMoreBtn) loadMoreBtn.style.display = 'none';
-        
-        // Simulate loading delay
-        setTimeout(() => {
-            this.currentBatches[cityName]++;
-            const batchToShow = this.currentBatches[cityName];
-            
-            const cardsContainer = document.getElementById(`${cityName}-cards`);
-            const cardsToShow = cardsContainer.querySelectorAll(`.card[data-batch="${batchToShow}"]`);
-            const allCards = cardsContainer.querySelectorAll('.card');
-            
-            // Show the next batch
-            cardsToShow.forEach(card => {
-                card.classList.remove('hidden');
-            });
-            
-            // Hide loading
-            if (loadingSpinner) loadingSpinner.classList.remove('active');
-            
-            // Update load more button
-            this.updateLoadMoreButton(cityName, allCards.length);
-            
-        }, 800); // Simulate network delay
-    }
-    
-    updateLoadMoreButton(cityName, totalCards) {
-        const loadMoreBtn = document.querySelector(`.load-more-btn[data-city="${cityName}"]`);
-        if (!loadMoreBtn) return;
-        
-        const currentBatch = this.currentBatches[cityName];
-        const totalBatches = Math.ceil(totalCards / this.itemsPerPage);
-        
-        if (currentBatch >= totalBatches) {
-            loadMoreBtn.style.display = 'none';
-        } else {
-            loadMoreBtn.style.display = 'block';
-            loadMoreBtn.textContent = `Load More (${currentBatch}/${totalBatches})`;
-        }
-    }
-    
-    setupEventListeners() {
-        // Load more button clicks
-        document.querySelectorAll('.load-more-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const cityName = e.target.getAttribute('data-city');
-                this.loadMore(cityName);
-            });
-        });
-    }
-}
+document.addEventListener('DOMContentLoaded', function () {
+  // Load navbar and footer content
+      $('#navbar-container').load('navbar.html', function() {
+  const menuIcon = document.getElementById('menu-icon');
+  const navLinks = document.getElementById('nav-links');
+  const dropdowns = document.querySelectorAll('.dropdown');
 
-// Initialize when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialize pagination
-    const paginator = new ImagePaginator();
-    
-    // Country switching functionality
-    const countryButtons = document.querySelectorAll('.buttons button');
-    const countrySections = document.querySelectorAll('.country-section');
-    
-    countryButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const country = this.getAttribute('data-country');
-            
-            // Update active button
-            countryButtons.forEach(btn => btn.classList.remove('active'));
-            this.classList.add('active');
-            
-            // Update active section
-            countrySections.forEach(section => section.classList.remove('active'));
-            const activeSection = document.getElementById(country);
-            if (activeSection) {
-                activeSection.classList.add('active');
-            }
-        });
+  if (menuIcon && navLinks) {
+    menuIcon.addEventListener('click', function(e) {
+      e.stopPropagation();
+      navLinks.classList.toggle('active');
+      document.body.classList.toggle('no-scroll');
     });
     
-    // Popup functionality
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('#nav-links') && !e.target.closest('#menu-icon')) {
+        navLinks.classList.remove('active');
+        document.body.classList.remove('no-scroll');
+      }
+    });
+  }
+
+  if (window.innerWidth <= 768) {
+    dropdowns.forEach(dropdown => {
+      const dropbtn = dropdown.querySelector('.dropbtn');
+      dropbtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        const content = this.nextElementSibling;
+        content.classList.toggle('active');
+        this.querySelector('.mobile-caret').classList.toggle('rotate');
+      });
+    });
+  }
+
+  window.addEventListener('scroll', function() {
+    const header = document.querySelector('header');
+    if (window.scrollY > 50) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  });
+});
+
+         
+  // Show default country section (Thailand)
+  var countrySections = document.querySelectorAll('.country-section');
+  countrySections.forEach(function (section) {
+    section.classList.remove('active');
+  });
+  var thailandSection = document.getElementById('thailand');
+  if (thailandSection) {
+    thailandSection.classList.add('active');
+  }
+
+  // Highlight the default button
+  var buttons = document.querySelectorAll('.buttons button');
+  buttons.forEach(function (button) {
+    button.classList.remove('active');
+    if (button.getAttribute('data-country') === 'thailand') {
+      button.classList.add('active');
+    }
+  });
+
+  // Add click event listeners to buttons
+  buttons.forEach(function (button) {
+    button.addEventListener('click', function () {
+      var country = this.getAttribute('data-country');
+
+      // Remove active class from all buttons
+      buttons.forEach(function (btn) {
+        btn.classList.remove('active');
+      });
+      // Add active class to clicked button
+      this.classList.add('active');
+
+      // Show the corresponding country section and hide others
+      countrySections.forEach(function (section) {
+        section.classList.remove('active');
+      });
+      var activeSection = document.getElementById(country);
+      if (activeSection) {
+        activeSection.classList.add('active');
+      }
+    });
+  });
+});
+
+// Keep your original popup initialization code as-is in jQuery:
+$(function() {
     $('.popup-link').magnificPopup({
         type: 'image',
         gallery: { enabled: true },
@@ -1365,24 +1657,34 @@ document.addEventListener('DOMContentLoaded', function() {
         closeBtnInside: false
     });
 
-    // Scroll to top button
-    const scrollToTopBtn = document.getElementById('scrollToTopBtn');
-    window.addEventListener('scroll', function() {
-        if (window.pageYOffset > 300) {
-            scrollToTopBtn.style.display = 'block';
-        } else {
-            scrollToTopBtn.style.display = 'none';
+
+  $('.popup-video').magnificPopup({
+    type: 'iframe',
+    removalDelay: 300,
+    mainClass: 'mfp-fade',
+    iframe: {
+      patterns: {
+        youtube: {
+          index: 'youtube.com/',
+          id: 'v=',
+          src: '//www.youtube.com/embed/%id%?autoplay=1'
         }
-    });
-    
-    scrollToTopBtn.addEventListener('click', function() {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-    
-    // Load navbar and footer
-    $('#navbar-container').load('navbar.html');
-    $('#footer-container').load('footer.html');
+      }
+    }
+  });
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+            fetch('footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer-container').innerHTML = data;
+                });
+        });
+
+
+
 </script>
+
 </body>
 </html>
