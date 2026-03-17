@@ -1,0 +1,1388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attraction</title>
+    <link rel="stylesheet" href="attractions.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" />
+    <link rel="icon" href="media/favicon.ico" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <style>
+        html, body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            width: 100%;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .buttons button {
+            background: rgba(40, 40, 40, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(10px);
+            padding: 20px 25px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            min-width: 150px;
+        }
+
+        .buttons button:hover, .buttons button.active {
+            background: rgba(255, 255, 255, 0.4);
+            transform: scale(1.05);
+        }
+
+        .Kannapy {
+            background-image: url('media/3.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 150px 20px;
+            text-align: center;
+            color: white;
+            position: relative;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .Kannapy h1 {
+            font-size: 2.5rem;
+            margin: 0;
+        }
+
+        .Kannapy p {
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            width: 100%;
+            box-sizing: border-box;
+            flex: 1;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+            width: 100%;
+        }
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: 0.3s;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .card-content {
+            padding: 15px;
+        }
+
+        .card.hidden {
+            display: none;
+        }
+        
+        .load-more-container {
+            text-align: center;
+            margin: 30px 0;
+            padding: 20px;
+        }
+        
+        .load-more-btn {
+            background: rgba(40, 40, 40, 0.8);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(10px);
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+        
+        .load-more-btn:hover {
+            background: rgba(255, 255, 255, 0.8);
+            color: #333;
+            transform: scale(1.05);
+        }
+        
+        .loading-spinner {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .loading-spinner.active {
+            display: block;
+        }
+        
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #333;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .buttons {
+                gap: 10px;
+            }
+            .buttons button {
+                padding: 15px 20px;
+                font-size: 16px;
+                min-width: 120px;
+            }
+            .Kannapy {
+                padding: 100px 20px;
+            }
+            .cards {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .buttons button {
+                padding: 12px 15px;
+                font-size: 14px;
+                min-width: 100px;
+            }
+            header {
+                padding: 10px 15px;
+            }
+            .cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        #scrollToTopBtn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 99;
+            background-color: #333;
+            color: white;
+            border: none;
+            outline: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            display: none;
+        }
+
+        #scrollToTopBtn:hover {
+            background-color: #555;
+        }
+    
+        .country-section { display: none; }
+        .country-section.active { display: block; }
+
+    </style>
+</head>
+<body>
+<header id="navbar-container"></header>
+    
+<button id="scrollToTopBtn" title="Go to top">
+    <i class="fas fa-arrow-up"></i>
+</button>
+
+<div class="Kannapy">
+    <h1>Attraction</h1>
+    <p>Discover the wonders of Southeast Asia</p>
+</div>
+<div class="container">
+    <div class="buttons">
+        <button data-country="thailand" class="active">Thailand</button>
+        <button data-country="indonesia">Indonesia</button>
+        <button data-country="vietnam">Vietnam</button>
+        <button data-country="japan">Japan</button>
+    </div>
+    
+    <div id="thailand" class="country-section active">
+        <div class="section-header">
+            <h1>Thailand</h1>
+        </div>
+
+        <!-- Bangkok -->
+        <div class="city-section">
+            <div class="city-header">
+                <h2>Bangkok</h2>
+            </div>
+            <div class="cards" id="bangkok-cards">
+                <div class="card">
+                    <a href="media/Chettan/safari.webp" class="popup-link" title="Safari World">
+                        <img src="media/Chettan/safari.webp" alt="Safari World" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>Safari World</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card">
+                    <a href="media/Chettan/dream.webp" class="popup-link" title="Dream World">
+                        <img src="media/Chettan/dream.webp" alt="Dream World" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>Dream World</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card">
+                    <a href="media/Chettan/ancient.webp" class="popup-link" title="Ancient City">
+                        <img src="media/Chettan/ancient.webp" alt="Ancient City" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>Ancient City</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card">
+                    <a href="media/Chettan/baiyoke.webp" class="popup-link" title="Baiyoke Observation Deck">
+                        <img src="media/Chettan/baiyoke.webp" alt="Baiyoke Observation Deck" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>Baiyoke Observation Deck</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card">
+                    <a href="media/Chettan/calypso.webp" class="popup-link" title="Calypso Cabaret">
+                        <img src="media/Chettan/calypso.webp" alt="Calypso Cabaret" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>Calypso Cabaret</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card">
+                    <a href="media/Chettan/damnoen.webp" class="popup-link" title="Damnoen Saduak Floating Market">
+                        <img src="media/Chettan/damnoen.webp" alt="Damnoen Saduak Floating Market" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>Damnoen Saduak Floating Market</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card">
+                    <a href="media/Chettan/Erawan.webp" class="popup-link" title="The Erawan Museum">
+                        <img src="media/Chettan/Erawan.webp" alt="The Erawan Museum" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>The Erawan Museum</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card">
+                    <a href="media/Chettan/goldendome.webp" class="popup-link" title="Golden Dome Cabaret Show">
+                        <img src="media/Chettan/goldendome.webp" alt="Golden Dome Cabaret Show" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>Golden Dome Cabaret Show</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card">
+                    <a href="media/Chettan/madamtussads.webp" class="popup-link" title="Madame Tussauds">
+                        <img src="media/Chettan/madamtussads.webp" alt="Madame Tussauds" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>Madame Tussauds</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card">
+                    <a href="media/Chettan/hoponhop.webp" class="popup-link" title="Hop On Hop Off Sightseeing Tours">
+                        <img src="media/Chettan/hoponhop.webp" alt="Hop On Hop Off Sightseeing Tours" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>Hop On Hop Off Sightseeing Tours</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card">
+                    <a href="media/Chettan/saffron.webp" class="popup-link" title="Saffron Cruise by Banyan Tree">
+                        <img src="media/Chettan/saffron.webp" alt="Saffron Cruise by Banyan Tree" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>Saffron Cruise by Banyan Tree</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card">
+                    <a href="media/Chettan/sealife.webp" class="popup-link" title="SEA LIFE Bangkok Ocean World">
+                        <img src="media/Chettan/sealife.webp" alt="SEA LIFE Bangkok Ocean World" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>SEA LIFE Bangkok Ocean World</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card">
+                    <a href="media/Chettan/skywalk.webp" class="popup-link" title="Mahanakhon Skywalk">
+                        <img src="media/Chettan/skywalk.webp" alt="Mahanakhon Skywalk" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>Mahanakhon Skywalk</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card">
+                    <a href="media/Chettan/meridianala.webp" class="popup-link" title="Meridian Alangka Cruise">
+                        <img src="media/Chettan/meridianala.webp" alt="Meridian Alangka Cruise" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>Meridian Alangka Cruise</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card">
+                    <a href="media/Chettan/opul.webp" class="popup-link" title="The Opulence Cruise">
+                        <img src="media/Chettan/opul.webp" alt="The Opulence Cruise" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>The Opulence Cruise</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card">
+                    <a href="media/Chettan/royal.webp" class="popup-link" title="Royal Galaxy Cruise">
+                        <img src="media/Chettan/royal.webp" alt="Royal Galaxy Cruise" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>Royal Galaxy Cruise</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card">
+                    <a href="media/Chettan/serp.webp" class="popup-link" title="Siam Serpentarium Snake Museum">
+                        <img src="media/Chettan/serp.webp" alt="Siam Serpentarium Snake Museum" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>Siam Serpentarium Snake Museum</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card">
+                    <a href="media/Chettan/siam.webp" class="popup-link" title="Siam Amazing Park">
+                        <img src="media/Chettan/siam.webp" alt="Siam Amazing Park" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>Siam Amazing Park</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card">
+                    <a href="media/Chettan/unicorn.webp" class="popup-link" title="Unicorn Dinner Cruise">
+                        <img src="media/Chettan/unicorn.webp" alt="Unicorn Dinner Cruise" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>Unicorn Dinner Cruise</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card">
+                    <a href="media/Chettan/chao.webp" class="popup-link" title="Chao Phraya Princess Dinner Cruise">
+                        <img src="media/Chettan/chao.webp" alt="Chao Phraya Princess Dinner Cruise" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>Chao Phraya Princess Dinner Cruise</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                
+                <!-- Batch 2 Cards (Hidden Initially) -->
+                <div class="card hidden" data-batch="2">
+                    <a href="media/Chettan/grand.webp" class="popup-link" title="Grand Pearl Dinner Cruise">
+                        <img src="media/Chettan/grand.webp" alt="Grand Pearl Dinner Cruise" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>Grand Pearl Dinner Cruise</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card hidden" data-batch="2">
+                    <a href="media/Chettan/wonder.webp" class="popup-link" title="Wonderful Pearl Dinner Cruise">
+                        <img src="media/Chettan/wonder.webp" alt="Wonderful Pearl Dinner Cruise" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>Wonderful Pearl Dinner Cruise</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card hidden" data-batch="2">
+                    <a href="media/Chettan/alaganka.webp" class="popup-link" title="Alangka Dinner Cruise">
+                        <img src="media/Chettan/alaganka.webp" alt="Alangka Dinner Cruise" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>Alangka Dinner Cruise</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card hidden" data-batch="2">
+                    <a href="media/Chettan/NASATTABKK.webp" class="popup-link" title="NaSatta Park">
+                        <img src="media/Chettan/NASATTABKK.webp" alt="NaSatta Park" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>NaSatta Park</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card hidden" data-batch="2">
+                    <a href="media/Chettan/GOLDBKK.webp" class="popup-link" title="Golden Buddha Temple - Wat Trai Mit">
+                        <img src="media/Chettan/GOLDBKK.webp" alt="Golden Buddha Temple - Wat Trai Mit" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>Golden Buddha Temple - Wat Trai Mit</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card hidden" data-batch="2">
+                    <a href="media/Chettan/GRANDBKK.webp" class="popup-link" title="The Grand Palace">
+                        <img src="media/Chettan/GRANDBKK.webp" alt="The Grand Palace" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>The Grand Palace</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card hidden" data-batch="2">
+                    <a href="media/Chettan/RECLIBKK.webp" class="popup-link" title="Reclining Buddha Temple - Wat Phra">
+                        <img src="media/Chettan/RECLIBKK.webp" alt="Reclining Buddha Temple - Wat Phra" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>Reclining Buddha Temple - Wat Phra</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card hidden" data-batch="2">
+                    <a href="media/Chettan/MARBLEBKK.webp" class="popup-link" title="Marble Buddha Temple - Wat Benchamabophit">
+                        <img src="media/Chettan/MARBLEBKK.webp" alt="Marble Buddha Temple - Wat Benchamabophit" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>Marble Buddha Temple - Wat Benchamabophit</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card hidden" data-batch="2">
+                    <a href="media/Chettan/Erawan.webp" class="popup-link" title="Erawan Waterfall">
+                        <img src="media/Chettan/Erawan.webp" alt="Erawan Waterfall" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>Erawan Waterfall</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card hidden" data-batch="2">
+                    <a href="media/Chettan/Ayutthaya.webp" class="popup-link" title="Ayutthaya">
+                        <img src="media/Chettan/Ayutthaya.webp" alt="Ayutthaya" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>Ayutthaya</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                
+                <!-- Batch 3 Cards (Hidden Initially) -->
+                <div class="card hidden" data-batch="3">
+                    <a href="media/Chettan/Sukhothai.webp" class="popup-link" title="Sukhothai Historical Park">
+                        <img src="media/Chettan/Sukhothai.webp" alt="Sukhothai Historical Park" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>Sukhothai Historical Park</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card hidden" data-batch="3">
+                    <a href="media/Chettan/Space-&-Time-Cube+.webp" class="popup-link" title="Space & Time Cube+">
+                        <img src="media/Chettan/Space-&-Time-Cube+.webp" alt="Space & Time Cube+" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>Space & Time Cube+</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card hidden" data-batch="3">
+                <a 
+                    href="media/Chettan/space+.webm" 
+                    class="fancybox" 
+                    data-fancybox 
+                    data-type="video" 
+                    title="Space & Time Cube+">
+                    <div class="video-thumbnail">
+                    <img src="media/Chettan/space+PLY.webp" alt="Space & Time Cube+" loading="lazy">
+                    <div class="play-button"></div>
+                    </div>
+                </a>
+                    <div class="card-content">
+                    <h3>Space & Time Cube+</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card hidden" data-batch="3">
+                    <a href="media/Chettan/Jurassic-World-The-Experience.webp" class="popup-link" title="Jurassic World : The Experience">
+                        <img src="media/Chettan/Jurassic-World-The-Experience.webp" alt="Jurassic World : The Experience" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>Jurassic World : The Experience</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+            </div>
+            
+            <div class="load-more-container">
+                <button class="load-more-btn" data-city="bangkok">
+                    Load More Bangkok Attractions
+                </button>
+            </div>
+            
+            <div class="loading-spinner" id="bangkok-loading">
+                <div class="spinner"></div>
+                <p>Loading more attractions...</p>
+            </div>
+        </div>
+
+        <!-- Pattaya -->
+        <div class="city-section">
+            <div class="city-header">
+                <h2>Pattaya</h2>
+            </div>
+            <div class="cards" id="pattaya-cards">
+                <div class="card">
+                    <a href="media/Chettan/ALCAZARPTY.webp" class="popup-link" title="Alcazar Cabaret Show">
+                        <img src="media/Chettan/ALCAZARPTY.webp" alt="Alcazar Cabaret Show" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>Alcazar Cabaret Show</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card">
+                    <a href="media/Chettan/ARTPTY.webp" class="popup-link" title="Art In Paradise">
+                        <img src="media/Chettan/ARTPTY.webp" alt="Art In Paradise" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>Art In Paradise</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card">
+                    <a href="media/Chettan/BULLETPTY.webp" class="popup-link" title="Light Bullet Shooting Park">
+                        <img src="media/Chettan/BULLETPTY.webp" alt="Light Bullet Shooting Park" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>Light Bullet Shooting Park</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card">
+                    <a href="media/Chettan/COLOMBBIAPTY.webp" class="popup-link" title="Columbia Pictures Aquaverse">
+                        <img src="media/Chettan/COLOMBBIAPTY.webp" alt="Columbia Pictures Aquaverse" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>Columbia Pictures Aquaverse</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card">
+                    <a href="media/Chettan/CORALPTY.webp" class="popup-link" title="Coral Island">
+                        <img src="media/Chettan/CORALPTY.webp" alt="Coral Island" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>Coral Island</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card">
+                    <a href="media/Chettan/COLOSEUMPTY.webp" class="popup-link" title="Colosseum Show">
+                        <img src="media/Chettan/COLOSEUMPTY.webp" alt="Colosseum Show" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>Colosseum Show</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card">
+                    <a href="media/Chettan/DOLPHINPTY.webp" class="popup-link" title="Dolphinarium">
+                        <img src="media/Chettan/DOLPHINPTY.webp" alt="Dolphinarium" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>Dolphinarium</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card">
+                    <a href="media/Chettan/EJSHKTPTY.webp" class="popup-link" title="Elephant Jungle Sanctuary">
+                        <img src="media/Chettan/EJSHKTPTY.webp" alt="Elephant Jungle Sanctuary" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>Elephant Jungle Sanctuary</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card">
+                    <a href="media/Chettan/FLOATPTY.webp" class="popup-link" title="Floating Market">
+                        <img src="media/Chettan/FLOATPTY.webp" alt="Floating Market" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>Floating Market</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card">
+                    <a href="media/Chettan/FROSTPTY.webp" class="popup-link" title="FROST Magical Ice of Siam">
+                        <img src="media/Chettan/FROSTPTY.webp" alt="FROST Magical Ice of Siam" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>FROST Magical Ice of Siam</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card">
+                    <a href="media/Chettan/GREATGRANDPTY.webp" class="popup-link" title="GREAT & GRAND Sweet Destination">
+                        <img src="media/Chettan/GREATGRANDPTY.webp" alt="GREAT & GRAND Sweet Destination" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>GREAT & GRAND Sweet Destination</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card">
+                    <a href="media/Chettan/LEGENDPTY.webp" class="popup-link" title="Legend Siam">
+                        <img src="media/Chettan/LEGENDPTY.webp" alt="Legend Siam" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>Legend Siam</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card">
+                    <a href="media/Chettan/MINIPTY.webp" class="popup-link" title="Mini Siam">
+                        <img src="media/Chettan/MINIPTY.webp" alt="Mini Siam" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>Mini Siam</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card">
+                    <a href="media/Chettan/NONGPTY.webp" class="popup-link" title="Nong Nooch Botanical Garden">
+                        <img src="media/Chettan/NONGPTY.webp" alt="Nong Nooch Botanical Garden" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>Nong Nooch Botanical Garden</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card">
+                    <a href="media/Chettan/RAMAYANAPTY.webp" class="popup-link" title="Ramayana Water Park">
+                        <img src="media/Chettan/RAMAYANAPTY.webp" alt="Ramayana Water Park" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>Ramayana Water Park</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card">
+                    <a href="media/Chettan/RIPLEYPTY.webp" class="popup-link" title="Ripley's Believe It or Not!">
+                        <img src="media/Chettan/RIPLEYPTY.webp" alt="Ripley's Believe It or Not!" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>Ripley's Believe It or Not!</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card">
+                    <a href="media/Chettan/SHEEPPTY.webp" class="popup-link" title="Sheep Farm">
+                        <img src="media/Chettan/SHEEPPTY.webp" alt="Sheep Farm" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>Sheep Farm</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card">
+                    <a href="media/Chettan/SOTPTY.webp" class="popup-link" title="Sanctuary of Truth">
+                        <img src="media/Chettan/SOTPTY.webp" alt="Sanctuary of Truth" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>Sanctuary of Truth</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card">
+                    <a href="media/Chettan/TIFFPTY.webp" class="popup-link" title="Tiffany's Show">
+                        <img src="media/Chettan/TIFFPTY.webp" alt="Tiffany's Show" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>Tiffany's Show</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card">
+                    <a href="media/Chettan/TIGERPARKPTY.webp" class="popup-link" title="Tiger Park">
+                        <img src="media/Chettan/TIGERPARKPTY.webp" alt="Tiger Park" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>Tiger Park</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                
+                <!-- Batch 2 Pattaya Cards -->
+                <div class="card hidden" data-batch="2">
+                    <a href="media/Chettan/TOPIAPTY.webp" class="popup-link" title="Tiger Topia Sriracha Zoo">
+                        <img src="media/Chettan/TOPIAPTY.webp" alt="Tiger Topia Sriracha Zoo" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>Tiger Topia Sriracha Zoo</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card hidden" data-batch="2">
+                    <a href="media/Chettan/UNDERPTY.webp" class="popup-link" title="Underwater World">
+                        <img src="media/Chettan/UNDERPTY.webp" alt="Underwater World" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>Underwater World</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card hidden" data-batch="2">
+                    <a href="media/Chettan/ZOOPTY.webp" class="popup-link" title="Khao Kheow Open Zoo">
+                        <img src="media/Chettan/ZOOPTY.webp" alt="Khao Kheow Open Zoo" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>Khao Kheow Open Zoo</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card hidden" data-batch="2">
+                <a 
+                    href="media/Chettan/Aqua.webm" 
+                    class="fancybox" 
+                    data-fancybox 
+                    data-type="video" 
+                    title="Columbia Pictures Aquaverse">
+                    <div class="video-thumbnail">
+                    <img src="media/Chettan/AquaPLY.webp" alt="Columbia Pictures Aquaverse" loading="lazy">
+                    <div class="play-button"></div>
+                </div>
+                </a>
+                    <div class="card-content">
+                    <h3>Columbia Pictures Aquaverse</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card hidden" data-batch="2">
+                <a 
+                    href="media/Chettan/Aquacart.webm" 
+                    class="fancybox" 
+                    data-fancybox 
+                    data-type="video" 
+                    title="Aquaverse Go-Karting">
+                    <div class="video-thumbnail">
+                    <img src="media/Chettan/AquacartPLY.webp" alt="Aquaverse Go-Karting" loading="lazy">
+                    <div class="play-button"></div>
+                </div>
+                </a>
+                    <div class="card-content">
+                    <h3>Aquaverse Go-Karting</h3>
+                </div>
+                <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+            </div>
+            </div>
+            
+            <div class="load-more-container">
+                <button class="load-more-btn" data-city="pattaya">
+                    Load More Pattaya Attractions
+                </button>
+            </div>
+            
+            <div class="loading-spinner" id="pattaya-loading">
+                <div class="spinner"></div>
+                <p>Loading more attractions...</p>
+            </div>
+        </div>
+
+        <!-- Phuket -->
+        <div class="city-section">
+            <div class="city-header">
+                <h2>Phuket</h2>
+            </div>
+            <div class="cards" id="phuket-cards">
+                <div class="card">
+                    <a href="media/Chettan/UPSIDEHKT.webp" class="popup-link" title="The Upside Down House Museum">
+                        <img src="media/Chettan/UPSIDEHKT.webp" alt="The Upside Down House Museum" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>The Upside Down House Museum</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card">
+                    <a href="media/Chettan/AQUARIAHKT.webp" class="popup-link" title="Aquaria Phuket">
+                        <img src="media/Chettan/AQUARIAHKT.webp" alt="Aquaria Phuket" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>Aquaria Phuket</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card">
+                    <a href="media/Chettan/ANDAMANDAHKT.webp" class="popup-link" title="Andamanda Water Park">
+                        <img src="media/Chettan/ANDAMANDAHKT.webp" alt="Andamanda Water Park" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>Andamanda Water Park</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card">
+                    <a href="media/Chettan/ATHENAHKT.webp" class="popup-link" title="Athena Cabaret Show">
+                        <img src="media/Chettan/ATHENAHKT.webp" alt="Athena Cabaret Show" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>Athena Cabaret Show</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card">
+                    <a href="media/Chettan/BIRDHKT.webp" class="popup-link" title="Phuket Bird Park">
+                        <img src="media/Chettan/BIRDHKT.webp" alt="Phuket Bird Park" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>Phuket Bird Park</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card">
+                    <a href="media/Chettan/CARNIVALHKT.webp" class="popup-link" title="Carnival Magic">
+                        <img src="media/Chettan/CARNIVALHKT.webp" alt="Carnival Magic" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>Carnival Magic</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card">
+                    <a href="media/Chettan/DOLPHINHKT.webp" class="popup-link" title="Dolphins Bay">
+                        <img src="media/Chettan/DOLPHINHKT.webp" alt="Dolphins Bay" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>Dolphins Bay</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card">
+                    <a href="media/Chettan/CROCHKT.webp" class="popup-link" title="Crocodile Farm">
+                        <img src="media/Chettan/CROCHKT.webp" alt="Crocodile Farm" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>Crocodile Farm</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card">
+                    <a href="media/Chettan/HANUMANHKT.webp" class="popup-link" title="Hanuman World Zipline Adventure">
+                        <img src="media/Chettan/HANUMANHKT.webp" alt="Hanuman World Zipline Adventure" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>Hanuman World Zipline Adventure</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card">
+                    <a href="media/Chettan/NIRAMITHKT.webp" class="popup-link" title="Siam Niramit">
+                        <img src="media/Chettan/NIRAMITHKT.webp" alt="Siam Niramit" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>Siam Niramit</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card">
+                    <a href="media/Chettan/SIMONHKT.webp" class="popup-link" title="Simon Cabaret">
+                        <img src="media/Chettan/SIMONHKT.webp" alt="Simon Cabaret" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>Simon Cabaret</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card">
+                    <a href="media/Chettan/TIGERHKT.webp" class="popup-link" title="Tiger Kingdom">
+                        <img src="media/Chettan/TIGERHKT.webp" alt="Tiger Kingdom" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>Tiger Kingdom</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div> 
+                <div class="card">
+                    <a href="media/Chettan/CIRCUSHKT.webp" class="popup-link" title="Aqua Circus">
+                        <img src="media/Chettan/CIRCUSHKT.webp" alt="Aqua Circus" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>Aqua Circus</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="card">
+            <a href="media/Chettan/ESHKT.webp" class="popup-link" title="Elephant Jungle Sanctuary">
+                <img src="media/Chettan/ESHKT.webp" alt="Elephant Jungle Sanctuary" loading="lazy">
+            </a>
+            <div class="card-content">
+                <h3>Elephant Jungle Sanctuary</h3>
+            </div>
+            <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+        </div>
+        <div class="card">
+            <a href="media/Chettan/FANTHKT.webp" class="popup-link" title="Phuket FantaSea">
+                <img src="media/Chettan/FANTHKT.webp" alt="Phuket FantaSea" loading="lazy">
+            </a>
+            <div class="card-content">
+                <h3>Phuket FantaSea</h3>
+            </div>
+            <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+        </div>
+        <div class="card">
+            <a href="media/Chettan/JAMESPGNA.webp" class="popup-link" title="James Bond Island">
+                <img src="media/Chettan/JAMESPGNA.webp" alt="James Bond Island" loading="lazy">
+            </a>
+            <div class="card-content">
+                <h3>James Bond Island - Phang Nga Bay</h3>
+            </div>
+            <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+        </div>
+        <div class="card">
+            <a href="media/Chettan/PHIPHIHKT.webp" class="popup-link" title="Phi Phi Islands">
+                <img src="media/Chettan/PHIPHIHKT.webp" alt="Phi Phi Islands" loading="lazy">
+            </a>
+            <div class="card-content">
+                <h3>Phi Phi Islands</h3>
+            </div>
+            <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+        </div>
+        <div class="card">
+            <a href="media/Chettan/SIMILANPGNA.webp" class="popup-link" title="Similan Islands">
+                <img src="media/Chettan/SIMILANPGNA.webp" alt="Similan Islands" loading="lazy">
+            </a>
+            <div class="card-content">
+                <h3>Similan Islands - Phang Nga Bay</h3>
+            </div>
+            <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+        </div>
+        <div class="card">
+            <a href="media/Chettan/TIGPARKHKT.webp" class="popup-link" title="Tiger Park">
+                <img src="media/Chettan/TIGPARKHKT.webp" alt="Tiger Park" loading="lazy">
+            </a>
+            <div class="card-content">
+                <h3>Tiger Park</h3>
+            </div>
+            <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+        </div>
+            <div class="card">
+                <a href="media/Chettan/YONAHKT.webp" class="popup-link" title="Yona Beach Club">
+                    <img src="media/Chettan/YONAHKT.webp" alt="Yona Beach Club" loading="lazy">
+                </a>
+                <div class="card-content">
+                    <h3>Yona Beach Club</h3>
+            </div>
+            <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+        </div>
+            <div class="card">
+                <a href="media/Chettan/LIONLAND.webp" class="popup-link" title="Lion Land Phuket">
+                    <img src="media/Chettan/LIONLAND.webp" alt="Lion Land Phuket" loading="lazy">
+                </a>
+                <div class="card-content">
+                    <h3>Lion Land Phuket</h3>
+                </div>
+                <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+            </div>
+            
+            <!-- Batch 2 Phuket Cards -->
+            <div class="card hidden" data-batch="2">
+            <a 
+                href="media/Chettan/Lion-Land-Phuket.mp4" 
+                class="fancybox" 
+                data-fancybox 
+                data-type="video" 
+                title="Lion Land Phuket">
+                <div class="video-thumbnail">
+                <img src="media/Chettan/LIONLANDVDO.webp" alt="Lion Land Video Thumbnail" loading="lazy">
+                <div class="play-button"></div>
+            </div>
+            </a>
+            <div class="card-content">
+                <h3>Lion Land Phuket</h3>
+            </div>
+            <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+        </div>
+            <div class="card hidden" data-batch="2">
+            <a 
+                href="media/Chettan/ACircus.mp4" 
+                class="fancybox" 
+                data-fancybox 
+                data-type="video" 
+                title="Aqua Circus Phuket">
+                <div class="video-thumbnail">
+                <img src="media/Chettan/CIRCUSHKTPLY.webp" alt="Aqua Circus Phuket" loading="lazy">
+                <div class="play-button"></div>
+            </div>
+            </a>
+            <div class="card-content">
+                <h3>Aqua Circus Phuket</h3>
+            </div>
+            <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+        </div>
+            <div class="card hidden" data-batch="2">
+                <a href="media/Chettan/Erawanzip.webp" class="popup-link" title="Erawan Seaview Zipline">
+                    <img src="media/Chettan/Erawanzip.webp" alt="Erawan Seaview Zipline" loading="lazy">
+                </a>
+                <div class="card-content">
+                    <h3>Erawan Seaview Zipline</h3>
+                </div>
+            </div>
+        <div class="card hidden" data-batch="2">
+            <a 
+                href="media/Chettan/ErawanzipPLY.webm" 
+                class="fancybox" 
+                data-fancybox 
+                data-type="video" 
+                title="Erawan Seaview Zipline">
+                <div class="video-thumbnail">
+                <img src="media/Chettan/ErawanzipPLY.webp" alt="Erawan Seaview Zipline" loading="lazy">
+                <div class="play-button"></div>
+            </div>
+            </a>
+            <div class="card-content">
+                <h3>Erawan Seaview Zipline</h3>
+            </div>
+            <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+        </div>    
+    </div>
+    
+    <div class="load-more-container">
+        <button class="load-more-btn" data-city="phuket">
+            Load More Phuket Attractions
+        </button>
+    </div>
+    
+    <div class="loading-spinner" id="phuket-loading">
+        <div class="spinner"></div>
+        <p>Loading more attractions...</p>
+    </div>
+    </div>
+
+    <!-- Continue with the same pattern for other cities and countries -->
+    <!-- I've shown the structure for Bangkok, Pattaya, and Phuket -->
+    <!-- You can apply the same pattern to Krabi, Khon Kaen, Hua Hin, Indonesia, Vietnam, Japan -->
+
+    </div>
+
+    <!-- Indonesia - Must Visit -->
+    <div id="indonesia" class="country-section">
+        <div class="section-header"><h1>Indonesia</h1></div>
+        <!-- Apply the same pagination structure to Indonesia -->
+        <div class="city-section">
+            <div class="city-header">
+                <h2>Must Visit</h2>
+            </div>
+            <div class="cards" id="indonesia-cards">
+                <!-- First 20 Indonesia cards visible -->
+                <div class="card">
+                    <a href="media/Chettan/safaribali.webp" class="popup-link" title="Bali Safari and Marine Park">
+                        <img src="media/Chettan/safaribali.webp" alt="Bali Safari and Marine Park" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>Bali Safari and Marine Park</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <!-- Add remaining Indonesia cards with data-batch attributes -->
+            </div>
+            
+            <div class="load-more-container">
+                <button class="load-more-btn" data-city="indonesia">
+                    Load More Indonesia Attractions
+                </button>
+            </div>
+            
+            <div class="loading-spinner" id="indonesia-loading">
+                <div class="spinner"></div>
+                <p>Loading more attractions...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Vietnam - Must Visit -->
+    <div id="vietnam" class="country-section">
+        <div class="section-header"><h1>Vietnam</h1></div>
+        <!-- Apply the same pagination structure to Vietnam -->
+        <div class="city-section">
+            <div class="city-header">
+                <h2>Must Visit</h2>
+            </div>
+            <div class="cards" id="vietnam-cards">
+                <!-- First 20 Vietnam cards visible -->
+                <div class="card">
+                    <a href="media/Chettan/Ha-Long-Bay-.webp" class="popup-link" title="Hạ Long Bay">
+                        <img src="media/Chettan/Ha-Long-Bay-.webp" alt="Hạ Long Bay" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3>Hạ Long Bay</h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <!-- Add remaining Vietnam cards with data-batch attributes -->
+            </div>
+            
+            <div class="load-more-container">
+                <button class="load-more-btn" data-city="vietnam">
+                    Load More Vietnam Attractions
+                </button>
+            </div>
+            
+            <div class="loading-spinner" id="vietnam-loading">
+                <div class="spinner"></div>
+                <p>Loading more attractions...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Japan - Must Visit -->
+    <div id="japan" class="country-section">
+        <div class="section-header"><h1>Japan</h1></div>
+        <!-- Apply the same pagination structure to Japan -->
+        <div class="city-section">
+            <div class="city-header">
+                <h2>Must Visit</h2>
+            </div>
+            <div class="cards" id="japan-cards">
+                <div class="card">
+                    <a href="media/Chettan/comingsoon.jpg" class="popup-link" title="">
+                        <img src="media/Chettan/comingsoon.jpg" alt="" loading="lazy">
+                    </a>
+                    <div class="card-content">
+                        <h3></h3>
+                    </div>
+                    <span class="card-zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+            </div>
+            
+            <div class="load-more-container">
+                <button class="load-more-btn" data-city="japan">
+                    Load More Japan Attractions
+                </button>
+            </div>
+            
+            <div class="loading-spinner" id="japan-loading">
+                <div class="spinner"></div>
+                <p>Loading more attractions...</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="footer-container"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+
+<script>
+class ImagePaginator {
+    constructor() {
+        this.itemsPerPage = 20;
+        this.currentBatches = {};
+        this.init();
+    }
+    
+    init() {
+        // Initialize all cities with first batch
+        const cities = ['bangkok', 'pattaya', 'phuket', 'krabi', 'khon-kaen', 'hua-hin', 'indonesia', 'vietnam', 'japan'];
+        cities.forEach(city => this.initializeCity(city));
+        
+        // Add event listeners for load more buttons
+        this.setupEventListeners();
+    }
+    
+    initializeCity(cityName) {
+        const cardsContainer = document.getElementById(`${cityName}-cards`);
+        if (!cardsContainer) return;
+        
+        const allCards = cardsContainer.querySelectorAll('.card');
+        this.currentBatches[cityName] = 1;
+        
+        // Show first batch, hide others
+        allCards.forEach((card, index) => {
+            if (index < this.itemsPerPage) {
+                card.classList.remove('hidden');
+            } else {
+                card.classList.add('hidden');
+                // Set batch number for hidden cards
+                const batchNumber = Math.floor(index / this.itemsPerPage) + 1;
+                card.setAttribute('data-batch', batchNumber);
+            }
+        });
+        
+        // Hide load more button if no more cards
+        this.updateLoadMoreButton(cityName, allCards.length);
+    }
+    
+    loadMore(cityName) {
+        const loadingSpinner = document.getElementById(`${cityName}-loading`);
+        const loadMoreBtn = document.querySelector(`.load-more-btn[data-city="${cityName}"]`);
+        
+        // Show loading
+        if (loadingSpinner) loadingSpinner.classList.add('active');
+        if (loadMoreBtn) loadMoreBtn.style.display = 'none';
+        
+        // Simulate loading delay
+        setTimeout(() => {
+            this.currentBatches[cityName]++;
+            const batchToShow = this.currentBatches[cityName];
+            
+            const cardsContainer = document.getElementById(`${cityName}-cards`);
+            const cardsToShow = cardsContainer.querySelectorAll(`.card[data-batch="${batchToShow}"]`);
+            const allCards = cardsContainer.querySelectorAll('.card');
+            
+            // Show the next batch
+            cardsToShow.forEach(card => {
+                card.classList.remove('hidden');
+            });
+            
+            // Hide loading
+            if (loadingSpinner) loadingSpinner.classList.remove('active');
+            
+            // Update load more button
+            this.updateLoadMoreButton(cityName, allCards.length);
+            
+        }, 800); // Simulate network delay
+    }
+    
+    updateLoadMoreButton(cityName, totalCards) {
+        const loadMoreBtn = document.querySelector(`.load-more-btn[data-city="${cityName}"]`);
+        if (!loadMoreBtn) return;
+        
+        const currentBatch = this.currentBatches[cityName];
+        const totalBatches = Math.ceil(totalCards / this.itemsPerPage);
+        
+        if (currentBatch >= totalBatches) {
+            loadMoreBtn.style.display = 'none';
+        } else {
+            loadMoreBtn.style.display = 'block';
+            loadMoreBtn.textContent = `Load More (${currentBatch}/${totalBatches})`;
+        }
+    }
+    
+    setupEventListeners() {
+        // Load more button clicks
+        document.querySelectorAll('.load-more-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const cityName = e.target.getAttribute('data-city');
+                this.loadMore(cityName);
+            });
+        });
+    }
+}
+
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize pagination
+    const paginator = new ImagePaginator();
+    
+    // Country switching functionality
+    const countryButtons = document.querySelectorAll('.buttons button');
+    const countrySections = document.querySelectorAll('.country-section');
+    
+    countryButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const country = this.getAttribute('data-country');
+            
+            // Update active button
+            countryButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Update active section
+            countrySections.forEach(section => section.classList.remove('active'));
+            const activeSection = document.getElementById(country);
+            if (activeSection) {
+                activeSection.classList.add('active');
+            }
+        });
+    });
+    
+    // Popup functionality
+    $('.popup-link').magnificPopup({
+        type: 'image',
+        gallery: { enabled: true },
+        closeOnContentClick: true,
+        closeBtnInside: false
+    });
+
+    // Scroll to top button
+    const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+            scrollToTopBtn.style.display = 'block';
+        } else {
+            scrollToTopBtn.style.display = 'none';
+        }
+    });
+    
+    scrollToTopBtn.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    
+    // Load navbar and footer
+    $('#navbar-container').load('navbar.html');
+    $('#footer-container').load('footer.html');
+});
+</script>
+</body>
+</html>

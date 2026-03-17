@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="icon" href="media/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="media/shared/assets/favicon.ico" type="image/x-icon">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VayoAura - News & Gallery</title>
@@ -799,7 +799,7 @@
         <button class="view-button" onclick="scrollToArchive()">The Vault of VayoAura</button>
     </div>
     <div class="image-container" onclick="scrollToArchive()">
-        <img src="media/news_image/4.jpg" alt="Event Preview Image" loading="lazy" onerror="this.src='media/placeholder.jpg'">
+        <img src="media/news/images/4.jpg" alt="Event Preview Image" loading="lazy" onerror="this.src='media/placeholder.jpg'">
     </div>
 </div>
 
@@ -874,60 +874,60 @@
     // Gallery data - define all your images and videos here
     const galleryItems = [
         // First batch from your HTML (Files 100-120) - Batch 1
-        { type: 'image', src: 'media/100.jpeg', thumb: 'media/100.jpeg', batch: 1 },
-        { type: 'image', src: 'media/101.jpeg', thumb: 'media/101.jpeg', batch: 1 },
-        { type: 'image', src: 'media/102.jpeg', thumb: 'media/102.jpeg', batch: 1 },
-        { type: 'image', src: 'media/103.jpeg', thumb: 'media/103.jpeg', batch: 1 },
-        { type: 'image', src: 'media/104.jpeg', thumb: 'media/104.jpeg', batch: 1 },
-        { type: 'image', src: 'media/105.jpeg', thumb: 'media/105.jpeg', batch: 1 },
-        { type: 'image', src: 'media/106.jpeg', thumb: 'media/106.jpeg', batch: 1 },
-        { type: 'image', src: 'media/107.jpeg', thumb: 'media/107.jpeg', batch: 1 },
-        { type: 'image', src: 'media/108.jpeg', thumb: 'media/108.jpeg', batch: 1 },
-        { type: 'image', src: 'media/109.jpeg', thumb: 'media/109.jpeg', batch: 1 },
-        { type: 'image', src: 'media/110.jpeg', thumb: 'media/110.jpeg', batch: 1 },
-        { type: 'image', src: 'media/111.jpeg', thumb: 'media/111.jpeg', batch: 1 },
-        { type: 'image', src: 'media/112.jpeg', thumb: 'media/112.jpeg', batch: 1 },
-        { type: 'image', src: 'media/113.jpeg', thumb: 'media/113.jpeg', batch: 1 },
-        { type: 'image', src: 'media/114.jpeg', thumb: 'media/114.jpeg', batch: 1 },
-        { type: 'image', src: 'media/115.jpeg', thumb: 'media/115.jpeg', batch: 1 },
-        { type: 'image', src: 'media/116.jpeg', thumb: 'media/116.jpeg', batch: 1 },
-        { type: 'image', src: 'media/117.jpeg', thumb: 'media/117.jpeg', batch: 1 },
-        { type: 'video', src: 'media/118.mp4', thumb: 'media/archive_image/1.jpg', batch: 1 },
-        { type: 'video', src: 'media/119.mp4', thumb: 'media/archive_image/2.jpg', batch: 1 },
-        { type: 'video', src: 'media/120.mp4', thumb: 'media/archive_image/3.jpg', batch: 1 },
+        { type: 'image', src: 'media/news/images/100.jpeg', thumb: 'media/news/images/100.jpeg', batch: 1 },
+        { type: 'image', src: 'media/news/images/101.jpeg', thumb: 'media/news/images/101.jpeg', batch: 1 },
+        { type: 'image', src: 'media/news/images/102.jpeg', thumb: 'media/news/images/102.jpeg', batch: 1 },
+        { type: 'image', src: 'media/news/images/103.jpeg', thumb: 'media/news/images/103.jpeg', batch: 1 },
+        { type: 'image', src: 'media/news/images/104.jpeg', thumb: 'media/news/images/104.jpeg', batch: 1 },
+        { type: 'image', src: 'media/news/images/105.jpeg', thumb: 'media/news/images/105.jpeg', batch: 1 },
+        { type: 'image', src: 'media/news/images/106.jpeg', thumb: 'media/news/images/106.jpeg', batch: 1 },
+        { type: 'image', src: 'media/news/images/107.jpeg', thumb: 'media/news/images/107.jpeg', batch: 1 },
+        { type: 'image', src: 'media/news/images/108.jpeg', thumb: 'media/news/images/108.jpeg', batch: 1 },
+        { type: 'image', src: 'media/news/images/109.jpeg', thumb: 'media/news/images/109.jpeg', batch: 1 },
+        { type: 'image', src: 'media/news/images/110.jpeg', thumb: 'media/news/images/110.jpeg', batch: 1 },
+        { type: 'image', src: 'media/news/images/111.jpeg', thumb: 'media/news/images/111.jpeg', batch: 1 },
+        { type: 'image', src: 'media/news/images/112.jpeg', thumb: 'media/news/images/112.jpeg', batch: 1 },
+        { type: 'image', src: 'media/news/images/113.jpeg', thumb: 'media/news/images/113.jpeg', batch: 1 },
+        { type: 'image', src: 'media/news/images/114.jpeg', thumb: 'media/news/images/114.jpeg', batch: 1 },
+        { type: 'image', src: 'media/news/images/115.jpeg', thumb: 'media/news/images/115.jpeg', batch: 1 },
+        { type: 'image', src: 'media/news/images/116.jpeg', thumb: 'media/news/images/116.jpeg', batch: 1 },
+        { type: 'image', src: 'media/news/images/117.jpeg', thumb: 'media/news/images/117.jpeg', batch: 1 },
+        { type: 'video', src: 'media/news/videos/118.mp4', thumb: 'media/news/images/1.jpg', batch: 1 },
+        { type: 'video', src: 'media/news/videos/119.mp4', thumb: 'media/news/images/2.jpg', batch: 1 },
+        { type: 'video', src: 'media/news/videos/120.mp4', thumb: 'media/news/images/3.jpg', batch: 1 },
 
         // Batch 2 from your HTML (Files 120-129)
-        { type: 'video', src: 'media/121.mp4', thumb: 'media/archive_image/4.jpg', batch: 2 },
-        { type: 'image', src: 'media/122.jpeg', thumb: 'media/archive_image/5.jpg', batch: 2 },
-        { type: 'image', src: 'media/123.jpeg', thumb: 'media/123.jpeg', batch: 2 },
-        { type: 'image', src: 'media/124.jpeg', thumb: 'media/124.jpeg', batch: 2 },
-        { type: 'image', src: 'media/125.jpeg', thumb: 'media/125.jpeg', batch: 2 },
-        { type: 'image', src: 'media/126.jpeg', thumb: 'media/126.jpeg', batch: 2 },
-        { type: 'image', src: 'media/127.jpeg', thumb: 'media/127.jpeg', batch: 2 },
-        { type: 'image', src: 'media/128.jpeg', thumb: 'media/128.jpeg', batch: 2 },
-        { type: 'image', src: 'media/129.jpeg', thumb: 'media/129.jpeg', batch: 2 },
+        { type: 'video', src: 'media/news/videos/121.mp4', thumb: 'media/news/images/4.jpg', batch: 2 },
+        { type: 'image', src: 'media/122.jpeg', thumb: 'media/news/images/5.jpg', batch: 2 },
+        { type: 'image', src: 'media/news/images/123.jpeg', thumb: 'media/news/images/123.jpeg', batch: 2 },
+        { type: 'image', src: 'media/news/images/124.jpeg', thumb: 'media/news/images/124.jpeg', batch: 2 },
+        { type: 'image', src: 'media/news/images/125.jpeg', thumb: 'media/news/images/125.jpeg', batch: 2 },
+        { type: 'image', src: 'media/news/images/126.jpeg', thumb: 'media/news/images/126.jpeg', batch: 2 },
+        { type: 'image', src: 'media/news/images/127.jpeg', thumb: 'media/news/images/127.jpeg', batch: 2 },
+        { type: 'image', src: 'media/news/images/128.jpeg', thumb: 'media/news/images/128.jpeg', batch: 2 },
+        { type: 'image', src: 'media/news/images/129.jpeg', thumb: 'media/news/images/129.jpeg', batch: 2 },
 
         // Archive Images 1-20 (Batch 3)
-        { type: 'image', src: 'media/archive_image/1.jpg', thumb: 'media/archive_image/1.jpg', batch: 3 },
-        { type: 'image', src: 'media/archive_image/2.jpg', thumb: 'media/archive_image/2.jpg', batch: 3 },
-        { type: 'image', src: 'media/archive_image/3.jpg', thumb: 'media/archive_image/3.jpg', batch: 3 },
-        { type: 'image', src: 'media/archive_image/4.jpg', thumb: 'media/archive_image/4.jpg', batch: 3 },
-        { type: 'image', src: 'media/archive_image/5.jpg', thumb: 'media/archive_image/5.jpg', batch: 3 },
-        { type: 'image', src: 'media/archive_image/6.jpg', thumb: 'media/archive_image/6.jpg', batch: 3 },
-        { type: 'image', src: 'media/archive_image/7.jpg', thumb: 'media/archive_image/7.jpg', batch: 3 },
-        { type: 'image', src: 'media/archive_image/8.jpg', thumb: 'media/archive_image/8.jpg', batch: 3 },
-        { type: 'image', src: 'media/archive_image/9.jpg', thumb: 'media/archive_image/9.jpg', batch: 3 },
-        { type: 'image', src: 'media/archive_image/10.jpg', thumb: 'media/archive_image/10.jpg', batch: 3 },
-        { type: 'image', src: 'media/archive_image/11.jpg', thumb: 'media/archive_image/11.jpg', batch: 3 },
-        { type: 'image', src: 'media/archive_image/12.jpg', thumb: 'media/archive_image/12.jpg', batch: 3 },
-        { type: 'image', src: 'media/archive_image/13.jpg', thumb: 'media/archive_image/13.jpg', batch: 3 },
-        { type: 'image', src: 'media/archive_image/14.jpg', thumb: 'media/archive_image/14.jpg', batch: 3 },
-        { type: 'image', src: 'media/archive_image/15.jpg', thumb: 'media/archive_image/15.jpg', batch: 3 },
-        { type: 'image', src: 'media/archive_image/16.jpg', thumb: 'media/archive_image/16.jpg', batch: 3 },
-        { type: 'image', src: 'media/archive_image/17.jpg', thumb: 'media/archive_image/17.jpg', batch: 3 },
-        { type: 'image', src: 'media/archive_image/18.jpg', thumb: 'media/archive_image/18.jpg', batch: 3 },
-        { type: 'image', src: 'media/archive_image/19.jpg', thumb: 'media/archive_image/19.jpg', batch: 3 },
-        { type: 'image', src: 'media/archive_image/20.jpg', thumb: 'media/archive_image/20.jpg', batch: 3 },
+        { type: 'image', src: 'media/news/images/1.jpg', thumb: 'media/news/images/1.jpg', batch: 3 },
+        { type: 'image', src: 'media/news/images/2.jpg', thumb: 'media/news/images/2.jpg', batch: 3 },
+        { type: 'image', src: 'media/news/images/3.jpg', thumb: 'media/news/images/3.jpg', batch: 3 },
+        { type: 'image', src: 'media/news/images/4.jpg', thumb: 'media/news/images/4.jpg', batch: 3 },
+        { type: 'image', src: 'media/news/images/5.jpg', thumb: 'media/news/images/5.jpg', batch: 3 },
+        { type: 'image', src: 'media/news/images/6.jpg', thumb: 'media/news/images/6.jpg', batch: 3 },
+        { type: 'image', src: 'media/news/images/7.jpg', thumb: 'media/news/images/7.jpg', batch: 3 },
+        { type: 'image', src: 'media/news/images/8.jpg', thumb: 'media/news/images/8.jpg', batch: 3 },
+        { type: 'image', src: 'media/news/images/9.jpg', thumb: 'media/news/images/9.jpg', batch: 3 },
+        { type: 'image', src: 'media/news/images/10.jpg', thumb: 'media/news/images/10.jpg', batch: 3 },
+        { type: 'image', src: 'media/news/images/11.jpg', thumb: 'media/news/images/11.jpg', batch: 3 },
+        { type: 'image', src: 'media/news/images/12.jpg', thumb: 'media/news/images/12.jpg', batch: 3 },
+        { type: 'image', src: 'media/news/images/13.jpg', thumb: 'media/news/images/13.jpg', batch: 3 },
+        { type: 'image', src: 'media/news/images/14.jpg', thumb: 'media/news/images/14.jpg', batch: 3 },
+        { type: 'image', src: 'media/news/images/15.jpg', thumb: 'media/news/images/15.jpg', batch: 3 },
+        { type: 'image', src: 'media/news/images/16.jpg', thumb: 'media/news/images/16.jpg', batch: 3 },
+        { type: 'image', src: 'media/news/images/17.jpg', thumb: 'media/news/images/17.jpg', batch: 3 },
+        { type: 'image', src: 'media/news/images/18.jpg', thumb: 'media/news/images/18.jpg', batch: 3 },
+        { type: 'image', src: 'media/news/images/19.jpg', thumb: 'media/news/images/19.jpg', batch: 3 },
+        { type: 'image', src: 'media/news/images/20.jpg', thumb: 'media/news/images/20.jpg', batch: 3 },
 
         // Continue with the rest of your gallery items...
         // (Keeping the rest of your galleryItems array as is for brevity)
@@ -1202,24 +1202,24 @@
 
         // Hero background rotation
         const images = [
-            'media/news_image/1.jpg',
-            'media/news_image/2.jpg',
-            'media/news_image/3.jpg',
-            'media/news_image/4.jpg',
-            'media/news_image/5.jpg',
-            'media/news_image/6.jpg',
-            'media/news_image/7.jpg',
-            'media/news_image/8.jpg',
-            'media/news_image/9.jpg',
-            'media/news_image/10.jpg',
-            'media/news_image/11.jpg',
-            'media/news_image/12.jpg',
-            'media/news_image/13.jpg',
-            'media/news_image/14.jpg',
-            'media/news_image/15.jpg',
-            'media/news_image/16.jpg',
-            'media/news_image/17.jpg',
-            'media/news_image/18.jpg',
+            'media/news/images/1.jpg',
+            'media/news/images/2.jpg',
+            'media/news/images/3.jpg',
+            'media/news/images/4.jpg',
+            'media/news/images/5.jpg',
+            'media/news/images/6.jpg',
+            'media/news/images/7.jpg',
+            'media/news/images/8.jpg',
+            'media/news/images/9.jpg',
+            'media/news/images/10.jpg',
+            'media/news/images/11.jpg',
+            'media/news/images/12.jpg',
+            'media/news/images/13.jpg',
+            'media/news/images/14.jpg',
+            'media/news/images/15.jpg',
+            'media/news/images/16.jpg',
+            'media/news/images/17.jpg',
+            'media/news/images/18.jpg',
         ];
         
         let idx = 0;
