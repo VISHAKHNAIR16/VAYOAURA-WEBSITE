@@ -799,7 +799,7 @@
         <button class="view-button" onclick="scrollToArchive()">The Vault of VayoAura</button>
     </div>
     <div class="image-container" onclick="scrollToArchive()">
-        <img src="media/news/images/4.jpg" alt="Event Preview Image" loading="lazy" onerror="this.src='media/placeholder.jpg'">
+        <img src="media/news/images/4.jpg" alt="Event Preview Image" loading="lazy">
     </div>
 </div>
 
@@ -874,8 +874,6 @@
     // Gallery data - ALL 195 items with correct R2 paths
     const galleryItems = [
     // VIKRAM:INSERT_GALLERY_ITEM
-    { type: 'image', src: 'media/news/images/20260418-193408-e05cdf410407-document-14_1.jpg', thumb: 'media/news/images/20260418-193408-e05cdf410407-document-14_1.jpg', batch: 1 },
-    { type: 'image', src: 'media/news/images/20260418-192145-084d0a06399e-document-22_3.jpg', thumb: 'media/news/images/20260418-192145-084d0a06399e-document-22_3.jpg', batch: 1 },
     // Numbered images & videos (100-129)
     { type: 'image', src: 'media/news/images/100.jpeg', thumb: 'media/news/images/100.jpeg', batch: 1 },
     { type: 'image', src: 'media/news/images/101.jpeg', thumb: 'media/news/images/101.jpeg', batch: 1 },
@@ -1147,11 +1145,11 @@
                 link.classList.add('loaded');
             };
             
-            img.onerror = function() {
-                this.src = 'media/placeholder.jpg';
-                skeleton.remove();
-                link.classList.add('loaded');
-            };
+            // img.onerror = function() {
+            //     this.src = 'media/placeholder.jpg';
+            //     skeleton.remove();
+            //     link.classList.add('loaded');
+            // };
             
             thumbnail.appendChild(img);
             
