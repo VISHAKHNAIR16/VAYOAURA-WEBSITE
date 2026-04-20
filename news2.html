@@ -660,14 +660,14 @@
         /* Image counter badge */
         .image-counter {
             display: inline-block;
-            background: rgba(255,255,255,0.2);
-            backdrop-filter: blur(10px);
-            padding: 8px 20px;
+            background: rgba(13, 115, 119, 0.1);
+            border: 1px solid rgba(13, 115, 119, 0.25);
+            padding: 5px 16px;
             border-radius: 50px;
-            color: white;
+            color: #0d7377;
             font-weight: 600;
             margin-left: 15px;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
         /* Progress bar */
@@ -711,9 +711,72 @@
             display: none;
         }
 
+
+        /* ── Error state for failed images ── */
+        .gallery-item.img-error {
+            background: #f5f5f5;
+            border: 1px solid #e0e0e0;
+        }
+        .img-error-msg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #ccc;
+            font-size: 2rem;
+            z-index: 2;
+        }
         /* Ensure only one play button shows */
         .play-button:only-child {
             display: flex;
+        }
+
+        /* ── Custom Video Modal ── */
+        #video-modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.92);
+            z-index: 99999;
+            align-items: center;
+            justify-content: center;
+        }
+        #video-modal-overlay.active { display: flex; }
+        #video-modal-inner {
+            position: relative;
+            width: min(90vw, 960px);
+            aspect-ratio: 16/9;
+            background: #000;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.5);
+        }
+        #video-modal-inner video {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+        #video-modal-close {
+            position: absolute;
+            top: -48px;
+            right: 0;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.15);
+            border: 2px solid rgba(255,215,0,0.4);
+            border-radius: 50%;
+            color: white;
+            font-size: 22px;
+            line-height: 36px;
+            text-align: center;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+            user-select: none;
+        }
+        #video-modal-close:hover {
+            background: rgba(255,215,0,0.85);
+            color: #0d7377;
+            transform: rotate(90deg);
         }
     </style>
 </head>
@@ -799,7 +862,7 @@
         <button class="view-button" onclick="scrollToArchive()">The Vault of VayoAura</button>
     </div>
     <div class="image-container" onclick="scrollToArchive()">
-        <img src="media/news/images/4.jpg" alt="Event Preview Image" loading="lazy">
+        <img src="media/news/images/4.jpg" alt="Event Preview Image" loading="lazy" onerror="this.src='media/placeholder.jpg'">
     </div>
 </div>
 
@@ -835,9 +898,23 @@
             Event Archive Gallery
             <span class="image-counter" id="image-counter">0/0</span>
         </h2>
-
-        <div class="gallery" id="archive-gallery"></div>
         
+        <div class="gallery" id="archive-gallery">
+        <a class="gallery-item popup-image vikram-gallery-item" 
+           href="https://pub-65a3d73b28214ba7bf7bba17409134ca.r2.dev/media/news/images/20260417-184657-fbfc8d791e20-123.jpg" 
+           data-filename="123.jpg"
+           data-caption="VayoAura update"
+           data-date="18 Apr 2026">
+            
+            <img src="https://pub-65a3d73b28214ba7bf7bba17409134ca.r2.dev/media/news/images/20260417-184657-fbfc8d791e20-123.jpg" 
+                 alt="VayoAura event image" 
+                 loading="lazy" 
+                 decoding="async" 
+                 onerror="this.src='media/placeholder.jpg'">
+            <div class="image-skeleton"></div>
+        </a>
+            <!-- Gallery items will be populated by JavaScript -->
+        </div>
         
         <!-- Progress bar -->
         <div class="load-progress" id="load-progress">
@@ -865,6 +942,14 @@
     </div>
 </main>
 
+<!-- Custom Video Modal -->
+<div id="video-modal-overlay">
+  <div id="video-modal-inner">
+    <div id="video-modal-close" onclick="closeVideoModal()">&#x2715;</div>
+    <video id="video-modal-player" controls playsinline preload="metadata"></video>
+  </div>
+</div>
+
 <div id="footer-container"></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -874,8 +959,6 @@
     // Gallery data - ALL 195 items with correct R2 paths
     const galleryItems = [
     // VIKRAM:INSERT_GALLERY_ITEM
-    { type: 'image', src: 'https://pub-65a3d73b28214ba7bf7bba17409134ca.r2.dev/media/news/images/20260419-072941-40d580a6ceb4-document-14_1.jpg', thumb: 'https://pub-65a3d73b28214ba7bf7bba17409134ca.r2.dev/media/news/images/20260419-072941-40d580a6ceb4-document-14_1.jpg', batch: 1 },
-    { type: 'image', src: 'media/news/images/20260419-054233-27f31c93c5f9-document-22_2.jpg', thumb: 'media/news/images/20260419-054233-27f31c93c5f9-document-22_2.jpg', batch: 1 },
     // Numbered images & videos (100-129)
     { type: 'image', src: 'media/news/images/100.jpeg', thumb: 'media/news/images/100.jpeg', batch: 1 },
     { type: 'image', src: 'media/news/images/101.jpeg', thumb: 'media/news/images/101.jpeg', batch: 1 },
@@ -1147,11 +1230,17 @@
                 link.classList.add('loaded');
             };
             
-            // img.onerror = function() {
-            //     this.src = 'media/placeholder.jpg';
-            //     skeleton.remove();
-            //     link.classList.add('loaded');
-            // };
+            img.onerror = function() {
+                // Image failed to load — clean up skeleton and mark as error state
+                // Do NOT try to load a fallback image (it would also 404)
+                skeleton.remove();
+                link.classList.add('loaded', 'img-error');
+                // Show a subtle broken-image indicator instead of infinite skeleton
+                const errDiv = document.createElement('div');
+                errDiv.className = 'img-error-msg';
+                errDiv.innerHTML = '<i class="fas fa-image"></i>';
+                thumbnail.appendChild(errDiv);
+            };
             
             thumbnail.appendChild(img);
             
@@ -1204,38 +1293,15 @@
                 }
             });
 
-            // Initialize video popups
-            $('.popup-video').magnificPopup({
-                type: 'iframe',
-                iframe: {
-                    patterns: {
-                        youtube: {
-                            index: 'youtube.com',
-                            id: 'v=',
-                            src: 'https://www.youtube.com/embed/%id%?autoplay=1'
-                        },
-                        vimeo: {
-                            index: 'vimeo.com/',
-                            id: '/',
-                            src: '//player.vimeo.com/video/%id%?autoplay=1'
-                        }
-                    }
-                },
-                gallery: {
-                    enabled: true,
-                    tPrev: 'Previous',
-                    tNext: 'Next',
-                    tCounter: '%curr% of %total%'
-                },
-                closeBtnInside: true,
-                closeOnContentClick: false,
-                closeOnBgClick: true,
-                showCloseBtn: true,
-                enableEscapeKey: true,
-                callbacks: {
-                    open: function() {
-                        console.log('Video popup opened');
-                    }
+            // Initialize video popups — custom modal for direct .mp4/.webm files
+            // (Magnific iframe only supports YouTube/Vimeo, not direct R2 video URLs)
+            document.querySelectorAll('.popup-video').forEach(function(el) {
+                if (!el.dataset.videoBound) {
+                    el.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        openVideoModal(this.href);
+                    });
+                    el.dataset.videoBound = '1';
                 }
             });
         }
@@ -1274,6 +1340,16 @@
                 
                 this.currentIndex = nextIndex;
                 this.initializePopups();
+                // Re-bind video click handlers for newly loaded items
+                document.querySelectorAll('.popup-video').forEach(function(el) {
+                    if (!el.dataset.videoBound) {
+                        el.addEventListener('click', function(e) {
+                            e.preventDefault();
+                            openVideoModal(this.href);
+                        });
+                        el.dataset.videoBound = '1';
+                    }
+                });
                 
                 this.loading = false;
                 loadMoreBtn.classList.remove('loading');
@@ -1326,6 +1402,36 @@
     function scrollToNews() {
         document.getElementById("news").scrollIntoView({ behavior: "smooth" });
     }
+
+
+    // ── Custom Video Modal (handles direct .mp4 / .webm from R2) ──
+    function openVideoModal(src) {
+        const overlay = document.getElementById('video-modal-overlay');
+        const player  = document.getElementById('video-modal-player');
+        player.src = src;
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        player.play().catch(function() {});
+    }
+
+    function closeVideoModal() {
+        const overlay = document.getElementById('video-modal-overlay');
+        const player  = document.getElementById('video-modal-player');
+        player.pause();
+        player.src = '';
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    // Close on overlay background click
+    document.getElementById('video-modal-overlay').addEventListener('click', function(e) {
+        if (e.target === this) closeVideoModal();
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeVideoModal();
+    });
 
     // Initialize everything
     document.addEventListener("DOMContentLoaded", function() {
